@@ -1,26 +1,28 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,800i|Merriweather:300,400,700,700i');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 // Typography
-$PrimaryFont: "Merriweather Sans", sans-serif;
-$SecondaryFont: "Merriweather", sans-serif;
+$PrimaryFont: "Roboto", sans-serif;
+$SecondaryFont: "Roboto", sans-serif;
 
-$FontLight: 300;
-$FontRegular: 400;
-$FontBold: 700;
-$FontExtra: 800;
+$FontLight:		300;
+$FontRegular:	400;
+$FontBold:		700;
+$FontExtra:		700;
 
-$White:         #FFF;
-$Black:         #000;
-$EPorange:      #F15A40;
-$EPgreen:       #A6CE38;
-$EPdarkgreen:   #03BD5B;
-$EPblue:        #42C8F5;
-$EPligthbg:     #53657D;
-$EPbluegray:    #374355;
-$EPgray:        #444B4D;
-$EPblack:       #25292C;
+$White:			#FFF;
+$Black:			#000;
+$EPorange:		#F08413;
+$EPgreen:		#A6CE38;
+$EPdarkgreen:	#03BD5B;
+$EPblue:		#42C8F5;
+$EPligthbg:		#53657D;
+$EPbluegray:	#374355;
+$EPgray:		#5f5A5D;
+$EPblack:		#25292C;
 
 // Delete this ->
-$Gray:          #EFEFEF; $Cyan:             #00C7E8;
-$PrimaryGray:   #6A6D6F; $SecondaryGray:    #313332; $TerciaryGray: #5D5E5C; $GrayMenu: #74C5CB;
+$Gray:			#EFEFEF; $Cyan:				#00C7E8;
+$PrimaryGray:	#6A6D6F; $SecondaryGray:	#313332; $TerciaryGray: #5D5E5C; $GrayMenu: #74C5CB;
+
+$new_red: 		#e1061a;

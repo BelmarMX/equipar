@@ -1,17 +1,17 @@
 <!doctype html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Formulario de cotizaciones</title>
-    </head>
-    <body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Formulario de cotizaciones</title>
+	</head>
+	<body>
 		<style>
 			*{
 				font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 			}
 		</style>
 		</body>
-		<img width="232" height="88" alt="Logo Equipar" src="{{ asset('/images/template/equipar-id.png') }}">
+		<img width="232" height="88" alt="Logo Equipar" src="{{ asset('/images/template/equipar-id--red.png') }}">
 		@if( !empty($promocion) )
 		<div id="promomes" style="text-align:center">
 			<a href="{{ route('promociones', $promocion -> slug)}}">
@@ -22,7 +22,7 @@
  
 		<h1>Detalle de tu cotización</h1>
 		<b>Nombre:</b> <span>{{ $cliente -> nombre }}</span><br>
-        <b>Correo electrónico:</b> <span>{{ $cliente -> email }}</span><br>
+		<b>Correo electrónico:</b> <span>{{ $cliente -> email }}</span><br>
 		<b>Teléfono:</b> <span>{{ $cliente -> phone }}</span><br>
 		<b>Empresa:</b> <span>{{ $cliente -> company }}</span><br>
 		<b>Ciudad:</b> <span>{{ $cliente -> city }}</span><br>
@@ -67,5 +67,5 @@
 		@endif
 		Gracias,<br>
 		{{ config('app.name') }}
-    </body>
+	</body>
 </html>

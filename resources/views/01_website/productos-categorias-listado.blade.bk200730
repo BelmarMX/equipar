@@ -27,11 +27,33 @@
 				<h1 class="uk-text-uppercase">{{ $category -> title }}</h1>
 			</div>
 		</div>
-		<nav class="nav__subcategories">
-			<div class="nav__subcategories--ws">
-				@foreach( $subcategories AS $subcategory )
-				<a href="{{ route('productos-category', [$category-> slug, $subcategory -> slug]) }}" >{{ $subcategory -> title }}</a>
-				@endforeach
+		<nav class="uk-navbar-container" uk-navbar>
+			<div class="uk-navbar-left">
+				<ul class="uk-navbar-nav uk-visible@s" id="NavSubcat" uk-nav>
+					@php
+						$counter    = 1;
+						$last       = count($subcategories);
+					@endphp
+					@foreach( $subcategories AS $subcategory )
+						@if( $last >= 12 && $counter >= 12 )
+							@if( $counter == 12 )
+								<button class="uk-button uk-button-default modifier" type="button">VER MÁS</button>
+								<div uk-dropdown>
+									<ul class="uk-nav uk-dropdown-nav fs885">
+							@endif
+										<li><a href="{{ route('productos-category', [$category-> slug, $subcategory -> slug]) }}" >{{ $subcategory -> title }}</a></li>
+							@if( $counter == $last)
+									</ul>
+								</div>
+							@endif
+						@else
+							<li><a href="{{ route('productos-category', [$category-> slug, $subcategory -> slug]) }}" >{{ $subcategory -> title }}</a></li>
+						@endif
+						@php
+							$counter++;
+						@endphp
+					@endforeach
+				</ul>
 			</div>
 		</nav>
 	</div>
@@ -50,14 +72,14 @@
 					@foreach($entries as $entry)
 					<div>
 						<div class="uk-card uk-card-default">
-							<a href="{{ route('productos-open', [$entry -> slugC, $entry -> slugS, $entry -> slugP]) }}" class="uk-card-media-top producto__link--img">
+							<div class="uk-card-media-top">
 								@if( !empty($entry -> final_price) )
 								<div class="discount-tag">
 									<span>{{ percent( $entry -> precio, $entry -> final_price ) }}%</span>
 								</div>
 								@endif
 								<img src="{{ url('storage/'.env('PRODUCT_FOLDER') . $entry -> image_rxP) }}" alt="{{ $entry -> titleP }}">
-							</a>
+							</div>
 							<div class="uk-card-body ofProduct">
 								<h3 class="uk-card-title">{{ $entry -> titleP }}</h3>
 								<small>{{ $entry -> modelo }}</small>
