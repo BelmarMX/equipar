@@ -33,8 +33,18 @@
 							<div class="uk-margin">
 								<input class="uk-input" type="text" name="asunto" placeholder="Asunto" @if(isset($_GET['s'])) value="Información de producto ({{ $_GET['p'] }})" @else value="{{ old('asunto') }}" @endif>
 							</div>
+							@php
+							if( isset($_GET['p']) )
+							{
+								$message = "¡Hola! quisiera tener más información acerca del producto: ".$_GET['t'].", Modelo: ".$_GET['m'].", con número de identificación ".$_GET['p'];
+							}
+							else
+							{
+								$message = old('cuerpo') ?? '';
+							}
+							@endphp
 							<div class="uk-margin">
-								<textarea class="uk-textarea" rows="5" name="cuerpo" placeholder="Cuerpo del mensaje" required>@if( isset($_GET['p']) ) ¡Hola! quisiera tener más información acerca del producto: {{ $_GET['t'] }}, Modelo: {{ $_GET['m'] }}, con número de identificación {{ $_GET['p'] }} @else {{ old('cuerpo') }} @endif</textarea>
+								<textarea class="uk-textarea" rows="5" name="cuerpo" placeholder="Cuerpo del mensaje" required>{{ $message }}</textarea>
 							</div>
 							<div class="uk-margin">
 								<div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_PUBLIC') }}"></div>

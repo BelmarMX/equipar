@@ -87,37 +87,38 @@
 	</div>
 
 	<div class="uk-container">
-		<div class="losEnlaces" uk-grid>
-			<div class="uk-width-12">
-				<a href={{ route('proyectos') }}>
-					<img width="1240" height="350" src="{{ asset('images/template/mn-proyectos.jpg') }}" alt="Ir a la sección de proyectos">
-					<span class="leText">Proyectos</span>
-				</a>
+		<div class="uk-grid-match uk-grid-small uk-margin-large-bottom" uk-grid>
+			<div class="uk-width-1-1">
+				<div class="uk-width-1-3@m">
+					<div class="rounded-container bg-orange">
+						<h2 class="uk-text-uppercase">Productos destacados</h2>
+					</div>
+				</div>
 			</div>
-			<div class="uk-width-1-2@m">
-				<a href={{ route('productos') }}>
-					<img width="620" height="350" src="{{ asset('images/template/mn-productos.jpg') }}" alt="Ir a la sección de productos">
-					<span class="leText">Productos</span>
-				</a>
+			@foreach($related AS $relate)
+			@php
+			if( $loop ->  index == 8)
+				break;
+			@endphp
+			<div class="uk-width-1-4@m">
+				<div class="uk-card uk-card-default">
+					<a href="{{ route('productos-open', [$relate -> producto -> category -> slug, $relate -> producto -> subcategory -> slug, $relate -> producto -> slug]) }}" class="uk-card-media-top producto__link--img">
+						<img src="{{ url('storage/'.env('PRODUCT_FOLDER') . $relate -> producto -> image_rx) }}" alt="{{ $relate -> producto -> title }}">
+					</a>
+					<div class="uk-card-body ofProduct">
+						<h3 class="uk-card-title">{{ $relate -> producto -> title }}</h3>
+						<small>{{ $relate -> producto -> modelo }}</small>
+						<p>
+							{{ $relate -> producto -> resumen }}<br>
+							@if( $relate -> producto -> precio > 0 )
+							<span class="price">${{ number_format($relate -> producto -> precio, 2, '.', ',') }}</span>
+							@endif
+						</p>
+						<a href="{{ route('productos-open', [$relate -> producto -> category -> slug, $relate -> producto -> subcategory -> slug, $relate -> producto -> slug]) }}">Ir al producto</a>
+					</div>
+				</div>
 			</div>
-			<div class="uk-width-1-2@m">
-				<a href={{ route('servicios') }}>
-					<img width="620" height="350" src="{{ asset('images/template/mn-servicios.jpg') }}" alt="Ir a la sección de servicios">
-					<span class="leText">Servicios</span>
-				</a>
-			</div>
-			<div class="uk-width-12">
-				<a href={{ route('portafolio') }}>
-					<img width="1240" height="350" src="{{ asset('images/template/mn-portafolio.jpg') }}" alt="Ir a la sección de portafolio">
-					<span class="leText">Portafolio</span>
-				</a>
-			</div>
-			<div class="uk-width-12">
-				<a href={{ route('servicios') }}>
-					<img width="1240" height="350" src="{{ asset('images/template/mn-servicios-2.jpg') }}" alt="Ir a la sección de servicios">
-					<span class="leText">Renderizado</span>
-				</a>
-			</div>
+			@endforeach
 		</div>
 
 		<div class="uk-margin-large" uk-grid>
@@ -306,34 +307,37 @@
 			@endforeach
 		</div>
 
-		<div class="uk-grid-match uk-grid-small" uk-grid>
-			<div class="uk-width-1-1">
-				<div class="uk-width-1-3@m">
-					<div class="rounded-container bg-orange">
-						<h2 class="uk-text-uppercase">Productos destacados</h2>
-					</div>
-				</div>
+		<div class="losEnlaces" uk-grid>
+			<div class="uk-width-12">
+				<a href={{ route('proyectos') }}>
+					<img width="1240" height="350" src="{{ asset('images/template/mn-proyectos.jpg') }}" alt="Ir a la sección de proyectos">
+					<span class="leText">Proyectos</span>
+				</a>
 			</div>
-			@foreach($related AS $relate)
-			<div class="uk-width-1-4@m">
-				<div class="uk-card uk-card-default">
-					<a href="{{ route('productos-open', [$relate -> slugC, $relate -> slugS, $relate -> slugP]) }}" class="uk-card-media-top producto__link--img">
-						<img src="{{ url('storage/'.env('PRODUCT_FOLDER') . $relate -> image_rxP) }}" alt="{{ $relate -> titleP }}">
-					</a>
-					<div class="uk-card-body ofProduct">
-						<h3 class="uk-card-title">{{ $relate -> titleP }}</h3>
-						<small>{{ $relate -> modelo }}</small>
-						<p>
-							{{ $relate -> resumen }}<br>
-							@if( $relate -> precio > 0 )
-							<span class="price">${{ number_format($relate -> precio, 2, '.', ',') }}</span>
-							@endif
-						</p>
-						<a href="{{ route('productos-open', [$relate -> slugC, $relate -> slugS, $relate -> slugP]) }}">Ir al producto</a>
-					</div>
-				</div>
+			<div class="uk-width-1-2@m">
+				<a href={{ route('productos') }}>
+					<img width="620" height="350" src="{{ asset('images/template/mn-productos.jpg') }}" alt="Ir a la sección de productos">
+					<span class="leText">Productos</span>
+				</a>
 			</div>
-			@endforeach
+			<div class="uk-width-1-2@m">
+				<a href={{ route('servicios') }}>
+					<img width="620" height="350" src="{{ asset('images/template/mn-servicios.jpg') }}" alt="Ir a la sección de servicios">
+					<span class="leText">Servicios</span>
+				</a>
+			</div>
+			<div class="uk-width-12">
+				<a href={{ route('portafolio') }}>
+					<img width="1240" height="350" src="{{ asset('images/template/mn-portafolio.jpg') }}" alt="Ir a la sección de portafolio">
+					<span class="leText">Portafolio</span>
+				</a>
+			</div>
+			<div class="uk-width-12">
+				<a href={{ route('servicios') }}>
+					<img width="1240" height="350" src="{{ asset('images/template/mn-servicios-2.jpg') }}" alt="Ir a la sección de servicios">
+					<span class="leText">Renderizado</span>
+				</a>
+			</div>
 		</div>
 	</div>
 @endsection

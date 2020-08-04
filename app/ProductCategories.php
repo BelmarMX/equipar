@@ -7,29 +7,29 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProductCategories extends Model
 {
-    use SoftDeletes;
+	use SoftDeletes;
 
-    protected $table    = "products_categories";
+	protected $table    = "products_categories";
 
-    protected $fillable = [
-        'title', 'slug', 'image', 'image_rx'
-    ];
+	protected $fillable = [
+		'title', 'slug', 'image', 'image_rx'
+	];
 
-    protected $hidden = [
-        '',
-    ];
+	protected $hidden = [
+		'',
+	];
 
-    protected $dates = ['deleted_at'];
+	protected $dates = ['deleted_at'];
 
-    // relaciones (1 a muchos)
-    public function product()
-    {
-        return $this->hasMany('App\Product');
-    }
+	// relaciones (1 a muchos)
+	public function product()
+	{
+		return $this->hasMany('App\Product');
+	}
 
-    // relaciones (1 a muchos)
-    public function subcategories()
-    {
-        return $this->hasMany('App\ProductSubcategories');
-    }
+	// relaciones (1 a muchos)
+	public function subcategories()
+	{
+		return $this->hasMany('App\ProductSubcategories');
+	}
 }

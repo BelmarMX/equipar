@@ -60,7 +60,9 @@
 							<li>
 								<div class="elBanner">
 									<img src="{{ url('storage/'.env('BANNER_FOLDER') . $banner -> image) }}" width="{{ env('BANNER_WIDTH') }}" height="{{ env('BANNER_HEIGHT') }}" alt="{{ $banner -> title }}">
+									@if( !empty($banner -> title ) AND $banner -> title != '.' )
 									<a class="uk-visible@s" @if(!empty( $banner -> link )) href="{{ $banner -> link }}" @endif>{{ $banner -> title }}</a>
+									@endif
 								</div>
 							</li>
 							@endforeach

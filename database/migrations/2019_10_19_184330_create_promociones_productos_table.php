@@ -13,24 +13,24 @@ class CreatePromocionesProductosTable extends Migration
      */
     public function up()
     {
-        Schema::create('promociones_productos', function (Blueprint $table) {
-            $table  -> integer('promocion_id')
-                    -> unsigned();
-            $table  -> foreign('promocion_id')
-                    -> references('id')
-                    -> on('promociones')
-                    -> onDelete('cascade');
-            $table  -> integer('producto_id')
-                    -> unsigned();
-            $table  -> foreign('producto_id')
-                    -> references('id')
-                    -> on('products')
-                    -> onDelete('cascade');
-            $table  -> enum('dtype', ["$", "%"])
-                    -> default("$");
-            $table  -> decimal('final_price', 7, 2);
-            $table  -> decimal('discount', 7, 2);
-        });
+	Schema::create('promociones_productos', function (Blueprint $table) {
+	    $table  -> integer('promocion_id')
+		    -> unsigned();
+	    $table  -> foreign('promocion_id')
+		    -> references('id')
+		    -> on('promociones')
+		    -> onDelete('cascade');
+	    $table  -> integer('producto_id')
+		    -> unsigned();
+	    $table  -> foreign('producto_id')
+		    -> references('id')
+		    -> on('products')
+		    -> onDelete('cascade');
+	    $table  -> enum('dtype', ["$", "%"])
+		    -> default("$");
+	    $table  -> decimal('final_price', 7, 2);
+	    $table  -> decimal('discount', 7, 2);
+	});
     }
 
     /**
@@ -40,6 +40,6 @@ class CreatePromocionesProductosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('promociones_productos');
+	Schema::dropIfExists('promociones_productos');
     }
 }
