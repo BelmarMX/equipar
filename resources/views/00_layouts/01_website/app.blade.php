@@ -83,16 +83,8 @@
 			<div class="uk-modal-dialog">
 				<button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
 				<div class="uk-padding-large uk-text-center uk-grid-collapse uk-child-width-1-1 uk-flex-middle" uk-height-viewport uk-grid>
-					<div>
+					<div class="__search">
 						@include('00_layouts.01_website.search')
-					</div>
-					<div>
-						<a class="goQuotation @if(Session::has('cotizacion')) {!! "hasItems" !!} @endif" href="{{ route('cotizar') }}" uk-tooltip title="Ir al cotizador">
-							<span uk-icon="icon: cart; ratio: 1.25"></span> Cotizador
-							@if(Session::has('cotizacion'))
-								<span class="uk-badge">{{ count(Session::get('cotizacion')) }}</span>
-							@endif
-						</a>
 					</div>
 					<div>
 						<a class="menu-link {!! Request::is('/') ? 'active' : '' !!}" href="{{ route('index') }}">Portada</a>

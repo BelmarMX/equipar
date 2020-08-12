@@ -290,7 +290,7 @@
 								<img class="uk-border-circle" width="{{ env('ARTICLE_WIDTH_RX') }}" height="{{ env('ARTICLE_HEIGHT_RX') }}" src="{{ url('storage/' . env('ARTICLE_FOLDER') . $article -> image_rx ) }}" alt="">
 							</a>
 							<div class="uk-width-1-1">
-								<h3 class="uk-card-title uk-margin-remove-bottom" style="font-size:1.7rem">{{ $article -> titleA }}</h3>
+								<h3 class="uk-card-title uk-margin-remove-bottom red" style="font-size:1.7rem">{{ $article -> titleA }}</h3>
 								<p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom uk-text-right"><time datetime="{{ $article -> publish }}">{{ Carbon::parse($article -> publish) -> format('d/m/Y') }}</time></p>
 								<p class="uk-text-meta uk-margin-remove-top uk-text-right">{{ $article -> titleC }}</p>
 							</div>

@@ -7,14 +7,7 @@
 
 		<div class="header__nav__middle uk-visible@s">
 			<div class="header__nav--search">
-				<form class="uk-search uk-search-default uk-search-navbar le-new" method="POST" action="{{ route('search') }}">
-					@csrf
-					<div class="uk-inline">
-						<span class="uk-form-icon" uk-icon="icon: search"></span>
-						<input class="uk-input" type="text" name="search" placeholder="Búsqueda de producto">
-					</div>
-					<button class="uk-form-icon uk-form-icon-flip">Buscar</button>
-				</form>
+				@include('00_layouts.01_website.search')
 			</div>
 			<div class="header__nav--cart">
 				<a class="goQuotation @if(Session::has('cotizacion')) {!! "hasItems" !!} @endif" href="{{ route('cotizar') }}" uk-tooltip title="Ir al cotizador">
@@ -27,6 +20,12 @@
 		</div>
 
 		<div class="header__nav__right">
+			<a class="goQuotation uk-hidden@s @if(Session::has('cotizacion')) {!! "hasItems" !!} @endif" href="{{ route('cotizar') }}" uk-tooltip title="Ir al cotizador">
+				<span uk-icon="icon: cart; ratio: 1.25"></span>
+				@if(Session::has('cotizacion'))
+					<span class="uk-badge">{{ count(Session::get('cotizacion')) }}</span>
+				@endif
+			</a>
 			<a class="uk-navbar-toggle uk-hidden@s" href="#menu-full" uk-toggle>
 				<img src="{{ asset('/images/template/menu-button.svg') }}" width="32" height="32" alt="Botón del menú">
 			</a>

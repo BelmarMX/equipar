@@ -28,7 +28,7 @@
                     <a href="{{ route('productos-category-list', $category -> slug) }}">
                         <img width="100%" class="a-link-box expand rounded-img border" src="{{ url('storage/'.env('PRODUCT_CAT_FOLDER') . $category -> image_rx) }}" alt="{{ $category -> title }}">
                     </a>
-                    <div class="rounded-container bg-green">
+                    <div class="rounded-container bg-orange">
                         <h2 class="uk-text-uppercase">{{ $category -> title }}</h1>
                     </div>
                     <a class="a-link-box expand"><span>Expandir</span> <i class="material-icons vm">keyboard_arrow_down</i> <i class="material-icons vm">keyboard_arrow_up</i></a>
