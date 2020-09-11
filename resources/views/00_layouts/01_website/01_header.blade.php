@@ -2,7 +2,9 @@
 <header class="header">
 	<nav class="header__nav">
 		<div class="header__nav__brand">
-			<img src="{{ asset('/images/template/equipar-id--red.png') }}" width="190" height="58" alt="Equi-par logo"  uk-scrollspy="cls:uk-animation-scale-up">
+			<a href="/">
+				<img src="{{ asset('/images/template/equipar-id--red.png') }}" width="190" height="58" alt="Equi-par logo"  uk-scrollspy="cls:uk-animation-scale-up">
+			</a>
 		</div>
 
 		<div class="header__nav__middle uk-visible@s">

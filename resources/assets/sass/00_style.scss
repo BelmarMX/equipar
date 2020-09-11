@@ -1158,7 +1158,7 @@ footer{
 	}
 	.bgContainer{
 		border-top: 4px solid $EPbluegray;
-		background: url('/images/template/bg-footer-bw.png') center top;
+		background: url('/images/template/bg-footer-bw.png') center center;
 	}
 	.bg-blue{
 		background: rgba($EPgray, .15);
@@ -1183,10 +1183,10 @@ footer{
 		text-decoration: none;
 	}
 	.foot-location{
-		padding: 0 0 0 15px;
+		padding: 0 0 0 12px;
 		font-family: $PrimaryFont;
-		font-size: 1.65rem;
-		line-height: 150%;
+		font-size: 1.4rem;
+		line-height: 110%;
 		color: white;
 	}
 }

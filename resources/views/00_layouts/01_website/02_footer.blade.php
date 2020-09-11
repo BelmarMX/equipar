@@ -16,10 +16,19 @@
 							<img src="{{ asset('/images/template/ico-position.svg') }}" width="40" height="40" alt="Ubicación">
 						</div>
 						<div class="uk-width-4-5 foot-location">
+							<strong>Matriz:</strong>
 							Mariano Otero #3519, col. La Calma<br>
-							Zapopan, Jalisco. México<br>
-							01 (33) 2886 2661<br>
-							atencionaclientes@equi-par.com
+							Zapopan, Jalisco. México.
+						</div>
+					</div>
+					<div uk-grid class="uk-margin-small-top">
+						<div class="uk-width-1-5">
+							<img src="{{ asset('/images/template/ico-position.svg') }}" width="40" height="40" alt="Ubicación">
+						</div>
+						<div class="uk-width-4-5 foot-location">
+							<strong>Sucursal:</strong>
+							Av. Cvln. Jorge Álvarez del Castillo #1442, col. Lomas del Country<br>
+							Guadalajara, Jalisco. México.
 						</div>
 					</div>
 				</div>
@@ -38,6 +47,11 @@
 								<img src="{{ asset('/images/template/ico-instagram.svg') }}" width="23" height="23" alt="Instagram" style="width:30px;">
 							</a>
 						</div>
+					</div>
+
+					<div class="foot-location" style="margin-top: 10px;">
+						01 (33) 2886 2661<br>
+						atencionaclientes@equi-par.com
 					</div>
 				</div>
 				<div class="uk-text-right uk-padding-small pt-80">
