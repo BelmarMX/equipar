@@ -17,8 +17,8 @@
 						</div>
 						<div class="uk-width-4-5 foot-location">
 							<strong>Matriz:</strong>
-							Mariano Otero #3519, col. La Calma<br>
-							Zapopan, Jalisco. México.
+							Av. Cvln. Jorge Álvarez del Castillo #1442, col. Lomas del Country<br>
+							Guadalajara, Jalisco. México.
 						</div>
 					</div>
 					<div uk-grid class="uk-margin-small-top">
@@ -27,8 +27,8 @@
 						</div>
 						<div class="uk-width-4-5 foot-location">
 							<strong>Sucursal:</strong>
-							Av. Cvln. Jorge Álvarez del Castillo #1442, col. Lomas del Country<br>
-							Guadalajara, Jalisco. México.
+							Mariano Otero #3519, col. La Calma<br>
+							Zapopan, Jalisco. México.
 						</div>
 					</div>
 				</div>

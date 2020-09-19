@@ -411,7 +411,7 @@ class PromocionesController extends BaseDashboard
 			$inplst[] = $i;
 			if($request -> precioPromo[$i] > 0)
 			{
-				if( count(PromocionesProductos::where('promocion_id', $id) -> where('producto_id', $i) -> first()) > 0 )
+				if( PromocionesProductos::where('promocion_id', $id) -> where('producto_id', $i) -> count() > 0 )
 				{
 					$updlst[]   = $i;
 					$log .= "El producto $i tiene que actualizar su precio.<br>";
