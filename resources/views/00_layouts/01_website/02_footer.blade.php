@@ -37,14 +37,14 @@
 
 					<div uk-grid class="uk-margin-small-top">
 						<div class="uk-width-1-1">
-							<a href="#" class="uk-margin social" uk-tooltip title="Facebook">
-								<img src="{{ asset('/images/template/ico-facebook.svg') }}" width="23" height="23" alt="Facebook" style="width:30px;">
+							<a href="https://www.facebook.com/equiparcocinas/" target="_blank" class="uk-margin social" uk-tooltip title="Facebook">
+								<span uk-icon="icon:facebook; ratio:1.5"></span>
 							</a>
-							<a href="#" class="uk-margin-left social" uk-tooltip title="Twitter">
-								<img src="{{ asset('/images/template/ico-twitter.svg') }}" width="28" height="23" alt="Twitter" style="width:30px;">
+							<a href="https://www.linkedin.com/in/equipar-servicios-integrales-7257081b1/" target="_blank" class="uk-margin-left social" uk-tooltip title="LinkedIn">
+								<span uk-icon="icon:linkedin; ratio:1.5"></span>
 							</a>
-							<a href="#" class="uk-margin-left social" uk-tooltip title="Instagram">
-								<img src="{{ asset('/images/template/ico-instagram.svg') }}" width="23" height="23" alt="Instagram" style="width:30px;">
+							<a href="https://www.instagram.com/equiparcocinas/?hl=es-la" target="_blank" class="uk-margin-left social" uk-tooltip title="Instagram">
+								<span uk-icon="icon:instagram; ratio:1.5"></span>
 							</a>
 						</div>
 					</div>

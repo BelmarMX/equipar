@@ -26,16 +26,16 @@
 </div>
 
 <div id="quotation" uk-modal>
-    <div class="uk-modal-dialog">
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-        <div class="uk-modal-header">
-            <div class="rounded-container bg-blue">
-                <h2 class="uk-modal-title">COTIZADOR DE PROMOCIONES</h2>
-            </div>
+	<div class="uk-modal-dialog">
+		<button class="uk-modal-close-default" type="button" uk-close></button>
+		<div class="uk-modal-header">
+			<div class="rounded-container bg-blue">
+				<h2 class="uk-modal-title">COTIZADOR DE PROMOCIONES</h2>
+			</div>
 			<strong class="ff-secondary-font light">Recibe la cotización de tus productos seleccionados por correo electrónico.</strong>
-        </div>
-        <div class="uk-modal-body uk-padding-small">
-            <form class="quotas uk-form-stacked" enctype="multipart/form-data" method="post" action="{{ route('cotizaciones.mail') }}">
+		</div>
+		<div class="uk-modal-body uk-padding-small">
+			<form class="quotas uk-form-stacked" enctype="multipart/form-data" method="post" action="{{ route('cotizaciones.mail') }}">
 				@csrf
 				<div class="uk-margin">
 					<label>Mi Correo electrónico *</label>
@@ -79,11 +79,11 @@
 					<button class="mt-1 uk-button button-submit-prevent">Enviar</button>
 				</div>
 			</form>
-        </div>
-        <div class="uk-modal-footer uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
-        </div>
-    </div>
+		</div>
+		<div class="uk-modal-footer uk-text-right">
+			<button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
+		</div>
+	</div>
 </div>
 @section('CustomJs')
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
