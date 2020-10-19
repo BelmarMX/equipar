@@ -1,5 +1,5 @@
 <div id="SendUsWhats">
-	<a href="https://api.whatsapp.com/send?phone=523318043797&text=Para%20brindarte%20un%20mejor%20servicio%20por%20favor%20proporcionanos%20tus%20datos%20(Nombre,%20Correo%20electrónico,%20 y%20asunto)" uk-tooltip title="Contáctanos Vía Whatsapp" target="_blank">
+	<a href="https://api.whatsapp.com/send?phone=523328347073&text=Para%20brindarte%20un%20mejor%20servicio%20por%20favor%20proporcionanos%20tus%20datos%20(Nombre,%20Correo%20electrónico,%20 y%20asunto)" uk-tooltip title="Contáctanos Vía Whatsapp" target="_blank">
 		<img width="75" height="75" src="{{ asset('/images/template/whatsapp.png') }}" alt="Envíanos un Whatsapp">
 	</a>
 </div>

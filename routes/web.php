@@ -70,6 +70,9 @@ Route::get('contacto', 'IndexController@view')
 Route::get('aviso-de-privacidad', 'IndexController@view')
 	-> name('aviso-privacidad');
 
+Route::post('coincidencias', 'ProductController@coincidencias')
+	-> name('coincidencias');
+
 /*
  *  DASHBOARD
 */

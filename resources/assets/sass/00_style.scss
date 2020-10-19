@@ -191,6 +191,8 @@ ul.pagination
 						height: 34px;
 						width: 290px;
 						font-size: 1.35rem;
+						padding-left: 35px;
+						color: rgba($EPgray, .8);
 						&::placeholder{
 							color: rgba($EPgray, .5);
 						}
@@ -291,6 +293,27 @@ ul.pagination
 	}
 }
 /* NUEVO HEADER 2020 */
+.easy-autocomplete-container{
+	ul{
+		width: 450px;
+		li{
+			margin-bottom: 15px;
+			&.selected{
+				background: lighten($new_red, 50%);
+			}
+			div{
+				a{
+					color: $new_red;
+					font-size: 1.3rem;
+					font-style: normal;
+					&:hover{
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+}
 
 #menu-full{
 	.uk-modal-dialog{
