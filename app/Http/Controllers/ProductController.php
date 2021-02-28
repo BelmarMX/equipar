@@ -1,5 +1,7 @@
 <?php
 namespace App\Http\Controllers;
+
+use App\ProductImages;
 use Gate
 ,   Image
 ,   Batch
@@ -17,6 +19,7 @@ use Gate
 
 class ProductController extends BaseDashboard
 {
+	private $send;
 	private $folder;
 	private $width;
 	private $height;
@@ -27,6 +30,7 @@ class ProductController extends BaseDashboard
 	public function __construct()
 	{
 		parent::__construct();
+		$this -> send       = array();
 		$this -> folder     = env('PRODUCT_FOLDER');
 		$this -> width      = env('PRODUCT_WIDTH');
 		$this -> height     = env('PRODUCT_HEIGHT');
@@ -77,6 +81,8 @@ class ProductController extends BaseDashboard
 			-> orderBy('idP', 'DESC')
 			-> where('products.slug', '=', $slugP)
 			-> first();
+
+		$gallery = ProductImages::where('producto_id', $entry -> idP) -> get();
 
 		$related      = Product::select(
 				'*'
@@ -131,6 +137,7 @@ class ProductController extends BaseDashboard
 					'meta'      => $meta
 				,   'banners'   => 0
 				,   'promos'    => $promos
+				,	'gallery'	=> $gallery
 				,   'entry'     => $entry
 				,   'CC'        => $CC
 				,   'SS'        => $SS
@@ -693,6 +700,77 @@ class ProductController extends BaseDashboard
 				,   'cut_height'    => $this->height_rx
 			);
 			return view('02_system.trimmer')->with('opciones', $opciones);
+		}
+		return view('02_system.unauthorized');
+	}
+	/* --- --- --- --- --- --- --- --- --- ---
+	| AddImages
+	--- --- --- --- --- --- --- --- --- --- */
+	public function addImages($id)
+	{
+		if (Gate::allows('users.edit'))
+		{
+			$entry = Product::with('images') -> where('id', $id) -> first();
+
+			return view('02_system.05_product.addImages')
+				-> with('entry', $entry);
+		}
+		return view('02_system.unauthorized');
+	}
+	public function addImagesStore($id, Request $request)
+	{
+		$entry = Product::find($id);
+		
+		$c = 0;
+		foreach( $request -> file('images') AS $file)
+		{
+			echo 'yes we are in foreach';
+			$time		= time();
+			$original	= $file -> getClientOriginalName();
+			//$ext		= pathinfo($original, PATHINFO_EXTENSION);
+			$ext		= $file -> getClientOriginalExtension();
+			$file_name	= $entry -> slug . '-' . $time . '-galstock' . $c . '.' . $ext;
+			$thumb_name = $entry -> slug . '-' . $time . '-galstock' . $c . '-thumbnail.' . $ext;
+
+			if ($id = ProductImages::create([
+					'producto_id'		=> $entry -> id
+				,	'image'				=> $file_name
+				,	'image_rx'			=> $thumb_name
+			])) {
+				$ffile	= Image::make($file);
+				$thumb	= Image::make($file)
+					-> fit(545, 545);
+
+				Storage::put('public/' . $this -> folder . $file_name, $ffile->stream());
+				Storage::put('public/' . $this -> folder . $thumb_name, $thumb->stream());
+
+				$c++;
+				$this -> send['type']		= 'alert-success';
+				$this -> send['message']	= $c . ' Registro(s) guardados(s) con éxito.';
+			} else {
+				$this -> send['type']		= 'alert-danger';
+				$this -> send['message']	= 'Ocurrió un error al guardar el registro.';
+			}
+		}
+
+		return back()
+			-> with('alert', $this -> send);
+	}
+	public function addImagesDelete($id)
+	{
+		if (Gate::allows('users.destroy')) {
+			$entry = ProductImages::find($id);
+
+			if ($entry->delete()) {
+				$this->send['type']       = 'alert-success';
+				$this->send['message']    = 'Registro eliminado con éxito.';
+			} else {
+				$this->send['type']       = 'alert-danger';
+				$this->send['message']    = 'Ocurrió un error al eliminar el registro.';
+			}
+
+			return back()
+				-> with('alert', $this -> send);
 		}
 		return view('02_system.unauthorized');
 	}

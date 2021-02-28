@@ -180,6 +180,18 @@ Route::group(['prefix' => 'dashboard'], function(){
 				'uses'  => 'ProductController@trim'
 			,   'as'    => 'product.trim'
 		]);
+		Route::get('product/{id}/addImages', [
+				'uses'	=> 'ProductController@addImages'
+			,	'as'	=> 'product.addImages'
+		]);
+		Route::post('product/{id}/addImagesStore',[
+				'uses'  => 'ProductController@addImagesStore'
+			,   'as'    => 'product.addImagesStore'
+		]);
+		Route::get('product/gallery/{id}/addImagesDelete',[
+			'uses'  => 'ProductController@addImagesDelete'
+		,   'as'    => 'product.addImagesDelete'
+	]);
 		Route::get('product/{t}/{c}/json', [
 				'uses'  => 'ProductController@json'
 			,   'as'    => 'product.json'

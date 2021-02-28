@@ -31,8 +31,8 @@ class Product extends Model
 	{
 		return $this -> belongsTo("App\ProductSubcategories", 'subcategory_id');
 	}
-	public function cotizaciones()
+	public function images()
 	{
-		return $this -> hasMany("App\Cotizaciones");
+		return $this -> hasMany('App\ProductImages', 'producto_id');
 	}
 }

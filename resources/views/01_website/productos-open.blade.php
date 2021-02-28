@@ -163,10 +163,34 @@
 		
 		<div class="uk-width-4-5@m" id="TheMagicIsDiscovered">
 			<div uk-grid>
-				<div class="uk-width-2-5@m uk-text-center" uk-lightbox>
-					<a href="{{ url('storage/'.env('PRODUCT_FOLDER').'/' . $entry -> imageP) }}">
-						<img width="100%" src="{{ url('storage/'.env('PRODUCT_FOLDER').'/' . $entry -> imageP) }}" alt="{{ $entry -> titleP }}">
-					</a>
+				<div class="uk-width-2-5@m uk-text-center">
+					@if( count($gallery) > 0)
+					<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="autoplay: true; autoplay-interval: 4500; sets: true;">
+						<ul class="uk-slider-items uk-child-width-1-1@s uk-child-width-1-1@" uk-lightbox>
+							<li>
+								<a href="{{ url('storage/'.env('PRODUCT_FOLDER').'/' . $entry -> imageP) }}">
+									<img width="100%" src="{{ url('storage/'.env('PRODUCT_FOLDER').'/' . $entry -> imageP) }}" alt="{{ $entry -> titleP }}">
+								</a>
+							</li>
+						@foreach($gallery AS $image)
+							<li>
+								<a href="{{ url('storage/'.env('PRODUCT_FOLDER').'/' . $image -> image) }}">
+									<img width="100%" src="{{ url('storage/'.env('PRODUCT_FOLDER').'/' . $image -> image_rx) }}" alt="{{ $entry -> titleP }}">
+								</a>
+							</li>
+						@endforeach
+						</ul>
+						<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+						<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+						<ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+					</div>
+					@else
+					<div uk-lightbox>
+						<a href="{{ url('storage/'.env('PRODUCT_FOLDER').'/' . $entry -> imageP) }}">
+							<img width="100%" src="{{ url('storage/'.env('PRODUCT_FOLDER').'/' . $entry -> imageP) }}" alt="{{ $entry -> titleP }}">
+						</a>
+					</div>
+					@endif
 					<small>* Click en la foto para ampliar.</small>
 				</div>
 				<div class="uk-width-3-5@m">
