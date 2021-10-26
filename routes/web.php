@@ -1,4 +1,7 @@
 <?php
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::resource('mail', 'MailController');
 
 Route::get('/', 'IndexController@view')
@@ -204,6 +207,23 @@ Route::group(['prefix' => 'dashboard'], function(){
 				'uses'  => 'ProductController@pricechangeUpdate'
 			,   'as'    => 'product.pricechangeUpdate'
 		]);
+		Route::get('productos-descarga-csv', [
+				'uses'	=> 'ProductController@downloadCsv'
+			,	'as'	=> 'product.downloadcsv'
+		]);
+		Route::get('product-prices-csv', [
+			'uses'  => 'ProductController@pricechangeCsv'
+		,   'as'    => 'product.pricechangeCsv'
+	]);
+		Route::get('productos-template-csv', [
+				'uses'	=> 'ProductController@downloadPricesTemplate'
+			,	'as'	=> 'product.downloadPricesTemplate'
+		]);
+		Route::post('product-prices-csv/upload',[
+				'uses'  => 'ProductController@uploadPricesTemplate'
+			,   'as'    => 'product.uploadPricesTemplate'
+		]);
+
 		Route::resource('producto-destacado', 'ProductosDestacadosController');
 		Route::get('producto-destacado/{id}/destroy', [
 				'uses'	=> 'ProductosDestacadosController@destroy'

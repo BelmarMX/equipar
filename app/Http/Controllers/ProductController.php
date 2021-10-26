@@ -859,6 +859,236 @@ class ProductController extends BaseDashboard
 				->with('alert', $this->send);
 	}
 
+	public function downloadCsv()
+	{
+		if(Gate::allows('users.index'))
+		{
+			$productos = Product::select(
+						'products.id'
+					,	'products.modelo'
+					,	'products.marca'
+					,	'products_categories.title AS categoria'
+					,	'products_subcategories.title AS subcategoria'
+					,	'products.title AS producto'
+					,	'products.resumen'
+					,	'products.caracteristicas'
+					,	'products.tecnica'
+					,	'products.precio'
+					,	DB::raw("CONCAT('https://www.equi-par.com/storage/productos/', products.image) AS link_imagen")
+					,	DB::raw("CONCAT('https://www.equi-par.com/productos/', products_categories.slug, '/', products_subcategories.slug, '/', products.slug) AS link_producto")
+					,	'products.created_at'
+					,	'products.updated_at'
+				)
+				-> join(
+						'products_categories'
+					,   'products_categories.id', '=', 'products.category_id'
+				)
+				-> join(
+						'products_subcategories'
+					,   'products_subcategories.id', '=', 'products.subcategory_id'
+				)
+				-> get();
+
+			$file_name	= "equipar_productos_export_csv_".date('Y_m_d_H_i_s').".csv";
+			$headers	= [
+					'Content-Encoding'		=> "UTF-8"
+				,	'Content-type'			=> "text/csv; charset=UTF-8"
+				,	'Content-Disposition'	=> "attachment; filename=$file_name"
+				,	'Pragma'				=> "no-cache"
+				,	'Cache-Control'			=> "must-revalidate, post-check=0, pre-check=0"
+				,	'Expires'				=> "0"
+			];
+			$columns	= ["ID", "MODELO", "MARCA", "CATEGORIA", "SUBCATEGORIA", "PRODUCTO", "DESCRIPCION", "CARACTERISTICAS", "DIMENSIONES", "PRECIO", "IMAGEN", "LINK", "FECHA_CREACION", "FECHA_ACTUALIZACION"];
+			$callback	= function() use($productos, $columns)
+			{
+				$file = fopen('php://output', 'w');
+				fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
+				fputcsv($file, $columns);
+				foreach($productos AS $producto)
+				{
+					fputcsv($file, [
+							$producto -> id
+						,	$producto -> modelo
+						,	$producto -> marca
+						,	$producto -> categoria
+						,	$producto -> subcategoria
+						,	$producto -> producto
+						,	$producto -> resumen
+						,	$producto -> caracteristicas
+						,	str_replace(["\r", "\n"], ["", " "], html_entity_decode(strip_tags($producto -> tecnica)))
+						,	$producto -> precio
+						,	$producto -> link_imagen
+						,	$producto -> link_producto
+						,	$producto -> created_at
+						,	$producto -> updated_at
+					]);
+				}
+				fclose($file);
+			};
+			
+			return response() -> stream($callback, 200, $headers);
+		}
+	}
+
+	public function downloadTemplate()
+	{
+		if(Gate::allows('users.index'))
+		{
+			$productos = Product::select(
+						'products.id'
+					,	'products.modelo'
+					,	'products.marca'
+					,	'products.title AS producto'
+					,	'products.precio'
+				)
+				-> get();
+
+			$file_name	= "equipar_productos_price_update_csv_".date('Y_m_d_H_i_s').".csv";
+			$headers	= [
+					'Content-Encoding'		=> "UTF-8"
+				,	'Content-type'			=> "text/csv; charset=UTF-8"
+				,	'Content-Disposition'	=> "attachment; filename=$file_name"
+				,	'Pragma'				=> "no-cache"
+				,	'Cache-Control'			=> "must-revalidate, post-check=0, pre-check=0"
+				,	'Expires'				=> "0"
+			];
+			$columns	= ["ID", "MODELO", "MARCA", "PRODUCTO", "PRECIO"];
+			$callback	= function() use($productos, $columns)
+			{
+				$file = fopen('php://output', 'w');
+				fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
+				fputcsv($file, $columns);
+				foreach($productos AS $producto)
+				{
+					fputcsv($file, [
+							$producto -> id
+						,	$producto -> modelo
+						,	$producto -> marca
+						,	$producto -> producto
+						,	$producto -> precio
+					]);
+				}
+				fclose($file);
+			};
+			
+			return response() -> stream($callback, 200, $headers);
+		}
+	}
+
+	public function pricechangeCsv()
+	{
+		if (Gate::allows('users.index')) {
+			return  view('02_system.05_product.prices-csv');
+		}
+	}
+
+	public function downloadPricesTemplate()
+	{
+		if(Gate::allows('users.index'))
+		{
+			$productos = Product::select(
+						'products.id'
+					,	'products.modelo'
+					,	'products.marca'
+					,	'products.title AS producto'
+					,	'products.precio'
+				)
+				-> get();
+
+			$file_name	= "equipar_productos_price_update_csv_".date('Y_m_d_H_i_s').".csv";
+			$headers	= [
+					'Content-Encoding'		=> "UTF-8"
+				,	'Content-type'			=> "text/csv; charset=UTF-8"
+				,	'Content-Disposition'	=> "attachment; filename=$file_name"
+				,	'Pragma'				=> "no-cache"
+				,	'Cache-Control'			=> "must-revalidate, post-check=0, pre-check=0"
+				,	'Expires'				=> "0"
+			];
+			$columns	= ["ID", "MODELO", "MARCA", "PRODUCTO", "PRECIO"];
+			$callback	= function() use($productos, $columns)
+			{
+				$file = fopen('php://output', 'w');
+				fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
+				fputcsv($file, $columns);
+				foreach($productos AS $producto)
+				{
+					fputcsv($file, [
+							$producto -> id
+						,	$producto -> modelo
+						,	$producto -> marca
+						,	$producto -> producto
+						,	$producto -> precio
+					]);
+				}
+				fclose($file);
+			};
+			
+			return response() -> stream($callback, 200, $headers);
+		}
+	}
+
+	public function uploadPricesTemplate(Request $request)
+	{
+		if(Gate::allows('users.edit'))
+		{
+			if( $request -> file('csv') && $request -> file('csv') -> getClientOriginalExtension() === 'csv' )
+			{
+				$csv_file = $request -> file('csv') -> getRealPath();
+				
+				$saved = 0;
+				if( ($handle = fopen($csv_file, 'r')) !== FALSE )
+				{
+					while( ($row = fgetcsv($handle)) !== FALSE )
+					{
+						if( !empty($row[0]) && is_numeric($row[0]) && !empty($row[4]) && is_numeric($row[4]) )
+						{
+							$saved++;
+							$id		= $row[0];
+							$price	= $row[4];
+
+							$producto = Product::find($id);
+							$producto -> precio = $price;
+							$producto -> save();
+						}
+					}
+
+					if( $saved > 0 )
+					{
+						$this -> send = [
+								'type'		=> 'alert-success'
+							,	'message'	=> "Se actualizaron $saved productos con éxito."
+						];
+					}
+					else
+					{
+						$this -> send = [
+								'type'		=> 'alert-danger'
+							,	'message'	=> 'Ningún precio fue actualizado, asegurate de cargar un archivo CSV válido.'
+						];
+					}
+				}
+				else
+				{
+					$this -> send = [
+							'type'		=> 'alert-danger'
+						,	'message'	=> 'El archivo cargado no se pudo leer.'
+					];
+				}
+
+			}
+			else
+			{
+				$this -> send = [
+						'type'		=> 'alert-danger'
+					,	'message'	=> 'Debes cargar un archivo CSV válido.'
+				];
+			}
+			
+			return  back()
+				->with('alert', $this -> send);
+		}
+	}
+
 	public function coincidencias(Request $request)
 	{
 		$like = $request -> phrase;

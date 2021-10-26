@@ -148,7 +148,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Mavinoo\LaravelBatch\LaravelBatchServiceProvider::class,
+        Mavinoo\Batch\BatchServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -213,8 +213,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Carbon' => Carbon\Carbon::class,
-        'Batch' => Mavinoo\LaravelBatch\LaravelBatchFacade::class,
-
+        'Batch' => Mavinoo\Batch\BatchFacade::class,
     ],
 
 ];

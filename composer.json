@@ -10,7 +10,7 @@
         "intervention/image": "^2.4",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
-        "mavinoo/laravel-batch": "^2.1",
+        "mavinoo/laravel-batch": "^2.2",
         "unisharp/laravel-filemanager": "~1.8"
     },
     "require-dev": {
@@ -40,6 +40,7 @@
     "extra": {
         "laravel": {
             "dont-discover": [
+                "mavinoo/laravel-batch"
             ]
         }
     },
