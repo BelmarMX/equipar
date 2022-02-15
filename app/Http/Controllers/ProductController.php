@@ -132,7 +132,7 @@ class ProductController extends BaseDashboard
 		$meta['descripcion']    = $entry -> resumen;
 		$meta['imagen']         = url('storage/' . $this -> folder . $entry -> imageP);
 
-		return  view('01_website.productos-open')
+		return  view('frontend_v2.productos-open')
 			->with([
 					'meta'      => $meta
 				,   'banners'   => 0
@@ -276,7 +276,7 @@ class ProductController extends BaseDashboard
 		$meta['descripcion']    = "Resultados de la búsqueda de productos";
 		$meta['imagen']         = asset('images/template/mn-productos.jpg');
 
-		return  view('01_website.productos-search')
+		return  view('frontend_v2.productos-search')
 			->with([
 					'meta'      => $meta
 				,   'banners'   => 0
@@ -320,7 +320,7 @@ class ProductController extends BaseDashboard
 		$meta['descripcion']    = 'Descubra aquí nuevas noticias y tips para llevar una excelente alimentación en su espacio de trabajo.';
 		$meta['imagen']         = asset('images/template/blog.jpg');
 
-		return  view('01_website.productos')
+		return  view('frontend_v2.productos')
 			->with([
 				'meta'          => $meta,   'banners'       => $banners,   'categories'    => $categories,   'articles'      => $articles
 			]);
@@ -357,7 +357,7 @@ class ProductController extends BaseDashboard
 		$meta['descripcion']    = $article->shortdesc;
 		$meta['imagen']         = url('storage/' . $this->folder . $article->image);
 
-		return  view('01_website.productos-open')
+		return  view('frontend_v2.productos-open')
 			->with([
 					'meta'          => $meta
 				,   'banners'       => 0

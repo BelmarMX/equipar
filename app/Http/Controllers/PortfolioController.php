@@ -121,7 +121,7 @@ class PortfolioController extends BaseDashboard
         $meta['descripcion']    = 'Descubra aquí nuevas proyectos y como los hemos desarrollado.';
         $meta['imagen']         = asset('images/template/render-ejemplo.jpg');
 
-        return  view('01_website.portafolio')
+        return  view('frontend_v2.portafolio')
                 -> with([
                         'meta'      => $meta
                     ,   'banners'   => 0
@@ -138,7 +138,7 @@ class PortfolioController extends BaseDashboard
         $meta['descripcion']    = "Nuestro proyecto " . $portfolio -> title . " y su desarrollo.";
         $meta['imagen']         = url('storage/' . $this -> folder . $portfolio -> image);
 
-        return  view('01_website.portafolio-open')
+        return  view('frontend_v2.portafolio-open')
                 -> with([
                         'meta'      => $meta
                     ,   'banners'   => 0

@@ -1,0 +1,25 @@
+// Fonts and colors
+$primary_font:      "Poppins", sans-serif;
+$secondary_font:    "Poppins", sans-serif;
+
+$font_thin:     100;
+$font_light:    300;
+$font_regular:  400;
+$font_medium:   500;
+$font_bold:     600;
+
+$white:             #FFFFFF;
+$black:             #000000;
+$gray:              #C4C4C4;
+$gray_light:        #F2F2F2;
+$primary_color:     #FF0000;
+$secondary_color:   #333333;
+$gray_equipar:      #41484E;
+$blue_equipar:      #6681A2;
+$gold_equipar:      #D5AC63;
+
+// Bootstrap Override
+$body-color:    $secondary_color;
+$primary:       $gold_equipar;
+$secondary:     $secondary_color;
+$tooltip-bg:    $gray_equipar !default;

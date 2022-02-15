@@ -64,7 +64,7 @@ class BlogArticlesController extends BaseDashboard
         $meta['descripcion']    = 'Descubra aquí nuevas noticias y tips para llevar una excelente alimentación en su espacio de trabajo.';
         $meta['imagen']         = asset('images/template/bn-blog.jpg');
 
-        return  view('01_website.blog')
+        return  view('frontend_v2.blog')
                 -> with([
                         'meta'          => $meta
                     ,   'banners'       => 0
@@ -100,7 +100,7 @@ class BlogArticlesController extends BaseDashboard
         $meta['descripcion']    = 'Descubra aquí nuevas noticias y tips para llevar una excelente alimentación en su espacio de trabajo.';
         $meta['imagen']         = asset('images/template/blog.jpg');
 
-        return  view('01_website.blog')
+        return  view('frontend_v2.blog')
                 -> with([
                         'meta'          => $meta
                     ,   'banners'       => 0
@@ -137,7 +137,7 @@ class BlogArticlesController extends BaseDashboard
         $meta['descripcion']    = $article -> shortdesc;
         $meta['imagen']         = url('storage/' . $this -> folder . $article -> image);
 
-        return  view('01_website.blog-open')
+        return  view('frontend_v2.blog-open')
                 -> with([
                         'meta'          => $meta
                     ,   'banners'       => 0

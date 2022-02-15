@@ -48,7 +48,7 @@ class ProductCategoriesController extends BaseDashboard
         $meta['titulo']         = 'Somos proveedores';
         $meta['descripcion']    = 'Manejamos las mejores marcas en el mercado, con precios competitivos para diseñar la cocina perfecta.';
         $meta['imagen']         = asset('images/template/bn-acerca-de.jpg');
-        return view('01_website.productos')
+        return view('frontend_v2.productos')
             -> with([
                     'meta'          => $meta
                 ,   'banners'       => 0
@@ -113,7 +113,7 @@ class ProductCategoriesController extends BaseDashboard
         $meta['titulo']         = $category -> title;
         $meta['descripcion']    = 'Listado de productos perteneciente a la categoría: ' . $category -> title;
         $meta['imagen']         = url('storage/' . $this -> folder . $category -> imageP);
-        return view('01_website.productos-categorias-listado')
+        return view('frontend_v2.productos-categorias-listado')
             -> with([
                     'meta'          => $meta
                 ,   'banners'       => 0

@@ -1,0 +1,65 @@
+@keyframes grow-and-shrink {
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(1.5);
+	}
+}
+.grow{
+	animation: grow-and-shrink 2000ms;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+@keyframes grow-font {
+	0% {
+		letter-spacing: 0;
+	}
+	100% {
+		letter-spacing: 3px;
+	}
+}
+.grow-text{
+	animation: grow-font 2000ms;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0turn);
+	}
+	to {
+		transform: rotate(1turn);
+	}
+}
+.load8 {
+	animation: spin 1000ms;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+@keyframes fancy-spin {
+	0% {
+		transform: rotate(0turn) scale(1);
+	}
+	25% {
+		transform: rotate(1turn) scale(1);
+	}
+	50% {
+		transform: rotate(1turn) scale(1.5);
+	}
+	75% {
+		transform: rotate(0turn) scale(1.5);
+	}
+	100% {
+		transform: rotate(0turn) scale(1);
+	}
+}
+.fancy-spin {
+	animation: fancy-spin 2000ms;
+	animation-iteration-count: infinite;
+}

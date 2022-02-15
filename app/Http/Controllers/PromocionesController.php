@@ -95,7 +95,7 @@ class PromocionesController extends BaseDashboard
 		$meta['descripcion']    = 'Promociones del mes';
 		$meta['imagen']         = url('storage/' . $this -> folder . $promocion -> image);
 
-		return view('01_website.promociones-listado')
+		return view('frontend_v2.promociones-listado')
 			->with([
 					'meta'          => $meta
 				,   'banners'       => 0
@@ -176,7 +176,7 @@ class PromocionesController extends BaseDashboard
 		$meta['descripcion']    = 'Promociones del mes';
 		$meta['imagen']         = url('storage/' . $this -> folder . $promocion -> image);
 
-		return view('01_website.promociones-listado')
+		return view('frontend_v2.promociones-listado')
 			->with([
 					'meta'          => $meta
 				,   'banners'       => 0

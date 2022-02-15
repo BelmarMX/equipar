@@ -1,25 +1,36 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-    },
-    "devDependencies": {
-        "axios": "^0.18.1",
-        "bootstrap": "^4.5.3",
-        "cross-env": "^5.2.1",
-        "jquery": "^3.5.1",
-        "laravel-mix": "^2.1.14",
-        "lodash": "^4.17.20",
-        "popper.js": "^1.16.1",
-        "vue": "^2.6.12"
-    },
-    "dependencies": {
-        "easy-autocomplete": "^1.3.5"
-    }
+  "name": "equipar",
+  "version": "1.0.0",
+  "description": "Sitio web Equipar con laravel",
+  "main": "resources/assets/js/app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "watch": "npx mix watch",
+    "watch-poll": "npx mix watch -- --watch-options-poll=1000",
+    "hot": "npx mix watch --hot",
+    "prod": "npx mix --production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BelmarMX/equipar.git"
+  },
+  "author": "CreativeIT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BelmarMX/equipar/issues"
+  },
+  "homepage": "https://github.com/BelmarMX/equipar#readme",
+  "devDependencies": {
+    "laravel-mix": "^6.0.42",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.49.7",
+    "sass-loader": "^12.5.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "bootstrap-icons": "^1.8.1"
+  }
 }

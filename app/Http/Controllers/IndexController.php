@@ -45,7 +45,7 @@ class IndexController extends Base
 				$meta['titulo']			= 'Equipamiento de cocinas industriales';
 				$meta['descripcion']	= 'Servicios expertos y eficientes con capacidad para cubrir necesidades derivadas de la creación de una nueva cocina industrial; en tiempo competitivo, diseño eficaz y adaptación de presupuesto';
 				$meta['imagen']			= url( 'storage/' . env('BANNER_FOLDER') . $banners -> first() -> image );
-				return  view('01_website.index')
+				return  view('frontend_v2.index')
 						-> with([
 								'meta'		=> $meta
 							,   'banners'	=> $banners
@@ -59,7 +59,7 @@ class IndexController extends Base
 				$meta['titulo']         = 'Nosotros';
 				$meta['descripcion']    = 'Servicios expertos y eficientes con capacidad para cubrir necesidades derivadas de la creación de una nueva cocina industrial; en tiempo competitivo, diseño eficaz y adaptación de presupuesto';
 				$meta['imagen']         = url('storage/' . env('BANNER_FOLDER') . $banners->first()->image);
-				return  view('01_website.nosotros')
+				return  view('frontend_v2.nosotros')
 					->with([
 							'meta'      => $meta
 						,   'banners'   => 0
@@ -70,7 +70,7 @@ class IndexController extends Base
 				$meta['titulo']         = 'Proyectos';
 				$meta['descripcion']    = 'Manejamos las mejores marcas en el mercado, con precios competitivos para diseñar la cocina perfecta.';
 				$meta['imagen']         = asset('images/template/bn-acerca-de.jpg');
-				return  view('01_website.proyectos')
+				return  view('frontend_v2.proyectos')
 					->with([
 							'meta'      => $meta
 						,   'banners'   => 0
@@ -81,7 +81,7 @@ class IndexController extends Base
 				$meta['titulo']         = 'Servicios';
 				$meta['descripcion']    = 'Manejamos las mejores marcas en el mercado, con precios competitivos para diseñar la cocina perfecta.';
 				$meta['imagen']         = asset('images/template/bn-acerca-de.jpg');
-				return  view('01_website.servicios')
+				return  view('frontend_v2.servicios')
 					->with([
 							'meta'      => $meta
 						,   'banners'   => 0
@@ -92,7 +92,7 @@ class IndexController extends Base
 				$meta['titulo']         = 'Póngase en contacto con nosotros';
 				$meta['descripcion']    = 'Comuníquese con nosotros para brindarle una mejor atención y cubrir los requerimientos de su empresa.';
 				$meta['imagen']         = asset('images/template/bn-contactanos.jpg');
-				return  view('01_website.contacto')
+				return  view('frontend_v2.contacto')
 						-> with([
 								'meta'      => $meta
 							,   'banners'   => 0
@@ -103,7 +103,7 @@ class IndexController extends Base
 				$meta['titulo']         = 'Aviso de privacidad';
 				$meta['descripcion']    = 'Consulte nuestro aviso de privacidad y la forma en la que utilizaremos los datos que usted nos proporcione.';
 				$meta['imagen']         = asset('images/template/bn-aviso-privacidad.jpg');
-				return  view('01_website.aviso-privacidad')
+				return  view('frontend_v2.aviso-privacidad')
 						-> with([
 								'meta'      => $meta
 							,   'banners'   => 0

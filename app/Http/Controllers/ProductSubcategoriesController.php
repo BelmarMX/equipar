@@ -80,7 +80,7 @@ class ProductSubcategoriesController extends BaseDashboard
         $meta['titulo']         = $subcategory -> title;
         $meta['descripcion']    = 'Productos dentro de la categoría ' . $category -> title;
         $meta['imagen']         = url('storage/' . env('PRODUCT_CAT_FOLDER') . $category->image);
-        return view('01_website.productos-listado')
+        return view('frontend_v2.productos-listado')
             ->with([
                     'meta'          => $meta
                 ,   'banners'       => 0

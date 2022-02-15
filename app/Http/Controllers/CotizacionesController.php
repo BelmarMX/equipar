@@ -29,7 +29,7 @@ class CotizacionesController extends BaseDashboard
         $meta['titulo']         = 'Cotizador de productos';
         $meta['descripcion']    = 'Comuníquese con nosotros para brindarle una mejor atención y cubrir los requerimientos de su empresa.';
         $meta['imagen']         = asset('images/template/bn-contactanos.jpg');
-        return  view('01_website.cotizar')
+        return  view('frontend_v2.cotizar')
                 -> with([
                         'meta'      => $meta
                     ,   'banners'   => 0

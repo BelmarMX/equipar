@@ -1,13 +1,4 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/css/00_style.css": "/css/00_style.css",
-    "/css/00_dashboard.css": "/css/00_dashboard.css",
-    "/js/autocomplete.js": "/js/autocomplete.js",
-    "/js/subcategories.js": "/js/subcategories.js",
-    "/js/quotas.js": "/js/quotas.js",
-    "/js/pricesMass.js": "/js/pricesMass.js",
-    "/js/prices.js": "/js/prices.js",
-    "/js/load.js": "/js/load.js",
-    "/js/expand.js": "/js/expand.js"
+    "/v2/js/app.js": "/v2/js/app.js",
+    "/v2/css/app.css": "/v2/css/app.css"
 }
