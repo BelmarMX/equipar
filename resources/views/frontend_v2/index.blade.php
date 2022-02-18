@@ -7,7 +7,7 @@
     @include('frontend_v2.partials.banner-array')
 
     <main class="container">
-        <section id="index__productos_destacados">
+        <section id="index__productos_destacados" class="mb-5">
             <h2>Productos destacados</h2>
             <div class="row">
                 <div class="col-md-3">
@@ -28,7 +28,7 @@
             </a>
         </section>
 
-        <section id="index__nosotros">
+        <section id="index__nosotros" class="mb-5">
             <div class="row">
                 <div class="col-md-6">
                     Acerca de Equi-Par
@@ -83,16 +83,16 @@
             </div>
         </section>
 
-        <section id="index__servicios">
+        <section id="index__servicios" class="mb-5">
             @include('frontend_v2.partials.servicios')
         </section>
 
-        <section id="index__hotspot">
+        <section id="index__hotspot" class="mb-5">
             <h2>Partes de una cocina industrial</h2>
             --
         </section>
 
-        <section id="index__blog">
+        <section id="index__blog" class="mb-5">
             <h2>Últimas entradas del blog</h2>
             <div class="row">
                 <div class="col-md-4">
@@ -140,11 +140,52 @@
             </div>
         </section>
 
-        <section id="index__clientes">
-            -- Nuestros valiosos clientes
+        <section id="index__clientes" class="mb-5">
+            <h2>Nuestro valiosos clientes</h2>
+            <div id="index__clientes--slide" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner row">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <a class="col text-center" href="#" target="_blank">
+                                CLIENTE 1
+                            </a>
+                            <a class="col text-center" href="#" target="_blank">
+                                CLIENTE 2
+                            </a>
+                            <a class="col text-center" href="#" target="_blank">
+                                CLIENTE 3
+                            </a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <a class="col text-center" href="#" target="_blank">
+                                CLIENTE 4
+                            </a>
+                            <a class="col text-center" href="#" target="_blank">
+                                CLIENTE 5
+                            </a>
+                            <a class="col text-center" href="#" target="_blank">
+                                CLIENTE 6
+                            </a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <a class="col text-center" href="#" target="_blank">
+                                CLIENTE 7
+                            </a>
+                            <a class="col text-center" href="#" target="_blank">
+                                CLIENTE 8
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section id="index__marcas">
+        <section id="index__marcas" class="mb-5">
+            <h2>Nuestras marcas</h2>
             @include('frontend_v2.partials.marcas')
         </section>
     </main>

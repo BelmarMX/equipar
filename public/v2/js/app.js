@@ -3222,14 +3222,37 @@ var documentReady = function documentReady(action) {
 };
 
 documentReady(function () {
-  document.getElementById('load8').setAttribute('hidden', 'hidden');
-  document.getElementById('toggle-search').addEventListener('click', function () {
+  document.getElementById('load8').setAttribute('hidden', 'hidden'); // -> Search bar
+
+  document.getElementById('toggle-search').addEventListener('click', function (event) {
     var search_bar = document.getElementById('search-form');
 
-    if (search_bar.getAttribute('hidden')) {
-      search_bar.removeAttribute('hidden');
+    if (search_bar.classList.contains('show_me_the_money')) {
+      search_bar.classList.remove('fade_in');
+      search_bar.classList.add('fade_out');
+      setTimeout(function () {
+        search_bar.classList.remove('show_me_the_money');
+      }, 500);
     } else {
-      search_bar.setAttribute('hidden', 'hidden');
+      search_bar.classList.remove('fade_out');
+      search_bar.classList.add('fade_in');
+      search_bar.classList.add('show_me_the_money');
+    }
+  }); // -> Contact bottom button
+
+  document.getElementById('floating_button').addEventListener('click', function (event) {
+    var container_links = document.getElementById('btn__contactanos--links');
+
+    if (container_links.classList.contains('show_me_the_money')) {
+      container_links.classList.remove('show_me_the_money');
+      container_links.classList.add('black_sheep_wall');
+      setTimeout(function () {
+        container_links.classList.add('hide');
+      }, 500);
+    } else {
+      container_links.classList.remove('hide');
+      container_links.classList.remove('black_sheep_wall');
+      container_links.classList.add('show_me_the_money');
     }
   });
 });

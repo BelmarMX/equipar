@@ -63,3 +63,83 @@
 	animation: fancy-spin 2000ms;
 	animation-iteration-count: infinite;
 }
+
+@keyframes fade_in{
+	0%{
+		transform: scale(1);
+		opacity: 0;
+	}
+	50%{
+		transform: scale(1.25);
+	}
+	100%{
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+@mixin fade_in($duration: 1000ms)
+{
+	animation: fade_in $duration;
+	animation-timing-function: ease-in;
+	animation-iteration-count: 1;
+}
+.fade_in{
+	@include fade_in(500ms);
+}
+
+@keyframes fade_out{
+	0%{
+		transform: scale(1.25);
+		opacity: 1;
+	}
+	100%{
+		transform: scale(1);
+		opacity: 0;
+	}
+}
+@mixin fade_out($duration: 1000ms)
+{
+	animation: fade_out $duration;
+	animation-timing-function: ease-out;
+	animation-iteration-count: 1
+}
+.fade_out{
+	@include fade_out(500ms);
+}
+
+@keyframes intro_top{
+	0%{
+		opacity: 0;
+		bottom: -190px;
+	}
+	100%{
+		opacity: 1;
+		bottom: 60px;
+	}
+}
+@mixin intro_top($duration: 1000ms){
+	animation: intro_top $duration;
+	animation-timing-function: ease-in;
+	display: block;
+}
+.intro_top{
+	@include intro_top();
+}
+
+@keyframes outro_bottom{
+	0%{
+		opacity: 1;
+		bottom: 60px;
+	}
+	100%{
+		opacity: 0;
+		bottom: -190px;
+	}
+}
+@mixin outro_bottom($duration: 1000ms){
+	animation: outro_bottom $duration;
+	animation-timing-function: ease-out;
+}
+.outro_bottom{
+	@include outro_bottom();
+}

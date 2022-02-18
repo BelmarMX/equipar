@@ -1,7 +1,13 @@
-@mixin ease($delay) {
+@mixin ease($delay: .5s) {
 	-webkit-transition: all $delay ease;
 	-moz-transition: all $delay ease;
 	-ms-transition: all $delay ease;
 	-o-transition: all $delay ease;
 	transition: all $delay ease;
+}
+
+@mixin boxshadow($right: 2px, $down: 2px, $spread: 6px, $blur: 2px, $color: #000, $opacity: .3)
+{
+	-webkit-box-shadow: $right $down $spread $blur rgba($color, $opacity);
+	box-shadow: $right $down $spread $blur rgba($color, $opacity);
 }

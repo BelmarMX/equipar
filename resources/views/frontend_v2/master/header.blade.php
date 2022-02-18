@@ -1,27 +1,39 @@
 <header>
     <div id="pleca" class="d-flex w-100 align-items-center justify-content-end">
         <div class="contact-links">
-            <a href="#" data-bs-toggle="tooltip" title="Llamanos">
-                <i class="bi bi-telephone"></i> (33) 2886 2661
+            <a href="tel:{{ env('TEL_LOCAL_DIAL') }}"
+               data-bs-toggle="tooltip"
+               title="Llamanos"
+               target="_blank"
+            >
+                <i class="bi bi-telephone"></i> {{ env('TEL_LOCAL_SHOW') }}
             </a>
-            <a href="#" data-bs-toggle="tooltip" title="Escríbenos un Whats">
-                <i class="bi bi-whatsapp"></i> 33 2834 7073
+            <a href="https://api.whatsapp.com/send?phone={{ env('TEL_WHATS_DIAL') }}&text=Para%20brindarte%20un%20mejor%20servicio%20por%20favor%20deja%20tus%20datos%20(Nombre,%20Correo%20electr%C3%B3nico,%20%20y%20asunto)"
+               data-bs-toggle="tooltip"
+               title="Escríbenos un Whats"
+               target="_blank"
+            >
+                <i class="bi bi-whatsapp"></i> {{ env('TEL_WHATS_SHOW') }}
             </a>
-            <a href="#" data-bs-toggle="tooltip" title="Envíanos un correo electrónico">
-                <i class="bi bi-envelope"></i> atencionaclientes@equi-par.com
+            <a href="mailto:{{ env('CONTACT_EMAIL') }}"
+               data-bs-toggle="tooltip"
+               title="Envíanos un correo electrónico"
+               target="_blank"
+            >
+                <i class="bi bi-envelope"></i> {{ env('CONTACT_EMAIL') }}
             </a>
         </div>
         <div class="red-transform">
-            <a href="#" data-bs-toggle="tooltip" title="Encuéntranos en Google Maps">
+            <a href="{{ env('LOCATION_MATRIZ') }}" target="_blank" data-bs-toggle="tooltip" title="Encuéntranos en Google Maps">
                 <i class="bi bi-geo-alt-fill"></i>
             </a>
-            <a href="#" data-bs-toggle="tooltip" title="Visita nuestra página de Facebook">
+            <a href="{{ env('SOCIAL_FACEBOOK') }}" target="_blank" data-bs-toggle="tooltip" title="Visita nuestra página de Facebook">
                 <i class="bi bi-facebook"></i>
             </a>
-            <a href="#" data-bs-toggle="tooltip" title="Síguenos en Instagram">
+            <a href="{{ env('SOCIAL_INSTAGRAM') }}" target="_blank" data-bs-toggle="tooltip" title="Síguenos en Instagram">
                 <i class="bi bi-instagram"></i>
             </a>
-            <a href="#" data-bs-toggle="tooltip" title="Conéctate en LinkedIn">
+            <a href="{{ env('SOCIAL_LINKEDIN') }}" target="_blank" data-bs-toggle="tooltip" title="Conéctate en LinkedIn">
                 <i class="bi bi-linkedin"></i>
             </a>
         </div>
@@ -129,7 +141,7 @@
                     </li>
                 </ul>
             </div>
-            <div id="search-form" hidden="hidden">
+            <div id="search-form">
                 <form>
                     <i class="bi bi-search"></i>
                     <input id="search" type="search" name="search" placeholder="Ingresa el nombre, marca o categoría del producto a buscar">
@@ -140,8 +152,17 @@
                 <button id="toggle-search" type="button" aria-label="Muestra la barra de búsqueda">
                     <i class="bi bi-search"></i>
                 </button>
-                <a href="#">
-                    <i class="bi bi-basket3"></i>
+                <a id="link_quotation"
+                   class="position-relative empty"
+                   data-bs-toggle="tooltip"
+                   title="Cotizador Vacío"
+                   href="#"
+                >
+                    <i id="empty_cart" class="bi bi-basket3"></i>
+                    <i id="not_empty_car" class="bi bi-basket3-fill"></i>
+                    <span class="position-absolute top-100 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
+                        <span class="visually-hidden">Items en el cotizador</span>
+                    </span>
                 </a>
             </div>
         </div>
