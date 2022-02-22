@@ -1,6 +1,6 @@
 @include('frontend_v2.master.floating-contact-button')
 
-<footer class="container-fluid mt-5 bg-dark text-white pt-4">
+<footer class="container-fluid bg-dark text-white pt-4">
     <div class="row px-4">
         <div class="col-md-4 location">
             <i class="bi bi-geo-alt-fill"></i> <span>Matriz</span>

@@ -1,0 +1,36 @@
+#partial__servicios{
+	background: $gray_equipar;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	.partial__servicios{
+		.partial__servicios--cta{
+			color: $white;
+			font-size: 1rem;
+			font-weight: $font-bold;
+			text-transform: uppercase;
+			text-align: right;
+			strong{
+				font-size: 2rem;
+				font-weight: $font-thin;
+				line-height: 100%;
+				display: block;
+			}
+		}
+		.partial__servicios--img{
+			@include boxshadow();
+			div{
+				border-radius: 6px;
+			}
+			span, a{
+				text-transform: uppercase;
+				background: $gray_equipar;
+				padding: 10px;
+				border-radius: 0 0 6px 6px;
+				display: block;
+				color: $white;
+				font-weight: $font-bold;
+				text-align: center;
+			}
+		}
+	}
+}

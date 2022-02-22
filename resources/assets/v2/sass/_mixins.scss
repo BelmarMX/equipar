@@ -1,9 +1,9 @@
 @mixin ease($delay: .5s) {
-	-webkit-transition: all $delay ease;
-	-moz-transition: all $delay ease;
-	-ms-transition: all $delay ease;
-	-o-transition: all $delay ease;
-	transition: all $delay ease;
+	-webkit-transition: all $delay ease-in-out;
+	-moz-transition: all $delay ease-in-out;
+	-ms-transition: all $delay ease-in-out;
+	-o-transition: all $delay ease-in-out;
+	transition: all $delay ease-in-out;
 }
 
 @mixin boxshadow($right: 2px, $down: 2px, $spread: 6px, $blur: 2px, $color: #000, $opacity: .3)
