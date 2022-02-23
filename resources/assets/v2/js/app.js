@@ -54,7 +54,7 @@ documentReady(() => {
             container_links.classList.add('black_sheep_wall')
             setTimeout(() => {
                 container_links.classList.add('hide')
-            }, 500)
+            }, 250)
         }
         else
         {

@@ -1,5 +1,5 @@
 #partial__servicios{
-	background: $gray_equipar;
+	background: url("/v2/images/layout/ServicesPartialBackground.png") center center  $gray_equipar;
 	padding-top: 80px;
 	padding-bottom: 80px;
 	.partial__servicios{
@@ -17,19 +17,29 @@
 			}
 		}
 		.partial__servicios--img{
-			@include boxshadow();
 			div{
+				max-width: 190px;
 				border-radius: 6px;
-			}
-			span, a{
-				text-transform: uppercase;
-				background: $gray_equipar;
-				padding: 10px;
-				border-radius: 0 0 6px 6px;
-				display: block;
-				color: $white;
-				font-weight: $font-bold;
-				text-align: center;
+				@include boxshadow();
+				@include ease(.25s);
+				img{
+					border-radius: 5px 5px 0 0;
+				}
+				span, a{
+					text-transform: uppercase;
+					background: $gray_equipar;
+					padding: 10px;
+					border-radius: 0 0 6px 6px;
+					display: block;
+					color: $white;
+					font-weight: $font-bold;
+					text-align: center;
+				}
+
+				&:hover{
+					transform: scale(1.015);
+					margin-top: -35px;
+				}
 			}
 		}
 	}

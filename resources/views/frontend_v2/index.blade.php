@@ -141,102 +141,227 @@
     <div class="container">
         <section id="index__hotspot" class="mb-5">
             <h2>Partes de una cocina industrial</h2>
-            --
+            <div class="index__hotspot__background">
+                <div class="background-box"></div>
+                <div class="index__hotspot--img">
+                    <img width="100%"
+                         class="img-fluid"
+                         src="{{ asset('v2/images/samples/PartesDeUnaCocina.png') }}"
+                         alt="Partes de una Cocina Industrial"
+                    >
+                    <span class="index__hotspot--spot grow-fast"
+                          style="top: 25%; left: 48%;"
+                          data-bs-toggle="tooltip"
+                          data-bs-html="true"
+                          title="<strong>CAMPANA DE EXTRACCIÓN</strong><br>
+                                <p>Atrapa el cochambre y permite la ventilación de la cocina.</p>
+                            "
+                    ></span>
+                    <span class="index__hotspot--spot grow-fast"
+                          style="top: 50%; left: 18%;"
+                          data-bs-toggle="tooltip"
+                          data-bs-html="true"
+                          title="<strong>CAMPANA DE EXTRACCIÓN</strong><br>
+                                <p>Atrapa el cochambre y permite la ventilación de la cocina.</p>
+                            "
+                    ></span>
+                    <span class="index__hotspot--spot grow-fast"
+                          style="top: 43%; left: 40%;"
+                          data-bs-toggle="tooltip"
+                          data-bs-html="true"
+                          title="<strong>CAMPANA DE EXTRACCIÓN</strong><br>
+                                <p>Atrapa el cochambre y permite la ventilación de la cocina.</p>
+                            "
+                    ></span>
+                    <span class="index__hotspot--spot grow-fast"
+                          style="top: 53%; left: 50%;"
+                          data-bs-toggle="tooltip"
+                          data-bs-html="true"
+                          title="<strong>CAMPANA DE EXTRACCIÓN</strong><br>
+                                <p>Atrapa el cochambre y permite la ventilación de la cocina.</p>
+                            "
+                    ></span>
+                    <span class="index__hotspot--spot grow-fast"
+                          style="top: 65%; left: 81%;"
+                          data-bs-toggle="tooltip"
+                          data-bs-html="true"
+                          title="<strong>CAMPANA DE EXTRACCIÓN</strong><br>
+                                <p>Atrapa el cochambre y permite la ventilación de la cocina.</p>
+                            "
+                    ></span>
+                </div>
+            </div>
         </section>
 
         <section id="index__blog" class="mb-5">
             <h2>Últimas entradas del blog</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <a href="">
-                        <div>
-                            <img src="" alt="">
-                            <span>18</span>
-                            <span>DIC</span>
-                        </div>
-                        <h3>10 ventajas de tener un comedor industrial en tu empresa</h3>
-                    </a>
-                    <a href="#">Comedor Industrial</a>
-                    <p>
-                        10 ventajas de tener un comedor industrial en tu empresa...
-                    </p>
+                    @include('frontend_v2.partials.blog-view', [
+                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
+                        ,   'link'              => 'http://www.google.com'
+                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
+                        ,   'day'               => 18
+                        ,   'month'             => 'Dic'
+                        ,   'category_title'    => 'Comedor Industrial'
+                        ,   'category_link'     => 'http://www.google.com'
+                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
+                    ])
                 </div>
                 <div class="col-md-4">
-                    <a href="">
-                        <div>
-                            <img src="" alt="">
-                            <span>18</span>
-                            <span>DIC</span>
-                        </div>
-                        <h3>10 ventajas de tener un comedor industrial en tu empresa</h3>
-                    </a>
-                    <a href="#">Comedor Industrial</a>
-                    <p>
-                        10 ventajas de tener un comedor industrial en tu empresa...
-                    </p>
+                    @include('frontend_v2.partials.blog-view', [
+                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
+                        ,   'link'              => 'http://www.google.com'
+                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
+                        ,   'day'               => 18
+                        ,   'month'             => 'Dic'
+                        ,   'category_title'    => 'Comedor Industrial'
+                        ,   'category_link'     => 'http://www.google.com'
+                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
+                    ])
                 </div>
                 <div class="col-md-4">
-                    <a href="">
-                        <div>
-                            <img src="" alt="">
-                            <span>18</span>
-                            <span>DIC</span>
-                        </div>
-                        <h3>10 ventajas de tener un comedor industrial en tu empresa</h3>
-                    </a>
-                    <a href="#">Comedor Industrial</a>
-                    <p>
-                        10 ventajas de tener un comedor industrial en tu empresa...
-                    </p>
+                    @include('frontend_v2.partials.blog-view', [
+                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
+                        ,   'link'              => 'http://www.google.com'
+                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
+                        ,   'day'               => 18
+                        ,   'month'             => 'Dic'
+                        ,   'category_title'    => 'Comedor Industrial'
+                        ,   'category_link'     => 'http://www.google.com'
+                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
+                    ])
                 </div>
             </div>
         </section>
 
-        <section id="index__clientes" class="mb-5">
+        <section id="index__clientes">
             <h2>Nuestro valiosos clientes</h2>
             <div id="index__clientes--slide" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner row">
                     <div class="carousel-item active">
-                        <div class="row justify-content-center">
-                            <a class="col text-center" href="#" target="_blank">
-                                CLIENTE 1
-                            </a>
-                            <a class="col text-center" href="#" target="_blank">
-                                CLIENTE 2
-                            </a>
-                            <a class="col text-center" href="#" target="_blank">
-                                CLIENTE 3
-                            </a>
+                        <div class="row gx-1 justify-content-center align-items-center">
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'HEB'
+                                ,   'image' => asset('v2/images/clients/heb.png')
+                                ,   'link'  => 'https://www.heb.com.mx/'
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Continental'
+                                ,   'image' => asset('v2/images/clients/continental.png')
+                                ,   'link'  => 'https://www.continental.com/en/'
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Buffalo Wild Wings'
+                                ,   'image' => asset('v2/images/clients/buffalo-wild-wings.png')
+                                ,   'link'  => 'https://www.buffalowildwings.com.mx/'
+                                ,   'dark'  => TRUE
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Hyatt Ziva'
+                                ,   'image' => asset('v2/images/clients/hyatt-ziva.webp')
+                                ,   'link'  => 'https://www.hyatt.com/en-US/hotel/mexico/hyatt-ziva-puerto-vallarta/pvrif'
+                            ])
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="row justify-content-center">
-                            <a class="col text-center" href="#" target="_blank">
-                                CLIENTE 4
-                            </a>
-                            <a class="col text-center" href="#" target="_blank">
-                                CLIENTE 5
-                            </a>
-                            <a class="col text-center" href="#" target="_blank">
-                                CLIENTE 6
-                            </a>
+                        <div class="row gx-1 justify-content-center align-items-center">
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Atlas Colomos'
+                                ,   'image' => asset('v2/images/clients/atlas-colomos.png')
+                                ,   'link'  => 'https://colomos.atlas.com.mx/'
+                                ,   'dark'  => TRUE
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Casa Valadez'
+                                ,   'image' => asset('v2/images/clients/casa-valadez.webp')
+                                ,   'link'  => 'https://www.casavaladez.com/'
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Hirotec'
+                                ,   'image' => asset('v2/images/clients/hirotec.png')
+                                ,   'link'  => 'https://www.hirotec.co.jp/eng/group/mexico.html'
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Mariscos El Burritas'
+                                ,   'image' => asset('v2/images/clients/mariscos-el-burritas.jpeg')
+                                ,   'link'  => 'https://www.facebook.com/mariscoselburritas/'
+                            ])
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="row justify-content-center">
-                            <a class="col text-center" href="#" target="_blank">
-                                CLIENTE 7
-                            </a>
-                            <a class="col text-center" href="#" target="_blank">
-                                CLIENTE 8
-                            </a>
+                        <div class="row gx-1 justify-content-center align-items-center">
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                   'name'  => 'Restaurante Save'
+                               ,   'image' => asset('v2/images/clients/save.png')
+                               ,   'link'  => 'https://restaurante-save.mx/'
+                           ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Sushi Express'
+                                ,   'image' => asset('v2/images/clients/sushi-express.svg')
+                                ,   'link'  => 'https://sushiexpress.com.mx/#/'
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Grupo Vidanta'
+                                ,   'image' => asset('v2/images/clients/grupo-vidanta.png')
+                                ,   'link'  => 'https://www.grupovidanta.com/'
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Bruna'
+                                ,   'image' => asset('v2/images/clients/bruna.png')
+                                ,   'link'  => 'https://www.bruna.com.mx/bruna.php'
+                            ])
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row gx-1 justify-content-center align-items-center">
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Ultra Laboratorios'
+                                ,   'image' => asset('v2/images/clients/ultra-labs.png')
+                                ,   'link'  => 'https://ultralaboratorios.com.mx/en/home/'
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Sinergia Alimenta'
+                                ,   'image' => asset('v2/images/clients/sinergia.svg')
+                                ,   'link'  => 'http://www.sinergiaalimenta.com/'
+                                ,   'dark'  => TRUE
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'El Ancladero'
+                                ,   'image' => asset('v2/images/clients/elancladero.jpeg')
+                                ,   'link'  => 'https://www.facebook.com/ElAncladero/'
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Pachinos'
+                                ,   'image' => asset('v2/images/clients/pachinos.png')
+                                ,   'link'  => 'https://pachinos.mx/'
+                            ])
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row gx-1 justify-content-center align-items-center">
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Panamá Pastelerías'
+                                ,   'image' => asset('v2/images/clients/panama.png')
+                                ,   'link'  => 'https://panama.com.mx/'
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Cooper Standard'
+                                ,   'image' => asset('v2/images/clients/cooper-standard.svg')
+                                ,   'link'  => 'http://www.cooperstandard.com/'
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'ITT'
+                                ,   'image' => asset('v2/images/clients/itt.png')
+                                ,   'link'  => 'https://www.itt.com/home'
+                            ])
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="index__marcas" class="mb-5">
+        <section id="index__marcas">
             <h2>Nuestras marcas</h2>
             @include('frontend_v2.partials.marcas')
         </section>

@@ -58,3 +58,38 @@ h1#home_h1{
 		}
 	}
 }
+
+#index__hotspot{
+	.index__hotspot__background{
+		position: relative;
+		.background-box{
+			position: absolute;
+			width: 100%;
+			height: 130px;
+			left: 0;
+			top: calc(50% - 65px);
+			background: linear-gradient(260.12deg, $gold_equipar -2.2%, $gray_equipar 23.55%, $gray_equipar 76.7%, $gold_equipar 103%);
+		}
+		.index__hotspot--img{
+			position: relative;
+			width: fit-content;
+			margin: 0 auto;
+			.index__hotspot--spot{
+				cursor: pointer;
+				position: absolute;
+				display: block;
+				background: $white;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				border: 6px solid $gold_equipar;
+				@include boxshadow();
+				@include ease();
+
+				&:hover{
+					background: $gray_equipar;
+				}
+			}
+		}
+	}
+}

@@ -18060,6 +18060,34 @@ textarea.form-control-lg {
           animation-direction: alternate;
 }
 
+@-webkit-keyframes grow-and-shrink-quarter {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.25);
+  }
+}
+
+@keyframes grow-and-shrink-quarter {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.25);
+  }
+}
+.grow-fast {
+  -webkit-animation: grow-and-shrink-quarter 1000ms;
+          animation: grow-and-shrink-quarter 1000ms;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
 @-webkit-keyframes grow-font {
   0% {
     letter-spacing: 0;
@@ -18728,8 +18756,42 @@ h1#home_h1:after, #home_h1.h1:after {
           animation-direction: alternate;
 }
 
-#partial__servicios {
+#index__hotspot .index__hotspot__background {
+  position: relative;
+}
+#index__hotspot .index__hotspot__background .background-box {
+  position: absolute;
+  width: 100%;
+  height: 130px;
+  left: 0;
+  top: calc(50% - 65px);
+  background: linear-gradient(260.12deg, #D5AC63 -2.2%, #41484E 23.55%, #41484E 76.7%, #D5AC63 103%);
+}
+#index__hotspot .index__hotspot__background .index__hotspot--img {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+#index__hotspot .index__hotspot__background .index__hotspot--img .index__hotspot--spot {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  background: #FFFFFF;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 6px solid #D5AC63;
+  box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease-in-out;
+}
+#index__hotspot .index__hotspot__background .index__hotspot--img .index__hotspot--spot:hover {
   background: #41484E;
+}
+
+#partial__servicios {
+  background: url("/v2/images/layout/ServicesPartialBackground.png") center center #41484E;
   padding-top: 80px;
   padding-bottom: 80px;
 }
@@ -18746,13 +18808,16 @@ h1#home_h1:after, #home_h1.h1:after {
   line-height: 100%;
   display: block;
 }
-#partial__servicios .partial__servicios .partial__servicios--img {
-  box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.3);
-}
 #partial__servicios .partial__servicios .partial__servicios--img div {
+  max-width: 190px;
   border-radius: 6px;
+  box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease-in-out;
 }
-#partial__servicios .partial__servicios .partial__servicios--img span, #partial__servicios .partial__servicios .partial__servicios--img a {
+#partial__servicios .partial__servicios .partial__servicios--img div img {
+  border-radius: 5px 5px 0 0;
+}
+#partial__servicios .partial__servicios .partial__servicios--img div span, #partial__servicios .partial__servicios .partial__servicios--img div a {
   text-transform: uppercase;
   background: #41484E;
   padding: 10px;
@@ -18761,6 +18826,94 @@ h1#home_h1:after, #home_h1.h1:after {
   color: #FFFFFF;
   font-weight: 600;
   text-align: center;
+}
+#partial__servicios .partial__servicios .partial__servicios--img div:hover {
+  transform: scale(1.015);
+  margin-top: -35px;
+}
+
+.blog__view .blog__view__link {
+  display: block;
+  transition: all 0.25s ease-in-out;
+}
+.blog__view .blog__view__link .blog__view__link--image {
+  position: relative;
+  margin-bottom: 20px;
+  border-bottom: 5px solid #D5AC63;
+  border-radius: 5px 5px 0 0;
+  text-align: center;
+}
+.blog__view .blog__view__link .blog__view__link--image .blog__view__link__float {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.blog__view .blog__view__link .blog__view__link--image .blog__view__link__float .blog__view__link__float--day,
+.blog__view .blog__view__link .blog__view__link--image .blog__view__link__float .blog__view__link__float--month {
+  display: flex;
+  width: 64px;
+  height: 34px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  background: #D5AC63;
+  justify-content: center;
+  align-items: center;
+}
+.blog__view .blog__view__link .blog__view__link--image .blog__view__link__float .blog__view__link__float--day {
+  background: #41484E;
+}
+.blog__view .blog__view__link .blog__view__link--title {
+  text-transform: none;
+  color: #41484E;
+  text-align: left;
+  font-weight: 500;
+  line-height: 115%;
+  margin-bottom: 10px;
+}
+.blog__view .blog__view__link .blog__view__link--title:after {
+  border: none;
+}
+.blog__view .blog__view__link:hover {
+  transform: scale(1.015);
+  margin-top: -15px;
+}
+.blog__view .blog__view--category {
+  color: #6681A2;
+  font-size: 0.85rem;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+.blog__view .blog__view--summary {
+  font-size: 0.95rem;
+}
+
+#index__clientes,
+#index__marcas {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.client_list {
+  padding: 8px 0;
+}
+.client_list.dark-bg {
+  background: #646f78;
+}
+.client_list img {
+  width: auto;
+  height: auto;
+  max-width: 200px;
+  max-height: 100px;
+  filter: grayscale(100%);
+  transition: all 0.25s ease-in-out;
+}
+@media (max-width: 767.98px) {
+  .client_list img {
+    max-width: calc(100% - 10px);
+  }
+}
+.client_list:hover img {
+  filter: grayscale(0%);
 }
 
 /* --- --- --- --- --- --- --- --- --- --- ---
@@ -18836,8 +18989,8 @@ h1#home_h1:after, #home_h1.h1:after {
 }
 #floating_button #btn__contactanos--links a.email {
   background-color: #D5AC63;
-  -webkit-animation: fade_in 1900ms;
-          animation: fade_in 1900ms;
+  -webkit-animation: fade_in 1700ms;
+          animation: fade_in 1700ms;
   -webkit-animation-timing-function: ease-in;
           animation-timing-function: ease-in;
   -webkit-animation-iteration-count: 1;
@@ -18845,8 +18998,8 @@ h1#home_h1:after, #home_h1.h1:after {
 }
 #floating_button #btn__contactanos--links a.whatsapp {
   background-color: #22c55e;
-  -webkit-animation: fade_in 1600ms;
-          animation: fade_in 1600ms;
+  -webkit-animation: fade_in 1350ms;
+          animation: fade_in 1350ms;
   -webkit-animation-timing-function: ease-in;
           animation-timing-function: ease-in;
   -webkit-animation-iteration-count: 1;
@@ -18854,8 +19007,8 @@ h1#home_h1:after, #home_h1.h1:after {
 }
 #floating_button #btn__contactanos--links a.messenger {
   background-color: #0ea5e9;
-  -webkit-animation: fade_in 1300ms;
-          animation: fade_in 1300ms;
+  -webkit-animation: fade_in 1050ms;
+          animation: fade_in 1050ms;
   -webkit-animation-timing-function: ease-in;
           animation-timing-function: ease-in;
   -webkit-animation-iteration-count: 1;
@@ -18863,8 +19016,8 @@ h1#home_h1:after, #home_h1.h1:after {
 }
 #floating_button #btn__contactanos--links a.location {
   background-color: #ef4444;
-  -webkit-animation: fade_in 1000ms;
-          animation: fade_in 1000ms;
+  -webkit-animation: fade_in 750ms;
+          animation: fade_in 750ms;
   -webkit-animation-timing-function: ease-in;
           animation-timing-function: ease-in;
   -webkit-animation-iteration-count: 1;
@@ -18879,15 +19032,15 @@ h1#home_h1:after, #home_h1.h1:after {
   font-size: 32px;
 }
 #floating_button #btn__contactanos--links.show_me_the_money {
-  -webkit-animation: intro_top 1000ms;
-          animation: intro_top 1000ms;
+  -webkit-animation: intro_top 300ms;
+          animation: intro_top 300ms;
   -webkit-animation-timing-function: ease-in;
           animation-timing-function: ease-in;
   display: block;
 }
 #floating_button #btn__contactanos--links.black_sheep_wall {
-  -webkit-animation: outro_bottom 1000ms;
-          animation: outro_bottom 1000ms;
+  -webkit-animation: outro_bottom 250ms;
+          animation: outro_bottom 250ms;
   -webkit-animation-timing-function: ease-out;
           animation-timing-function: ease-out;
 }
@@ -18896,7 +19049,7 @@ h1#home_h1:after, #home_h1.h1:after {
 }
 
 footer {
-  margin-top: 100px;
+  margin-top: 10rem;
 }
 footer .location i {
   font-size: 26px;

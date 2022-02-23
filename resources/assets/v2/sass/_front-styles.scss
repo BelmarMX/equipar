@@ -423,6 +423,37 @@ h1, h2, h3, h4, h5, h6{
 
 @import 'partials/home';
 @import 'partials/servicios';
+@import 'partials/blog';
+
+#index__clientes,
+#index__marcas{
+	margin-top: 5rem;
+	margin-bottom: 5rem;
+}
+.client_list{
+	padding: 8px 0;
+	&.dark-bg{
+		background: lighten($dark, 15%);
+	}
+
+	img{
+		width: auto;
+		height: auto;
+		max-width: 200px;
+		max-height: 100px;
+		filter: grayscale(100%);
+		@include ease(.25s);
+		@include media-breakpoint-down(md){
+			max-width: calc(100% - 10px);
+		}
+	}
+
+	&:hover{
+		img{
+			filter: grayscale(0%);
+		}
+	}
+}
 
 /* --- --- --- --- --- --- --- --- --- --- ---
 | FOOTER
@@ -500,19 +531,19 @@ h1, h2, h3, h4, h5, h6{
 
 			&.email{
 				background-color: $gold_equipar;
-				@include fade_in(1900ms);
+				@include fade_in(1700ms);
 			}
 			&.whatsapp{
 				background-color: $success;
-				@include fade_in(1600ms);
+				@include fade_in(1350ms);
 			}
 			&.messenger{
 				background-color: $info;
-				@include fade_in(1300ms);
+				@include fade_in(1050ms);
 			}
 			&.location{
 				background-color: $danger;
-				@include fade_in(1000ms);
+				@include fade_in(750ms);
 			}
 
 			&:hover{
@@ -526,10 +557,10 @@ h1, h2, h3, h4, h5, h6{
 		}
 
 		&.show_me_the_money{
-			@include intro_top();
+			@include intro_top(300ms);
 		}
 		&.black_sheep_wall{
-			@include outro_bottom();
+			@include outro_bottom(250ms);
 			&.hide{
 				display: none;
 			}
@@ -537,7 +568,7 @@ h1, h2, h3, h4, h5, h6{
 	}
 }
 footer{
-	margin-top: 100px;
+	margin-top: 10rem;
 	.location{
 		i{
 			font-size: 26px;

@@ -3248,7 +3248,7 @@ documentReady(function () {
       container_links.classList.add('black_sheep_wall');
       setTimeout(function () {
         container_links.classList.add('hide');
-      }, 500);
+      }, 250);
     } else {
       container_links.classList.remove('hide');
       container_links.classList.remove('black_sheep_wall');
