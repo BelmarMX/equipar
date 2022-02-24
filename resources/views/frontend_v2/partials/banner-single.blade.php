@@ -7,15 +7,23 @@
     >
     @if( $summary )
     <div class="banner__single__summary">
-        <div class="banner__single__summary--title">
-            {!! $title !!}
-        </div>
+        @if( isset($h1) && $h1 )
+            <h1 class="banner__single__summary--title">
+                {!! $title !!}
+            </h1>
+        @else
+            <div class="banner__single__summary--title">
+                {!! $title !!}
+            </div>
+        @endif
         <p class="banner__single__summary--description">
             {!! $description !!}
         </p>
+        @if( isset($cta) && $cta )
         <a href="{{ $cta_href }}" class="banner__single__summary--cta btn btn-primary">
             {!! $cta !!}
         </a>
+        @endif
     </div>
     @endif
 </div>

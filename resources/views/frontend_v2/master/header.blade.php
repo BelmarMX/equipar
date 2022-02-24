@@ -1,4 +1,4 @@
-<header>
+<header class="sticky-top">
     <div id="pleca" class="d-flex w-100 align-items-center justify-content-end">
         <div class="contact-links">
             <a href="tel:{{ env('TEL_LOCAL_DIAL') }}"
@@ -58,12 +58,15 @@
             <div class="collapse navbar-collapse justify-content-center" id="main_menu">
                 <ul class="navbar-nav navbar-nav-scroll" style="--bs-scroll-height: 350px;">
                     <li class="nav-item">
-                        <a class="nav-link nav-link--home active" aria-current="page" href="/">
+                        <a class="nav-link nav-link--home @if( Request::is('/') ) active @endif" aria-current="page" href="/">
                             <i class="bi bi-house-door-fill"></i>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if( Request::is('acero') ) active @endif" href="{{ route('servicios') }}">Diseño en acero</a>
+                    </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"
+                        <a class="nav-link dropdown-toggle @if( Request::is('proyectos') || Request::is('portafolio') || Request::is('portafolio/*') ) active @endif"
                            href="#"
                            id="proyectos__dropdown"
                            role="button"
@@ -74,19 +77,19 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="proyectos__dropdown">
                             <li>
-                                <a class="dropdown-item" href="#">Servicios</a>
+                                <a class="dropdown-item" href="{{ route('proyectos') }}">Servicios</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Portafolio</a>
+                                <a class="dropdown-item" href="{{ route('portafolio') }}">Portafolio</a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Servicios</a>
+                        <a class="nav-link @if( Request::is('servicios') ) active @endif" href="{{ route('servicios') }}">Servicios</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"
-                           href="#"
+                        <a class="nav-link dropdown-toggle @if( Request::is('productos') || Request::is('productos/*') ) active @endif"
+                           href="{{ route('productos') }}"
                            id="productos__dropdown"
                            role="button"
                            data-bs-toggle="dropdown"
@@ -95,6 +98,9 @@
                             Productos
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="productos__dropdown">
+                            <li>
+                                <a class="dropdown-item" href="{{ route('productos') }}">Todas las categorías</a>
+                            </li>
                             <li>
                                 <a class="dropdown-item" href="#">Acero inoxidable</a>
                             </li>
@@ -131,13 +137,13 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
+                        <a class="nav-link @if( Request::is('blog') || Request::is('blog/*') ) active @endif" href="{{ route('blog') }}">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Acerca de</a>
+                        <a class="nav-link @if( Request::is('nosotros') ) active @endif" href="{{ route('nosotros') }}">Acerca de</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
+                        <a class="nav-link @if( Request::is('contacto') ) active @endif" href="{{ route('contacto') }}">Contacto</a>
                     </li>
                 </ul>
             </div>

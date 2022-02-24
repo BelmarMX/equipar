@@ -43,7 +43,7 @@
     >
         <img width="100"
              height="25"
-             src="{{ asset('images/template/brands/concase.png') }}"
+             src="{{ asset('images/template/brands/concasse.png') }}"
              alt="Concasé"
         >
     </a>

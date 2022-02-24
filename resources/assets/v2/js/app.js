@@ -6,26 +6,12 @@ const tooltipTriggerList = []
     .slice
     .call( document.querySelectorAll('[data-bs-toggle="tooltip"]') )
 
-const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+const tooltipList   = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
-});
+})
 
 // Document Ready
-const documentReady = (action) => {
-    if( document.readyState === 'complete' )
-    {
-        setTimeout(action, 1)
-    }
-    else
-    {
-        document.addEventListener('DOMContentLoaded', action)
-    }
-}
-
-documentReady(() => {
-    document.getElementById('load8')
-        .setAttribute('hidden', 'hidden')
-
+window.onload = event => {
     // -> Search bar
     document.getElementById('toggle-search').addEventListener('click', event => {
         let search_bar = document.getElementById('search-form')
@@ -63,4 +49,22 @@ documentReady(() => {
             container_links.classList.add('show_me_the_money')
         }
     })
-})
+
+    // Header when scroll
+    document.addEventListener('scroll', event => {
+        let header = document.querySelector('header');
+
+        if( header.offsetTop >= header.offsetHeight )
+        {
+            header.classList.add('min')
+        }
+        else
+        {
+            header.classList.remove('min')
+        }
+    })
+
+    // Document Loader
+    document.getElementById('load8')
+        .setAttribute('hidden', 'hidden')
+}

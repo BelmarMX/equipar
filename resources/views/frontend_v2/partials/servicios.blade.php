@@ -6,7 +6,7 @@
         </a>
     </div>
     <div class="col-md col-6 partial__servicios--img mb-3">
-        <div>
+        <div class="mx-auto">
             <img width="190"
                  height="217"
                  class="img-fluid"
@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="col-md col-6 partial__servicios--img mb-3">
-        <div>
+        <div class="mx-auto">
             <img width="190"
                  height="217"
                  class="img-fluid"
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="col-md col-6 partial__servicios--img mb-3">
-        <div>
+        <div class="mx-auto">
             <img width="190"
                  height="217"
                  class="img-fluid"
@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="col-md col-6 partial__servicios--img mb-3">
-        <div>
+        <div class="mx-auto">
             <img width="190"
                  height="217"
                  class="img-fluid"
@@ -50,7 +50,7 @@
         </div>
     </div>
     <div class="col-md col-6 partial__servicios--img mb-3">
-        <div>
+        <div class="mx-auto">
             <img width="190"
                  height="217"
                  class="img-fluid"
@@ -61,7 +61,7 @@
         </div>
     </div>
     <div class="col-md col-6 partial__servicios--img mb-3">
-        <div>
+        <div class="mx-auto">
             <img width="190"
                  height="217"
                  class="img-fluid"

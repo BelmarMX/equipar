@@ -3213,17 +3213,8 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl);
 }); // Document Ready
 
-var documentReady = function documentReady(action) {
-  if (document.readyState === 'complete') {
-    setTimeout(action, 1);
-  } else {
-    document.addEventListener('DOMContentLoaded', action);
-  }
-};
-
-documentReady(function () {
-  document.getElementById('load8').setAttribute('hidden', 'hidden'); // -> Search bar
-
+window.onload = function (event) {
+  // -> Search bar
   document.getElementById('toggle-search').addEventListener('click', function (event) {
     var search_bar = document.getElementById('search-form');
 
@@ -3254,8 +3245,20 @@ documentReady(function () {
       container_links.classList.remove('black_sheep_wall');
       container_links.classList.add('show_me_the_money');
     }
-  });
-});
+  }); // Header when scroll
+
+  document.addEventListener('scroll', function (event) {
+    var header = document.querySelector('header');
+
+    if (header.offsetTop >= header.offsetHeight) {
+      header.classList.add('min');
+    } else {
+      header.classList.remove('min');
+    }
+  }); // Document Loader
+
+  document.getElementById('load8').setAttribute('hidden', 'hidden');
+};
 
 /***/ }),
 

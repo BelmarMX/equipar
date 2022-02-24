@@ -11,3 +11,24 @@
 	-webkit-box-shadow: $right $down $spread $blur rgba($color, $opacity);
 	box-shadow: $right $down $spread $blur rgba($color, $opacity);
 }
+
+@mixin scrollbar()
+{
+	/* width */
+	::-webkit-scrollbar {
+		height: 6px;
+	}
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: $gray_equipar;
+	}
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: $gold_equipar;
+		border-radius: 3px;
+	}
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: lighten($gold_equipar, 10%);
+	}
+}
