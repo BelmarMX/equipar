@@ -344,6 +344,19 @@ h1, h2, h3, h4, h5, h6{
 	}
 }
 
+.alert-heading{
+	margin-bottom: 10px;
+	i{
+		font-size: 32px;
+	}
+	&:after{
+		border: none;
+	}
+	p{
+		margin: 0;
+	}
+}
+
 .product__card{
 	.product__card__wrap{
 		min-height: 320px;
@@ -448,6 +461,7 @@ h1, h2, h3, h4, h5, h6{
 @import 'partials/scroll-categories';
 @import 'partials/blog';
 @import 'partials/portafolio';
+@import 'partials/contacto';
 
 #index__clientes,
 #index__marcas{

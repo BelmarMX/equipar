@@ -1,4 +1,4 @@
-<div class="row gx-2 gy-5 justify-content-center align-items-center">
+<div class="row gx-2 gy-4 justify-content-center align-items-center">
     <a href="https://www.americanrange.com/"
        class="col"
        data-bs-toggle="tooltip"

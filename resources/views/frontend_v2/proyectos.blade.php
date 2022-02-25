@@ -13,7 +13,7 @@
     <main class="container">
         <div class="row">
             <div class="col-md-12 text-center mb-5">
-                <p class="text-center col-md-5 mx-auto mb-5">
+                <p class="text-center col-md-5 mx-auto">
                     Aseguramos la <strong>eficiencia de tu cocina con servicio profesional y personalizado</strong> a través de la experiencia, excelentes tiempos de respuesta y talento de nuestros colaboradores.
                 </p>
 

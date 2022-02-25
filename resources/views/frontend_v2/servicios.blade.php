@@ -13,7 +13,7 @@
     <main class="container">
         <div class="row">
             <div class="col-md-12 text-center mb-5">
-                <p class="text-center col-md-5 mx-auto mb-5">
+                <p class="text-center col-md-5 mx-auto">
                     Asesoramos en la <strong>selección correcta del equipo o producto que realmente necesitas</strong> para realizar tu inversión de acuerdo a un presupuesto definido.
                 </p>
             </div>
