@@ -1,4 +1,4 @@
-@section('title', 'Blog')
+@section('title', 'Blog Open')
 @section('description', '')
 @section('image', '')
 @extends('frontend_v2.master.app')
