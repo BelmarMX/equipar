@@ -126,6 +126,7 @@ class PortfolioController extends BaseDashboard
                         'meta'      => $meta
                     ,   'banners'   => 0
                     ,   'entries'  => $entries
+                    ,   'menu_cat'  => $this -> viewProducCategories()
                 ]);
     }
     public function show($slug)

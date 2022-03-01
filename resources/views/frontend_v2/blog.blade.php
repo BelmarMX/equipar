@@ -1,6 +1,6 @@
-@section('title', 'Blog')
-@section('description', '')
-@section('image', '')
+@section('title', $meta['titulo'])
+@section('description', $meta['descripcion'])
+@section('image', $meta['imagen'])
 @extends('frontend_v2.master.app')
 
 @section('content')
@@ -18,52 +18,33 @@
     <main class="container">
         @include('frontend_v2.partials.scroll-categories', [
                 'tag_title'     => 'Categorías'
-            ,   'todas_link'    => '#'
-            ,   'categories'    => [
-                    ['Comedor Industrial', '/blog/como-equipar-una-cocina-industrial']
-                ,   ['Equipamiento de cocina industrial', '/blog/como-equipar-una-cocina-industrial']
-                ,   ['Diseño y organización', '/blog/como-equipar-una-cocina-industrial']
-                ,   ['Distintivos', '/blog/como-equipar-una-cocina-industrial']
-            ]
+            ,   'todas_link'    => route('blog')
+            ,   'categories'    => array_map(function($category){
+                return [$category['title'], route('blog-filter', $category['slug'])];
+            }, $categories -> toArray() )
         ])
 
         <section>
             <div class="row">
-                <div class="col-md-4">
-                    @include('frontend_v2.partials.blog-view', [
-                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
-                        ,   'link'              => '/blog/como-equipar-una-cocina-industrial/como-equipar-una-cocina-industrial'
-                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
-                        ,   'day'               => 18
-                        ,   'month'             => 'Dic'
-                        ,   'category_title'    => 'Comedor Industrial'
-                        ,   'category_link'     => '/blog/como-equipar-una-cocina-industrial'
-                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
-                    ])
-                </div>
-                <div class="col-md-4">
-                    @include('frontend_v2.partials.blog-view', [
-                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
-                        ,   'link'              => '/blog/como-equipar-una-cocina-industrial/como-equipar-una-cocina-industrial'
-                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
-                        ,   'day'               => 18
-                        ,   'month'             => 'Dic'
-                        ,   'category_title'    => 'Comedor Industrial'
-                        ,   'category_link'     => '/blog/como-equipar-una-cocina-industrial'
-                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
-                    ])
-                </div>
-                <div class="col-md-4">
-                    @include('frontend_v2.partials.blog-view', [
-                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
-                        ,   'link'              => '/blog/como-equipar-una-cocina-industrial/como-equipar-una-cocina-industrial'
-                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
-                        ,   'day'               => 18
-                        ,   'month'             => 'Dic'
-                        ,   'category_title'    => 'Comedor Industrial'
-                        ,   'category_link'     => '/blog/como-equipar-una-cocina-industrial'
-                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
-                    ])
+                @foreach($articles AS $blog)
+                    <div class="col-md-4 mb-4">
+                        @include('frontend_v2.partials.blog-view', [
+                                'title'             => $blog -> titleA
+                            ,   'link'              => route('blog-open', [
+                                    $blog -> slugC, $blog -> slugA
+                                ])
+                            ,   'image'             => url('storage/articulos/'.$blog -> image_rx)
+                            ,   'day'               => 18
+                            ,   'month'             => 'Dic'
+                            ,   'category_title'    => $blog -> titleC
+                            ,   'category_link'     => route('blog-filter', $blog -> slugC)
+                            ,   'summary'           => $blog -> shortdesc
+                        ])
+                    </div>
+                @endforeach
+
+                <div class="col-12">
+                    {!! $articles -> render() !!}
                 </div>
             </div>
         </section>

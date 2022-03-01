@@ -280,7 +280,44 @@ h1, h2, h3, h4, h5, h6{
 	}
 }
 
+.pagination{
+	justify-content: center;
+	.page-item,
+	.page-item.active,
+	.page-item.disabled{
+		margin: 3px;
+		.page-link{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 42px;
+			height: 42px;
+			border-radius: 50%;
+			background: rgba($gold_equipar, .25);
+			color: $gold_equipar;
+			border: none;
+			@include ease();
 
+			&:hover{
+				background: rgba($gold_equipar, .5);
+			}
+		}
+	}
+
+	.page-item.active{
+		.page-link{
+			background: rgba($gold_equipar, 1);
+			color: $white;
+		}
+	}
+
+	.page-item.disabled{
+		.page-link{
+			background: rgba($gold_equipar, .1);
+			color: rgba($gold_equipar, .5);
+		}
+	}
+}
 
 @import 'partials/home';
 @import 'partials/productos';

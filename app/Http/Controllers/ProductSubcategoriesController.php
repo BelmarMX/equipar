@@ -91,6 +91,7 @@ class ProductSubcategoriesController extends BaseDashboard
                 ,   'CC'            => $CC
                 ,   'SS'            => $SS
                 ,   'entries'       => $entry
+                ,   'menu_cat'  => $this -> viewProducCategories()
             ]);
     }
 

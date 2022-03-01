@@ -1,6 +1,6 @@
-@section('title', 'Comunícate con nosotros')
-@section('description', '')
-@section('image', '')
+@section('title', $meta['titulo'])
+@section('description', $meta['descripcion'])
+@section('image', $meta['imagen'])
 @extends('frontend_v2.master.app')
 
 @section('content')

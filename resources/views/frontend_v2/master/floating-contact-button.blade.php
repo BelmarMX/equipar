@@ -12,9 +12,8 @@
     </button>
 
     <div id="btn__contactanos--links" class="black_sheep_wall hide" aria-labelledby="#btn__contactanos">
-        <a href="mailto:{{ env('CONTACT_EMAIL')  }}"
+        <a href="{{ route('contacto') }}"
            class="email"
-           target="_blank"
            data-bs-toggle="tooltip"
            title="Enviar correo electrónico"
         >

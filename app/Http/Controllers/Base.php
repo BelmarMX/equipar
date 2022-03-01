@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Banner
 ,   App\Promociones;
 
+use App\ProductCategories;
 use Carbon\Carbon;
 
 class Base extends Controller
@@ -21,5 +22,10 @@ class Base extends Controller
             -> orderBy('id', 'DESC')
             -> first();
         return $promos;
+    }
+
+    public function viewProducCategories()
+    {
+        return ProductCategories::all();
     }
 }

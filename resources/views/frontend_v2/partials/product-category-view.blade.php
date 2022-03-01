@@ -1,4 +1,4 @@
-<div class="product__card w-100">
+<div class="product__card">
     <div class="product__card__wrap position-relative">
         <div class="product__card__behind">
             <span class="product__card__behind--tag categoria">Categoría</span>

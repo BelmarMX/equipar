@@ -1,10 +1,19 @@
 <div class="banner__single">
-    <img width="100%"
-         height="400"
-         class="img-fluid w-100"
-         src="{{$slide}}"
-         alt="{{ isset($slide_alt) ? $slide_alt : 'Banner image'}}"
-    >
+    @if( isMobile() === true && $slide_mobile)
+        <img width="{{ env('BANNER_WIDTH_MV') }}"
+             height="{{ env('BANNER_HEIGHT_MV') }}"
+             class="img-fluid w-100"
+             src="{{$slide_mobile}}"
+             alt="{{ isset($slide_alt) ? $slide_alt : 'Banner image'}}"
+        >
+    @else
+        <img width="{{ env('BANNER_WIDTH') }}"
+             height="{{ env('BANNER_HEIGHT') }}"
+             class="img-fluid w-100"
+             src="{{$slide}}"
+             alt="{{ isset($slide_alt) ? $slide_alt : 'Banner image'}}"
+        >
+    @endif
     @if( $summary )
     <div class="banner__single__summary">
         @if( isset($h1) && $h1 )
@@ -21,7 +30,7 @@
             {!! $description !!}
         </p>
         @endif
-        @if( isset($cta) && $cta )
+        @if( isset($cta) && $cta && isset($cta_href) && $cta_href )
         <a href="{{ $cta_href }}" class="banner__single__summary--cta btn btn-primary">
             {!! $cta !!}
         </a>

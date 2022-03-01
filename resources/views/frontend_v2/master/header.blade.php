@@ -63,7 +63,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if( Request::is('acero') ) active @endif" href="{{ route('servicios') }}">Diseño en acero</a>
+                        <a class="nav-link @if( Request::is('diseno-acero') ) active @endif" href="{{ route('diseno-acero') }}">Diseño en acero</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle @if( Request::is('proyectos') || Request::is('portafolio') || Request::is('portafolio/*') ) active @endif"
@@ -101,39 +101,11 @@
                             <li>
                                 <a class="dropdown-item" href="{{ route('productos') }}">Todas las categorías</a>
                             </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Acero inoxidable</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Coccion</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Refrigeración</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Utensilios</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Almacenaje</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Equipo menor</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Barras de servicio</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Lavado y limpieza</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Refacciones</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Complementos</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Aluminio</a>
-                            </li>
+                            @foreach($menu_cat AS $menu_item)
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('productos-category-list', $menu_item -> slug) }}">{{ ucfirst(strtolower($menu_item -> title)) }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </li>
                     <li class="nav-item">

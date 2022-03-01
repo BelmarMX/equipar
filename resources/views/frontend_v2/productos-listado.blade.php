@@ -1,6 +1,6 @@
-@section('title', 'Productos')
-@section('description', '')
-@section('image', '')
+@section('title', $meta['titulo'])
+@section('description', $meta['descripcion'])
+@section('image', $meta['imagen'])
 @extends('frontend_v2.master.app')
 
 @section('content')
@@ -19,21 +19,21 @@
                 'tag_title'     => 'Subcategorías'
             ,   'todas_link'    => '/productos/refrigeracion'
             ,   'categories'    => [
-                    ['Abatidores', '#']
-                ,   ['Baño María frío', '#']
-                ,   ['Base refrigerada', '#']
-                ,   ['Botelleros', '#']
-                ,   ['Cong horizontales', '#']
-                ,   ['Contra barras', '#']
-                ,   ['Cortinas de aire', '#']
-                ,   ['Dispensador de cerveza', '#']
-                ,   ['Fabricadoras de hielo', '#']
-                ,   ['Mesas de preparación', '#']
-                ,   ['Mesas para trabajo', '#']
-                ,   ['Refrigeradores y congeladores verticales', '#']
-                ,   ['Topping refrigerado', '#']
-                ,   ['Toppings', '#']
-                ,   ['Vitrinas', '#']
+                    ['Abatidores', '/productos/refrigeracion/abatidores']
+                ,   ['Baño María frío', ' /productos/refrigeracion/abatidores']
+                ,   ['Base refrigerada', ' /productos/refrigeracion/abatidores']
+                ,   ['Botelleros', ' /productos/refrigeracion/abatidores']
+                ,   ['Cong horizontales', ' /productos/refrigeracion/abatidores']
+                ,   ['Contra barras', ' /productos/refrigeracion/abatidores']
+                ,   ['Cortinas de aire', ' /productos/refrigeracion/abatidores']
+                ,   ['Dispensador de cerveza', ' /productos/refrigeracion/abatidores']
+                ,   ['Fabricadoras de hielo', ' /productos/refrigeracion/abatidores']
+                ,   ['Mesas de preparación', ' /productos/refrigeracion/abatidores']
+                ,   ['Mesas para trabajo', ' /productos/refrigeracion/abatidores']
+                ,   ['Refrigeradores y congeladores verticales', ' /productos/refrigeracion/abatidores']
+                ,   ['Topping refrigerado', ' /productos/refrigeracion/abatidores']
+                ,   ['Toppings', ' /productos/refrigeracion/abatidores']
+                ,   ['Vitrinas', ' /productos/refrigeracion/abatidores']
             ]
         ])
 

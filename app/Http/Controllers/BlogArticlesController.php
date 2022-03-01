@@ -70,6 +70,7 @@ class BlogArticlesController extends BaseDashboard
                     ,   'banners'       => 0
                     ,   'categories'    => $categories
                     ,   'articles'      => $articles
+                    ,   'menu_cat'      => $this -> viewProducCategories()
                 ]);
     }
     public function filter($slug)
@@ -106,6 +107,7 @@ class BlogArticlesController extends BaseDashboard
                     ,   'banners'       => 0
                     ,   'categories'    => $categories
                     ,   'articles'      => $articles
+                    ,   'menu_cat'      => $this -> viewProducCategories()
                 ]);
     }
     public function show($slug_category, $slug_article)
@@ -143,6 +145,7 @@ class BlogArticlesController extends BaseDashboard
                     ,   'banners'       => 0
                     ,   'categories'    => $categories
                     ,   'article'       => $article
+                    ,   'menu_cat'  => $this -> viewProducCategories()
                 ]);
     }
 

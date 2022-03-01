@@ -1,6 +1,6 @@
-@section('title', 'Proyectos')
-@section('description', '')
-@section('image', '')
+@section('title', $meta['titulo'])
+@section('description', $meta['descripcion'])
+@section('image', $meta['imagen'])
 @extends('frontend_v2.master.app')
 
 @section('content')
@@ -18,35 +18,21 @@
     <main class="container">
         <section>
             <div class="row">
-                <div class="col-md-4">
-                    @include('frontend_v2.partials.portfolio-view', [
-                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
-                        ,   'link'              => 'http://www.google.com'
-                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
-                        ,   'day'               => 18
-                        ,   'month'             => 'Dic'
-                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
-                    ])
-                </div>
-                <div class="col-md-4">
-                    @include('frontend_v2.partials.portfolio-view', [
-                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
-                        ,   'link'              => 'http://www.google.com'
-                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
-                        ,   'day'               => 18
-                        ,   'month'             => 'Dic'
-                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
-                    ])
-                </div>
-                <div class="col-md-4">
-                    @include('frontend_v2.partials.portfolio-view', [
-                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
-                        ,   'link'              => 'http://www.google.com'
-                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
-                        ,   'day'               => 18
-                        ,   'month'             => 'Dic'
-                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
-                    ])
+                @foreach($entries AS $portafolio)
+                    <div class="col-md-4 mb-4">
+                        @include('frontend_v2.partials.portfolio-view', [
+                                'title'             => $portafolio -> title
+                            ,   'link'              => route('portfolio-open', $portafolio -> slug)
+                            ,   'image'             => url('storage/portafolio/'.$portafolio -> image_rx)
+                            ,   'day'               => 18
+                            ,   'month'             => 'Dic'
+                            ,   'summary'           => strip_tags($portafolio -> content)
+                        ])
+                    </div>
+                @endforeach
+
+                <div class="col-12">
+                    {!! $entries -> render() !!}
                 </div>
             </div>
         </section>

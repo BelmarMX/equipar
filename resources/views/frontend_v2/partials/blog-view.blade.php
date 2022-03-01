@@ -1,8 +1,8 @@
 <div class="blog__view">
     <a class="blog__view__link" href="{{ $link }}">
         <div class="blog__view__link--image">
-            <img width=""
-                 height=""
+            <img width="{{ env('ARTICLE_RX_WIDTH') }}"
+                 height="{{ env('ARTICLE_RX_HEIGHT') }}"
                  class="img-fluid"
                  src="{{ $image }}"
                  alt="{{ $title }}"
@@ -18,6 +18,6 @@
         <i class="bi bi-tag" data-bs-toggle="tooltip" title="Categoria: {{ $category_title }}"></i> {{ $category_title }}
     </a>
     <p class="blog__view--summary">
-        {{ $summary }}
+        {!! $summary !!}
     </p>
 </div>

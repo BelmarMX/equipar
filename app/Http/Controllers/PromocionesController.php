@@ -104,6 +104,7 @@ class PromocionesController extends BaseDashboard
 				,   'entries'       => $entries
 				,   'subcategories' => $subcategories
 				,   'entries'       => $entries
+                ,   'menu_cat'  => $this -> viewProducCategories()
 			]);
 	}
 

@@ -143,6 +143,7 @@ class ProductController extends BaseDashboard
 				,   'SS'        => $SS
 				,   'subcategories' => $subcategories
 				,   'related'   => $related
+                ,   'menu_cat'  => $this -> viewProducCategories()
 			]);
 	}
 	/* --- --- --- --- --- --- --- --- --- ---

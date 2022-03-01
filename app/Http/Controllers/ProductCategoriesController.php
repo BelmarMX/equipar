@@ -55,6 +55,7 @@ class ProductCategoriesController extends BaseDashboard
                 ,   'promos'        => $promos
                 ,   'categories'    => $categories
                 ,   'subcategories' => $subcategories
+                ,   'menu_cat'  => $this -> viewProducCategories()
             ]);
     }
 
@@ -123,6 +124,7 @@ class ProductCategoriesController extends BaseDashboard
                 ,   'category'      => $category
                 ,   'subcategories' => $subcategories
                 ,   'entries'       => $entries
+                ,   'menu_cat'  => $this -> viewProducCategories()
             ]);
     }
 

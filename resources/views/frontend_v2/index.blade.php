@@ -1,59 +1,32 @@
-@section('title', 'Bienvenido')
-@section('description', '')
-@section('image', '')
+@section('title', $meta['titulo'])
+@section('description', $meta['descripcion'])
+@section('image', $meta['imagen'])
 @extends('frontend_v2.master.app')
 
 @section('content')
-    @include('frontend_v2.partials.banner-array')
+    @include('frontend_v2.partials.banner-array', ['banners' => $banners])
 
     <main class="container">
         <section id="index__productos_destacados" class="mb-5">
             <h2>Productos destacados</h2>
             <div class="row">
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Refrigeradores y congeladores verticales'
-                        ,   'tag_link'  => 'productos/refrigeracion/refrigeradores-y-congeladores-verticales'
-                        ,   'route'     => 'productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Refrigeradores y congeladores verticales'
-                        ,   'tag_link'  => 'productos/refrigeracion/refrigeradores-y-congeladores-verticales'
-                        ,   'route'     => 'productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Refrigeradores y congeladores verticales'
-                        ,   'tag_link'  => NULL
-                        ,   'route'     => 'productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Refrigeradores y congeladores verticales'
-                        ,   'tag_link'  => NULL
-                        ,   'route'     => 'productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
+                @foreach($related AS $destacado)
+                    <div class="col-md-3 d-flex justify-content-center mb-4">
+                        @include('frontend_v2.partials.product-view', [
+                                'id'        => $destacado -> producto -> id
+                            ,   'title'     => $destacado -> producto -> title
+                            ,   'model'     => $destacado -> producto -> modelo
+                            ,   'tag'       => $destacado -> producto -> category -> title
+                            ,   'tag_link'  => route('productos-category-list', $destacado -> producto -> category -> slug)
+                            ,   'route'     => route('productos-open', [
+                                        $destacado -> producto -> category -> slug
+                                    ,   $destacado -> producto -> subcategory -> slug
+                                    ,   $destacado -> producto -> slug
+                                ])
+                            ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
+                        ])
+                    </div>
+                @endforeach
             </div>
             <div class="text-end">
                 <a href="" class="btn btn-primary">
@@ -196,42 +169,22 @@
         <section id="index__blog" class="mb-5">
             <h2>Últimas entradas del blog</h2>
             <div class="row">
-                <div class="col-md-4">
-                    @include('frontend_v2.partials.blog-view', [
-                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
-                        ,   'link'              => 'http://www.google.com'
-                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
-                        ,   'day'               => 18
-                        ,   'month'             => 'Dic'
-                        ,   'category_title'    => 'Comedor Industrial'
-                        ,   'category_link'     => 'http://www.google.com'
-                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
-                    ])
-                </div>
-                <div class="col-md-4">
-                    @include('frontend_v2.partials.blog-view', [
-                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
-                        ,   'link'              => 'http://www.google.com'
-                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
-                        ,   'day'               => 18
-                        ,   'month'             => 'Dic'
-                        ,   'category_title'    => 'Comedor Industrial'
-                        ,   'category_link'     => 'http://www.google.com'
-                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
-                    ])
-                </div>
-                <div class="col-md-4">
-                    @include('frontend_v2.partials.blog-view', [
-                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
-                        ,   'link'              => 'http://www.google.com'
-                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
-                        ,   'day'               => 18
-                        ,   'month'             => 'Dic'
-                        ,   'category_title'    => 'Comedor Industrial'
-                        ,   'category_link'     => 'http://www.google.com'
-                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
-                    ])
-                </div>
+                @foreach($articles AS $blog)
+                    <div class="col-md-4">
+                        @include('frontend_v2.partials.blog-view', [
+                                'title'             => $blog -> titleA
+                            ,   'link'              => route('blog-open', [
+                                    $blog -> slugC, $blog -> slugA
+                                ])
+                            ,   'image'             => url('storage/articulos/'.$blog -> image_rx)
+                            ,   'day'               => 18
+                            ,   'month'             => 'Dic'
+                            ,   'category_title'    => $blog -> titleC
+                            ,   'category_link'     => route('blog-filter', $blog -> slugC)
+                            ,   'summary'           => $blog -> shortdesc
+                        ])
+                    </div>
+                @endforeach
             </div>
         </section>
 
@@ -358,16 +311,6 @@
                         </div>
                     </div>
                 </div>
-                {{--
-                <button class="carousel-control-prev" type="button" data-bs-target="#index__clientes--slide" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#index__clientes--slide" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-                --}}
             </div>
         </section>
 

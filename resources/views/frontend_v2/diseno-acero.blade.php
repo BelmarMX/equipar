@@ -4,13 +4,7 @@
 @extends('frontend_v2.master.app')
 
 @section('content')
-    <section id="partial__servicios" class="container-fluid mb-5 d-none d-md-block">
-        @include('frontend_v2.partials.servicios')
-    </section>
-
-    @include('frontend_v2.partials.services-links', ['nth_active' => 2])
-
-    <main class="container">
+    <main class="container mt-5">
         <div class="row">
             <div class="col-md-12 text-center mb-5">
                 <p class="text-center col-md-5 mx-auto">
@@ -144,10 +138,9 @@
                 </ul>
             </div>
         </div>
-
-        <section id="index__marcas">
-            <h2>Nuestras marcas</h2>
-            @include('frontend_v2.partials.marcas')
-        </section>
     </main>
+
+    <section id="partial__servicios" class="container-fluid mb-5 d-none d-md-block">
+        @include('frontend_v2.partials.servicios')
+    </section>
 @endsection

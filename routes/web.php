@@ -12,6 +12,8 @@ Route::get('proyectos', 'IndexController@view')
 	->name('proyectos');
 Route::get('servicios', 'IndexController@view')
 	->name('servicios');
+Route::get('diseno-acero', 'IndexController@view')
+    ->name('diseno-acero');
 Route::get('galeria', 'GaleriaController@view')
 	-> name('galeria');
 
