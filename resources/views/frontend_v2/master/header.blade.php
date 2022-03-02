@@ -115,7 +115,7 @@
                         <a class="nav-link @if( Request::is('nosotros') ) active @endif" href="{{ route('nosotros') }}">Acerca de</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if( Request::is('contacto') ) active @endif" href="{{ route('contacto') }}">Contacto</a>
+                        <a class="nav-link @if( Request::is('contacto') || Request::is('cotizar') ) active @endif" href="{{ route('contacto') }}">Contacto</a>
                     </li>
                 </ul>
             </div>
@@ -133,12 +133,12 @@
                 <a id="link_quotation"
                    class="position-relative empty"
                    data-bs-toggle="tooltip"
-                   title="Cotizador Vacío"
-                   href="#"
+                   title="Solicitar cotización"
+                   href="{{ route('cotizar') }}"
                 >
                     <i id="empty_cart" class="bi bi-basket3"></i>
                     <i id="not_empty_car" class="bi bi-basket3-fill"></i>
-                    <span class="position-absolute top-100 start-100 translate-middle p-2 bg-success border border-light rounded-circle">
+                    <span class="position-absolute top-100 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
                         <span class="visually-hidden">Items en el cotizador</span>
                     </span>
                 </a>

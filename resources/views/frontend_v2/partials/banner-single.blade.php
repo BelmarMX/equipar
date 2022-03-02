@@ -1,5 +1,5 @@
 <div class="banner__single">
-    @if( isMobile() === true && $slide_mobile)
+    @if( isMobile() === true && !empty($slide_mobile) )
         <img width="{{ env('BANNER_WIDTH_MV') }}"
              height="{{ env('BANNER_HEIGHT_MV') }}"
              class="img-fluid w-100"

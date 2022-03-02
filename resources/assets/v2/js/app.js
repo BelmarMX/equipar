@@ -67,4 +67,11 @@ window.onload = event => {
     // Document Loader
     document.getElementById('load8')
         .setAttribute('hidden', 'hidden')
+
+    if( JSON.parse( localStorage.getItem('products') ) && JSON.parse( localStorage.getItem('products') ).length > 0 )
+    {
+        document.getElementById('link_quotation')
+            .classList
+            .remove('empty')
+    }
 }

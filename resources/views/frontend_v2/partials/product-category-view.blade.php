@@ -7,8 +7,8 @@
                     {{ $position }}
                 </span>
                 <a href="{{ $route }}">
-                    <img width="200"
-                         height="269"
+                    <img width="{{ env('PRODUCT_CAT_RX_WIDTH') }}"
+                         height="{{ env('PRODUCT_CAT_RX_HEIGHT') }}"
                          class="product__card__front--image img-fluid"
                          src="{{ $image }}"
                          alt="{{ $title }}"

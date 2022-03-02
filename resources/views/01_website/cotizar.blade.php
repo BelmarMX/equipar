@@ -29,7 +29,8 @@
 									</div>
 									<div class="uk-width-1-5@m uk-text-right">
 										<div>
-											<span class="label">Cantidad:</span><input type="hidden" name="id[]" value="{{ $quote['id'] }}">
+											<span class="label">Cantidad:</span>
+											<input type="hidden" name="id[]" value="{{ $quote['id'] }}">
 											<input type="numer" name="qty[{{ $quote['id'] }}][]" data-index="{{ $i }}" class="qty" value="{{ $quote['qty'] }}">
 										</div>
 										<span class="price">{{ number_format($quote['price'], 2, '.', ',') }}</span>

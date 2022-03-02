@@ -18939,8 +18939,8 @@ h1#home_h1:after, #home_h1.h1:after {
 #productos__main_product .productos__main_product--title {
   font-weight: 100;
   text-transform: uppercase;
-  font-size: 2.75rem;
-  line-height: 3rem;
+  font-size: 2.15rem;
+  line-height: 2.5rem;
   margin-bottom: 0.8rem;
 }
 #productos__main_product .productos__main_product--title:after {
@@ -18954,7 +18954,7 @@ h1#home_h1:after, #home_h1.h1:after {
 }
 #productos__main_product .productos__main_product--data {
   position: relative;
-  padding: 10px;
+  padding: 0 10px;
   z-index: 1002;
   text-align: center;
   margin-top: 2rem;
@@ -19018,6 +19018,11 @@ h1#home_h1:after, #home_h1.h1:after {
 #productos__technical-information p {
   line-height: 140%;
   font-weight: 300;
+}
+#productos__technical-information p strong {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #6681A2;
 }
 
 #partial__servicios {
@@ -19165,7 +19170,6 @@ h1#home_h1:after, #home_h1.h1:after {
   color: #6681A2;
   text-transform: lowercase;
   padding: 0 10px;
-  max-width: 150px;
   text-align: center;
   border-radius: 8px;
   position: absolute;

@@ -45,6 +45,9 @@
         @endif
 
         <script src="{{ asset('v2/js/app.js') }}"></script>
+        <script src="{{ asset('v2/js/quotator.js') }}"></script>
         @stack('customJs')
+
+        <link rel="stylesheet" href="{{ asset('v2/css/swal2.css') }}">
     </body>
 </html>

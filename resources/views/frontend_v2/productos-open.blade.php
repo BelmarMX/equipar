@@ -7,25 +7,14 @@
     <main class="container-fluid mt-5 px-0">
         <div class="container">
             @include('frontend_v2.partials.scroll-categories', [
-                   'tag_title'     => 'Subcategorías'
-               ,   'todas_link'    => '/productos/refrigeracion'
-               ,   'categories'    => [
-                       ['Abatidores', '/productos/refrigeracion/abatidores']
-                   ,   ['Baño María frío', ' /productos/refrigeracion/abatidores']
-                   ,   ['Base refrigerada', ' /productos/refrigeracion/abatidores']
-                   ,   ['Botelleros', ' /productos/refrigeracion/abatidores']
-                   ,   ['Cong horizontales', ' /productos/refrigeracion/abatidores']
-                   ,   ['Contra barras', ' /productos/refrigeracion/abatidores']
-                   ,   ['Cortinas de aire', ' /productos/refrigeracion/abatidores']
-                   ,   ['Dispensador de cerveza', ' /productos/refrigeracion/abatidores']
-                   ,   ['Fabricadoras de hielo', ' /productos/refrigeracion/abatidores']
-                   ,   ['Mesas de preparación', ' /productos/refrigeracion/abatidores']
-                   ,   ['Mesas para trabajo', ' /productos/refrigeracion/abatidores']
-                   ,   ['Refrigeradores y congeladores verticales', ' /productos/refrigeracion/abatidores']
-                   ,   ['Topping refrigerado', ' /productos/refrigeracion/abatidores']
-                   ,   ['Toppings', ' /productos/refrigeracion/abatidores']
-                   ,   ['Vitrinas', ' /productos/refrigeracion/abatidores']
-               ]
+                   'tag_title'     => $category -> title
+               ,   'todas_link'    => route('productos-category-list', $category -> slug)
+               ,   'categories'    => array_map(function($subcategory) use($category) {
+                return [
+                        $subcategory['title']
+                    ,   route('productos-category', [$category -> slug, $subcategory['slug']])
+                ];
+            }, $subcategories -> toArray() )
            ])
         </div>
 
@@ -41,27 +30,25 @@
                             >
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img width=""
-                                             height=""
+                                        <img width="{{ env('PRODUCT_WIDTH') }}"
+                                             height="{{ env('PRODUCT_HEIGHT') }}"
                                              class="img-fluid"
-                                             src="{{ url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766.jpg') }}"
-                                             alt="Product Title">
+                                             src="{{ url("storage/productos/{$entry -> imageP}") }}"
+                                             alt="{{ $entry -> titleP }}">
                                     </div>
-                                    <div class="carousel-item">
-                                        <img width=""
-                                             height=""
-                                             class="img-fluid"
-                                             src="{{ url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766.jpg') }}"
-                                             alt="Product Title">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img width=""
-                                             height=""
-                                             class="img-fluid"
-                                             src="{{ url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766.jpg') }}"
-                                             alt="Product Title">
-                                    </div>
+
+                                    @foreach($gallery AS $image)
+                                        <div class="carousel-item">
+                                            <img width="{{ env('PRODUCT_WIDTH') }}"
+                                                 height="{{ env('PRODUCT_HEIGHT') }}"
+                                                 class="img-fluid"
+                                                 src="{{ url("storage/productos/{$image -> image}") }}"
+                                                 alt="{{ $image -> title ?? $entry -> titleP }}">
+                                        </div>
+                                    @endforeach
                                 </div>
+
+                                @if( count($gallery) > 0 )
                                 <button class="carousel-control-prev" type="button" data-bs-target="#productos__main_product_slider" data-bs-slide="prev">
                                     <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
                                     <span class="visually-hidden">Anterior</span>
@@ -70,34 +57,36 @@
                                     <i class="bi bi-arrow-right-circle" aria-hidden="true"></i>
                                     <span class="visually-hidden">Siguiente</span>
                                 </button>
+                                @endif
                             </div>
                         </div>
 
                     </div>
                     <div class="col-md-6 py-5 ps-md-5">
                         <div class="productos__main_product--belongs-to mb-4">
-                            <a href="">Estufas</a> / <a href="">Cocción</a>
+                            <a href="{{ route('productos-category-list', $category -> slug) }}">{{ $category -> title }}</a> /
+                            <a href="{{ route('productos-category', [$category -> slug, $subcategory -> slug]) }}">{{ $subcategory -> title }}</a>
                         </div>
-                        <h1 class="productos__main_product--title">4 Fuegos Abiertos + Plancha 12" + Horno 36"</h1>
+                        <h1 class="productos__main_product--title">{{ $entry -> titleP }}</h1>
                         <p class="productos__main_product--summary">
-                            Estufa con 4 quemadores, planza de 12" y horno.
+                            {{ $entry -> resumen }}
                         </p>
                         <div class="productos__main_product--data mb-md-4">
                             <div class="row position-relative">
                                 <div class="col-md-6 my-2">
                                     <span>Marca</span>
-                                    <h2>Asber</h2>
+                                    <h2>{{ $entry -> marca }}</h2>
                                 </div>
                                 <div class="col-md-6 my-2">
                                     <span>Modelo</span>
-                                    <h2>AEMR-G12-B4-36</h2>
+                                    <h2>{{ $entry -> modelo }}</h2>
                                 </div>
                             </div>
                         </div>
                         <div class="row productos__main_product__price">
                             <div class="col-md-6 mb-2">
                                 <div class="productos__main_product__price--price">
-                                    $51,952.88 <span class="productos__main_product__price--currency">MXN</span>
+                                    ${{ number_format($entry -> precio, 2, '.', ',') }} <span class="productos__main_product__price--currency">MXN</span>
                                 </div>
                             </div>
                             <div class="col-md-6 productos__main_product__price--quote">
@@ -105,6 +94,12 @@
                                         data-bs-toggle="tooltip"
                                         title="Agregar al cotizador"
                                         class="btn btn-primary"
+                                        data-quote-add="{{ json_encode([
+                                                'id'    => $entry -> idP
+                                            ,   'model' => $entry -> modelo
+                                            ,   'title' => $entry -> titleP
+                                            ,   'image' => url("storage/productos/{$entry -> image_rxP}")
+                                        ]) }}"
                                 >
                                     <i class="bi bi-bag-plus-fill"></i> Agregar al cotizador
                                 </button>
@@ -117,37 +112,30 @@
 
         <section id="productos__technical-information" class="container mb-5">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <h3 class="text-start mb-3">Información técnica</h3>
-                    <p>
-                        Dimensiones
-                        Frente: 0.914 m
-                        Alto: 0.940 m
-                        Fondo: 0.830 m
-                    </p>
-                </div>
-                <div class="col-md-8">
-                    <h3 class="text-start mb-3">Características</h3>
-                    <p>
-                        Características Generales:
-                        Material: acero inoxidable austenítico, (no magnético), salvo respaldo.
-                        Color: gris
-                        Medidas: Frente: 91.5 cm, Fondo: 83 cm, Altura: 94 cm
-                        Bandeja/Charola recoge-grasa inferior extraíble, Patas de tubo de acero de 6", provistas con  niveladores regulables. Ruedas de 4". Panel frontal porta-mandos totalmente desmontable para un fácil mantenimiento. Cantos sanitarios, completamente ergonómicos. Pilotos independientes para cada quemador. Válvulas reforzadas, certificadas CSA y ANSI. Manifolds en una sola pieza,  abocardados por temperatura.
+                    {!! $entry -> tecnica !!}
 
-                        Características Técnicas:
-                        Parrilla Potentes quemadores “Abiertos" de última generación y de alta capacidad, 30.000 BTU/Hora cada uno, fabricados en hierro fundido, desmontables para facilitar la limpieza de sus orificios.
-                        Parrillas superiores reforzadas, desmontables, fabricadas en hierro fundido, dotadas de pestañas  especiales para protección de los pilotos.
-                        Plancha Potentes quemadores “Tipo U" de última generación y de alta capacidad, 24.000 BTU/Hora cada uno, colocados cada 12" para una óptima distribución del calor.
-                        Canal recoge-grasa de 4".
-                        Horno: Interior en acero inoxodable: piso, laterales, fondo, marco y contrapuerta.
-                        Bisagras robustas y extraíbles.
-                        Piloto para los quemadores.
-                        Válvula pilostática de seguridad para piloto y para los quemadores, certificada CSA y ANSI.
-                        Encendido de piloto por chispa.
-                        Parrilla de alambrón cromada.
-                        Gratinador: Parilla de alambrón cromada.
-                    </p>
+                    @if( !empty($entry -> ficha) )
+                        <h3 class="text-start mb-3">Ficha Técnica</h3>
+
+                        <a class="btn btn-secondary"
+                           target="_blank"
+                           href="{{ url('storage/'.env('PRODUCT_FOLDER').'fichas/' . $entry -> ficha) }}"
+                        >
+                            <i class="bi bi-filetype-pdf"></i> Descargar Ficha técnica
+                        </a>
+                    @endif
+                </div>
+                <div class="col-md-9">
+                    <h3 class="text-start mb-3">Características</h3>
+                    <ul>
+                        @foreach(explode(';', $entry -> caracteristicas) as $caracteristica)
+                            @if( $caracteristica != "" )
+                                <li>{{ ucfirst( trim( str_replace(', ', '', $caracteristica) ) ) }}</li>
+                            @endif
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </section>
@@ -155,50 +143,19 @@
         <section id="productos__relacionados" class="container mb-5">
             <h4>Productos relacionados</h4>
             <div class="row">
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Refrigeradores y congeladores verticales'
-                        ,   'tag_link'  => 'productos/refrigeracion/refrigeradores-y-congeladores-verticales'
-                        ,   'route'     => 'productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Refrigeradores y congeladores verticales'
-                        ,   'tag_link'  => 'productos/refrigeracion/refrigeradores-y-congeladores-verticales'
-                        ,   'route'     => 'productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Refrigeradores y congeladores verticales'
-                        ,   'tag_link'  => NULL
-                        ,   'route'     => 'productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Refrigeradores y congeladores verticales'
-                        ,   'tag_link'  => NULL
-                        ,   'route'     => 'productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
+                @foreach($related AS $product)
+                    <div class="col-md-3 d-flex justify-content-center mb-4">
+                        @include('frontend_v2.partials.product-view', [
+                                'id'        => $product -> idP
+                            ,   'title'     => $product -> titleP
+                            ,   'model'     => $product -> modelo
+                            ,   'tag'       => $product -> titleS
+                            ,   'tag_link'  => route('productos-category', [$product -> slugC, $product -> slugS])
+                            ,   'route'     => route('productos-open', [$product -> slugC, $product -> slugS, $product -> slugP])
+                            ,   'image'     => url("storage/productos/{$product -> image_rxP}")
+                        ])
+                    </div>
+                @endforeach
             </div>
         </section>
     </main>

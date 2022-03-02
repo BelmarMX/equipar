@@ -7,9 +7,9 @@
     <div class="container-fluid mb-5">
         @include('frontend_v2.partials.banner-single', [
                 'slide'         => asset('v2/images/samples/banner-promos.jpg')
-            ,   'slide_alt'     => 'Banner Categoría'
+            ,   'slide_alt'     => $category -> title
             ,   'summary'       => TRUE
-            ,   'title'         => '<strong>Acero Inoxidable</strong>'
+            ,   'title'         => "<strong>{$category -> title}</strong>"
             ,   'h1'            => TRUE
         ])
     </div>
@@ -17,117 +17,34 @@
     <main class="container">
         @include('frontend_v2.partials.scroll-categories', [
                 'tag_title'     => 'Subcategorías'
-            ,   'todas_link'    => '/productos/refrigeracion'
-            ,   'categories'    => [
-                    ['Abatidores', '/productos/refrigeracion/abatidores']
-                ,   ['Baño María frío', ' /productos/refrigeracion/abatidores']
-                ,   ['Base refrigerada', ' /productos/refrigeracion/abatidores']
-                ,   ['Botelleros', ' /productos/refrigeracion/abatidores']
-                ,   ['Cong horizontales', ' /productos/refrigeracion/abatidores']
-                ,   ['Contra barras', ' /productos/refrigeracion/abatidores']
-                ,   ['Cortinas de aire', ' /productos/refrigeracion/abatidores']
-                ,   ['Dispensador de cerveza', ' /productos/refrigeracion/abatidores']
-                ,   ['Fabricadoras de hielo', ' /productos/refrigeracion/abatidores']
-                ,   ['Mesas de preparación', ' /productos/refrigeracion/abatidores']
-                ,   ['Mesas para trabajo', ' /productos/refrigeracion/abatidores']
-                ,   ['Refrigeradores y congeladores verticales', ' /productos/refrigeracion/abatidores']
-                ,   ['Topping refrigerado', ' /productos/refrigeracion/abatidores']
-                ,   ['Toppings', ' /productos/refrigeracion/abatidores']
-                ,   ['Vitrinas', ' /productos/refrigeracion/abatidores']
-            ]
+            ,   'todas_link'    => route('productos-category-list', $category -> slug)
+            ,   'categories'    => array_map(function($subcategory) use($category) {
+                return [
+                        $subcategory['title']
+                    ,   route('productos-category', [$category -> slug, $subcategory['slug']])
+                ];
+            }, $subcategories -> toArray() )
         ])
 
         <section>
             <div class="row justify-content-center">
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Refrigeradores y congeladores verticales'
-                        ,   'tag_link'  => '/productos/refrigeracion/refrigeradores-y-congeladores-verticales'
-                        ,   'route'     => '/productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Refrigeradores y congeladores verticales'
-                        ,   'tag_link'  => '/productos/refrigeracion/refrigeradores-y-congeladores-verticales'
-                        ,   'route'     => '/productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Refrigeradores y congeladores verticales'
-                        ,   'tag_link'  => NULL
-                        ,   'route'     => '/productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Refrigeradores y congeladores verticales'
-                        ,   'tag_link'  => NULL
-                        ,   'route'     => '/productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
+                @foreach($entries AS $product)
+                    <div class="col-md-3 d-flex justify-content-center mb-4">
+                        @include('frontend_v2.partials.product-view', [
+                                'id'        => $product -> idP
+                            ,   'title'     => $product -> titleP
+                            ,   'model'     => $product -> modelo
+                            ,   'tag'       => $product -> titleS
+                            ,   'tag_link'  => route('productos-category', [$product -> slugC, $product -> slugS])
+                            ,   'route'     => route('productos-open', [$product -> slugC, $product -> slugS, $product -> slugP])
+                            ,   'image'     => url("storage/productos/{$product -> image_rxP}")
+                        ])
+                    </div>
+                @endforeach
+            </div>
 
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Anaqueles'
-                        ,   'tag_link'  => '/productos/refrigeracion/refrigeradores-y-congeladores-verticales'
-                        ,   'route'     => '/productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Anaqueles'
-                        ,   'tag_link'  => '/productos/refrigeracion/refrigeradores-y-congeladores-verticales'
-                        ,   'route'     => '/productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Anaqueles'
-                        ,   'tag_link'  => NULL
-                        ,   'route'     => '/productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
-                <div class="col-md-3 d-flex justify-content-center mb-4">
-                    @include('frontend_v2.partials.product-view', [
-                            'id'        => 1
-                        ,   'title'     => 'Vitrina Horizontal Vidrio Curvo'
-                        ,   'model'     => 'BHS-20'
-                        ,   'tag'       => 'Anaqueles'
-                        ,   'tag_link'  => NULL
-                        ,   'route'     => '/productos/refrigeracion/refrigeradores-y-congeladores-verticales/vitrina-horizontal-vidrio-curvo-bhs-20'
-                        ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
-                    ])
-                </div>
+            <div class="col-12">
+                {{ $entries -> render() }}
             </div>
         </section>
 

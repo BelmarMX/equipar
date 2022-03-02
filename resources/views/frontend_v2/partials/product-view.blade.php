@@ -1,5 +1,5 @@
-<div class="product__card">
-    <div class="product__card__wrap position-relative">
+<div class="product__card text-center">
+    <div class="product__card__wrap position-relative d-inline-block">
         <div class="product__card__behind">
             @if( isset($tag_link) )
                 <a href="{{ $tag_link }}" class="product__card__behind--tag">
@@ -12,6 +12,12 @@
                 <button aria-label="Agrega el producto al cotizador"
                         data-bs-toggle="tooltip"
                         title="Agregar al cotizador"
+                        data-quote-add="{{ json_encode([
+                                'id'    => $id
+                            ,   'model' => $model
+                            ,   'title' => $title
+                            ,   'image' => $image
+                        ]) }}"
                 >
                     <i class="bi bi-bag-plus-fill"></i>
                 </button>

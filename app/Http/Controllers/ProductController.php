@@ -84,6 +84,10 @@ class ProductController extends BaseDashboard
 
 		$gallery = ProductImages::where('producto_id', $entry -> idP) -> get();
 
+        $category       = ProductCategories::where('slug', $slugC) -> first();
+        $subcategory    = ProductSubcategories::where('slug', $slugS) -> first();
+        $subcategories  = ProductSubcategories::where('category_id', $category -> id) -> orderBy('title', 'ASC')-> get();
+
 		$related      = Product::select(
 				'*'
 			,   'products.id                    AS idP'
@@ -112,12 +116,14 @@ class ProductController extends BaseDashboard
 					-> where('end', '<=', Carbon::now()->endOfMonth())
 					-> orderBy('id', 'DESC')
 					-> first();
-				$promosID   = isset($promos -> id) ? $promos -> id : 0;
+				$promosID   = $promos -> id ?? 0;
 				$join -> on('producto_id', '=', 'products.id')
 					-> where('promocion_id', '=', $promosID);
 			})
+            -> where('products_categories.id', $category -> id)
+            -> orWhere('products_subcategories.id', $subcategory -> id)
 			-> inRandomOrder()
-			-> limit(5)
+			-> limit(4)
 			-> get();
 		/* SIDEBAR */
 		$CC = ProductCategories::orderBy('title', 'ASC')
@@ -125,7 +131,7 @@ class ProductController extends BaseDashboard
 		$SS = ProductSubcategories::orderBy('category_id', 'ASC')
 			-> orderBy('title', 'ASC')
 			-> get();
-		$subcategories  = ProductSubcategories::orderBy('title', 'ASC') -> get();
+
 		/* SIDEBAR */
 
 		$meta['titulo']         = $entry -> titleP . " | Modelo " . $entry -> modelo;
@@ -134,16 +140,18 @@ class ProductController extends BaseDashboard
 
 		return  view('frontend_v2.productos-open')
 			->with([
-					'meta'      => $meta
-				,   'banners'   => 0
-				,   'promos'    => $promos
-				,	'gallery'	=> $gallery
-				,   'entry'     => $entry
-				,   'CC'        => $CC
-				,   'SS'        => $SS
+					'meta'          => $meta
+				,   'banners'       => 0
+				,   'promos'        => $promos
+				,	'gallery'       => $gallery
+				,   'entry'         => $entry
+				,   'CC'            => $CC
+				,   'SS'            => $SS
+                ,   'category'      => $category
+                ,   'subcategory'   => $subcategory
 				,   'subcategories' => $subcategories
-				,   'related'   => $related
-                ,   'menu_cat'  => $this -> viewProducCategories()
+				,   'related'       => $related
+                ,   'menu_cat'      => $this -> viewProducCategories()
 			]);
 	}
 	/* --- --- --- --- --- --- --- --- --- ---

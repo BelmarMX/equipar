@@ -34,6 +34,7 @@ class CotizacionesController extends BaseDashboard
                         'meta'      => $meta
                     ,   'banners'   => 0
                     ,   'promos'    => $promos
+                    ,   'menu_cat'  => $this -> viewProducCategories()
                 ]);
     }
 
