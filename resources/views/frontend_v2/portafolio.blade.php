@@ -24,8 +24,6 @@
                                 'title'             => $portafolio -> title
                             ,   'link'              => route('portfolio-open', $portafolio -> slug)
                             ,   'image'             => url('storage/portafolio/'.$portafolio -> image_rx)
-                            ,   'day'               => 18
-                            ,   'month'             => 'Dic'
                             ,   'summary'           => strip_tags($portafolio -> content)
                         ])
                     </div>
@@ -45,68 +43,10 @@
 
     <div class="modal fade" id="porfolio_modal" aria-hidden="true" aria-labelledby="portfolioModalLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-fullscreen">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="portfolioModalLabel">Barra Grill</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="portfolio_slider" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ asset('v2/images/samples/portafolio.png') }}" class="d-block w-100" alt="Sample">
-                                <div class="row p-3">
-                                    <div class="col-md-6 order-md-2 text-md-end">
-                                        <h3>Barra Gril</h3>
-                                        <small>1 de 3</small>
-                                    </div>
-                                    <div class="col-md-6 order-md-1">
-                                        <p>
-                                            En Barra Grill, nuestro equipo planificó la forma más eficiente de distribuir la cocina y asignar los espacios necesarios para que el personal pueda trabajar velozmente.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('v2/images/samples/portafolio.png') }}" class="d-block w-100" alt="Sample">
-                                <div class="row p-3">
-                                    <div class="col-md-6 order-md-2 text-md-end">
-                                        <h3>Barra Gril</h3>
-                                        <small>2 de 3</small>
-                                    </div>
-                                    <div class="col-md-6 order-md-1">
-                                        <p>
-                                            En Barra Grill, nuestro equipo planificó la forma más eficiente de distribuir la cocina y asignar los espacios necesarios para que el personal pueda trabajar velozmente.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ asset('v2/images/samples/portafolio.png') }}" class="d-block w-100" alt="Sample">
-                                <div class="row p-3">
-                                    <div class="col-md-6 order-md-2 text-md-end">
-                                        <h3>Barra Gril</h3>
-                                        <small>3 de 3</small>
-                                    </div>
-                                    <div class="col-md-6 order-md-1">
-                                        <p>
-                                            En Barra Grill, nuestro equipo planificó la forma más eficiente de distribuir la cocina y asignar los espacios necesarios para que el personal pueda trabajar velozmente.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#portfolio_slider" data-bs-slide="prev">
-                            <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
-                            <span class="visually-hidden">Anterior</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#portfolio_slider" data-bs-slide="next">
-                            <i class="bi bi-arrow-right-circle" aria-hidden="true"></i>
-                            <span class="visually-hidden">Siguiente</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 @endsection
+
+@push('customJs')
+    <script src="{{ asset('v2/js/projects.js') }}" async defer></script>
+@endpush

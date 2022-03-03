@@ -25,7 +25,7 @@
                 {!! $title !!}
             </div>
         @endif
-        @if( isset($description) && $description )  )
+        @if( isset($description) && $description )
         <p class="banner__single__summary--description">
             {!! $description !!}
         </p>

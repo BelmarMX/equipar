@@ -139,13 +139,33 @@ class BlogArticlesController extends BaseDashboard
         $meta['descripcion']    = $article -> shortdesc;
         $meta['imagen']         = url('storage/' . $this -> folder . $article -> image);
 
+        $latest   = BlogArticles::select(
+                '*'
+            ,   'blog_articles.id       AS idA'
+            ,   'blog_articles.title    AS titleA'
+            ,   'blog_articles.slug     AS slugA'
+            ,   'blog_categories.id     AS idC'
+            ,   'blog_categories.title  AS titleC'
+            ,   'blog_categories.slug   AS slugC'
+        )
+            -> join(
+                'blog_categories'
+                ,   'blog_articles.category_id', '=', 'blog_categories.id'
+            )
+            -> orderBy('publish', 'DESC')
+            -> orderBy('idA', 'DESC')
+            -> where('publish', '<=', Carbon::now() )
+            -> limit(3)
+            -> get();
+
         return  view('frontend_v2.blog-open')
                 -> with([
                         'meta'          => $meta
                     ,   'banners'       => 0
                     ,   'categories'    => $categories
                     ,   'article'       => $article
-                    ,   'menu_cat'  => $this -> viewProducCategories()
+                    ,   'latest'        => $latest
+                    ,   'menu_cat'      => $this -> viewProducCategories()
                 ]);
     }
 

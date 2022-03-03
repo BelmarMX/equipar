@@ -99,7 +99,7 @@ if( document.getElementById('quotation-table') )
                         </div>
                     </div>
                 </td>
-                <td>
+                <td class="pt-3">
                     <button data-quote-remove="${product.id}"
                         data-quote-index="${index}"
                         data-bs-toggle="tooltip"

@@ -23,7 +23,7 @@
                 >
                 <div class="blog__article__tags p-2 mb-4">
                     <div class="d-inline">
-                        <i class="bi bi-clock"></i> {{ $article -> publish }}
+                        <i class="bi bi-clock"></i> {{ split_date($article -> publish) -> large }}
                     </div>
                     <div class="d-inline ms-1">
                         <i class="bi bi-tag"></i> <a href="{{ route('blog-filter', $article -> slugC) }}">{{ $article -> titleC }}</a>
@@ -36,30 +36,22 @@
             </section>
 
             <aside class="col-md-4">
-                <div class="mb-5">
-                    @include('frontend_v2.partials.blog-view', [
-                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
-                        ,   'link'              => '/blog/como-equipar-una-cocina-industrial/como-equipar-una-cocina-industrial'
-                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
-                        ,   'day'               => 18
-                        ,   'month'             => 'Dic'
-                        ,   'category_title'    => 'Comedor Industrial'
-                        ,   'category_link'     => '/blog/como-equipar-una-cocina-industrial'
-                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
-                    ])
-                </div>
-                <div class="mb-5">
-                    @include('frontend_v2.partials.blog-view', [
-                            'title'             => '10 Ventajas de tener un comedor industrial en tu empresa'
-                        ,   'link'              => '/blog/como-equipar-una-cocina-industrial/como-equipar-una-cocina-industrial'
-                        ,   'image'             => url('storage/articulos/10-ventajas-de-tener-un-comedor-industrial-en-tu-empresa-1576686202-1576686202-thumbnail.png')
-                        ,   'day'               => 18
-                        ,   'month'             => 'Dic'
-                        ,   'category_title'    => 'Comedor Industrial'
-                        ,   'category_link'     => '/blog/como-equipar-una-cocina-industrial'
-                        ,   'summary'           => '10 ventajas de tener un comedor industrial en tu empresa...'
-                    ])
-                </div>
+                @foreach($latest AS $blog)
+                    <div class="mb-5">
+                        @include('frontend_v2.partials.blog-view', [
+                                'title'             => $blog -> titleA
+                            ,   'link'              => route('blog-open', [
+                                    $blog -> slugC, $blog -> slugA
+                                ])
+                            ,   'image'             => url('storage/articulos/'.$blog -> image_rx)
+                            ,   'day'               => split_date($blog -> publish) -> day
+                            ,   'month'             => split_date($blog -> publish) -> short_month
+                            ,   'category_title'    => $blog -> titleC
+                            ,   'category_link'     => route('blog-filter', $blog -> slugC)
+                            ,   'summary'           => $blog -> shortdesc
+                        ])
+                    </div>
+                @endforeach
             </aside>
         </div>
     </main>

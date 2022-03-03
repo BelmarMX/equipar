@@ -54,7 +54,6 @@
                                 height="315"
                                 src="https://www.youtube.com/embed/spcOCBeg_zc"
                                 title="Equipar Reel"
-                                frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
                     </div>
@@ -177,8 +176,8 @@
                                     $blog -> slugC, $blog -> slugA
                                 ])
                             ,   'image'             => url('storage/articulos/'.$blog -> image_rx)
-                            ,   'day'               => 18
-                            ,   'month'             => 'Dic'
+                            ,   'day'               => split_date($blog -> publish) -> day
+                            ,   'month'             => split_date($blog -> publish) -> short_month
                             ,   'category_title'    => $blog -> titleC
                             ,   'category_link'     => route('blog-filter', $blog -> slugC)
                             ,   'summary'           => $blog -> shortdesc
