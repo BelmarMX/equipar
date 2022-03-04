@@ -24,6 +24,11 @@ search.addWidgets([
         searchBox({
                 container: '#algolia-searchbox'
             ,   placeholder: 'Busca por producto, categoría, subcategoría o marca'
+            ,   showLoadingIndicator: true
+            ,   templates: {
+                        showReset: true
+                    ,   loadingIndicator: 'Buscando...'
+            }
         })
 
     ,   refinementList({

@@ -15513,7 +15513,12 @@ var url_links = "http://equipar.test/";
 var url_asset = url_links + 'storage/productos/';
 search.addWidgets([(0,instantsearch_js_es_widgets__WEBPACK_IMPORTED_MODULE_2__["default"])({
   container: '#algolia-searchbox',
-  placeholder: 'Busca por producto, categoría, subcategoría o marca'
+  placeholder: 'Busca por producto, categoría, subcategoría o marca',
+  showLoadingIndicator: true,
+  templates: {
+    showReset: true,
+    loadingIndicator: 'Buscando...'
+  }
 }), (0,instantsearch_js_es_widgets__WEBPACK_IMPORTED_MODULE_3__["default"])({
   container: '#algolia-categories',
   attribute: 'categoria'
