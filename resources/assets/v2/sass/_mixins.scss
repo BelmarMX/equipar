@@ -17,15 +17,17 @@
 	/* width */
 	::-webkit-scrollbar {
 		height: 6px;
+		width: 8px;
 	}
 	/* Track */
 	::-webkit-scrollbar-track {
 		background: $gray_equipar;
+		border-radius: 4px;
 	}
 	/* Handle */
 	::-webkit-scrollbar-thumb {
 		background: $gold_equipar;
-		border-radius: 3px;
+		border-radius: 4px;
 	}
 	/* Handle on hover */
 	::-webkit-scrollbar-thumb:hover {

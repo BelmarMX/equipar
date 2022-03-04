@@ -119,15 +119,9 @@
                     </li>
                 </ul>
             </div>
-            <div id="search-form">
-                <form>
-                    <i class="bi bi-search"></i>
-                    <input id="search" type="search" name="search" placeholder="Ingresa el nombre, marca o categoría del producto a buscar">
-                </form>
-            </div>
 
             <div id="search-room">
-                <button id="toggle-search" type="button" aria-label="Muestra la barra de búsqueda">
+                <button id="toggle-search" class="toggle-search" type="button" aria-label="Muestra la barra de búsqueda">
                     <i class="bi bi-search"></i>
                 </button>
                 <a id="link_quotation"

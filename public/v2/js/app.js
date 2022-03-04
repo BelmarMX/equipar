@@ -3215,20 +3215,22 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 
 window.onload = function (event) {
   // -> Search bar
-  document.getElementById('toggle-search').addEventListener('click', function (event) {
-    var search_bar = document.getElementById('search-form');
+  document.querySelectorAll('.toggle-search').forEach(function (element) {
+    element.addEventListener('click', function (event) {
+      var search_bar = document.getElementById('algolia-search-container');
 
-    if (search_bar.classList.contains('show_me_the_money')) {
-      search_bar.classList.remove('fade_in');
-      search_bar.classList.add('fade_out');
-      setTimeout(function () {
-        search_bar.classList.remove('show_me_the_money');
-      }, 500);
-    } else {
-      search_bar.classList.remove('fade_out');
-      search_bar.classList.add('fade_in');
-      search_bar.classList.add('show_me_the_money');
-    }
+      if (search_bar.classList.contains('show_me_the_money')) {
+        search_bar.classList.remove('fade_in');
+        search_bar.classList.add('fade_out');
+        setTimeout(function () {
+          search_bar.classList.remove('show_me_the_money');
+        }, 500);
+      } else {
+        search_bar.classList.remove('fade_out');
+        search_bar.classList.add('fade_in');
+        search_bar.classList.add('show_me_the_money');
+      }
+    });
   }); // -> Contact bottom button
 
   document.getElementById('floating_button').addEventListener('click', function (event) {
