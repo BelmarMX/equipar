@@ -29,11 +29,15 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css" integrity="sha256-t2ATOGCtAIZNnzER679jwcFcKYfLlw01gli6F6oszk8=" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('v2/css/app.css') }}">
         @stack('customCss')
     </head>
     <body>
         @include('frontend_v2.master.header')
+
+        @include('frontend_v2.master.search')
 
         @yield('content')
 
@@ -46,6 +50,8 @@
 
         <script src="{{ asset('v2/js/app.js') }}"></script>
         <script src="{{ asset('v2/js/quotator.js') }}"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CArray.prototype.includes%2CPromise%2CObject.assign%2CObject.entries"></script>
+        <script src="{{ asset('v2/js/algolia.js') }}"></script>
         @stack('customJs')
 
         <link rel="stylesheet" href="{{ asset('v2/css/swal2.css') }}">

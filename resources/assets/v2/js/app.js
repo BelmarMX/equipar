@@ -12,24 +12,28 @@ const tooltipList   = tooltipTriggerList.map(function (tooltipTriggerEl) {
 
 // Document Ready
 window.onload = event => {
+
     // -> Search bar
-    document.getElementById('toggle-search').addEventListener('click', event => {
-        let search_bar = document.getElementById('search-form')
-        if( search_bar.classList.contains('show_me_the_money') )
-        {
-            search_bar.classList.remove('fade_in')
-            search_bar.classList.add('fade_out')
-            setTimeout(() => {
-                search_bar.classList.remove('show_me_the_money')
-            }, 500)
-        }
-        else
-        {
-            search_bar.classList.remove('fade_out')
-            search_bar.classList.add('fade_in')
-            search_bar.classList.add('show_me_the_money')
-        }
-    })
+    document.querySelectorAll('.toggle-search')
+        .forEach(element => {
+            element.addEventListener('click', event => {
+                let search_bar = document.getElementById('algolia-search-container')
+                if( search_bar.classList.contains('show_me_the_money') )
+                {
+                    search_bar.classList.remove('fade_in')
+                    search_bar.classList.add('fade_out')
+                    setTimeout(() => {
+                        search_bar.classList.remove('show_me_the_money')
+                    }, 500)
+                }
+                else
+                {
+                    search_bar.classList.remove('fade_out')
+                    search_bar.classList.add('fade_in')
+                    search_bar.classList.add('show_me_the_money')
+                }
+            })
+        })
 
     // -> Contact bottom button
     document.getElementById('floating_button').addEventListener('click', event => {

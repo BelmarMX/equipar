@@ -1,0 +1,115 @@
+#algolia-search-container
+{
+	display: none;
+	position: fixed;
+	background: $white;
+	z-index: 3000;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	overflow-y: auto;
+	@include scrollbar();
+	@include boxshadow();
+
+	&.show_me_the_money
+	{
+		display: block;
+	}
+
+	h2,
+	h3{
+		text-align: left;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		&:after{
+			margin-right: auto;
+			margin-left: 0;
+		}
+	}
+	#powered-by{
+		z-index: 2999;
+	}
+	#algolia-searchbox
+	{
+		background: $gray_light;
+		padding: 1rem;
+		margin-bottom: 15px;
+		border-radius: 40px;
+		@include boxshadow();
+
+		.ais-SearchBox-form{
+			background: $gray_light;
+			.ais-SearchBox-input{
+				border-radius: 20px;
+				font-size: 1.12rem;
+				font-weight: $font-light;
+				color: $primary_color;
+
+				&:focus{
+					border-color: darken($gold_equipar, 15%);
+				}
+			}
+		}
+	}
+	#algolia-hits{
+		@include scrollbar();
+		.algolia-hits-categories{
+			background: #D5AC63;
+			border-radius: 20px;
+			padding: 1px 10px;
+			text-align: right;
+			max-width: 450px;
+			color: #FFF;
+			margin-left: auto;
+		}
+		.algolia-hits-description{
+			font-size: .9rem;
+			text-transform: lowercase;
+			max-height: 68px;
+			overflow-y: auto;
+		}
+		.algolia-hits-brand{
+			font-weight: $font-bold;
+			text-transform: uppercase;
+			color: $primary-color;
+		}
+		.algolia-hits-price{
+			background: rgba($gold_equipar, 0);
+			border: 1px solid $gold_equipar;
+			color: $blue_equipar;
+			padding: .175rem .75rem;
+			border-radius: 1.5rem;
+			font-weight: $font-light;
+			font-size: 1rem;
+			letter-spacing: 1px;
+			@include ease();
+
+			&:hover{
+				background: rgba($gold_equipar, .1);
+			}
+		}
+	}
+
+	#algolia-categories,
+	#algolia-subcategories,
+	#algolia-brands,
+	#algolia-prices{
+		.ais-RefinementList-labelText,
+		.ais-NumericMenu-labelText{
+			text-transform: lowercase;
+			&:first-letter{
+				text-transform: uppercase;
+			}
+			&:hover{
+				color: $primary_color;
+			}
+		}
+	}
+
+	#algolia-pagination{
+		.ais-Pagination{
+			display: flex;
+			justify-content: flex-end;
+		}
+	}
+}
