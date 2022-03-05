@@ -319,6 +319,28 @@ h1, h2, h3, h4, h5, h6{
 	}
 }
 
+.border-radius-10{
+	border-radius: 10px;
+}
+.with-box-shadow{
+	@include boxshadow();
+}
+
+.text-left-af{
+	text-align: left;
+	&:after{
+		margin-left: 0;
+		margin-right: auto;
+	}
+}
+.text-right-af{
+	text-align: right;
+	&:after{
+		margin-left: auto;
+		margin-right: 0;
+	}
+}
+
 @import 'partials/algolia';
 @import 'partials/home';
 @import 'partials/productos';

@@ -67,7 +67,7 @@ class Product extends Model
             : 'undefined'
         ;
         $subcategoria_slug = isset($this -> subcategory_trashed) && isset($this -> subcategory_trashed -> slug)
-            ? $this -> subcategory_trashed -> title
+            ? $this -> subcategory_trashed -> slug
             : 'undefined'
         ;
 

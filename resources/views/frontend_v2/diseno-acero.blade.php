@@ -4,138 +4,213 @@
 @extends('frontend_v2.master.app')
 
 @section('content')
-    <main class="container mt-5">
+    <div class="container-fluid mb-5">
+        @include('frontend_v2.partials.banner-single', [
+                'slide'         => asset('v2/images/samples/banner-acero.jpg')
+            ,   'slide_alt'     => $meta['titulo']
+            ,   'summary'       => TRUE
+            ,   'title'         => "<strong>{$meta['titulo']}</strong>"
+            ,   'h1'            => TRUE
+        ])
+    </div>
+    <main class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12 text-center mb-5">
                 <p class="text-center col-md-5 mx-auto">
-                    Asesoramos en la <strong>selección correcta del equipo o producto que realmente necesitas</strong> para realizar tu inversión de acuerdo a un presupuesto definido.
+                    Creamos y diseñamos <strong>muebles de acero inoxidable a la medida</strong>, funcionales de acuerdo a tus necesidades.
                 </p>
             </div>
 
-            <div class="col-md-6 mb-4 service__container">
-                <div class="service__container--img">
-                    <img width="661"
-                         height="270"
-                         class="img-fluid"
-                         src="{{ asset('v2/images/layout/servicios_planos.png') }}"
-                         alt="Planos"
-                    >
-                </div>
-                <h2>Planos</h2>
-                <p>
-                    Elaboración de planos de cocina, bloques y distribución de equipos de cada área según la especialidad y el número de comensales de su negocio. El profesionalismo y experiencia de nuestro grupo de colaboradores especializados en proyectos, asegurarán el mejor diseño de acuerdo a los lineamientos fundamentales establecidos por la industria gastronómica.
-                </p>
-                <p>
-                    Asegure su Inversión, en repetidas ocasiones nos pasa que iniciamos un proyecto y por falta de planeación y visualización de la idea, terminamos haciendo un gasto fuera del presupuesto original, este servicio le aportara mayor seguridad en la ejecución de su proyecto.
-                </p>
+            <div class="col-12">
+                <h1>{{ $meta['titulo'] }}</h1>
             </div>
-
-            <div class="col-md-6 mb-4 service__container">
-                <div class="service__container--img">
-                    <img width="661"
-                         height="270"
-                         class="img-fluid"
-                         src="{{ asset('v2/images/layout/servicios_instalacion.png') }}"
-                         alt="Instalación de Equipos"
-                    >
-                </div>
-                <h2>Instalación de Equipos</h2>
-                <p>
-                    Servicio de interconexión de equipos, muebles de acero inoxidable, equipos de refrigeración y cocción, Máquinas lavalozas, fabricadoras de hielo, equipos de producción y más; incluye: revisión y seguimiento a ejecución Correcta de guía mecánica, interconexión de equipo a acometida preparada según manual de la marca, materiales necesarios (Mangueras de gas, cespol, contra canastas, llaves mezcladoras, clavijas eléctricas, tornillería y herramientas) mano de obra certificada para el correcto funcionamiento de los equipos.
-                </p>
-                <p>
-                    *La acometida o disparo la prepara obra civil.
-                </p>
-            </div>
-
-            <div class="col-md-6 mb-4 service__container">
-                <div class="service__container--img">
-                    <img width="661"
-                         height="270"
-                         class="img-fluid"
-                         src="{{ asset('v2/images/layout/servicios_mantenimiento-correctivo.png') }}"
-                         alt="Mantenimiento Correctivo"
-                    >
-                </div>
-                <h2>Mantenimiento Correctivo</h2>
-                <p>
-                    Servicio de evaluación y diagnóstico, posteriormente se presenta un reporte con el problema detectado y las acciones a realizar para corregir la falla, cambio de piezas o únicamente Mano de obra, servicio especializado por marcas o equipos.
-                </p>
-            </div>
-
-            <div class="col-md-6 mb-4 service__container">
-                <div class="service__container--img">
-                    <img width="661"
-                         height="270"
-                         class="img-fluid"
-                         src="{{ asset('v2/images/layout/servicios_mantenimiento-preventivo.png') }}"
-                         alt="Mantenimiento Preventivo"
-                    >
-                </div>
-                <h2>Mantenimiento Preventivo</h2>
-                <p>
-                    Realizamos Mantenimiento de equipos en la mayoría de marcas del mercado, cuide su inversión e incremente la vida útil de sus equipos otorgando de manera periódica su revisión general, cambio de partes desgastadas o calibración de los mismos, esto le aportará mayor eficiencia en la operación, detección anticipada de posibles fallas, menor consumo de energéticos, (Agua, luz, gas) y mayor seguridad al personal que operan la cocina previniendo accidentes dentro de la misma.
-                </p>
-                <p>
-                    Ejemplo:
-                </p>
-                <ul>
-                    <li>Verificación del sistema de encendidoRevisión de termostatos</li>
-                    <li>Revisión de conexiones electrónicas.</li>
-                    <li>Revisión de conexiones eléctricas, amperaje y voltaje</li>
-                    <li>Verificación de quemadores</li>
-                    <li>Verificación del funcionamiento de válvulas y perillas</li>
-                    <li>Detección de fugas de gas en acometida y equipo</li>
-                    <li>Ajuste y nivelación del equipo.</li>
-                    <li>Limpieza general Aplicación de agentes químicos.</li>
-                    <li>Comprobación del correcto funcionamiento. Limpieza de serpentín de condensador y evaporador. Revisión de presión de gas refrigerante, cargas.</li>
-                </ul>
-            </div>
-
-            <div class="col-md-6 mb-4 service__container">
-                <div class="service__container--img">
-                    <img width="661"
-                         height="270"
-                         class="img-fluid"
-                         src="{{ asset('v2/images/layout/servicios_diseno-acero.png') }}"
-                         alt="Diseño de muebles de acero inoxidable"
-                    >
-                </div>
-                <h2>Diseño de muebles de acero inoxidable</h2>
-                <p>
-                    Elaboración de diseños en isométrico según la idea de tu negocio, los muebles a medida con diseño especial son mucho más funcionales al fabricarse de acuerdo a cada necesidad de operación, espacio, materiales, calibres, refuerzos etc., sobre todo se convierte en un plus al ser una creación única.
-                </p>
-                <div class="text-center">
-                    <a href="#" class="btn btn-primary">
-                        Conozca más
-                    </a>
+            <div class="col-md-8">
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-4 order-md-2 mb-2">
+                        <img width="250"
+                             height="250"
+                             class="img-fluid border-radius-10 with-box-shadow"
+                             src="{{ asset('v2/images/acero/01_materia-prima.png') }}"
+                             alt="Recepción de materia"
+                        >
+                    </div>
+                    <div class="col-md-8 order-md-1">
+                        <h3 class="mb-3 text-right-af">Recepción de materia</h3>
+                        <p class="text-end">
+                            Es aquí donde comienza el proceso utilizando solo material certificado y de primera calidad.<br>
+                            Utilizamos aceros austeníticos y ferríticos, aleación 201, 304 y 430 con calibres que van desde el 10 hasta el 22.
+                        </p>
+                    </div>
                 </div>
             </div>
-
-            <div class="col-md-6 mb-4 service__container">
-                <div class="service__container--img">
-                    <img width="661"
-                         height="270"
-                         class="img-fluid"
-                         src="{{ asset('v2/images/layout/servicios_asesoria-equipos.png') }}"
-                         alt="Planos"
-                    >
+            <div class="col-md-8 offset-md-4">
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-4 order-md-1 text-end mb-2">
+                        <img width="250"
+                             height="250"
+                             class="img-fluid border-radius-10 with-box-shadow"
+                             src="{{ asset('v2/images/acero/02_design.png') }}"
+                             alt="Diseño del modelo"
+                        >
+                    </div>
+                    <div class="col-md-8 order-md-2">
+                        <h3 class="mb-3 text-left-af">Diseño del modelo</h3>
+                        <p>
+                            Contamos con un departamento de ingeniería vanguardista, que se encarga de transformar tus ideas en realidad, utilizando software y tecnología en la industria del diseño.
+                        </p>
+                    </div>
                 </div>
-                <h2>Asesoría de equipos</h2>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3 class="mb-3">Trazo</h3>
+                <img width="250"
+                     height="250"
+                     class="img-fluid border-radius-10 with-box-shadow"
+                     src="{{ asset('v2/images/acero/03_marcado.png') }}"
+                     alt="Trazo"
+                >
                 <p>
-                    Asesoramos en la selección correcta del equipo o producto que realmente necesitas para
-                    realizar tu inversión de acuerdo a un presupuesto definido.
+                    Marcado de lamina en las zonas a doblar.
                 </p>
-                <ul>
-                    <li>Que el producto realmente funcione para lo que necesita.</li>
-                    <li>Capacidad instalada.</li>
-                    <li>Buena Reputación.</li>
-                    <li>Relación Precio-Calidad.</li>
-                    <li>Tiempo de entrega.</li>
-                    <li>Certificaciones.
-                    <li>Póliza de garantía.</li>
-                    <li>Acceso a refacciones y soporte.</li>
-                </ul>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3 class="mb-3">Corte</h3>
+                <img width="250"
+                     height="250"
+                     class="img-fluid border-radius-10 with-box-shadow"
+                     src="{{ asset('v2/images/acero/04_corte.png') }}"
+                     alt="Corte"
+                >
+                <p>
+                    Una vez trazada la lámina, se hace el corte de las pizas del mueble.
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3 class="mb-3">Doblez</h3>
+                <img width="250"
+                     height="250"
+                     class="img-fluid border-radius-10 with-box-shadow"
+                     src="{{ asset('v2/images/acero/05_doblez.png') }}"
+                     alt="Doblez"
+                >
+                <p>
+                    Cuando las piezas ya están cortadas, estas se doblan siguiendo el marcado del trazo.
+                </p>
+            </div>
+            <div class="col-12 mb-5 text-center">
+                <q>Comienza a moldearse el equipo</q>
+            </div>
+
+            <div class="col-12">
+                <h2>Procesos</h2>
+            </div>
+            <div class="col-md-8">
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-4 order-md-2 mb-2">
+                        <img width="250"
+                             height="250"
+                             class="img-fluid border-radius-10 with-box-shadow"
+                             src="{{ asset('v2/images/acero/01_armado.png') }}"
+                             alt="Armado"
+                        >
+                    </div>
+                    <div class="col-md-8 order-md-1">
+                        <h3 class="mb-3 text-right-af">Armado</h3>
+                        <p class="text-end">
+                            Aquí se reciben las piezas dobladas y cortadas, se comienza a dar la primer forma, posteriormente continua el proceso de soldadura de las piezas y se montan accesorios como: Ruedas, herrajes, etc.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 offset-md-4">
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-4 order-md-1 text-end mb-2">
+                        <img width="250"
+                             height="250"
+                             class="img-fluid border-radius-10 with-box-shadow"
+                             src="{{ asset('v2/images/acero/02_detallado.png') }}"
+                             alt="Detallado"
+                        >
+                    </div>
+                    <div class="col-md-8 order-md-2">
+                        <h3 class="mb-3 text-left-af">Detallado</h3>
+                        <p>
+                            Una vez armado el mueble se procese a desbaste de soldadura y a eliminar imperfecciones de las láminas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-4 order-md-2 mb-2">
+                        <img width="250"
+                             height="250"
+                             class="img-fluid border-radius-10 with-box-shadow"
+                             src="{{ asset('v2/images/acero/03_pulido.png') }}"
+                             alt="Pulido"
+                        >
+                    </div>
+                    <div class="col-md-8 order-md-1">
+                        <h3 class="mb-3 text-right-af">Pulido</h3>
+                        <p class="text-end">
+                            Finalmente se realiza el proceso de pulido para eliminar imperfecciones en la lámina, otorgando un brillo atractivo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 offset-md-4">
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-4 order-md-1 text-end mb-2">
+                        <img width="250"
+                             height="250"
+                             class="img-fluid border-radius-10 with-box-shadow"
+                             src="{{ asset('v2/images/acero/04_control-calidad.png') }}"
+                             alt="Control de calidad"
+                        >
+                    </div>
+                    <div class="col-md-8 order-md-2">
+                        <h3 class="mb-3 text-left-af">Control de calidad</h3>
+                        <p>
+                            Todo mueble fabricado pasa por un proceso de revisión a detalle, asegurando la calidad del producto.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-4 order-md-2 mb-2">
+                        <img width="250"
+                             height="250"
+                             class="img-fluid border-radius-10 with-box-shadow"
+                             src="{{ asset('v2/images/acero/05_empaque.png') }}"
+                             alt="Empaque"
+                        >
+                    </div>
+                    <div class="col-md-8 order-md-1">
+                        <h3 class="mb-3 text-right-af">Empaque</h3>
+                        <p class="text-end">
+                            El mueble se limpie, detalla y empaca para enviar al almacén de producto terminado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 offset-md-4">
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-4 order-md-1 text-end mb-2">
+                        <img width="250"
+                             height="250"
+                             class="img-fluid border-radius-10 with-box-shadow"
+                             src="{{ asset('v2/images/acero/06_resultado_final.png') }}"
+                             alt="Resultado final"
+                        >
+                    </div>
+                    <div class="col-md-8 order-md-2">
+                        <h3 class="mb-3 text-left-af">Resultado final</h3>
+                        <p class="text-align-left">
+                            Producto de excelente calidad y visualmente atractivo.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

@@ -1,5 +1,4 @@
 <div id="algolia-search-container" class="container-fluid">
-    <div id="backdrop"></div>
     <div class="text-end">
         <button class="toggle-search btn btn-outline-secondary mt-2">
             <i class="bi bi-x-lg"></i>

@@ -91,7 +91,7 @@ class IndexController extends Base
 
             case 'diseno-acero':
                 $meta['titulo']         = 'Fabricación de muebles en acero inoxidable';
-                $meta['descripcion']    = 'Contamos con un departamento de ingeniería vanguardista que se encargará de transformar tus ideas en realidad.';
+                $meta['descripcion']    = 'Creamos y diseñamos muebles de acero inoxidable a la medida, funcionales de acuerdo a tus necesidades..';
                 $meta['imagen']         = asset('images/template/bn-acerca-de.jpg');
                 return  view('frontend_v2.diseno-acero')
                     ->with([

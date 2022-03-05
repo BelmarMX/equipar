@@ -15509,7 +15509,7 @@ var search = (0,instantsearch_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
   indexName: 'products_index',
   searchClient: searchClient
 });
-var url_links = "http://equipar.test/";
+var url_links = "https://www.equi-par.com/";
 var url_asset = url_links + 'storage/productos/';
 search.addWidgets([(0,instantsearch_js_es_widgets__WEBPACK_IMPORTED_MODULE_2__["default"])({
   container: '#algolia-searchbox',

@@ -93,8 +93,8 @@ class CotizacionesController extends BaseDashboard
                 -> where('end', '<=', Carbon::now()->endOfMonth())
                 -> orderBy('id', 'DESC')
                 -> first();
-            $quotes = Session::get('cotizacion');
-            foreach($quotes AS $i => $quote)
+
+            foreach($request -> id AS $quote_id)
             {
                 $producto = Product::join(
                             'products_categories'
@@ -116,7 +116,7 @@ class CotizacionesController extends BaseDashboard
                         ,   'products_subcategories.title AS titleS'
                         ,   'products_subcategories.slug AS slugS'
                     )
-                    -> where('products.id', '=', $quote['id'])
+                    -> where('products.id', '=', $quote_id)
                     -> first();
                 $productos[] = array(
                         'title'             => $producto -> titleP
@@ -127,9 +127,9 @@ class CotizacionesController extends BaseDashboard
                     ,   'subcategoria'      => $producto -> titleS
                     ,   'uri'               => 'https://equi-par.com/productos/'.$producto -> slugC .'/'.$producto -> slugS .'/'. $producto ->slugP
                     ,   'unitario'          => $producto -> precio
-                    ,   'cantidad'          => $quote['qty']
-                    ,   'unitario_promo'    => $quote['price']
-                    ,   'total'             => ($quote['qty'] * $quote['price'])
+                    ,   'cantidad'          => $request -> qty[$quote_id][0]
+                    ,   'unitario_promo'    => $producto -> precio
+                    ,   'total'             => ($request -> qty[$quote_id][0] * $producto -> precio)
                 );
             }
             Mail::to($request -> email, $request -> nombre)

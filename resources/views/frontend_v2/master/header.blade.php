@@ -63,7 +63,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if( Request::is('diseno-acero') ) active @endif" href="{{ route('diseno-acero') }}">Diseño en acero</a>
+                        <a class="nav-link @if( Request::is('fabricacion-muebles-acero-inoxidable') ) active @endif" href="{{ route('diseno-acero') }}">Diseño en acero</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle @if( Request::is('proyectos') || Request::is('portafolio') || Request::is('portafolio/*') ) active @endif"
