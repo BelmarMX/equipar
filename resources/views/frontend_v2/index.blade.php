@@ -23,7 +23,7 @@
                                     ,   $destacado -> producto -> subcategory -> slug
                                     ,   $destacado -> producto -> slug
                                 ])
-                            ,   'image'     => url('storage/productos/vitrina-horizontal-vidrio-curvo-bhs-20-1623176766-thumbnail.jpg')
+                            ,   'image'     => url("storage/productos/{$destacado -> producto -> image_rx}")
                         ])
                     </div>
                 @endforeach
