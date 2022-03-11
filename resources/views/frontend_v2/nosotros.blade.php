@@ -4,18 +4,64 @@
 @extends('frontend_v2.master.app')
 
 @section('content')
+    <section class="container-fluid mt-5 mb-5">
+        <div id="banner__acerca" class="container-fluid mb-5">
+            <div id="banner_acercade" class="carousel slide"
+                 data-bs-ride="carousel"
+                 data-bs-touch="true"
+                 data-bs-interval="5500"
+            >
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img width="1920"
+                             height="520"
+                             class="w-100 img-fluid"
+                             src="{{ asset('v2/images/acerca/equipar-1.jpg') }}"
+                             alt="Acerca de Equipar"
+                        >
+                    </div>
+                    <div class="carousel-item">
+                        <img width="1920"
+                             height="520"
+                             class="w-100 img-fluid"
+                             src="{{ asset('v2/images/acerca/equipar-2.jpg') }}"
+                             alt="Acerca de Equipar"
+                        >
+                    </div>
+                    <div class="carousel-item">
+                        <img width="1920"
+                             height="520"
+                             class="w-100 img-fluid"
+                             src="{{ asset('v2/images/acerca/equipar-3.jpg') }}"
+                             alt="Acerca de Equipar"
+                        >
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#banner_acercade" data-bs-slide="prev">
+                    <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#banner_acercade" data-bs-slide="next">
+                    <i class="bi bi-arrow-right-circle" aria-hidden="true"></i>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </section>
     <main class="container mt-5 mb-5">
-
         <div class="row align-items-center">
             <div class="col-12">
                 <h1 class="mb-3">Identidad</h1>
             </div>
             <div class="col-md-8 order-sm-2 order-md-1">
                 <p>
-                    Se crea en al ciudad de Guadalajara, Jalisco; como una compañía de servicios y equipos en el sector de cocinas industriales, la unión de tres personas: una de ellas con espíritu inversionista, dos con amplia experiencia en el ramo manifestando inquietud emprendedora para ejercer con libertad la toma de decisiones, ideas de innovación y desarrollo empresarial favorables para la industria de alimentos y bebidas.
+                    Se crea en la ciudad de Guadalajara, Jalisco como una compañía especializada para ofrecer tranquilidad, seguridad y eficiencia personalizada para todo tipo de cocinas industriales y profesionales; la unión de tres personas con espíritu emprendedor, dos de ellas con más de 18 años de experiencia y dominio en el área de proyección y diseño crean <strong>EQUI-PAR</strong> empresa sustentada en el talento humano quienes ejercen con libertad la toma de decisiones, ideas de innovación y desarrollo de equipamiento gastronómico.
                 </p>
                 <p>
-                    El mercado demanda servicios expertos y eficientes con capacidad para cubrir necesidades derivadas de la creación de una nueva cocina; en tiempo competitivo, diseño eficaz, adaptación de presupuesto con verdadera capacidad instalada dan como resultado el nacimiento de esta empresa.
+                    El mercado demanda cocinas eficientes y funcionales, y para ello se requiere de gran creatividad en su diseño, conocimiento y análisis detallado del equipamiento a utilizar. Para lograr éxito en el mercado gastronómico es necesario contar con cocinas autónomas con verdadera capacidad instalada, para lograr esto es muy importante visualizar y determinar claramente qué cantidad y tipo de alimentos vamos a elaborar y así establecer un concepto, que haga de nuestra cocina un espacio de trabajo ágil y eficiente para la preparación y transformación de los alimentos.
+                </p>
+                <p>
+                    Acércate con nosotros, aseguramos la eficiencia de tu cocina.
                 </p>
             </div>
             <div class="col-md-4 text-center order-sm-1 order-sm-2">
@@ -24,41 +70,32 @@
         </div>
     </main>
 
-    <section id="partial__servicios" class="container-fluid mb-5">
-        @include('frontend_v2.partials.servicios')
-    </section>
-
-    <div class="container">
+    <div class="container mb-5">
         <div class="row">
             <div class="col-md-4 mb-5">
                 <h2 class="mb-3">Misión</h2>
                 <p>
-                    Somos una empresa con talento y pasión que aseguran el diseño y la selección correcta de los equipos necesarios para la eficiente operación de su cocina.
+                    Asegurar la eficiencia de las cocinas industriales mediante el talento y pasión de nuestros colaboradores quienes entregan soluciones de diseño y asesoría en la selección correcta del equipamiento gastronómico.
                 </p>
             </div>
             <div class="col-md-4 mb-5">
                 <h2 class="mb-3">Visión</h2>
                 <p>
-                    Ser una empresa reconocida por la calidad de sus servicios en el 50% del mercado gastronómico de Jalisco, Guanajuato y Querétaro.
+                    Ser la primera opción en la mente de toda persona que tenga un proyecto gastronómico, contar con la más grande y atractiva sala de exhibición interactiva dentro de las 5 principales ciudades del país, siendo totalmente rentable y autosuficiente.
                 </p>
             </div>
             <div class="col-md-4 mb-5">
                 <h2 class="mb-3">Valores</h2>
-                <ul>
-                    <li>Honestidad.</li>
-                    <li>Constancia.</li>
-                    <li>Confianza.</li>
-                    <li>Calidad.</li>
-                    <li>Trabajo en equipo.</li>
-                    <li>Orientación al servicio.</li>
-                </ul>
+                <p>
+                    Íntegramente trabajamos en equipo enfocados en la orientación al servicio y valor a la persona.
+                </p>
             </div>
 
             <div class="col-md-12">
                 <div class="col-md-4 mx-auto mb-3">
                     <h2 class="mb-3">Cobertura</h2>
                     <p>
-                        Atendemos al sector Hotelero, Restaurantero y de Comedores Industriales en la zona del Bajío: Jalisco, Guanajuato y Querétaro.
+                        Cobertura nacional: Mayor posicionamiento en Zona Bajío y occidente del país.
                     </p>
                 </div>
                 <div class="text-center">
@@ -71,4 +108,37 @@
             </div>
         </div>
     </div>
+
+    <div class="container mb-5">
+        <div class="social-media d-flex justify-content-center align-items-center">
+            <a href="{{ env('SOCIAL_FACEBOOK') }}"
+               target="_blank"
+               data-bs-toggle="tooltip"
+               title="Danos Like en Facebook"
+               class="mx-3"
+            >
+                <i class="bi bi-facebook" style="font-size: 40px"></i>
+            </a>
+            <a href="{{ env('SOCIAL_INSTAGRAM') }}"
+               target="_blank"
+               data-bs-toggle="tooltip"
+               title="Síguenos en Instagram"
+               class="mx-3"
+            >
+                <i class="bi bi-instagram" style="font-size: 40px"></i>
+            </a>
+            <a href="{{ env('SOCIAL_LINKEDIN') }}"
+               target="_blank"
+               data-bs-toggle="tooltip"
+               title="Conectar en LinkedIn"
+               class="mx-3"
+            >
+                <i class="bi bi-linkedin" style="font-size: 40px"></i>
+            </a>
+        </div>
+    </div>
+
+    <section id="partial__servicios" class="container-fluid mb-5">
+        @include('frontend_v2.partials.servicios')
+    </section>
 @endsection

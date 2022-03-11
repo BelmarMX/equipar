@@ -9,6 +9,7 @@
                 <i class="bi bi-telephone"></i> {{ env('TEL_LOCAL_SHOW') }}
             </a>
             <a href="https://api.whatsapp.com/send?phone={{ env('TEL_WHATS_DIAL') }}&text=Para%20brindarte%20un%20mejor%20servicio%20por%20favor%20deja%20tus%20datos%20(Nombre,%20Correo%20electr%C3%B3nico,%20%20y%20asunto)"
+               class="whatsapp"
                data-bs-toggle="tooltip"
                title="Escríbenos un Whats"
                target="_blank"
@@ -42,7 +43,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img width="178" height="60" src="{{ asset('v2/images/layout/equipar-minimal-id.svg') }}" alt="Equi-par ID">
+                <img width="160" height="60" src="{{ asset('v2/images/layout/equipar-minimal-id.svg') }}" alt="Equi-par ID">
+                <small class="text-center" id="eslogan">¡Aseguramos la eficiencia de tu cocina!</small>
             </a>
             <button class="navbar-toggler"
                     type="button"
@@ -61,9 +63,6 @@
                         <a class="nav-link nav-link--home @if( Request::is('/') ) active @endif" aria-current="page" href="/">
                             <i class="bi bi-house-door-fill"></i>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if( Request::is('fabricacion-muebles-acero-inoxidable') ) active @endif" href="{{ route('diseno-acero') }}">Diseño en acero</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle @if( Request::is('proyectos') || Request::is('portafolio') || Request::is('portafolio/*') ) active @endif"
@@ -86,6 +85,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @if( Request::is('servicios') ) active @endif" href="{{ route('servicios') }}">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if( Request::is('fabricacion-muebles-acero-inoxidable') ) active @endif" href="{{ route('diseno-acero') }}">Diseño en acero</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle @if( Request::is('productos') || Request::is('productos/*') ) active @endif"
@@ -121,6 +123,14 @@
             </div>
 
             <div id="search-room">
+                <a href="https://api.whatsapp.com/send?phone={{ env('TEL_WHATS_DIAL') }}&text=Para%20brindarte%20un%20mejor%20servicio%20por%20favor%20deja%20tus%20datos%20(Nombre,%20Correo%20electr%C3%B3nico,%20%20y%20asunto)"
+                   class="whatsapp"
+                   data-bs-toggle="tooltip"
+                   title="Escríbenos un Whats"
+                   target="_blank"
+                >
+                    <i class="bi bi-whatsapp"></i>
+                </a>
                 <button id="toggle-search" class="toggle-search" type="button" aria-label="Muestra la barra de búsqueda">
                     <i class="bi bi-search"></i>
                 </button>

@@ -1,7 +1,7 @@
 <div class="row align-items-center partial__servicios">
     <div class="col-md partial__servicios--cta mb-4">
         ¿Qué <strong>hacemos?</strong>
-        <a href="" class="btn btn-primary">
+        <a href="{{ route('servicios') }}" class="btn btn-primary">
             Servicios
         </a>
     </div>

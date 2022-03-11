@@ -8,29 +8,22 @@
 
     <main class="container">
         <section id="index__productos_destacados" class="mb-5">
-            <h2>Productos destacados</h2>
+            <h2>Equipamiento Gastronómico</h2>
             <div class="row">
-                @foreach($related AS $destacado)
+                @foreach($featured AS $category)
                     <div class="col-md-3 d-flex justify-content-center mb-4">
-                        @include('frontend_v2.partials.product-view', [
-                                'id'        => $destacado -> producto -> id
-                            ,   'title'     => $destacado -> producto -> title
-                            ,   'model'     => $destacado -> producto -> modelo
-                            ,   'tag'       => $destacado -> producto -> category -> title
-                            ,   'tag_link'  => route('productos-category-list', $destacado -> producto -> category -> slug)
-                            ,   'route'     => route('productos-open', [
-                                        $destacado -> producto -> category -> slug
-                                    ,   $destacado -> producto -> subcategory -> slug
-                                    ,   $destacado -> producto -> slug
-                                ])
-                            ,   'image'     => url("storage/productos/{$destacado -> producto -> image_rx}")
+                        @include('frontend_v2.partials.product-category-view', [
+                                'position'  => str_pad($loop -> index + 1, 2, '0', STR_PAD_LEFT)
+                            ,   'title'     => $category -> title
+                            ,   'route'     => route('productos-category-list', $category -> slug)
+                            ,   'image'     => url("storage/productos-categorias/{$category -> image_rx}")
                         ])
                     </div>
                 @endforeach
             </div>
             <div class="text-end">
-                <a href="" class="btn btn-primary">
-                    Ir a productos
+                <a href="{{ route('productos') }}" class="btn btn-primary">
+                    Más categorías
                 </a>
             </div>
         </section>
@@ -41,9 +34,9 @@
                     <h1 id="home_h1">Acerca de <strong>Equi-Par</strong></h1>
                     <div class="text-end">
                         <p class="text-1-1rem">
-                            Aseguramos la eficiencia de tu cocina, con servicio profesional y personalizado a través de la experiencia, tiempos de respuesta y talento de nuestros colaboradores.
+                            Aseguramos la eficiencia de las cocinas industriales, con servicio profesional y personalizado a través de la experiencia, tiempos de respuesta y talento de nuestros colaboradores.
                         </p>
-                        <a href="" class="btn btn-primary">
+                        <a href="{{ route('nosotros') }}" class="btn btn-primary">
                             Conócenos
                         </a>
                     </div>
@@ -69,9 +62,9 @@
                         <div class="index__nosotros--description">
                             <strong>Más de 19 años de experiencia</strong>
                             <p>
-                                Calidad de servicio.<br>
-                                Atractivos tiempos de respuesta.<br>
-                                Adaptación de presupuestos.
+                                Desarrollo de proyectos.<br>
+                                Dominio de flujos de operación.<br>
+                                Equipamiento gastronómico.
                             </p>
                         </div>
                     </div>
@@ -84,7 +77,7 @@
                         <div class="index__nosotros--description">
                             <strong>Asesores profesionales para el sector gastronómico</strong>
                             <p>
-                                Restaurantes, Hoteles, Comedores de empleados, Carnicerías, Reposterías, Bares, Fast food, Empacadoras y más.
+                                Restaurantes, Hoteles, Comedores de empleados, Fast food, Dark kitchens, Reposterías, Bares y más.
                             </p>
                         </div>
                     </div>
@@ -97,7 +90,7 @@
                         <div class="index__nosotros--description">
                             <strong>Expertos en soluciones integrales</strong>
                             <p>
-                                Asesoría, Diseño, Equipamiento, Fabricación, Instalación y Capacitación.
+                                Nos especializamos en ofrecer seguridad, tranquilidad y eficiencia personalizada a las cocinas industriales y profesionales.
                             </p>
                         </div>
                     </div>
@@ -112,7 +105,7 @@
 
     <div class="container">
         <section id="index__hotspot" class="mb-5">
-            <h2>Partes de una cocina industrial</h2>
+            <h2>Áreas de una cocina industrial</h2>
             <div class="index__hotspot__background">
                 <div class="background-box"></div>
                 <div class="index__hotspot--img">
@@ -204,40 +197,15 @@
                                 ,   'link'  => 'https://www.continental.com/en/'
                             ])
                             @include('frontend_v2.partials.clientes-anchor', [
-                                    'name'  => 'Buffalo Wild Wings'
-                                ,   'image' => asset('v2/images/clients/buffalo-wild-wings.png')
-                                ,   'link'  => 'https://www.buffalowildwings.com.mx/'
-                                ,   'dark'  => TRUE
-                            ])
-                            @include('frontend_v2.partials.clientes-anchor', [
-                                    'name'  => 'Hyatt Ziva'
-                                ,   'image' => asset('v2/images/clients/hyatt-ziva.webp')
-                                ,   'link'  => 'https://www.hyatt.com/en-US/hotel/mexico/hyatt-ziva-puerto-vallarta/pvrif'
-                            ])
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row gx-1 justify-content-center align-items-center">
-                            @include('frontend_v2.partials.clientes-anchor', [
                                     'name'  => 'Atlas Colomos'
                                 ,   'image' => asset('v2/images/clients/atlas-colomos.png')
                                 ,   'link'  => 'https://colomos.atlas.com.mx/'
                                 ,   'dark'  => TRUE
                             ])
                             @include('frontend_v2.partials.clientes-anchor', [
-                                    'name'  => 'Casa Valadez'
-                                ,   'image' => asset('v2/images/clients/casa-valadez.webp')
-                                ,   'link'  => 'https://www.casavaladez.com/'
-                            ])
-                            @include('frontend_v2.partials.clientes-anchor', [
-                                    'name'  => 'Hirotec'
-                                ,   'image' => asset('v2/images/clients/hirotec.png')
-                                ,   'link'  => 'https://www.hirotec.co.jp/eng/group/mexico.html'
-                            ])
-                            @include('frontend_v2.partials.clientes-anchor', [
-                                    'name'  => 'Mariscos El Burritas'
-                                ,   'image' => asset('v2/images/clients/mariscos-el-burritas.jpeg')
-                                ,   'link'  => 'https://www.facebook.com/mariscoselburritas/'
+                                    'name'  => 'Grupo Vidanta'
+                                ,   'image' => asset('v2/images/clients/grupo-vidanta.png')
+                                ,   'link'  => 'https://www.grupovidanta.com/'
                             ])
                         </div>
                     </div>
@@ -249,39 +217,39 @@
                                ,   'link'  => 'https://restaurante-save.mx/'
                            ])
                             @include('frontend_v2.partials.clientes-anchor', [
-                                    'name'  => 'Sushi Express'
-                                ,   'image' => asset('v2/images/clients/sushi-express.svg')
-                                ,   'link'  => 'https://sushiexpress.com.mx/#/'
+                                    'name'  => 'Panamá Pastelerías'
+                                ,   'image' => asset('v2/images/clients/panama.png')
+                                ,   'link'  => 'https://panama.com.mx/'
                             ])
                             @include('frontend_v2.partials.clientes-anchor', [
-                                    'name'  => 'Grupo Vidanta'
-                                ,   'image' => asset('v2/images/clients/grupo-vidanta.png')
-                                ,   'link'  => 'https://www.grupovidanta.com/'
+                                    'name'  => 'Buffalo Wild Wings'
+                                ,   'image' => asset('v2/images/clients/buffalo-wild-wings.png')
+                                ,   'link'  => 'https://www.buffalowildwings.com.mx/'
+                                ,   'dark'  => TRUE
                             ])
                             @include('frontend_v2.partials.clientes-anchor', [
-                                    'name'  => 'Bruna'
-                                ,   'image' => asset('v2/images/clients/bruna.png')
-                                ,   'link'  => 'https://www.bruna.com.mx/bruna.php'
+                                    'name'  => 'Casa Valadez'
+                                ,   'image' => asset('v2/images/clients/casa-valadez.webp')
+                                ,   'link'  => 'https://www.casavaladez.com/'
                             ])
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="row gx-1 justify-content-center align-items-center">
                             @include('frontend_v2.partials.clientes-anchor', [
-                                    'name'  => 'Ultra Laboratorios'
-                                ,   'image' => asset('v2/images/clients/ultra-labs.png')
-                                ,   'link'  => 'https://ultralaboratorios.com.mx/en/home/'
+                                    'name'  => 'Sushi Express'
+                                ,   'image' => asset('v2/images/clients/sushi-express.svg')
+                                ,   'link'  => 'https://sushiexpress.com.mx/#/'
                             ])
                             @include('frontend_v2.partials.clientes-anchor', [
-                                    'name'  => 'Sinergia Alimenta'
-                                ,   'image' => asset('v2/images/clients/sinergia.svg')
-                                ,   'link'  => 'http://www.sinergiaalimenta.com/'
-                                ,   'dark'  => TRUE
+                                    'name'  => 'Hyatt Ziva'
+                                ,   'image' => asset('v2/images/clients/hyatt-ziva.webp')
+                                ,   'link'  => 'https://www.hyatt.com/en-US/hotel/mexico/hyatt-ziva-puerto-vallarta/pvrif'
                             ])
                             @include('frontend_v2.partials.clientes-anchor', [
-                                    'name'  => 'El Ancladero'
-                                ,   'image' => asset('v2/images/clients/elancladero.jpeg')
-                                ,   'link'  => 'https://www.facebook.com/ElAncladero/'
+                                    'name'  => 'Bruna'
+                                ,   'image' => asset('v2/images/clients/bruna.png')
+                                ,   'link'  => 'https://www.bruna.com.mx/bruna.php'
                             ])
                             @include('frontend_v2.partials.clientes-anchor', [
                                     'name'  => 'Pachinos'
@@ -293,24 +261,86 @@
                     <div class="carousel-item">
                         <div class="row gx-1 justify-content-center align-items-center">
                             @include('frontend_v2.partials.clientes-anchor', [
-                                    'name'  => 'Panamá Pastelerías'
-                                ,   'image' => asset('v2/images/clients/panama.png')
-                                ,   'link'  => 'https://panama.com.mx/'
+                                    'name'  => 'Ultra Laboratorios'
+                                ,   'image' => asset('v2/images/clients/ultra-labs.png')
+                                ,   'link'  => 'https://ultralaboratorios.com.mx/en/home/'
                             ])
                             @include('frontend_v2.partials.clientes-anchor', [
-                                    'name'  => 'Cooper Standard'
-                                ,   'image' => asset('v2/images/clients/cooper-standard.svg')
-                                ,   'link'  => 'http://www.cooperstandard.com/'
+                                    'name'  => 'El Ancladero'
+                                ,   'image' => asset('v2/images/clients/elancladero.jpeg')
+                                ,   'link'  => 'https://www.facebook.com/ElAncladero/'
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Mariscos El Burritas'
+                                ,   'image' => asset('v2/images/clients/mariscos-el-burritas.jpeg')
+                                ,   'link'  => 'https://www.facebook.com/mariscoselburritas/'
                             ])
                             @include('frontend_v2.partials.clientes-anchor', [
                                     'name'  => 'ITT'
                                 ,   'image' => asset('v2/images/clients/itt.png')
                                 ,   'link'  => 'https://www.itt.com/home'
                             ])
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row gx-1 justify-content-center align-items-center">
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Cooper Standard'
+                                ,   'image' => asset('v2/images/clients/cooper-standard.svg')
+                                ,   'link'  => 'http://www.cooperstandard.com/'
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Sinergia Alimenta'
+                                ,   'image' => asset('v2/images/clients/sinergia.svg')
+                                ,   'link'  => 'http://www.sinergiaalimenta.com/'
+                                ,   'dark'  => TRUE
+                            ])
+                            @include('frontend_v2.partials.clientes-anchor', [
+                                    'name'  => 'Hirotec'
+                                ,   'image' => asset('v2/images/clients/hirotec.png')
+                                ,   'link'  => 'https://www.hirotec.co.jp/eng/group/mexico.html'
+                            ])
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section class="mb-5">
+            <h3>Algunos de nuestros proyectos</h3>
+            <a href="{{ route('portafolio') }}">
+                <img width="{{ env('BANNER_WIDTH') }}"
+                     height="{{ env('BANNER_HEIGHT') }}"
+                     class="img-fluid w-100 border-radius-txb"
+                     src="{{ asset('v2/images/index/algunos-proyectos.jpg') }}"
+                     alt="Algunos de nuestros proyectos"
+                >
+            </a>
+        </section>
+
+        <section class="mb-5">
+            <h3>Algunos de nuestros planos</h3>
+            <a href="{{ route('servicios') }}">
+                <img width="{{ env('BANNER_WIDTH') }}"
+                     height="{{ env('BANNER_HEIGHT') }}"
+                     class="img-fluid w-100"
+                     src="{{ asset('v2/images/index/algunos-planos.jpg') }}"
+                     alt="Algunos de nuestros planos"
+                >
+            </a>
+        </section>
+
+        <section class="mb-5">
+            <h3>Algunos de nuestros renders</h3>
+            <a href="{{ route('proyectos') }}">
+                <img width="{{ env('BANNER_WIDTH') }}"
+                     height="{{ env('BANNER_HEIGHT') }}"
+                     class="img-fluid w-100 border-radius-bxt"
+                     src="{{ asset('v2/images/index/algunos-renders.jpg') }}"
+                     alt="Algunos de nuestros renders"
+                >
+            </a>
         </section>
 
         <section id="index__marcas">

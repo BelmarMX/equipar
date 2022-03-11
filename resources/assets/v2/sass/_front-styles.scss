@@ -126,12 +126,31 @@ header
 	.navbar{
 		@include ease();
 		@include boxshadow();
+		padding-top: 5px;
+		padding-bottom: 5px;
+
+		#eslogan{
+			display: block;
+			font-size: .95rem;
+			background: $primary_color;
+			padding: 1px 10px;
+			color: $white;
+			font-weight: 400;
+			letter-spacing: .015rem;
+			border-radius: 18px 0;
+			@include media-breakpoint-down(md)
+			{
+				display: none;
+			}
+		}
 	}
 
 	#main_menu{
 		.navbar-nav{
 			align-items: center;
 			.nav-item{
+				margin-right: 2px;
+				margin-left: 2px;
 				.nav-link{
 					text-transform: uppercase;
 					font-weight: $font-medium;
@@ -158,23 +177,24 @@ header
 
 		@include media-breakpoint-down(md)
 		{
-			width: 100%;
+			width: fit-content;
+			order: -1;
 		}
 		button{
 			background: none;
 			border: none;
 		}
-
 		#toggle-search,
 		a{
 			color: $primary_color;
 			margin: 0 5px;
 			i{
-				font-size: 18px;
+				font-size: 22px;
 			}
 			&:hover{
 				color: $gold_equipar
 			}
+
 		}
 
 		#link_quotation{
@@ -198,6 +218,9 @@ header
 					display: none;
 				}
 			}
+		}
+		.whatsapp{
+			color: darken($success, 10%);
 		}
 	}
 
@@ -322,6 +345,12 @@ h1, h2, h3, h4, h5, h6{
 .border-radius-10{
 	border-radius: 10px;
 }
+.border-radius-txb{
+	border-radius: 15rem 0;
+}
+.border-radius-bxt{
+	border-radius: 0 15rem;
+}
 .with-box-shadow{
 	@include boxshadow();
 }
@@ -387,7 +416,7 @@ h1, h2, h3, h4, h5, h6{
 	position: fixed;
 	right: 16px;
 	bottom: 8px;
-	z-index: 1000;
+	z-index: 1003;
 
 	#btn__contactanos{
 		background: $gold_equipar;
@@ -399,7 +428,7 @@ h1, h2, h3, h4, h5, h6{
 		height: 50px;
 		padding: 0;
 		align-items: center;
-		z-index: 1002;
+		z-index: 1005;
 		position: relative;
 		@include boxshadow();
 		div{

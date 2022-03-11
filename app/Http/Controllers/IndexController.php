@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\ProductCategories;
 use Carbon\Carbon
 ,   Illuminate\Support\Facades\Route
 ;
@@ -43,6 +44,12 @@ class IndexController extends Base
                     -> limit(4)
 					-> get();
 
+                $featured   = ProductCategories::where('title', 'LIKE', '%coccion%')
+                    -> orWhere('title', 'LIKE', '%refrigeracion%')
+                    -> orWhere('title', 'LIKE', '%acero inoxidable%')
+                    -> orWhere('title', 'LIKE', '%utensilios%')
+                    -> get();
+
 				$meta['titulo']			= 'Equipamiento de cocinas industriales';
 				$meta['descripcion']	= 'Servicios expertos y eficientes con capacidad para cubrir necesidades derivadas de la creación de una nueva cocina industrial; en tiempo competitivo, diseño eficaz y adaptación de presupuesto';
 				$meta['imagen']			= url( 'storage/' . env('BANNER_FOLDER') . $banners -> first() -> image );
@@ -53,6 +60,7 @@ class IndexController extends Base
                         ,   'promos'	=> $promos
                         ,   'articles'	=> $articles
                         ,   'related'	=> $related
+                        ,   'featured'  => $featured
                         ,   'menu_cat'  => $this -> viewProducCategories()
                     ]);
 
