@@ -45,7 +45,7 @@
 
                 <div class="col-12">
                     <div class="table-responsive">
-                        {{ $entries -> render() }}
+                        {{ $articles -> render() }}
                     </div>
                 </div>
             </div>

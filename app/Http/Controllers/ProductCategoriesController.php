@@ -77,7 +77,7 @@ class ProductCategoriesController extends BaseDashboard
         $subcategories  = ProductSubcategories::where('category_id', $category -> id)
             -> orderBy('title', 'ASC')-> get();
 
-        $order_by_raw = "";
+        $order_by_raw = "products.id DESC";
         if( $category -> id ==  1)
         {
             $order_by_raw = "FIELD(products.marca, 'Equi-par') DESC";
