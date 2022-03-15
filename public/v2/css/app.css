@@ -18307,6 +18307,38 @@ textarea.form-control-lg {
           animation-timing-function: ease-out;
 }
 
+@-webkit-keyframes pulse {
+  0% {
+    transform: rotate(15deg) scale(1) translateX(0px) translateY(0px);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.1) translateX(1px) translateY(3px);
+  }
+  100% {
+    transform: rotate(15deg) scale(1) translateX(0px) translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: rotate(15deg) scale(1) translateX(0px) translateY(0px);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.1) translateX(1px) translateY(3px);
+  }
+  100% {
+    transform: rotate(15deg) scale(1) translateX(0px) translateY(0px);
+  }
+}
+.pulse {
+  -webkit-animation: pulse 1000ms;
+          animation: pulse 1000ms;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
 /* --- --- --- --- --- --- --- --- --- --- ---
 | GENERAL BODY AND LINKS
 --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
@@ -18798,20 +18830,54 @@ h1:after, .h1:after, h2:after, .h2:after, h3:after, .h3:after, h4:after, .h4:aft
   background: #F2F2F2;
   padding: 1rem;
   margin-bottom: 15px;
-  border-radius: 40px;
-  box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.3);
 }
 #algolia-search-container #algolia-searchbox .ais-SearchBox-form {
-  background: #F2F2F2;
+  background: transparent;
+  height: 3.2rem;
+}
+#algolia-search-container #algolia-searchbox .ais-SearchBox-form:before {
+  background: transparent url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23bfbfbf%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%2211%22%20r%3D%228%22%3E%3C%2Fcircle%3E%3Cline%20x1%3D%2221%22%20y1%3D%2221%22%20x2%3D%2216.65%22%20y2%3D%2216.65%22%3E%3C%2Fline%3E%3C%2Fsvg%3E) no-repeat 0 0;
+  background-size: cover;
+  height: 1.5rem;
+  width: 1.5rem;
+  top: 42%;
 }
 #algolia-search-container #algolia-searchbox .ais-SearchBox-form .ais-SearchBox-input {
-  border-radius: 20px;
+  border-radius: 6px;
   font-size: 1.12rem;
   font-weight: 300;
   color: #FF0000;
+  padding-left: 3rem;
+  box-shadow: inset 0 1px 4px 0 #bfbfbf;
+  border-color: #d9d9d9;
+}
+#algolia-search-container #algolia-searchbox .ais-SearchBox-form .ais-SearchBox-input::-moz-placeholder {
+  color: #bfbfbf;
+}
+#algolia-search-container #algolia-searchbox .ais-SearchBox-form .ais-SearchBox-input:-ms-input-placeholder {
+  color: #bfbfbf;
+}
+#algolia-search-container #algolia-searchbox .ais-SearchBox-form .ais-SearchBox-input::placeholder {
+  color: #bfbfbf;
 }
 #algolia-search-container #algolia-searchbox .ais-SearchBox-form .ais-SearchBox-input:focus {
-  border-color: #ba8932;
+  border-color: #bfbfbf;
+}
+#algolia-search-container #algolia-searchbox .ais-SearchBox-form:after {
+  content: "Buscar";
+  background: #e60000;
+  color: #FFFFFF;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  font-weight: 600;
+  font-size: 1.15rem;
+  text-transform: uppercase;
 }
 #algolia-search-container #algolia-hits {
   /* width */
@@ -19060,6 +19126,7 @@ h1#home_h1:after, #home_h1.h1:after {
   width: 36px;
   height: 36px;
   color: #FFFFFF;
+  z-index: 1000;
   transition: all 0.5s ease-in-out;
 }
 .product__card .product__card__wrap .product__card__behind .product__card__front .product__card__front--number i,
@@ -19083,6 +19150,19 @@ h1#home_h1:after, #home_h1.h1:after {
   align-items: center;
   justify-content: center;
 }
+.product__card .product__card__wrap .product__card__behind .product__card__front a .product__card__front--price {
+  position: absolute;
+  display: block;
+  text-align: right;
+  top: 0;
+  background: rgba(213, 172, 99, 0.7);
+  color: #FFFFFF;
+  padding: 5px;
+  font-size: 0.95rem;
+  width: 100%;
+  font-weight: 300;
+  border-radius: 6px 6px 0 0;
+}
 .product__card .product__card__wrap .product__card__behind .product__card__front a .product__card__front--model {
   position: absolute;
   display: block;
@@ -19093,6 +19173,12 @@ h1#home_h1:after, #home_h1.h1:after {
   color: #FFFFFF;
   text-transform: uppercase;
   bottom: 0;
+  line-height: 100%;
+}
+.product__card .product__card__wrap .product__card__behind .product__card__front a .product__card__front--brand {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 300;
 }
 .product__card .product__card__wrap .product__card__behind .product__card__front:hover {
   transform: scale(1.015);

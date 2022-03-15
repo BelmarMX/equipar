@@ -6,7 +6,7 @@
     </div>
     <div class="p-md-3">
         <div class="row">
-            <div class="col-md-12 position-sticky top-0" id="powered-by">
+            <div class="col-md-12 position-sticky top-0 p-0" id="powered-by">
                 <div id="algolia-searchbox"></div>
             </div>
             <div class="col-md-9 order-md-2">

@@ -42,8 +42,13 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                <img width="160" height="60" src="{{ asset('v2/images/layout/equipar-minimal-id.svg') }}" alt="Equi-par ID">
+            <a class="navbar-brand mb-1" href="/">
+                <img width="150"
+                     height="50"
+                     src="{{ asset('v2/images/layout/equipar-minimal-id.svg') }}"
+                     alt="Equi-par ID"
+                     class="img-fluid mb-1"
+                >
                 <small class="text-center" id="eslogan">¡Aseguramos la eficiencia de tu cocina!</small>
             </a>
             <button class="navbar-toggler"
@@ -76,7 +81,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="proyectos__dropdown">
                             <li>
-                                <a class="dropdown-item" href="{{ route('proyectos') }}">Servicios</a>
+                                <a class="dropdown-item" href="{{ route('proyectos') }}">Desarrollo de proyectos</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('portafolio') }}">Portafolio</a>

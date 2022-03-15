@@ -154,6 +154,61 @@ class ProductController extends BaseDashboard
                 ,   'menu_cat'      => $this -> viewProducCategories()
 			]);
 	}
+
+    public function brands($brand)
+    {
+        $brand          = urldecode($brand);
+        $promos         = $this -> viewPromos();
+        $entry          = Product::select(
+            '*'
+            ,   'products.id                    AS idP'
+            ,   'products.title                 AS titleP'
+            ,   'products.slug                  AS slugP'
+            ,   'products.image                 AS imageP'
+            ,   'products.image_rx              AS image_rxP'
+            ,   'products_categories.id         AS idC'
+            ,   'products_categories.title      AS titleC'
+            ,   'products_categories.slug       AS slugC'
+            ,   'products_subcategories.id      AS idS'
+            ,   'products_subcategories.title   AS titleS'
+            ,   'products_subcategories.slug    AS slugS'
+        )
+            -> join(
+                    'products_categories'
+                ,   'products.category_id', '=', 'products_categories.id'
+            )
+            -> join(
+                    'products_subcategories'
+                ,   'products.subcategory_id', '=', 'products_subcategories.id'
+            )
+            -> leftjoin('promociones_productos', function($join)
+            {
+                $promos    = Promociones::where('start', '>=' , Carbon::now()->startOfMonth())
+                    -> where('end', '<=', Carbon::now()->endOfMonth())
+                    -> orderBy('id', 'DESC')
+                    -> first();
+                $promosID   = isset($promos -> id) ? $promos -> id : 0;
+                $join -> on('producto_id', '=', 'products.id')
+                    -> where('promocion_id', '=', $promosID);
+            })
+            -> orderBy('idP', 'DESC')
+            -> where('products.marca', 'LIKE', "%$brand%")
+            -> paginate(12);
+
+
+        $meta['titulo']         = "Productos de la marca ".ucfirst($brand);
+        $meta['descripcion']    = "Listado de productos de la marca $brand";
+        $meta['imagen']         = asset('v2/images/samples/banner.jpg');
+        return view('frontend_v2.productos-marcas')
+            ->with([
+                    'meta'          => $meta
+                ,   'banners'       => 0
+                ,   'promos'        => $promos
+                ,   'brand'         => ucfirst($brand)
+                ,   'entries'       => $entry
+                ,   'menu_cat'      => $this -> viewProducCategories()
+            ]);
+    }
 	/* --- --- --- --- --- --- --- --- --- ---
 	| Search
 	--- --- --- --- --- --- --- --- --- --- */

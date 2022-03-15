@@ -27,6 +27,8 @@ Route::group(['prefix' => 'productos'], function () {
 	Route::get('{slug_category}/{slug_subcategory}/{slug_product}', 'ProductController@view')
 		->name('productos-open');
 });
+Route::get('marcas/{brand}', 'ProductController@brands')
+    -> name('brands');
 Route::post('search', 'ProductController@search')
 	-> name('search');
 

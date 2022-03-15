@@ -6,26 +6,15 @@
 @section('content')
     <div class="container-fluid mb-5">
         @include('frontend_v2.partials.banner-single', [
-                'slide'         => asset('v2/images/samples/banner_productos.jpg')
-            ,   'slide_alt'     => $subcat -> title
+                'slide'         => asset('v2/images/samples/banner-promos.jpg')
+            ,   'slide_alt'     => $brand
             ,   'summary'       => TRUE
-            ,   'title'         => "<strong>{$subcat -> title}</strong>"
+            ,   'title'         => "<strong>{$brand}</strong>"
             ,   'h1'            => TRUE
         ])
     </div>
 
     <main class="container">
-        @include('frontend_v2.partials.scroll-categories', [
-                'tag_title'     => $category -> title
-            ,   'todas_link'    => route('productos-category-list', $category -> slug)
-            ,   'categories'    => array_map(function($subcategory) use($category) {
-                return [
-                        $subcategory['title']
-                    ,   route('productos-category', [$category -> slug, $subcategory['slug']])
-                ];
-            }, $subcategories -> toArray() )
-        ])
-
         <section>
             <div class="row justify-content-center">
                 @forelse($entries AS $product)
@@ -34,8 +23,6 @@
                                 'id'        => $product -> idP
                             ,   'title'     => $product -> titleP
                             ,   'model'     => $product -> modelo
-                            ,   'brand'     => $product -> marca
-                            ,   'price'     => $product -> precio
                             ,   'tag'       => $product -> titleS
                             ,   'tag_link'  => route('productos-category', [$product -> slugC, $product -> slugS])
                             ,   'route'     => route('productos-open', [$product -> slugC, $product -> slugS, $product -> slugP])
@@ -64,7 +51,3 @@
         </section>
     </main>
 @endsection
-
-@push('customJs')
-    <script src="{{ asset('v2/js/hints.js') }}" async defer></script>
-@endpush

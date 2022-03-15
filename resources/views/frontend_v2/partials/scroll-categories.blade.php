@@ -1,5 +1,11 @@
 <div class="scroll_categories">
-    <div class="scroll_categories--tag"><i class="bi bi-mouse-fill"></i> {{ $tag_title }}</div>
+    <div id="scroll_categories--tag"
+         class="scroll_categories--tag"
+         data-bs-toggle="tooltip" title="Desliza la barra dorada para ver más items"
+         data-bs-trigger="click"
+    >
+        <i class="bi bi-mouse-fill pulse"></i> {{ $tag_title }}
+    </div>
     <ul class="scroll_categories--list">
         <li>
             <a href="{{ $todas_link  }}" class="active">Todas</a>

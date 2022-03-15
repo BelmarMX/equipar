@@ -50,9 +50,10 @@
 
         <script src="{{ asset('v2/js/app.js') }}"></script>
         <script src="{{ asset('v2/js/quotator.js') }}"></script>
+        @stack('customJs')
+
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CArray.prototype.includes%2CPromise%2CObject.assign%2CObject.entries"></script>
         <script src="{{ asset('v2/js/algolia.js') }}"></script>
-        @stack('customJs')
 
         <link rel="stylesheet" href="{{ asset('v2/css/swal2.css') }}">
     </body>

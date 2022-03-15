@@ -67,6 +67,7 @@
 					width: 36px;
 					height: 36px;
 					color: $white;
+					z-index: 1000;
 					@include ease();
 					i{
 						color: $white;
@@ -86,8 +87,18 @@
 					height: 100%;
 					align-items: center;
 					justify-content: center;
-					.product__card__front--image{
-
+					.product__card__front--price{
+						position: absolute;
+						display: block;
+						text-align: right;
+						top: 0;
+						background: rgba($gold_equipar, .7);
+						color: $white;
+						padding: 5px;
+						font-size: .95rem;
+						width: 100%;
+						font-weight: $font-light;
+						border-radius: 6px 6px 0 0;
 					}
 					.product__card__front--model{
 						position: absolute;
@@ -99,6 +110,12 @@
 						color: $white;
 						text-transform: uppercase;
 						bottom: 0;
+						line-height: 100%;
+					}
+					.product__card__front--brand{
+						display: block;
+						font-size: .8rem;
+						font-weight: $font-light;
 					}
 				}
 

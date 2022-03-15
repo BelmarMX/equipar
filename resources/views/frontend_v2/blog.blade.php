@@ -44,7 +44,9 @@
                 @endforeach
 
                 <div class="col-12">
-                    {!! $articles -> render() !!}
+                    <div class="table-responsive">
+                        {{ $entries -> render() }}
+                    </div>
                 </div>
             </div>
         </section>

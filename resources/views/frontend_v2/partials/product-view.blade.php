@@ -26,7 +26,13 @@
                          src="{{ $image }}"
                          alt="{{ $title }}"
                     >
-                    <span class="product__card__front--model"><strong>Mod:</strong> {{ $model }}</span>
+                    <span class="product__card__front--price">${{ number_format($price, 2) }} <small>MXN</small></span>
+                    <span class="product__card__front--model">
+                        <strong>Mod:</strong> {{ $model }}
+                        @isset($brand)
+                            <small class="product__card__front--brand">{{ $brand }}</small>
+                        @endisset
+                    </span>
                 </a>
             </div>
         </div>

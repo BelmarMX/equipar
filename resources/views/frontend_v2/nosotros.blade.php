@@ -36,6 +36,22 @@
                              alt="Acerca de Equipar"
                         >
                     </div>
+                    <div class="carousel-item">
+                        <img width="1920"
+                             height="520"
+                             class="w-100 img-fluid"
+                             src="{{ asset('v2/images/acerca/equipar-4.jpg') }}"
+                             alt="Acerca de Equipar"
+                        >
+                    </div>
+                    <div class="carousel-item">
+                        <img width="1920"
+                             height="520"
+                             class="w-100 img-fluid"
+                             src="{{ asset('v2/images/acerca/equipar-5.jpg') }}"
+                             alt="Acerca de Equipar"
+                        >
+                    </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#banner_acercade" data-bs-slide="prev">
                     <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>

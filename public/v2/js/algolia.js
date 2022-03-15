@@ -15515,6 +15515,7 @@ search.addWidgets([(0,instantsearch_js_es_widgets__WEBPACK_IMPORTED_MODULE_2__["
   container: '#algolia-searchbox',
   placeholder: 'Busca por producto, categoría, subcategoría o marca',
   showLoadingIndicator: true,
+  showSubmit: true,
   templates: {
     showReset: true,
     loadingIndicator: 'Buscando...'

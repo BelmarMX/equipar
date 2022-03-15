@@ -76,6 +76,21 @@ class ProductCategoriesController extends BaseDashboard
             -> get();
         $subcategories  = ProductSubcategories::where('category_id', $category -> id)
             -> orderBy('title', 'ASC')-> get();
+
+        $order_by_raw = "";
+        if( $category -> id ==  1)
+        {
+            $order_by_raw = "FIELD(products.marca, 'Equi-par') DESC";
+        }
+        elseif( $category -> id ==  2 || $category -> id ==  3)
+        {
+            $order_by_raw = "FIELD(products.marca, 'Migali') DESC";
+        }
+        elseif( $category -> id ==  4)
+        {
+            $order_by_raw = "FIELD(products.marca, 'CONCASSE') DESC";
+        }
+
         $entries    = Product::select(
                 '*'
             ,   'products.id                    AS idP'
@@ -109,6 +124,7 @@ class ProductCategoriesController extends BaseDashboard
                     -> where('promocion_id', '=', $promosID);
             })
             -> where('products_categories.slug', '=', $slug)
+            -> orderByRaw($order_by_raw)
             -> paginate(18);
 
         $meta['titulo']         = $category -> title;
