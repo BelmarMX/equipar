@@ -23,6 +23,8 @@
                                 'id'        => $product -> idP
                             ,   'title'     => $product -> titleP
                             ,   'model'     => $product -> modelo
+                            ,   'brand'     => $product -> brand
+                            ,   'price'     => $product -> precio
                             ,   'tag'       => $product -> titleS
                             ,   'tag_link'  => route('productos-category', [$product -> slugC, $product -> slugS])
                             ,   'route'     => route('productos-open', [$product -> slugC, $product -> slugS, $product -> slugP])
