@@ -6,10 +6,10 @@
 @section('content')
     <div class="container-fluid mb-5">
         @include('frontend_v2.partials.banner-single', [
-                'slide'         => asset('v2/images/samples/banner-promos.jpg')
+                'slide'         => asset('v2/images/samples/banner_productos.jpg')
             ,   'slide_alt'     => $brand
             ,   'summary'       => TRUE
-            ,   'title'         => "<strong>{$brand}</strong>"
+            ,   'title'         => "Productos marca <strong>{$brand}</strong>"
             ,   'h1'            => TRUE
         ])
     </div>
