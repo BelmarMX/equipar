@@ -137,7 +137,7 @@ document
             let product_stored  = JSON.parse(localStorage.getItem('products'))
 
             product_stored  = product_stored.map( stored_product => {
-                if( stored_product.id == product_id )
+                if( parseInt(stored_product.id) === product_id )
                 {
                     stored_product.cant = cant
                 }
@@ -159,9 +159,9 @@ document
             let product_stored  = JSON.parse(localStorage.getItem('products'))
 
             product_stored  = product_stored.filter( stored_product => {
-                if( stored_product.id != product_id )
+                if( parseInt(stored_product.id) !== product_id )
                 {
-                    console.log(stored_product.id, product_id, stored_product.id !== product_id )
+                    console.log(stored_product.id, product_id, parseInt(stored_product.id) !== product_id )
                     return stored_product
                 }
             })
