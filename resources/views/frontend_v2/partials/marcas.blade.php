@@ -1,4 +1,4 @@
-<div class="row gx-5 gy-4 justify-content-center align-items-center">
+<div class="marcas-wrap row justify-content-center align-items-center">
     <a href="{{ route('brands', 'migali') }}"
        class="col"
        data-bs-toggle="tooltip"

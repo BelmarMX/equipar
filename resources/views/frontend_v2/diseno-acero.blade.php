@@ -6,7 +6,7 @@
 @section('content')
     <div class="container-fluid mb-5">
         @include('frontend_v2.partials.banner-single', [
-                'slide'         => asset('v2/images/samples/banner-acero.jpg')
+                'slide'         => asset('v2/images/samples/banner_acero_inox.jpg')
             ,   'slide_alt'     => $meta['titulo']
             ,   'summary'       => TRUE
             ,   'title'         => "<strong>{$meta['titulo']}</strong>"
@@ -209,6 +209,14 @@
                         <p class="text-align-left">
                             Producto de excelente calidad y visualmente atractivo.
                         </p>
+                    </div>
+                    <div class="col-md-12 order-md-3">
+                        @include('frontend_v2.partials.banner-single', [
+                                'slide'         => asset('v2/images/samples/banner_acero_inox.jpg')
+                            ,   'slide_alt'     => $meta['titulo']
+                            ,   'summary'       => FALSE
+                            ,   'img_class'     => 'border-radius-10 with-box-shadow'
+                        ])
                     </div>
                 </div>
             </div>

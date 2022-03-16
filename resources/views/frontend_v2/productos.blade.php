@@ -41,4 +41,9 @@
             </div>
         </section>
     </main>
+
+    <section id="products__marcas" class="container-fluid">
+        <h3>Productos por marca</h3>
+        @include('frontend_v2.partials.marcas')
+    </section>
 @endsection

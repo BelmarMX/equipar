@@ -34,6 +34,9 @@ i.bi{
 	text-transform: uppercase;
 	border-radius: 20px;
 }
+.text-justify{
+	text-align: justify !important;
+}
 
 /* --- --- --- --- --- --- --- --- --- --- ---
 | LOADER
@@ -367,6 +370,24 @@ h1, h2, h3, h4, h5, h6{
 	&:after{
 		margin-left: auto;
 		margin-right: 0;
+	}
+}
+
+.marcas-wrap{
+	a{
+		display: inline-block;
+		width: 100px;
+		min-width: 100px;
+		max-width: 100px;
+		height: 25px;
+		min-height: 25px;
+		max-height: 25px;
+		margin: 16px 12px;
+		img{
+			min-width: 100px;
+			width: 100%;
+			height: auto;
+		}
 	}
 }
 
