@@ -50,7 +50,7 @@
     >
         <img width="100"
              height="25"
-             src="{{ asset('images/template/brands/avantco.png') }}"
+             src="{{ asset('images/template/brands/galaxy.png') }}"
              alt="Galaxy"
         >
     </a>
@@ -204,7 +204,7 @@
     >
         <img width="100"
              height="25"
-             src="{{ asset('images/template/brands/avantco.png') }}"
+             src="{{ asset('images/template/brands/winterhalter.png') }}"
              alt="Winterhalter"
         >
     </a>
