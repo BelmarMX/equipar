@@ -5,160 +5,60 @@
 
 @section('content')
     <main class="container mt-5 mb-5">
-
         <div class="row align-items-center mb-5">
             <div class="col-12 mb-5">
-                <h1 class="mb-5">Ponte en contacto con nosotros</h1>
+                <h1 class="mb-5">Aviso de privacidad</h1>
+                <small>Última modificacion: 16 marzo 2022</small>
 
-                <form class="custom_form mx-auto w-100 px-2 py-4"
-                      enctype="multipart/form-data"
-                      method="post"
-                      action="{{ route('mail.store') }}"
-                      style="max-width: 630px"
-                >
-                    {!! csrf_field() !!}
-                    @include('frontend_v2.master.alerts')
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <label for="nombre" class="form-label">¿Cuál es tu nombre?</label>
-                            <input id="nombre"
-                                   name="nombre"
-                                   class="form-control"
-                                   type="text"
-                                   placeholder="E.G. Juan Antonio Hernández"
-                                   required
-                            >
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="correo" class="form-label">Correo electrónico</label>
-                            <input id="correo"
-                                   name="correo"
-                                   class="form-control"
-                                   type="email"
-                                   placeholder="mi-email@mi-dominio.com"
-                                   required
-                            >
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="telefono" class="form-label">Celular (opcional)</label>
-                            <input id="telefono"
-                                   name="telefono"
-                                   class="form-control"
-                                   type="number"
-                                   min="1000000000"
-                                   max="9999999999"
-                                   placeholder="3315559999"
-                            >
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="empresa" class="form-label">Empresa (opcional)</label>
-                            <input id="empresa"
-                                   name="empresa"
-                                   class="form-control"
-                                   type="text"
-                                   placeholder="E.G. Equi-par Guadalajara"
-                            >
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="asunto" class="form-label">Motivo de contacto</label>
-                            <select id="asunto"
-                                    name="asunto"
-                                    class="form-select"
-                                    aria-label="Selección del motivo de contacto"
-                            >
-                                <option selected>Por favor selecciona uno</option>
-                                <option value="Dudas">Dudas</option>
-                                <option value="Sugerencias">Sugerencias</option>
-                                <option value="Queja">Queja</option>
-                                <option value="Otro">Otro</option>
-                            </select>
-                        </div>
-                        <div class="col-md-12 mb-4">
-                            <label for="cuerpo" class="form-label">Motivo de contacto</label>
-                            <textarea id="cuerpo"
-                                      name="cuerpo"
-                                      class="form-control"
-                                      placeholder="Espacio para tus comentarios, dudas y sugerencias"
-                                      rows="5"
-                            ></textarea>
-                        </div>
-                        <div class="col-md-12 mb-4 d-flex justify-content-center">
-                            <div class="g-recaptcha" data-sitekey="{{ env('CAPTCHA_PUBLIC') }}"></div>
-                        </div>
-                        <div class="col-md-12 text-center">
-                            <button id="send_form"
-                                    class="btn btn-primary"
-                                    type="submit"
-                            >
-                                <i class="bi bi-send-fill"></i> Enviar
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <div class="col-md-12">
-                <div class="col-md-12">
-                    <h2>Ubicaciones</h2>
-                </div>
-
-                <div class="row mb-5">
-                    <div class="col-md-6 order-md-2 contact-location">
-                        <i class="bi bi-geo-alt-fill"></i> <h3>Guadalajara matriz</h3>
-                        <p class="pt-3">
-                            Av. Cvln. Jorge Álvarez del Castillo núm. 1442<br>
-                            Col. Lomas del Country<br>
-                            Guadalajara, Jalisco. México.<br>
-                            <a href="tel:+5213328862661" target="-_blank">
-                                +52 1 33 2886 2661
-                            </a>
-                        </p>
-                    </div>
-                    <div class="col-md-6 order-md-1">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7464.423907058208!2d-103.36637900000001!3d20.701616!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8573938c634944dd!2sEqui-par%20Cocinas%20Industriales!5e0!3m2!1ses!2smx!4v1645771932888!5m2!1ses!2smx"
-                                width="100%"
-                                height="400"
-                                style="border:0;"
-                                allowfullscreen=""
-                                loading="lazy"
-                        >
-                        </iframe>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 order-md-2 contact-location">
-                        <i class="bi bi-geo-alt-fill"></i> <h3>Sucursal Zapopan</h3>
-                        <p class="pt-3">
-                            Av. Mariano Otero núm. 3519<br>
-                            Col. La Calma<br>
-                            Zapopan, Jalisco. México.<br>
-                            <a href="tel:+5213335751334" target="-_blank">
-                                +52 1 33 3575 1334
-                            </a>
-                        </p>
-                    </div>
-                    <div class="col-md-6 order-md-1">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d16562.04313701228!2d-103.42620814629664!3d20.637281778034207!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3c7c1293fe6c83fd!2sEqui-par!5e0!3m2!1ses!2smx!4v1645772008948!5m2!1ses!2smx"
-                                width="100%"
-                                height="400"
-                                style="border:0;"
-                                allowfullscreen=""
-                                loading="lazy"
-                        >
-                        </iframe>
-                    </div>
-                </div>
+                <p class="text-justify">
+                    El aviso de privacidad forma parte del uso del sitio web en el que se esté accediendo.
+                </p>
+                <h2>Responsable</h2>
+                <p class="text-justify">
+                    Equi-par estamos ubicados en Av. Cvln. Jorge Álvarez del Castillo núm 1442, Col. Lomas del Country en Guadalajara, Jalisco. Nuestro(s) teléfono(s) es/son: +52 (33) 2886 2661 Nuestro Responsable de Protección de Datos es el departamento de atención a clientes y se ubica en el mismo domicilio, usted podrá contactarlo en el correo electrónico: <a href="mailto:atencionaclientes@equi-par.com" >atencionaclientes@equi-par.com</a> Una de las prioridades de Equi-par es respetar la privacidad de sus usuarios/clientes y mantener segura la información y los datos personales que recolecta. Así mismo, Equi-par informará al usuario qué tipo de datos recolecta, cómo los almacena, la finalidad del archivo, cómo los protege, el alcance de su compromiso de confidencialidad y los derechos que éste posee como titular de la información.
+                </p>
+                <h2>Datos personales</h2>
+                <p class="text-justify">
+                    En Equi-par recogemos información desde varias áreas de nuestros sitios web. Para cada uno de estos sitios, la información que se solicita es distinta y se almacena en bases de datos separadas. La información deberá ser veraz y completa. El usuario/cliente responderá en todo momento por los datos proporcionados y en ningún caso Equi-par será responsable de los mismos. Entre la información solicitada al usuario, se encuentra: Nombre, Correo electrónico, Empresa, Cargo, Teléfono, Ciudad, Estado, Razón social, R.F.C., domicilio fiscal, preferencias de consumo, requerimientos especiales, entre otros.
+                </p>
+                <h2>Qué son las cookies y como se utilizan</h2>
+                <p class="text-justify">
+                    Los cookies son pequeñas piezas de información que son enviadas por el sitio Web a su navegador y se almacenan en el disco duro de su equipo y se utilizan para determinar sus preferencias cuando se conecta a los servicios de nuestros sitios, así como para rastrear determinados comportamientos o actividades llevadas a cabo por usted dentro de nuestros sitios. En algunas secciones de nuestro sitio requerimos que el cliente tenga habilitados los cookies ya que algunas de las funcionalidades requieren de éstas para trabajar. Los cookies nos permiten: a) reconocerlo al momento de entrar a nuestros sitios y ofrecerle de una experiencia personalizada, b) conocer la configuración personal del sitio especificada por usted, por ejemplo, los cookies nos permiten detectar el ancho de banda que usted ha seleccionado al momento de ingresar al home page de nuestros sitios, de tal forma que sabemos qué tipo de información es aconsejable descargar, c) calcular el tamaño de nuestra audiencia y medir algunos parámetros de tráfico, pues cada navegador que obtiene acceso a nuestros sitios adquiere un cookie que se usa para determinar la frecuencia de uso y las secciones de los sitios visitadas, reflejando así sus hábitos y preferencias, información que nos es útil para mejorar el contenido, los titulares y las promociones para los usuarios. Los cookies también nos ayudan a rastrear algunas actividades, por ejemplo, en algunas de las encuestas que lanzamos en línea, podemos utilizar cookies para detectar si el usuario ya ha llenado la encuesta y evitar desplegarla nuevamente, en caso de que lo haya hecho. Sin embargo, las cookies le permitirán tomar ventaja de las características más benéficas que le ofrecemos, por lo que le recomendamos que las deje activadas. La utilización de cookies no será utilizada para identificar a los usuarios, con excepción de los casos en que se investiguen posibles actividades fraudulentas.
+                </p>
+                <h2>Uso de la información</h2>
+                <p class="text-justify">
+                    La información solicitada permite a Equi-par contactar a los usuarios y potenciales clientes, cuando sea necesario para completar los procedimientos de compra, así como contactar a los usuarios. Así mismo Equi-par utilizará la información obtenida para: Procurar un servicio eficiente Informar sobre nuevos productos o servicios que estén relacionados con lo contratado o adquirido por el cliente. Dar cumplimiento a obligaciones contraídas con nuestros clientes. Informar sobre cambios de nuestros productos o servicios. Proveer una mejor atención al usuario. Facturación. Evaluaciones de servicio. Encuestas de calidad.
+                </p>
+                <h2>Limitación de uso y divulgación de la información</h2>
+                <p class="text-justify">
+                    En nuestro programa de notificación de promociones, ofertas y servicios a través de correo electrónico, sólo Equi-par tiene acceso a la información recabada. Este tipo de publicidad se realiza mediante avisos y mensajes promocionales de correo electrónico, los cuales sólo serán enviados a usted y a aquellos contactos registrados para tal propósito, esta indicación podrá usted modificarla en cualquier momento. En los correos electrónicos enviados, pueden incluirse ocasionalmente ofertas de terceras partes que sean nuestros socios comerciales. En el caso de empleo de cookies, el botón de "ayuda" que se encuentra en la barra de herramientas de la mayoría de los navegadores, le dirá cómo evitar aceptar nuevos cookies, cómo hacer que el navegador le notifique cuando recibe un nuevo cookie o cómo deshabilitar todos los cookies.
+                </p>
+                <p class="text-justify">
+                    Los datos personales de usted recabados por Equi-par serán debidamente resguardados conforme a las disposiciones de seguridad, administrativas, técnicas y físicas, establecidas en la Ley y el Reglamento para proteger dichos datos personales contra daño, pérdida, alteración, destrucción o su uso, acceso o divulgación no autorizada y serán tratados bajo los principios de licitud, consentimiento, información, calidad, finalidad, lealtad, proporcionalidad, responsabilidad, seguridad y confidencialidad previstos en dicha Ley y el Reglamento.
+                </p>
+                <h2>Derechos Arco</h2>
+                <p class="text-justify">
+                    Asimismo, Equi-par le informa que, en términos de lo dispuesto en el artículo 28 de la Ley, usted tiene derecho al Acceso, Rectificación, Cancelación u Oposición de sus datos personales, para lo cual es necesario que (i) envíe una solicitud respecto a los datos personales que le pertenezcan en términos de lo dispuesto en los Artículos 29 y 31 de la Ley, dirigida a nuestro Departamento de Protección de Datos Personales, ubicado en Av. Cvln. Jorge Álvarez del Castillo núm 1442, Col. Lomas del Country en Guadalajara, Jalisco. Con atención al encargado del Departamento de Protección de Datos Personales, (ii) llame al teléfono +52 (33) 2886 2661, o (iii) envíe un correo electrónico a <a href="mailto:atencionaclientes@equi-par.com" >atencionaclientes@equi-par.com</a> De igual forma, usted podrá revocar su consentimiento para el tratamiento de sus datos personales enviando una solicitud al respecto a través de los medios que se establecen en este párrafo.
+                </p>
+                <h2>Transferencia de información con terceros</h2>
+                <p class="text-justify">
+                    Equi-par únicamente realiza transferencias de información con las empresas de webhosting con las que mantiene una relación jurídica vigente para poder mantener, actualizar y administrar sus sitios web, a través de los que informa a sus clientes, contratantes y usuarios sobre actividades, promociones, eventos y estudios.
+                </p>
+                <p class="text-justify">
+                    Equi-par únicamente realiza transferencias de información con las empresas de webhosting con las que mantiene una relación jurídica vigente para poder mantener, actualizar y administrar sus sitios web, a través de los que informa a sus clientes, contratantes y usuarios sobre actividades, promociones, eventos y estudios.
+                </p>
+                <h2>Cambios en el aviso de privacidad</h2>
+                <p class="text-justify">
+                    Nos reservamos el derecho de efectuar en cualquier momento modificaciones o actualizaciones al presente aviso de privacidad, para la atención de novedades legislativas o jurisprudenciales, políticas internas, nuevos requerimientos para la prestación u ofrecimiento de nuestros servicios o productos y prácticas del mercado. Estas modificaciones estarán disponibles al público a través de los siguientes medios: en nuestro sitio de Internet www.equi-par.com en la sección aviso de privacidad y/o se las haremos llegar al último correo electrónico que nos haya proporcionado.
+                </p>
+                <h2>Aceptación de los términos</h2>
+                <p class="text-justify">
+                    Esta declaración de Confidencialidad / Privacidad está sujeta a los términos y condiciones de del sitio web de Equi-par antes descritos, lo cual constituye un acuerdo legal entre el usuario y Equi-par Si el usuario utiliza los servicios de Equi-par o de alguno de sus asociados, significa que ha leído, entendido y acordado los términos antes expuestos. Si no está de acuerdo con ellos, el usuario no deberá proporcionar ninguna información personal, ni utilizar los servicios de los sitios de Equi-par.
+                </p>
+                <p class="text-justify">
+                    En caso de que Equi-par no reciba su oposición expresa para que sus datos personales sean tratados en la forma y términos antes descrita, se entenderá que ha otorgado su consentimiento en forma tácita para ello.
+                </p>
             </div>
         </div>
     </main>
 @endsection
-
-@push('customJs')
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script>
-        document.querySelector('form').addEventListener('submit', () => {
-            document.getElementById('load8').removeAttribute('hidden')
-        })
-    </script>
-@endpush

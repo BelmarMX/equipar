@@ -112,7 +112,7 @@
                     Elaboración de diseños en isométrico según la idea de tu negocio, los muebles a medida con diseño especial son mucho más funcionales al fabricarse de acuerdo a cada necesidad de operación, espacio, materiales, calibres, refuerzos etc., sobre todo se convierte en un plus al ser una creación única.
                 </p>
                 <div class="text-center">
-                    <a href="#" class="btn btn-primary">
+                    <a href="{{ route('diseno-acero') }}" class="btn btn-primary">
                         Conozca más
                     </a>
                 </div>
