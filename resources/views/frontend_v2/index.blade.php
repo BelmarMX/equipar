@@ -158,26 +158,40 @@
             </div>
         </section>
 
-        <section id="index__blog" class="mb-5">
-            <h2>Últimas entradas del blog</h2>
-            <div class="row">
-                @foreach($articles AS $blog)
-                    <div class="col-md-4">
-                        @include('frontend_v2.partials.blog-view', [
-                                'title'             => $blog -> titleA
-                            ,   'link'              => route('blog-open', [
-                                    $blog -> slugC, $blog -> slugA
-                                ])
-                            ,   'image'             => url('storage/articulos/'.$blog -> image_rx)
-                            ,   'day'               => split_date($blog -> publish) -> day
-                            ,   'month'             => split_date($blog -> publish) -> short_month
-                            ,   'category_title'    => $blog -> titleC
-                            ,   'category_link'     => route('blog-filter', $blog -> slugC)
-                            ,   'summary'           => $blog -> shortdesc
-                        ])
-                    </div>
-                @endforeach
-            </div>
+        <section class="mb-5">
+            <h3>Algunos de nuestros proyectos</h3>
+            <a href="{{ route('portafolio') }}">
+                <img width="{{ env('BANNER_WIDTH') }}"
+                     height="{{ env('BANNER_HEIGHT') }}"
+                     class="img-fluid w-100 border-radius-txb"
+                     src="{{ asset('v2/images/index/algunos-proyectos.jpg') }}"
+                     alt="Algunos de nuestros proyectos"
+                >
+            </a>
+        </section>
+
+        <section class="mb-5">
+            <h3>Algunos de nuestros planos</h3>
+            <a href="{{ route('servicios') }}">
+                <img width="{{ env('BANNER_WIDTH') }}"
+                     height="{{ env('BANNER_HEIGHT') }}"
+                     class="img-fluid w-100"
+                     src="{{ asset('v2/images/index/algunos-planos.jpg') }}"
+                     alt="Algunos de nuestros planos"
+                >
+            </a>
+        </section>
+
+        <section class="mb-5">
+            <h3>Algunos de nuestros renders</h3>
+            <a href="{{ route('proyectos') }}">
+                <img width="{{ env('BANNER_WIDTH') }}"
+                     height="{{ env('BANNER_HEIGHT') }}"
+                     class="img-fluid w-100 border-radius-bxt"
+                     src="{{ asset('v2/images/index/algunos-renders.jpg') }}"
+                     alt="Algunos de nuestros renders"
+                >
+            </a>
         </section>
 
         <section id="index__clientes">
@@ -307,45 +321,31 @@
             </div>
         </section>
 
-        <section class="mb-5">
-            <h3>Algunos de nuestros proyectos</h3>
-            <a href="{{ route('portafolio') }}">
-                <img width="{{ env('BANNER_WIDTH') }}"
-                     height="{{ env('BANNER_HEIGHT') }}"
-                     class="img-fluid w-100 border-radius-txb"
-                     src="{{ asset('v2/images/index/algunos-proyectos.jpg') }}"
-                     alt="Algunos de nuestros proyectos"
-                >
-            </a>
-        </section>
-
-        <section class="mb-5">
-            <h3>Algunos de nuestros planos</h3>
-            <a href="{{ route('servicios') }}">
-                <img width="{{ env('BANNER_WIDTH') }}"
-                     height="{{ env('BANNER_HEIGHT') }}"
-                     class="img-fluid w-100"
-                     src="{{ asset('v2/images/index/algunos-planos.jpg') }}"
-                     alt="Algunos de nuestros planos"
-                >
-            </a>
-        </section>
-
-        <section class="mb-5">
-            <h3>Algunos de nuestros renders</h3>
-            <a href="{{ route('proyectos') }}">
-                <img width="{{ env('BANNER_WIDTH') }}"
-                     height="{{ env('BANNER_HEIGHT') }}"
-                     class="img-fluid w-100 border-radius-bxt"
-                     src="{{ asset('v2/images/index/algunos-renders.jpg') }}"
-                     alt="Algunos de nuestros renders"
-                >
-            </a>
-        </section>
-
         <section id="index__marcas">
             <h2>Nuestras marcas</h2>
             @include('frontend_v2.partials.marcas')
+        </section>
+
+        <section id="index__blog" class="mb-5">
+            <h2>Últimas entradas del blog</h2>
+            <div class="row">
+                @foreach($articles AS $blog)
+                    <div class="col-md-4">
+                        @include('frontend_v2.partials.blog-view', [
+                                'title'             => $blog -> titleA
+                            ,   'link'              => route('blog-open', [
+                                    $blog -> slugC, $blog -> slugA
+                                ])
+                            ,   'image'             => url('storage/articulos/'.$blog -> image_rx)
+                            ,   'day'               => split_date($blog -> publish) -> day
+                            ,   'month'             => split_date($blog -> publish) -> short_month
+                            ,   'category_title'    => $blog -> titleC
+                            ,   'category_link'     => route('blog-filter', $blog -> slugC)
+                            ,   'summary'           => $blog -> shortdesc
+                        ])
+                    </div>
+                @endforeach
+            </div>
         </section>
     </div>
 @endsection
