@@ -90,18 +90,42 @@
         <div class="row">
             <div class="col-md-4 mb-5">
                 <h2 class="mb-3">Misión</h2>
+                <div class="text-start mb-2">
+                    <img width="190"
+                         height="180"
+                         class="img-fluid border-radius-10 with-box-shadow"
+                         src="{{ asset('v2/images/acerca/mision.png') }}"
+                         alt="Misión"
+                    >
+                </div>
                 <p>
                     Asegurar la eficiencia de las cocinas industriales mediante el talento y pasión de nuestros colaboradores quienes entregan soluciones de diseño y asesoría en la selección correcta del equipamiento gastronómico.
                 </p>
             </div>
             <div class="col-md-4 mb-5">
                 <h2 class="mb-3">Visión</h2>
+                <div class="text-start mb-2">
+                    <img width="180"
+                         height="180"
+                         class="img-fluid border-radius-10 with-box-shadow"
+                         src="{{ asset('v2/images/acerca/vision.png') }}"
+                         alt="Visión"
+                    >
+                </div>
                 <p>
                     Ser la primera opción en la mente de toda persona que tenga un proyecto gastronómico, contar con la más grande y atractiva sala de exhibición interactiva dentro de las 5 principales ciudades del país, siendo totalmente rentable y autosuficiente.
                 </p>
             </div>
             <div class="col-md-4 mb-5">
                 <h2 class="mb-3">Valores</h2>
+                <div class="text-start mb-2">
+                    <img width="180"
+                         height="180"
+                         class="img-fluid border-radius-10 with-box-shadow"
+                         src="{{ asset('v2/images/acerca/valores.png') }}"
+                         alt="Valores"
+                    >
+                </div>
                 <p>
                     Íntegramente trabajamos en equipo enfocados en la orientación al servicio y valor a la persona.
                 </p>
@@ -110,6 +134,14 @@
             <div class="col-md-12">
                 <div class="col-md-4 mx-auto mb-3">
                     <h2 class="mb-3">Cobertura</h2>
+                    <div class="text-center mb-2">
+                        <img width="180"
+                             height="180"
+                             class="img-fluid border-radius-10 with-box-shadow"
+                             src="{{ asset('v2/images/acerca/cobertura-aux.png') }}"
+                             alt="Cobertura"
+                        >
+                    </div>
                     <p>
                         Cobertura nacional: Mayor posicionamiento en Zona Bajío y occidente del país.
                     </p>

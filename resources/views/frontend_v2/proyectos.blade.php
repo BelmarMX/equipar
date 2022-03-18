@@ -19,7 +19,7 @@
 
                 <img width="890"
                      height="300"
-                     class="img-fluid mb-4"
+                     class="img-fluid mb-5"
                      src="{{ asset('v2/images/layout/sinergia-equipar.png') }}"
                      alt="Sinergia Equipar"
                 >
@@ -33,7 +33,7 @@
             </div>
 
             {{-- SERVICIOS DE PROYECTOS --}}
-            <div class="col-md-6 mb-4 service__container">
+            <div class="col-md-6 mb-5 service__container">
                 <div class="service__container--img">
                     <img width="661"
                          height="270"
@@ -46,7 +46,7 @@
                 <p>Reconocimiento del espacio donde se realizará su proyecto de cocina en el cual se recaba información de medidas de cada uno de los muros y espacios para realizar su trazo del área.</p>
             </div>
 
-            <div class="col-md-6 mb-4 service__container">
+            <div class="col-md-6 mb-5 service__container">
                 <div class="service__container--img">
                     <img width="661"
                          height="270"
@@ -72,7 +72,7 @@
                 </ul>
             </div>
 
-            <div class="col-md-6 mb-4 service__container">
+            <div class="col-md-6 mb-5 service__container">
                 <div class="service__container--img">
                     <img width="661"
                          height="270"
@@ -94,7 +94,7 @@
                 </ul>
             </div>
 
-            <div class="col-md-6 mb-4 service__container">
+            <div class="col-md-6 mb-5 service__container">
                 <div class="service__container--img">
                     <img width="661"
                          height="270"
@@ -107,7 +107,7 @@
                 <p>Anticipación y visualización gráfica de su cocina en modelo 3D "imagen realista", con base en el plano autorizado para el aseguramiento de la toma de decisiones.</p>
             </div>
 
-            <div class="col-md-6 mb-4 service__container">
+            <div class="col-md-6 mb-5 service__container">
                 <div class="service__container--img">
                     <img width="661"
                          height="270"
@@ -120,7 +120,7 @@
                 <p>Por que los detalles son importantes elaboramos dibujos describiendo: Dimensiones, tipo de acero, calibres, acabados, pulido, cortes, complementos etc. Para que La fabricación de sus muebles sean de acuerdo a lo proyectado.</p>
             </div>
 
-            <div class="col-md-6 mb-4 service__container">
+            <div class="col-md-6 mb-5 service__container">
                 <div class="service__container--img">
                     <img width="661"
                          height="270"
