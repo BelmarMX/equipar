@@ -7,6 +7,7 @@
     <div class="container-fluid mb-5">
         @include('frontend_v2.partials.banner-single', [
                 'slide'         => asset('v2/images/samples/banner.jpg')
+            ,   'slide_mobile'  => asset('v2/images/samples/banner-mv.jpg')
             ,   'slide_alt'     => 'Proyectos para personas'
             ,   'summary'       => TRUE
             ,   'title'         => 'Proyectos para <strong>Personas</strong>'

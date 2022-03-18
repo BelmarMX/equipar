@@ -6,7 +6,9 @@
         </a>
     </div>
     <div class="col-md col-6 partial__servicios--img mb-3">
-        <div class="mx-auto">
+        <a class="mx-auto"
+           href="{{ route('servicios').'#and-asesoria' }}"
+        >
             <img width="190"
                  height="217"
                  class="img-fluid"
@@ -14,10 +16,12 @@
                  alt="Asesoría"
             >
             <span>Asesoría</span>
-        </div>
+        </a>
     </div>
     <div class="col-md col-6 partial__servicios--img mb-3">
-        <div class="mx-auto">
+        <a class="mx-auto"
+           href="{{ route('servicios').'#and-diseno' }}"
+        >
             <img width="190"
                  height="217"
                  class="img-fluid"
@@ -25,10 +29,12 @@
                  alt="Diseño"
             >
             <span>Diseño</span>
-        </div>
+        </a>
     </div>
     <div class="col-md col-6 partial__servicios--img mb-3">
-        <div class="mx-auto">
+        <a class="mx-auto"
+           href="{{ route('servicios').'#and-equipamiento' }}"
+        >
             <img width="190"
                  height="217"
                  class="img-fluid"
@@ -36,10 +42,12 @@
                  alt="Equipamiento"
             >
             <span>Equipamiento</span>
-        </div>
+        </a>
     </div>
     <div class="col-md col-6 partial__servicios--img mb-3">
-        <div class="mx-auto">
+        <a class="mx-auto"
+           href="{{ route('servicios').'#and-fabricacion' }}"
+        >
             <img width="190"
                  height="217"
                  class="img-fluid"
@@ -47,10 +55,12 @@
                  alt="Fabricación"
             >
             <span>Fabricación</span>
-        </div>
+        </a>
     </div>
     <div class="col-md col-6 partial__servicios--img mb-3">
-        <div class="mx-auto">
+        <a class="mx-auto"
+           href="{{ route('servicios').'#and-instalacion' }}"
+        >
             <img width="190"
                  height="217"
                  class="img-fluid"
@@ -58,10 +68,12 @@
                  alt="Instalación"
             >
             <span>Instalación</span>
-        </div>
+        </a>
     </div>
     <div class="col-md col-6 partial__servicios--img mb-3">
-        <div class="mx-auto">
+        <a class="mx-auto"
+           href="{{ route('servicios').'#and-capacitacion' }}"
+        >
             <img width="190"
                  height="217"
                  class="img-fluid"
@@ -69,6 +81,6 @@
                  alt="Capacitación"
             >
             <span>Capacitación</span>
-        </div>
+        </a>
     </div>
 </div>

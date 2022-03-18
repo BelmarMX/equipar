@@ -85,7 +85,14 @@
 		}
 	}
 
-	p,
+	.blog__article__content{
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
+
+p,
 	q{
 		line-height: 180%;
 		font-weight: $font-light;

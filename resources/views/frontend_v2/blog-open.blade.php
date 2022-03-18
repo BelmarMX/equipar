@@ -32,7 +32,9 @@
 
                 <h1 class="blog__article__title">{{ $article -> title }}</h1>
 
-                {!! $article -> content !!}
+                <div class="blog__article__content">
+                    {!! $article -> content !!}
+                </div>
             </section>
 
             <aside class="col-md-4">

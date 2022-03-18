@@ -88,12 +88,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if( Request::is('servicios') ) active @endif" href="{{ route('servicios') }}">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if( Request::is('fabricacion-muebles-acero-inoxidable') ) active @endif" href="{{ route('diseno-acero') }}">Diseño en acero</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle @if( Request::is('productos') || Request::is('productos/*') ) active @endif"
                            href="{{ route('productos') }}"
@@ -114,6 +108,12 @@
                                 </li>
                             @endforeach
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if( Request::is('servicios') ) active @endif" href="{{ route('servicios') }}">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if( Request::is('fabricacion-muebles-acero-inoxidable') ) active @endif" href="{{ route('diseno-acero') }}">Diseño en acero</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @if( Request::is('blog') || Request::is('blog/*') ) active @endif" href="{{ route('blog') }}">Blog</a>

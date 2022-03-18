@@ -31,7 +31,9 @@
 			}
 		}
 		.partial__servicios--img{
+			a,
 			div{
+				display: block;
 				max-width: 190px;
 				border-radius: 6px;
 				@include boxshadow();
@@ -39,7 +41,7 @@
 				img{
 					border-radius: 5px 5px 0 0;
 				}
-				span, a{
+				span{
 					text-transform: uppercase;
 					background: $gray_equipar;
 					padding: 10px;

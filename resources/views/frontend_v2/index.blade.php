@@ -45,7 +45,7 @@
                     <div id="reel-container">
                         <iframe width="100%"
                                 height="315"
-                                src="https://www.youtube.com/embed/spcOCBeg_zc"
+                                src="https://www.youtube.com/embed/Gi-ENqy6i_c"
                                 title="Equipar Reel"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>

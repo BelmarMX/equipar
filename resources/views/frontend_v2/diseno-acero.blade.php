@@ -7,6 +7,7 @@
     <div class="container-fluid mb-5">
         @include('frontend_v2.partials.banner-single', [
                 'slide'         => asset('v2/images/samples/banner_acero_inox.jpg')
+            ,   'slide_mobile'  => asset('v2/images/samples/banner_acero_inox-mv.jpg')
             ,   'slide_alt'     => $meta['titulo']
             ,   'summary'       => TRUE
             ,   'title'         => "<strong>{$meta['titulo']}</strong>"

@@ -8,6 +8,7 @@
         @if( $promos )
             @include('frontend_v2.partials.banner-single', [
                     'slide'         => asset('v2/images/samples/banner_productos.jpg')
+                ,   'slide_mobile'  => asset('v2/images/samples/banner_productos-mv.jpg')
                 ,   'slide_alt'     => 'Banner de Productos'
                 ,   'summary'       => TRUE
                 ,   'title'         => '10% de descuento <strong>MARZO</strong>'
@@ -19,6 +20,7 @@
         @else
             @include('frontend_v2.partials.banner-single', [
                     'slide'         => asset('v2/images/samples/banner_productos.jpg')
+                ,   'slide_mobile'  => asset('v2/images/samples/banner_productos-mv.jpg')
                 ,   'slide_alt'     => 'Banner de Productos'
                 ,   'summary'       => FALSE
             ])
