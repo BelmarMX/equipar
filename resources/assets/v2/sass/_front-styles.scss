@@ -391,6 +391,15 @@ h1, h2, h3, h4, h5, h6{
 	}
 }
 
+.tooltip-inner {
+	max-width: 350px;
+}
+.hint-fs{
+	font-size: .95rem;
+	font-weight: $font-light;
+	margin-top: 7px;
+}
+
 @import 'partials/algolia';
 @import 'partials/home';
 @import 'partials/productos';

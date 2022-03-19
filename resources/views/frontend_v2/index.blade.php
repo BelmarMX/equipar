@@ -120,7 +120,7 @@
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>RECEPCIÓN DE MERCANCÍA</strong><br>
-                                <p>Es el área donde se recibe y se desinfectan las materias primas a procesar.</p>
+                                <p class='text-start hint-fs'>Es el área donde se recibe y se desinfectan las materias primas a procesar.</p>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -128,7 +128,7 @@
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>LAVADO DE COCHAMBRE</strong><br>
-                                <p class='text-start'>Lavado y desinfección de los elementos utilizados para la transformación y cocción de alimentos, sartenes, ollas, budineras, utensilios etc. Este proceso no debe de realizarse en la misma zona de limpieza de loza. Todos los residuos sépticos y basura generada debe de concentrarse en un lugar fuera de la cocina.</p>
+                                <p class='text-start hint-fs'>Lavado y desinfección de los elementos utilizados para la transformación y cocción de alimentos, sartenes, ollas, budineras, utensilios etc. Este proceso no debe de realizarse en la misma zona de limpieza de loza. Todos los residuos sépticos y basura generada debe de concentrarse en un lugar fuera de la cocina.</p>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -136,7 +136,7 @@
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>LAVADO DE LOZA</strong><br>
-                                <p class='text-start'>Lugar donde recibimos todos los residuos o sobrantes de los platillos, y procedemos a la limpieza y sanitizacion de los elementos usados, platos, vasos, cubiertos, charolas, este proceso para que se eficiente requiere de una temperatura promedio entre 60 y 70 grados centígrados en el lavado.</p>
+                                <p class='text-start hint-fs'>Lugar donde recibimos todos los residuos o sobrantes de los platillos, y procedemos a la limpieza y sanitizacion de los elementos usados, platos, vasos, cubiertos, charolas, este proceso para que se eficiente requiere de una temperatura promedio entre 60 y 70 grados centígrados en el lavado.</p>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -144,7 +144,7 @@
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>ALMACEN DE SECOS Y CONGELADOS</strong><br>
-                                <p class='text-start'>quí es donde se almacenan toda la materia prima seca no perecedera, latas, cereales, condimentos etc.</p>
+                                <p class='text-start hint-fs'>Aquí es donde se almacenan toda la materia prima seca no perecedera, latas, cereales, condimentos etc.</p>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -152,7 +152,7 @@
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>ALMACEN REFRIGERADO</strong><br>
-                                <p class='text-start'>Lugar donde se almacena la materia prima que requiere de temperaturas bajas para su mayor conservación, ejemplo , lácteos, frutas y verduras, cárnicos, pescado y mariscos etc.</p>
+                                <p class='text-start hint-fs'>Lugar donde se almacena la materia prima que requiere de temperaturas bajas para su mayor conservación, ejemplo , lácteos, frutas y verduras, cárnicos, pescado y mariscos etc.</p>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -160,7 +160,7 @@
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>ÁREA DE PREPARACIÓN</strong><br>
-                                <p class='text-start'>En esta área se inicia el proceso de transformación de materia prima mediante la limpieza, corte, sazonado, molido, licuado,  por mencionar algunos. Debe estar cerca de los almacenes.</p>
+                                <p class='text-start hint-fs'>En esta área se inicia el proceso de transformación de materia prima mediante la limpieza, corte, sazonado, molido, licuado,  por mencionar algunos. Debe estar cerca de los almacenes.</p>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -168,7 +168,7 @@
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>ÁREA DE COCCIÓN</strong><br>
-                                <p class='text-start'>Proceso de cocimiento en la preparación de alimentos, esta puede ser en seco, húmedo o combinado, freír, hervir, guisar, saltear, hornear, etc.</p>
+                                <p class='text-start hint-fs'>Proceso de cocimiento en la preparación de alimentos, esta puede ser en seco, húmedo o combinado, freír, hervir, guisar, saltear, hornear, etc.</p>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -176,7 +176,7 @@
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>SERVICIO DE ENTREGA DE ALIMENTOS</strong><br>
-                                <p class='text-start'>Espacio destinado para el armado y entrega de platillos, el cual puede ser frio o caliente.</p>
+                                <p class='text-start hint-fs'>Espacio destinado para el armado y entrega de platillos, el cual puede ser frio o caliente.</p>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -184,7 +184,7 @@
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>BARRA DE COMPLEMENTOS</strong><br>
-                                <p class='text-start'>Zona cercana a la zona de entrega donde se suministran complementos como pueden ser, cubiertos, bebidas, especies, hielo, tostadas, salsas, etc.</p>
+                                <p class='text-start hint-fs'>Zona cercana a la zona de entrega donde se suministran complementos como pueden ser, cubiertos, bebidas, especies, hielo, tostadas, salsas, etc.</p>
                             "
                     ></span>
                 </div>
