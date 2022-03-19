@@ -11,6 +11,7 @@
             </div>
             <div class="col-md-9 order-md-2">
                 <h3>Resultados</h3>
+                <div id="algolia-sortby"></div>
                 <div id="algolia-hits"></div>
             </div>
             <div class="col-md-3 order-md-1">

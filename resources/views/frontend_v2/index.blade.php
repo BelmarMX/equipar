@@ -109,49 +109,82 @@
             <div class="index__hotspot__background">
                 <div class="background-box"></div>
                 <div class="index__hotspot--img">
-                    <img width="100%"
+                    <img width="800"
+                         height="534"
                          class="img-fluid"
-                         src="{{ asset('v2/images/samples/PartesDeUnaCocina.png') }}"
-                         alt="Partes de una Cocina Industrial"
+                         src="{{ asset('v2/images/index/areas_de_una_cocina.png') }}"
+                         alt="Áreas de una Cocina Industrial"
                     >
                     <span class="index__hotspot--spot grow-fast"
-                          style="top: 25%; left: 48%;"
+                          style="top: 18%; left: 18%;"
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
-                          title="<strong>CAMPANA DE EXTRACCIÓN</strong><br>
-                                <p>Atrapa el cochambre y permite la ventilación de la cocina.</p>
+                          title="<strong>RECEPCIÓN DE MERCANCÍA</strong><br>
+                                <p>Es el área donde se recibe y se desinfectan las materias primas a procesar.</p>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
-                          style="top: 50%; left: 18%;"
+                          style="top: 18%; left: 34%;"
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
-                          title="<strong>CAMPANA DE EXTRACCIÓN</strong><br>
-                                <p>Atrapa el cochambre y permite la ventilación de la cocina.</p>
+                          title="<strong>LAVADO DE COCHAMBRE</strong><br>
+                                <p class='text-start'>Lavado y desinfección de los elementos utilizados para la transformación y cocción de alimentos, sartenes, ollas, budineras, utensilios etc. Este proceso no debe de realizarse en la misma zona de limpieza de loza. Todos los residuos sépticos y basura generada debe de concentrarse en un lugar fuera de la cocina.</p>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
-                          style="top: 43%; left: 40%;"
+                          style="top: 18%; left: 51%;"
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
-                          title="<strong>CAMPANA DE EXTRACCIÓN</strong><br>
-                                <p>Atrapa el cochambre y permite la ventilación de la cocina.</p>
+                          title="<strong>LAVADO DE LOZA</strong><br>
+                                <p class='text-start'>Lugar donde recibimos todos los residuos o sobrantes de los platillos, y procedemos a la limpieza y sanitizacion de los elementos usados, platos, vasos, cubiertos, charolas, este proceso para que se eficiente requiere de una temperatura promedio entre 60 y 70 grados centígrados en el lavado.</p>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
-                          style="top: 53%; left: 50%;"
+                          style="top: 52%; left: 14%;"
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
-                          title="<strong>CAMPANA DE EXTRACCIÓN</strong><br>
-                                <p>Atrapa el cochambre y permite la ventilación de la cocina.</p>
+                          title="<strong>ALMACEN DE SECOS Y CONGELADOS</strong><br>
+                                <p class='text-start'>quí es donde se almacenan toda la materia prima seca no perecedera, latas, cereales, condimentos etc.</p>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
-                          style="top: 65%; left: 81%;"
+                          style="top: 82%; left: 12%;"
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
-                          title="<strong>CAMPANA DE EXTRACCIÓN</strong><br>
-                                <p>Atrapa el cochambre y permite la ventilación de la cocina.</p>
+                          title="<strong>ALMACEN REFRIGERADO</strong><br>
+                                <p class='text-start'>Lugar donde se almacena la materia prima que requiere de temperaturas bajas para su mayor conservación, ejemplo , lácteos, frutas y verduras, cárnicos, pescado y mariscos etc.</p>
+                            "
+                    ></span>
+                    <span class="index__hotspot--spot grow-fast"
+                          style="top: 60%; left: 28%;"
+                          data-bs-toggle="tooltip"
+                          data-bs-html="true"
+                          title="<strong>ÁREA DE PREPARACIÓN</strong><br>
+                                <p class='text-start'>En esta área se inicia el proceso de transformación de materia prima mediante la limpieza, corte, sazonado, molido, licuado,  por mencionar algunos. Debe estar cerca de los almacenes.</p>
+                            "
+                    ></span>
+                    <span class="index__hotspot--spot grow-fast"
+                          style="top: 60%; left: 38%;"
+                          data-bs-toggle="tooltip"
+                          data-bs-html="true"
+                          title="<strong>ÁREA DE COCCIÓN</strong><br>
+                                <p class='text-start'>Proceso de cocimiento en la preparación de alimentos, esta puede ser en seco, húmedo o combinado, freír, hervir, guisar, saltear, hornear, etc.</p>
+                            "
+                    ></span>
+                    <span class="index__hotspot--spot grow-fast"
+                          style="top: 60%; left: 51%;"
+                          data-bs-toggle="tooltip"
+                          data-bs-html="true"
+                          title="<strong>SERVICIO DE ENTREGA DE ALIMENTOS</strong><br>
+                                <p class='text-start'>Espacio destinado para el armado y entrega de platillos, el cual puede ser frio o caliente.</p>
+                            "
+                    ></span>
+                    <span class="index__hotspot--spot grow-fast"
+                          style="top: 58%; left: 88%;"
+                          data-bs-toggle="tooltip"
+                          data-bs-html="true"
+                          title="<strong>BARRA DE COMPLEMENTOS</strong><br>
+                                <p class='text-start'>Zona cercana a la zona de entrega donde se suministran complementos como pueden ser, cubiertos, bebidas, especies, hielo, tostadas, salsas, etc.</p>
                             "
                     ></span>
                 </div>

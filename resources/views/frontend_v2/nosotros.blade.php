@@ -90,7 +90,7 @@
         <div class="row">
             <div class="col-md-4 mb-5">
                 <h2 class="mb-3">Misión</h2>
-                <div class="text-start mb-2">
+                <div class="text-center mb-3">
                     <img width="190"
                          height="180"
                          class="img-fluid border-radius-10 with-box-shadow"
@@ -104,7 +104,7 @@
             </div>
             <div class="col-md-4 mb-5">
                 <h2 class="mb-3">Visión</h2>
-                <div class="text-start mb-2">
+                <div class="text-center mb-3">
                     <img width="180"
                          height="180"
                          class="img-fluid border-radius-10 with-box-shadow"
@@ -118,7 +118,7 @@
             </div>
             <div class="col-md-4 mb-5">
                 <h2 class="mb-3">Valores</h2>
-                <div class="text-start mb-2">
+                <div class="text-center mb-3">
                     <img width="180"
                          height="180"
                          class="img-fluid border-radius-10 with-box-shadow"
@@ -134,7 +134,7 @@
             <div class="col-md-12">
                 <div class="col-md-4 mx-auto mb-3">
                     <h2 class="mb-3">Cobertura</h2>
-                    <div class="text-center mb-2">
+                    <div class="text-center mb-3">
                         <img width="180"
                              height="180"
                              class="img-fluid border-radius-10 with-box-shadow"

@@ -6,9 +6,9 @@ import {
     refinementList,
     pagination,
     clearRefinements,
-    numericMenu,
-    poweredBy
+    numericMenu
 } from "instantsearch.js/es/widgets";
+import { sortBy} from "instantsearch.js/es/widgets";
 
 const searchClient = algoliasearch('TBCPPTHMDQ', '7733f1bd8d90a621d953daf808c65510')
 
@@ -58,6 +58,15 @@ search.addWidgets([
             { label: 'Mas de 40000', start: 40000 }
         ]
     })
+
+    /*,   sortBy({
+            container: '#algolia-sortby'
+        ,   items: [
+            { label: 'Relevantes', value: 'instant_search' },
+            { label: 'Precio (asc)', value: 'instant_search_price_asc' },
+            { label: 'Precio (desc)', value: 'instant_search_price_desc' },
+        ],
+    })*/
 
     ,   hits({
             container: '#algolia-hits'
