@@ -14,25 +14,10 @@ const tooltipList   = tooltipTriggerList.map(function (tooltipTriggerEl) {
 window.onload = event => {
 
     // -> Search bar
-    document.querySelectorAll('.toggle-search')
-        .forEach(element => {
-            element.addEventListener('click', event => {
-                let search_bar = document.getElementById('algolia-search-container')
-                if( search_bar.classList.contains('show_me_the_money') )
-                {
-                    search_bar.classList.remove('fade_in')
-                    search_bar.classList.add('fade_out')
-                    setTimeout(() => {
-                        search_bar.classList.remove('show_me_the_money')
-                    }, 500)
-                }
-                else
-                {
-                    search_bar.classList.remove('fade_out')
-                    search_bar.classList.add('fade_in')
-                    search_bar.classList.add('show_me_the_money')
-                }
-            })
+    document.getElementById('search-form')
+        .addEventListener('submit', function(event) {
+            document.getElementById('load8')
+                .removeAttribute('hidden')
         })
 
     // -> Contact bottom button

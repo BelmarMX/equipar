@@ -37,8 +37,6 @@
     <body>
         @include('frontend_v2.master.header')
 
-        @include('frontend_v2.master.search')
-
         @yield('content')
 
         @include('frontend_v2.master.footer')
@@ -53,7 +51,8 @@
         @stack('customJs')
 
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CArray.prototype.includes%2CPromise%2CObject.assign%2CObject.entries"></script>
-        <script src="{{ asset('v2/js/algolia.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="{{ asset('v2/js/search.js') }}"></script>
 
         <link rel="stylesheet" href="{{ asset('v2/css/swal2.css') }}">
     </body>

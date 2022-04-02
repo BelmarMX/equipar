@@ -42,14 +42,13 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand mb-1" href="/">
+            <a class="navbar-brand p-0" href="/">
                 <img width="150"
                      height="50"
                      src="{{ asset('v2/images/layout/equipar-minimal-id.svg') }}"
                      alt="Equi-par ID"
-                     class="img-fluid mb-1"
+                     class="img-fluid"
                 >
-                <small class="text-center" id="eslogan">¡Aseguramos la eficiencia de tu cocina!</small>
             </a>
             <button class="navbar-toggler"
                     type="button"
@@ -136,9 +135,6 @@
                 >
                     <i class="bi bi-whatsapp"></i>
                 </a>
-                <button id="toggle-search" class="toggle-search" type="button" aria-label="Muestra la barra de búsqueda">
-                    <i class="bi bi-search"></i>
-                </button>
                 <a id="link_quotation"
                    class="position-relative empty"
                    data-bs-toggle="tooltip"
@@ -154,6 +150,20 @@
             </div>
         </div>
     </nav>
+    <div id="search-box" class="bg-light pb-1 px-1">
+        <small class="text-center" id="eslogan">¡Aseguramos la eficiencia de tu cocina!</small>
+        <form id="search-form" action="{{ route('search') }}" method="post">
+            @csrf
+            <input id="autocomplete"
+                   type="search"
+                   name="search"
+                   placeholder="Busca por producto, categoría, subcategoría o marca"
+            >
+            <button id="do-search" type="submit" aria-label="Muestra la barra de búsqueda">
+                Buscar
+            </button>
+        </form>
+    </div>
 </header>
 
 <div id="load8">

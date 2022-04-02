@@ -116,7 +116,7 @@
                          alt="Áreas de una Cocina Industrial"
                     >
                     <span class="index__hotspot--spot grow-fast"
-                          style="top: 18%; left: 18%;"
+                          style="top: 30%; left: 14%;"
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>RECEPCIÓN DE MERCANCÍA</strong><br>
@@ -124,7 +124,7 @@
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
-                          style="top: 18%; left: 34%;"
+                          style="top: 18%; left: 29%;"
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>LAVADO DE COCHAMBRE</strong><br>
@@ -132,7 +132,7 @@
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
-                          style="top: 18%; left: 51%;"
+                          style="top: 18%; left: 46%;"
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>LAVADO DE LOZA</strong><br>
@@ -140,7 +140,7 @@
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
-                          style="top: 52%; left: 14%;"
+                          style="top: 52%; left: 12%;"
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>ALMACEN DE SECOS Y CONGELADOS</strong><br>
@@ -148,7 +148,7 @@
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
-                          style="top: 82%; left: 12%;"
+                          style="top: 78%; left: 10%;"
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>ALMACEN REFRIGERADO</strong><br>
@@ -180,7 +180,7 @@
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
-                          style="top: 58%; left: 88%;"
+                          style="top: 58%; left: 79%;"
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
                           title="<strong>BARRA DE COMPLEMENTOS</strong><br>

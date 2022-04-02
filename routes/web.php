@@ -29,6 +29,8 @@ Route::group(['prefix' => 'productos'], function () {
 });
 Route::get('marcas/{brand}', 'ProductController@brands')
     -> name('brands');
+Route::post('autocomplete', 'ProductController@autocomplete')
+    -> name('autocomplete');
 Route::post('search', 'ProductController@search')
 	-> name('search');
 

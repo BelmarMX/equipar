@@ -212,9 +212,37 @@ class ProductController extends BaseDashboard
 	/* --- --- --- --- --- --- --- --- --- ---
 	| Search
 	--- --- --- --- --- --- --- --- --- --- */
+    public function autocomplete(Request $request)
+    {
+        if( empty($request['query']) )
+        {
+            return;
+        }
+
+        $productos = Product::where('title', 'LIKE', '%'.$request['query'].'%')
+            -> with(['category', 'subcategory'])
+            -> get();
+
+        $return = [];
+        foreach($productos AS $producto)
+        {
+           $return[] = [
+                    'id'            => $producto -> id
+                ,   'name'          => $producto -> title
+                ,   'title'         => $producto -> title
+                ,   'category'      => $producto -> category -> title
+                ,   'subcategory'   => $producto -> subcategory -> title
+                ,   'brand'         => $producto -> marca
+                ,   'price'         => $producto -> precio
+                ,   'image'         => 'storage/productos/'.$producto -> image_rx
+            ];
+        }
+
+        return response() -> json($return);
+    }
 	public function search(Request $search)
 	{
-		$term = urlencode($search -> search);
+		$term = urlencode($search -> search[0]);
 		return redirect() -> route('results', $term);
 	}
 	public function results($search){
@@ -352,6 +380,7 @@ class ProductController extends BaseDashboard
 				,   'getCC'     => $getCategories
 				,   'tCC'       => $getCategoriesT
 				,   'getBrands' => $getBrands
+                ,   'menu_cat'      => $this -> viewProducCategories()
 			]);
 	}
 	public function filter($slug)

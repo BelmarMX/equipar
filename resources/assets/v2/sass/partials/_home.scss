@@ -68,7 +68,8 @@ h1#home_h1{
 			height: 130px;
 			left: 0;
 			top: calc(50% - 65px);
-			background: linear-gradient(260.12deg, $gold_equipar -2.2%, $gray_equipar 23.55%, $gray_equipar 76.7%, $gold_equipar 103%);
+			background: linear-gradient(260.12deg, $gold_equipar -2.2%, #99604c 23.55%, #99604c 76.7%, $gold_equipar 103%);
+			border-radius: 130px 6px 130px 6px;
 		}
 		.index__hotspot--img{
 			position: relative;

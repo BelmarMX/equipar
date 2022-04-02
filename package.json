@@ -38,6 +38,8 @@
     "bootstrap-icons": "^1.8.1",
     "instantsearch.css": "^7.4.5",
     "instantsearch.js": "^4.39.1",
+    "jquery": "^3.6.0",
+    "magicsuggest": "^2.1.6",
     "sweetalert2": "^11.4.4"
   }
 }
