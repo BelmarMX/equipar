@@ -223,6 +223,7 @@ class ProductController extends BaseDashboard
             -> orWhere('modelo', 'LIKE', '%'.$request['query'].'%')
             -> orWhere('marca', 'LIKE', '%'.$request['query'].'%')
             -> with(['category', 'subcategory'])
+            -> orderBy('modelo')
             -> get();
 
         $return = [];

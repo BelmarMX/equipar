@@ -63,6 +63,12 @@ $(function() {
 })
 
 $(document).on('click', '.ms-res-item', function(ev){
-    console.log('emule click on search')
     $('#do-search').click()
+})
+
+$(document).on('keydown', '.ms-sel-ctn > input[type="text"]', function(event){
+    if(event.which === 13 || event.keyCode === 13)
+    {
+        $('#do-search').click()
+    }
 })
