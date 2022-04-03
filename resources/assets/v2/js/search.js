@@ -12,6 +12,7 @@ $(function() {
         valueField: 'slug',
         hideTrigger: true,
         highlight: true,
+        useTabKey: true,
         maxSelection: 1,
         maxSelectionRenderer: function(){
             return 'Presiona buscar'
