@@ -151,7 +151,7 @@
         </div>
     </nav>
     <div id="search-box" class="bg-light pb-1 px-1">
-        <small class="text-center" id="eslogan">¡Aseguramos la eficiencia de tu cocina!</small>
+        <small class="text-center align-self-center" id="eslogan">¡Aseguramos la eficiencia de tu cocina!</small>
         <form id="search-form" action="{{ route('search') }}" method="post">
             @csrf
             <input id="autocomplete"
@@ -160,7 +160,8 @@
                    placeholder="Busca por producto, categoría, subcategoría o marca"
             >
             <button id="do-search" type="submit" aria-label="Muestra la barra de búsqueda">
-                Buscar
+                <span class="d-none d-md-block">Buscar</span>
+                <i class="d-block d-md-none bi bi-search"></i>
             </button>
         </form>
     </div>

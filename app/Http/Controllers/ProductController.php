@@ -220,6 +220,8 @@ class ProductController extends BaseDashboard
         }
 
         $productos = Product::where('title', 'LIKE', '%'.$request['query'].'%')
+            -> orWhere('modelo', 'LIKE', '%'.$request['query'].'%')
+            -> orWhere('marca', 'LIKE', '%'.$request['query'].'%')
             -> with(['category', 'subcategory'])
             -> get();
 
@@ -228,23 +230,26 @@ class ProductController extends BaseDashboard
         {
            $return[] = [
                     'id'            => $producto -> id
+                ,   'slug'          => $producto -> slug
                 ,   'name'          => $producto -> title
                 ,   'title'         => $producto -> title
                 ,   'category'      => $producto -> category -> title
                 ,   'subcategory'   => $producto -> subcategory -> title
                 ,   'brand'         => $producto -> marca
                 ,   'price'         => $producto -> precio
-                ,   'image'         => 'storage/productos/'.$producto -> image_rx
+                ,   'image'         => url('storage/productos/'.$producto -> image_rx)
             ];
         }
 
         return response() -> json($return);
     }
+
 	public function search(Request $search)
 	{
 		$term = urlencode($search -> search[0]);
 		return redirect() -> route('results', $term);
 	}
+
 	public function results($search){
 		$promos     = $this -> viewPromos();
 		$search     = urldecode($search);
@@ -283,7 +288,15 @@ class ProductController extends BaseDashboard
 					-> where('promocion_id', '=', $promosID);
 			}
 		);
-		$entries -> whereRaw("(products.title LIKE '%$search%' OR products.modelo LIKE '%$search%' OR products.marca LIKE '%$search%' OR products_categories.title LIKE '%$search%' OR products_subcategories.title LIKE '%$search%')");
+		$entries -> whereRaw("(
+		    products.title LIKE '%$search%' OR
+		    products.slug LIKE '%$search%' OR
+		    products.modelo LIKE '%$search%' OR
+		    products.marca LIKE '%$search%' OR
+		    products_categories.title LIKE '%$search%' OR
+		    products_subcategories.title LIKE '%$search%'
+		)");
+
 		$Everything = $entries -> get();
 
 		if( isset($_GET['brand']) && !empty($_GET['brand']) )
@@ -338,7 +351,7 @@ class ProductController extends BaseDashboard
 		$getCategories  = array();
 		$getCategoriesT  = array();
 		$getBrands      = array();
-		foreach( $Everything AS $e => $entry )
+		foreach( $Everything -> sortBy('marca') AS $e => $entry )
 		{
 			if( !in_array($entry -> slugC, $getCategories) )
 			{
@@ -368,6 +381,9 @@ class ProductController extends BaseDashboard
 		$meta['descripcion']    = "Resultados de la búsqueda de productos";
 		$meta['imagen']         = asset('images/template/mn-productos.jpg');
 
+        $categories = ProductCategories::orderBy('title', 'ASC')
+            ->get();
+
 		return  view('frontend_v2.productos-search')
 			->with([
 					'meta'      => $meta
@@ -381,8 +397,10 @@ class ProductController extends BaseDashboard
 				,   'tCC'       => $getCategoriesT
 				,   'getBrands' => $getBrands
                 ,   'menu_cat'      => $this -> viewProducCategories()
+                ,   'categories'    => $categories
 			]);
 	}
+
 	public function filter($slug)
 	{
 		$banners    = $this->viewBanners();
@@ -418,6 +436,7 @@ class ProductController extends BaseDashboard
 				'meta'          => $meta,   'banners'       => $banners,   'categories'    => $categories,   'articles'      => $articles
 			]);
 	}
+
 	public function show($slug_category, $slug_article)
 	{
 		$categories = ProductCategories::orderBy('title', 'ASC')

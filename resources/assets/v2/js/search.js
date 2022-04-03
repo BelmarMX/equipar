@@ -9,7 +9,7 @@ $(function() {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         },
-        valueField: 'title',
+        valueField: 'slug',
         hideTrigger: true,
         highlight: true,
         maxSelection: 1,
@@ -60,4 +60,9 @@ $(function() {
             `
         }
     })
+})
+
+$(document).on('click', '.ms-res-item', function(ev){
+    console.log('emule click on search')
+    $('#do-search').click()
 })

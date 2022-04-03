@@ -9,7 +9,15 @@
 		background: transparent;
 		height: 2.5rem;
 		position: relative;
-		width: 50%;
+		width: calc(100% - 600px);
+		margin-right: auto;
+		margin-left: auto;
+		right: 92px;
+		@include media-breakpoint-down(md)
+		{
+			width: 100%;
+			right: 0;
+		}
 		&:before{
 			content: "";
 			position: absolute;
@@ -67,11 +75,12 @@
 				overflow-y: auto;
 				em{
 					font-weight: $font-bold;
-					color: $gold_equipar;
+					color: $primary_color;
 					font-size: inherit;
 				}
 				.ms-res-item{
 					padding: 1rem;
+					border-bottom: 1px solid rgba($gray_equipar, .05);
 					.autocomplete-box{
 						display: flex;
 						justify-content: flex-start;
@@ -89,6 +98,7 @@
 							width: 100%;
 							.autocomplete-title{
 								display: block;
+								font-weight: $font-bold;
 							}
 							.autocomplete-cats{
 								text-align: right;
@@ -101,7 +111,7 @@
 								.autocomplete-brand{
 									font-weight: $font-bold;
 									text-transform: uppercase;
-									color: $primary-color;
+									color: $gold-equipar;
 								}
 								.autocomplete-price{
 									background: rgba($gold_equipar, 0);
@@ -153,9 +163,34 @@
 			text-transform: uppercase;
 			margin-left: -2px;
 			cursor: pointer;
+			border-radius: 0 6px 6px 0;
 			&:hover{
 				background: darken($primary_color, 10%);
 			}
+			@include media-breakpoint-down(md)
+			{
+				width: 42px;
+			}
+		}
+	}
+}
+
+#filter-box{
+	background: rgba($gray_equipar, .06);
+
+	label{
+		text-transform: uppercase;
+		font-weight: $font-bold;
+		font-size: 1rem;
+		color: $gold_equipar;
+	}
+
+	.input-group-text{
+		padding: 2px 8px;
+		background: $gray_equipar;
+		i{
+			color: $gold_equipar;
+			font-size: 24px;
 		}
 	}
 }
