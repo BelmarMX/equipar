@@ -8,7 +8,7 @@
         <div class="row align-items-center mb-5">
             <div class="col-12 mb-5">
                 <h1 class="mb-5">Aviso de privacidad</h1>
-                <small>Última modificacion: 16 marzo 2022</small>
+                <small>Última modificación: 16 marzo 2022</small>
 
                 <p class="text-justify">
                     El aviso de privacidad forma parte del uso del sitio web en el que se esté accediendo.
