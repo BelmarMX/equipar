@@ -218,9 +218,9 @@ Route::group(['prefix' => 'dashboard'], function(){
 			,	'as'	=> 'product.downloadcsv'
 		]);
 		Route::get('product-prices-csv', [
-			'uses'  => 'ProductController@pricechangeCsv'
-		,   'as'    => 'product.pricechangeCsv'
-	]);
+                'uses'  => 'ProductController@pricechangeCsv'
+            ,   'as'    => 'product.pricechangeCsv'
+        ]);
 		Route::get('productos-template-csv', [
 				'uses'	=> 'ProductController@downloadPricesTemplate'
 			,	'as'	=> 'product.downloadPricesTemplate'
@@ -229,6 +229,19 @@ Route::group(['prefix' => 'dashboard'], function(){
 				'uses'  => 'ProductController@uploadPricesTemplate'
 			,   'as'    => 'product.uploadPricesTemplate'
 		]);
+        // Actualización masiva de productos
+        Route::get('product-all-xlsx', [
+                'uses'  => 'ProductController@allChangeXlsx'
+            ,   'as'    => 'product.allChangeXlsx'
+        ]);
+        Route::get('productos-all-template-xlsx', [
+                'uses'	=> 'ProductController@downloadProductsTemplate'
+            ,	'as'	=> 'product.downloadAllTemplate'
+        ]);
+        Route::post('product-all-xlsx/upload',[
+                'uses'  => 'ProductController@uploadProductsTemplate'
+            ,   'as'    => 'product.uploadAllTemplate'
+        ]);
 
 		Route::resource('producto-destacado', 'ProductosDestacadosController');
 		Route::get('producto-destacado/{id}/destroy', [

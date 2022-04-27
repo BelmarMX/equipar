@@ -130,9 +130,9 @@
                 <div class="col-md-9">
                     <h3 class="text-start mb-3">Características</h3>
                     <ul>
-                        @foreach(explode(';', $entry -> caracteristicas) as $caracteristica)
-                            @if( $caracteristica != "" )
-                                <li>{{ ucfirst( trim( str_replace(', ', '', $caracteristica) ) ) }}</li>
+                        @foreach(explode(';', $entry -> caracteristicas) AS $caracteristica)
+                            @if( !empty($caracteristica) )
+                                <li>{!! ucfirst( trim( mb_strtolower($caracteristica) ) ) !!}</li>
                             @endif
                         @endforeach
                     </ul>

@@ -16,6 +16,9 @@ use Gate
 ,   Illuminate\Support\Facades\File
 ,   Illuminate\Support\Facades\Input
 ,   Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Model;
+use Shuchkin\SimpleXLSX;
+use Shuchkin\SimpleXLSXGen;
 
 class ProductController extends BaseDashboard
 {
@@ -940,6 +943,7 @@ class ProductController extends BaseDashboard
 				]);
 		}
 	}
+
 	public function pricechangeUpdate(Request $request)
 	{
 		$producto = new Product;
@@ -958,18 +962,18 @@ class ProductController extends BaseDashboard
 		}
 
 		if( Batch::update($producto, $updates, 'id') )
-			{
-				$this->send['type']       = 'alert-success';
-				$this->send['message']    = 'Precios actualizados con éxito.';
-			}
-			else
-			{
-				$this->send['type']       = 'alert-danger';
-				$this->send['message']    = 'Algunos precios no se pudieron actualizar.';
-				
-			}
-			return  back()
-				->with('alert', $this->send);
+        {
+            $this->send['type']       = 'alert-success';
+            $this->send['message']    = 'Precios actualizados con éxito.';
+        }
+        else
+        {
+            $this->send['type']       = 'alert-danger';
+            $this->send['message']    = 'Algunos precios no se pudieron actualizar.';
+
+        }
+        return  back()
+            ->with('alert', $this->send);
 	}
 
 	public function downloadCsv()
@@ -1201,6 +1205,129 @@ class ProductController extends BaseDashboard
 				->with('alert', $this -> send);
 		}
 	}
+
+    public function allChangeXlsx()
+    {
+        if (Gate::allows('users.index')) {
+            return  view('02_system.05_product.all-xlsx');
+        }
+    }
+
+    public function downloadProductsTemplate()
+    {
+        if(Gate::allows('users.index'))
+        {
+            $productos = Product::all();
+            $file_name	= "equipar_productos_all_update_xlsx_".date('Y_m_d_H_i_s').".xlsx";
+            $body   = [];
+            $body[] = ["ID", "CAT_ID", "SUB_ID", "TITULO", "SLUG", "MODELO", "MARCA", "RESUMEN", "CARACTERISTICAS", "TECNICA", "PRECIO", "IMAGEN", "IMG_MINIATURA", "FICHA", "CREACION"];
+            foreach($productos AS $producto)
+            {
+                $body[] = [
+                        $producto -> id
+                    ,	$producto -> category_id
+                    ,	$producto -> subcategory_id
+                    ,	$producto -> title
+                    ,	$producto -> slug
+                    ,	$producto -> modelo
+                    ,	$producto -> marca
+                    ,	preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/', '', $producto -> resumen)
+                    ,	preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/', '', $producto -> caracteristicas)
+                    ,	preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/', '', $producto -> tecnica)
+                    ,	$producto -> precio
+                    ,	$producto -> image
+                    ,	$producto -> image_rx
+                    ,	$producto -> ficha
+                    ,	Carbon::parse($producto -> created_at) -> format('d/m/Y H:i')
+                ];
+            }
+
+            $xlsx = SimpleXLSXGen::fromArray( $body );
+            $xlsx -> downloadAs( $file_name );
+        }
+    }
+
+    public function uploadProductsTemplate(Request $request)
+    {
+        if(Gate::allows('users.edit'))
+        {
+            if( $request -> file('xlsx') && $request -> file('xlsx') -> getClientOriginalExtension() === 'xlsx' )
+            {
+                $xlsx_file = $request -> file('xlsx') -> getRealPath();
+
+                if( $xlsx = SimpleXLSX::parse($xlsx_file) )
+                {
+                    $producto   = new Product;
+                    $updates    = [];
+                    $error      = [];
+
+                    foreach($xlsx -> rows() AS $i => $row)
+                    {
+                        if( $i == 0 )
+                        {
+                            continue;
+                        }
+                        if( !empty($row[0]) && !empty($row[6]) && !empty($row[10]) )
+                        {
+                            $updates[] = [
+                                    'id'                => $row[0]
+                                ,   'title'             => $row[3]
+                                ,   'slug'              => $row[4]
+                                ,   'modelo'            => $row[5]
+                                ,   'marca'             => $row[6]
+                                ,   'resumen'           => $row[7]
+                                ,   'caracteristicas'   => $row[8]
+                                ,   'tecnica'           => $row[9]
+                                ,   'precio'            => $row[10]
+                            ];
+                        }
+                        else{
+                            $f = $i + 1;
+                            $error[] = "Fila $f no tiene ID, marca o precio";
+                        }
+                    }
+
+                    if($saved = Batch::update($producto, $updates, 'id') )
+                    {
+                        $alert = 'alert-success';
+                        if( $error )
+                        {
+                            $alert = 'alert-warning';
+                        }
+
+                        $this -> send = [
+                                'type'		=> $alert
+                            ,	'message'	=> "Se actualizaron $saved productos con éxito. " . implode(", ", $error)
+                        ];
+                    }
+                    else
+                    {
+                        $this -> send = [
+                                'type'		=> 'alert-danger'
+                            ,	'message'	=> 'Ningún precio fue actualizado, asegurate de cargar un archivo XLSX válido.'
+                        ];
+                    }
+                }
+                else
+                {
+                    $this -> send = [
+                            'type'		=> 'alert-danger'
+                        ,	'message'	=> SimpleXLSX::parseError()
+                    ];
+                }
+            }
+            else
+            {
+                $this -> send = [
+                        'type'		=> 'alert-danger'
+                    ,	'message'	=> 'Debes cargar un archivo XLSX válido.'
+                ];
+            }
+
+            return  back()
+                ->with('alert', $this -> send);
+        }
+    }
 
 	public function coincidencias(Request $request)
 	{

@@ -12,7 +12,7 @@ class Product extends Model
 
 	protected $table    = "products";
 	protected $fillable = [
-		'category_id', 'subcategory_id', 'title', 'slug', 'image', 'image_rx', 'ficha', 'modelo', 'marca', 'resumen', 'caracteristicas', 'tecnica', 'precio'
+		'category_id', 'subcategory_id', 'title', 'slug', 'modelo', 'marca', 'resumen', 'caracteristicas', 'tecnica', 'precio', 'image', 'image_rx', 'ficha'
 	];
 
 	protected $dates = ['deleted_at'];
@@ -39,7 +39,6 @@ class Product extends Model
 	{
 		return $this -> hasMany('App\ProductImages', 'producto_id');
 	}
-
 
     /* --
 	| Algolia Search

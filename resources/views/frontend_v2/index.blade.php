@@ -121,6 +121,7 @@
                           data-bs-html="true"
                           title="<strong>RECEPCIÓN DE MERCANCÍA</strong><br>
                                 <p class='text-start hint-fs'>Es el área donde se recibe y se desinfectan las materias primas a procesar.</p>
+                                <img src='{{ asset('v2/images/partes_cocina/recepcion.png') }}' width='260' height='260' alt='render' class='img-fluid mb-2'>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -129,6 +130,7 @@
                           data-bs-html="true"
                           title="<strong>LAVADO DE COCHAMBRE</strong><br>
                                 <p class='text-start hint-fs'>Lavado y desinfección de los elementos utilizados para la transformación y cocción de alimentos, sartenes, ollas, budineras, utensilios etc. Este proceso no debe de realizarse en la misma zona de limpieza de loza. Todos los residuos sépticos y basura generada debe de concentrarse en un lugar fuera de la cocina.</p>
+                                <img src='{{ asset('v2/images/partes_cocina/lavado_ollas.png') }}' width='260' height='260' alt='render' class='img-fluid mb-2'>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -137,6 +139,7 @@
                           data-bs-html="true"
                           title="<strong>LAVADO DE LOZA</strong><br>
                                 <p class='text-start hint-fs'>Lugar donde recibimos todos los residuos o sobrantes de los platillos, y procedemos a la limpieza y sanitizacion de los elementos usados, platos, vasos, cubiertos, charolas, este proceso para que se eficiente requiere de una temperatura promedio entre 60 y 70 grados centígrados en el lavado.</p>
+                                <img src='{{ asset('v2/images/partes_cocina/lavado_loza.png') }}' width='260' height='260' alt='render' class='img-fluid mb-2'>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -145,14 +148,16 @@
                           data-bs-html="true"
                           title="<strong>ALMACEN DE SECOS Y CONGELADOS</strong><br>
                                 <p class='text-start hint-fs'>Aquí es donde se almacenan toda la materia prima seca no perecedera, latas, cereales, condimentos etc.</p>
+                                <img src='{{ asset('v2/images/partes_cocina/almacen_secos_congelados.png') }}' width='260' height='260' alt='render' class='img-fluid mb-2'>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
                           style="top: 78%; left: 10%;"
                           data-bs-toggle="tooltip"
                           data-bs-html="true"
-                          title="<strong>ALMACEN REFRIGERADO</strong><br>
+                          title="<strong>ALMACÉN REFRIGERADO</strong><br>
                                 <p class='text-start hint-fs'>Lugar donde se almacena la materia prima que requiere de temperaturas bajas para su mayor conservación, ejemplo , lácteos, frutas y verduras, cárnicos, pescado y mariscos etc.</p>
+                                <img src='{{ asset('v2/images/partes_cocina/almacen_secos_congelados.png') }}' width='260' height='260' alt='render' class='img-fluid mb-2'>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -161,6 +166,7 @@
                           data-bs-html="true"
                           title="<strong>ÁREA DE PREPARACIÓN</strong><br>
                                 <p class='text-start hint-fs'>En esta área se inicia el proceso de transformación de materia prima mediante la limpieza, corte, sazonado, molido, licuado,  por mencionar algunos. Debe estar cerca de los almacenes.</p>
+                                <img src='{{ asset('v2/images/partes_cocina/preparacion.png') }}' width='260' height='260' alt='render' class='img-fluid mb-2'>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -169,6 +175,7 @@
                           data-bs-html="true"
                           title="<strong>ÁREA DE COCCIÓN</strong><br>
                                 <p class='text-start hint-fs'>Proceso de cocimiento en la preparación de alimentos, esta puede ser en seco, húmedo o combinado, freír, hervir, guisar, saltear, hornear, etc.</p>
+                                <img src='{{ asset('v2/images/partes_cocina/coccion.png') }}' width='260' height='260' alt='render' class='img-fluid mb-2'>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -177,6 +184,7 @@
                           data-bs-html="true"
                           title="<strong>SERVICIO DE ENTREGA DE ALIMENTOS</strong><br>
                                 <p class='text-start hint-fs'>Espacio destinado para el armado y entrega de platillos, el cual puede ser frio o caliente.</p>
+                                <img src='{{ asset('v2/images/partes_cocina/entrega.png') }}' width='260' height='260' alt='render' class='img-fluid mb-2'>
                             "
                     ></span>
                     <span class="index__hotspot--spot grow-fast"
@@ -185,6 +193,7 @@
                           data-bs-html="true"
                           title="<strong>BARRA DE COMPLEMENTOS</strong><br>
                                 <p class='text-start hint-fs'>Zona cercana a la zona de entrega donde se suministran complementos como pueden ser, cubiertos, bebidas, especies, hielo, tostadas, salsas, etc.</p>
+                                <img src='{{ asset('v2/images/partes_cocina/barra_complementos.png') }}' width='260' height='260' alt='render' class='img-fluid mb-2'>
                             "
                     ></span>
                 </div>

@@ -13,6 +13,8 @@
         "laravel/scout": "7.2.1",
         "laravel/tinker": "^1.0",
         "mavinoo/laravel-batch": "^2.2",
+        "shuchkin/simplexlsx": "^1.0",
+        "shuchkin/simplexlsxgen": "^1.2",
         "unisharp/laravel-filemanager": "~1.8"
     },
     "require-dev": {
