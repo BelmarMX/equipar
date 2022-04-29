@@ -114,10 +114,10 @@
             <div class="row">
                 <div class="col-md-3">
                     <h3 class="text-start mb-3">Información técnica</h3>
-                    {!! $entry -> tecnica !!}
+                    {!! str_replace("\n", '<br>', $entry -> tecnica) !!}
 
                     @if( !empty($entry -> ficha) )
-                        <h3 class="text-start mb-3">Ficha Técnica</h3>
+                        <h3 class="text-start mb-3 mt-2">Ficha Técnica</h3>
 
                         <a class="btn btn-secondary"
                            target="_blank"
