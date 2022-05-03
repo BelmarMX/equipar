@@ -11,7 +11,7 @@
             </p>
         </div>
         <div class="col-md-3 location">
-            <i class="bi bi-geo-alt-fill"></i> <span>Sucursal</span>
+            <i class="bi bi-geo-alt-fill"></i> <span>Sucursal</span> <a href="{{route('contacto').'#send_form'}}">Ver más</a>
             <p class="pt-3">
                 Av. Mariano Otero núm. 3519<br>
                 Col. La Calma<br>

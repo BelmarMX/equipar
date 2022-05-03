@@ -126,7 +126,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row mb-5">
                     <div class="col-md-6 order-md-2 contact-location">
                         <i class="bi bi-geo-alt-fill"></i> <h3>Sucursal Zapopan</h3>
                         <p class="pt-3">
@@ -135,6 +135,30 @@
                             Zapopan, Jalisco. México.<br>
                             <a href="tel:+5213335751334" target="-_blank">
                                 +52 1 33 3575 1334
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4676.33574189778!2d-103.35068286458595!3d20.665050103700274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b300a6ca8bdb%3A0xc9c8ebd1f7c027ca!2sEquipar%20cocinas%20Industriales!5e0!3m2!1ses-419!2smx!4v1651552749341!5m2!1ses-419!2smx"
+                                width="100%"
+                                height="400"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                        >
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 order-md-2 contact-location">
+                        <i class="bi bi-geo-alt-fill"></i> <h3>Sucursal Guadalajara</h3>
+                        <p class="pt-3">
+                            Av. 16 de septiembre núm. 665<br>
+                            Col. Mexicaltzingo<br>
+                            Guadalajara, Jalisco. México.<br>
+                            <a href="tel:+5213328862661" target="-_blank">
+                                +52 1 33 2886 2661
                             </a>
                         </p>
                     </div>
