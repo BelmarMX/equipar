@@ -1231,9 +1231,12 @@ class ProductController extends BaseDashboard
                     ,	$producto -> slug
                     ,	$producto -> modelo
                     ,	$producto -> marca
-                    ,	preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/', '', $producto -> resumen)
-                    ,	preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/', '', $producto -> caracteristicas)
-                    ,	preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/', '', $producto -> tecnica)
+                    //,	preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/', '', $producto -> resumen)
+                    ,	$producto -> resumen
+                    //,	preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/', '', $producto -> caracteristicas)
+                    ,	$producto -> caracteristicas
+                    //,	preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/', '', $producto -> tecnica)
+                    ,	$producto -> tecnica
                     ,	$producto -> precio
                     ,	$producto -> image
                     ,	$producto -> image_rx
@@ -1275,9 +1278,9 @@ class ProductController extends BaseDashboard
                                 ,   'slug'              => $row[4]
                                 ,   'modelo'            => $row[5]
                                 ,   'marca'             => $row[6]
-                                ,   'resumen'           => $row[7]
-                                ,   'caracteristicas'   => $row[8]
-                                ,   'tecnica'           => $row[9]
+                                ,   'resumen'           => nl2br($row[7])
+                                ,   'caracteristicas'   => nl2br($row[8])
+                                ,   'tecnica'           => nl2br($row[9])
                                 ,   'precio'            => $row[10]
                             ];
                         }
@@ -1335,9 +1338,9 @@ class ProductController extends BaseDashboard
 		$entry = Product::select(
 				'products.title                 AS titleP'
 			,	'products.slug                  AS slugP'
-			,	'products_categories.title       AS titleC'
+			,	'products_categories.title      AS titleC'
 			,	'products_categories.slug       AS slugC'
-			,	'products_subcategories.title    AS titleS'
+			,	'products_subcategories.title   AS titleS'
 			,	'products_subcategories.slug    AS slugS'
 			,	DB::raw("CONCAT(' [', products_categories.title, ' / ', products_subcategories.title, '] ', products.title) AS text")
 			,	DB::raw("CONCAT('https://www.equi-par.com/productos/', products_categories.slug, '/', products_subcategories.slug, '/', products.slug) AS link")

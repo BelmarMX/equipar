@@ -111,7 +111,11 @@
         <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-text">Información técnica</label>
             <div class="uk-form-controls uk-form-controls-text">
-                <textarea id="RichEdit" class="uk-textarea" rows="5" name="tecnica" placeholder="Textarea">{{ old('tecnica') ?? $entry -> tecnica }}</textarea>
+                <textarea id="RichEdit"
+                          class="uk-textarea"
+                          rows="5"
+                          name="tecnica"
+                          placeholder="Textarea">{{ old('tecnica') ?? $entry -> tecnica }}</textarea>
             </div>
         </div>
         <div class="uk-margin">
