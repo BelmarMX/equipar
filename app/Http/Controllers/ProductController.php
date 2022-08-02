@@ -1157,13 +1157,18 @@ class ProductController extends BaseDashboard
 				{
 					while( ($row = fgetcsv($handle)) !== FALSE )
 					{
-						if( !empty($row[0]) && is_numeric($row[0]) && !empty($row[4]) && is_numeric($row[4]) )
-						{
+						if( !empty($row[0]) && is_numeric($row[0]) &&
+                            !empty($row[4]) && is_numeric($row[4])
+                        ){
 							$saved++;
 							$id		= $row[0];
 							$price	= $row[4];
 
 							$producto = Product::find($id);
+                            if( !$producto )
+                            {
+                                continue;
+                            }
 							$producto -> precio = $price;
 							$producto -> save();
 						}
