@@ -92,13 +92,30 @@
 						display: block;
 						text-align: right;
 						top: 0;
-						background: rgba($gold_equipar, .4);
+						background: #ead7b3;
 						color: $secondary_color;
 						padding: 5px;
 						font-size: 1.05rem;
 						width: 100%;
 						font-weight: $font-bold;
 						border-radius: 6px 6px 0 0;
+						.discount{
+							font-weight: $font-regular;
+							display: block;
+							margin-right: -10px;
+							margin-top: -5px;
+							margin-bottom: .25rem;
+							.old_price{
+								text-decoration: line-through;
+							}
+							.percent{
+								padding: .35rem;
+								background: $danger;
+								color: $white;
+								border-radius: 0 5px 0 0;
+								font-size: .9rem;
+							}
+						}
 					}
 					.product__card__front--model{
 						position: absolute;

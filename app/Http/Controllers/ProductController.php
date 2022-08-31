@@ -73,8 +73,8 @@ class ProductController extends BaseDashboard
 			)
 			-> leftjoin('promociones_productos', function($join)
 			{
-				$promos     = Promociones::where('start', '>=' , Carbon::now()->startOfMonth())
-					-> where('end', '<=', Carbon::now()->endOfMonth())
+				$promos     = Promociones::where('start', '<=' , Carbon::now())
+                    -> where('end', '>=', Carbon::now())
 					-> orderBy('id', 'DESC')
 					-> first();
 				$promosID   = isset($promos -> id) ? $promos -> id : 0;
@@ -115,8 +115,8 @@ class ProductController extends BaseDashboard
 			)
 			-> leftjoin('promociones_productos', function($join)
 			{
-				$promos    = Promociones::where('start', '>=' , Carbon::now()->startOfMonth())
-					-> where('end', '<=', Carbon::now()->endOfMonth())
+				$promos    = Promociones::where('start', '<=' , Carbon::now())
+                    -> where('end', '>=', Carbon::now())
 					-> orderBy('id', 'DESC')
 					-> first();
 				$promosID   = $promos -> id ?? 0;
@@ -225,8 +225,20 @@ class ProductController extends BaseDashboard
         $productos = Product::where('title', 'LIKE', '%'.$request['query'].'%')
             -> orWhere('modelo', 'LIKE', '%'.$request['query'].'%')
             -> orWhere('marca', 'LIKE', '%'.$request['query'].'%')
+            -> whereNotNull('deleted_at')
+            -> leftjoin('promociones_productos', function($join)
+            {
+                $promos    = Promociones::where('start', '<=' , Carbon::now())
+                    -> where('end', '>=', Carbon::now())
+                    -> orderBy('id', 'DESC')
+                    -> first();
+                $promosID   = isset($promos -> id) ? $promos -> id : 0;
+                $join -> on('producto_id', '=', 'products.id')
+                    -> where('promocion_id', '=', $promosID);
+            })
             -> with(['category', 'subcategory'])
             -> orderBy('modelo')
+            -> distinct()
             -> get();
 
         $return = [];
@@ -237,10 +249,12 @@ class ProductController extends BaseDashboard
                 ,   'slug'          => $producto -> slug
                 ,   'name'          => $producto -> title
                 ,   'title'         => $producto -> title
-                ,   'category'      => $producto -> category -> title
-                ,   'subcategory'   => $producto -> subcategory -> title
+                ,   'category'      => $producto -> category -> title ?? ''
+                ,   'subcategory'   => $producto -> subcategory -> title ?? ''
                 ,   'brand'         => $producto -> marca
                 ,   'price'         => $producto -> precio
+                ,   'final_price'   => $producto -> final_price
+                ,   'discount'      => percent($producto -> precio, $producto -> final_price ?? $producto -> precio)
                 ,   'image'         => url('storage/productos/'.$producto -> image_rx)
             ];
         }
@@ -283,8 +297,8 @@ class ProductController extends BaseDashboard
 			)
 			-> leftjoin('promociones_productos', function($join)
 			{
-				$promos    = Promociones::where('start', '>=' , Carbon::now()->startOfMonth())
-					-> where('end', '<=', Carbon::now()->endOfMonth())
+				$promos    = Promociones::where('start', '<=' , Carbon::now())
+                    -> where('end', '>=', Carbon::now())
 					-> orderBy('id', 'DESC')
 					-> first();
 				$promosID   = isset($promos -> id) ? $promos -> id : 0;

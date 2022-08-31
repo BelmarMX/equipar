@@ -17,8 +17,8 @@ class Base extends Controller
     }
 
     public function viewPromos(){
-        $promos    = Promociones::where('start', '>=' , Carbon::now()->startOfMonth())
-            -> where('end', '<=', Carbon::now()->endOfMonth())
+        $promos    = Promociones::where('start', '<=' , Carbon::now())
+            -> where('end', '>=', Carbon::now())
             -> orderBy('id', 'DESC')
             -> first();
         return $promos;

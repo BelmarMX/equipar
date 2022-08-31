@@ -44,6 +44,10 @@ $(function() {
             return data.title
         },
         renderer: function(data){
+            console.log(data)
+            let discount = data.discount != 0
+                ? `<small class="bg-danger text-white p-1 ms-1">${data.discount}%</small>`
+                : ''
             return `
                 <div class="autocomplete-box">
                     <div class="autocomplete-image">
@@ -54,7 +58,7 @@ $(function() {
                         <span class="autocomplete-cats">${data.category} / ${data.subcategory}</span>
                         <div class="autocomplete-additional">
                             <span class="autocomplete-brand">${data.brand}</span>
-                            <span class="autocomplete-price">$ ${data.price}</span>
+                            <span class="autocomplete-price">$ ${data.price}${discount}</span>
                         </div>
                     </div>
                 </div>

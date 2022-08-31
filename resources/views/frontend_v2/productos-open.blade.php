@@ -86,7 +86,7 @@
                         <div class="row productos__main_product__price">
                             <div class="col-md-6 mb-2">
                                 <div class="productos__main_product__price--price">
-                                    ${{ number_format($entry -> precio, 2, '.', ',') }} <span class="productos__main_product__price--currency">MXN</span>
+                                    ${{ number_format($entry -> final_price ?? $entry -> precio, 2, '.', ',') }} <span class="productos__main_product__price--currency">MXN</span>
                                 </div>
                             </div>
                             <div class="col-md-6 productos__main_product__price--quote">
@@ -105,6 +105,9 @@
                                 </button>
                             </div>
                         </div>
+                        @isset($entry -> final_price)
+                            * <small>Producto en promoción con descuento del {{ percent($entry->precio,$entry->final_price) }}%. Precio original: ${{ number_format($entry -> precio,2) }}</small>
+                        @endisset
                     </div>
                 </div>
             </div>
@@ -151,6 +154,7 @@
                             ,   'model'     => $product -> modelo
                             ,   'brand'     => $product -> marca
                             ,   'price'     => $product -> precio
+                            ,   'promo'     => $product -> final_price
                             ,   'tag'       => $product -> titleS
                             ,   'tag_link'  => route('productos-category', [$product -> slugC, $product -> slugS])
                             ,   'route'     => route('productos-open', [$product -> slugC, $product -> slugS, $product -> slugP])

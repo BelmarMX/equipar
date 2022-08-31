@@ -152,7 +152,7 @@
     </nav>
     <div id="search-box" class="bg-light pb-1 px-1">
         <small class="text-center align-self-center" id="eslogan">¡Aseguramos la eficiencia de tu cocina!</small>
-        <form id="search-form" action="{{ route('search') }}" method="post">
+        <form id="search-form" action="{{ route('search') }}" method="post" @isset( $promos ) style="right: 0;" @endif>
             @csrf
             <input id="autocomplete"
                    type="search"
@@ -164,6 +164,7 @@
                 <i class="d-block d-md-none bi bi-search"></i>
             </button>
         </form>
+        @include('frontend_v2.partials.button-discounts', ['promos' => $promos])
     </div>
 </header>
 

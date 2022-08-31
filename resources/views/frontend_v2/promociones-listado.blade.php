@@ -6,27 +6,16 @@
 @section('content')
     <div class="container-fluid mb-5">
         @include('frontend_v2.partials.banner-single', [
-                'slide'         => asset('v2/images/samples/banner_productos.jpg')
-            ,   'slide_mobile'  => asset('v2/images/samples/banner_productos-mv.jpg')
-            ,   'slide_alt'     => $subcat -> title
-            ,   'summary'       => TRUE
-            ,   'title'         => "<strong>{$subcat -> title}</strong>"
-            ,   'h1'            => TRUE
+                'slide'         => url("storage/promos/{$promocion -> image}")
+            ,   'slide_mobile'  => NULL
+            ,   'slide_alt'     => $promocion -> title
+            ,   'summary'       => FALSE
+            ,   'title'         => NULL
+            ,   'h1'            => FALSE
         ])
     </div>
 
     <main class="container">
-        @include('frontend_v2.partials.scroll-categories', [
-                'tag_title'     => $category -> title
-            ,   'todas_link'    => route('productos-category-list', $category -> slug)
-            ,   'categories'    => array_map(function($subcategory) use($category) {
-                return [
-                        $subcategory['title']
-                    ,   route('productos-category', [$category -> slug, $subcategory['slug']])
-                ];
-            }, $subcategories -> toArray() )
-        ])
-
         <section>
             <div class="row justify-content-center">
                 @forelse($entries AS $product)

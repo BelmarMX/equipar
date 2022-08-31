@@ -22,6 +22,7 @@
                 @endforeach
             </div>
             <div class="text-end">
+                @include('frontend_v2.partials.button-discounts', ['promos' => $promos])
                 <a href="{{ route('productos') }}" class="btn btn-primary">
                     Más categorías
                 </a>

@@ -55,8 +55,8 @@ class ProductSubcategoriesController extends BaseDashboard
             )
             -> leftjoin('promociones_productos', function($join)
             {
-                $promos    = Promociones::where('start', '>=' , Carbon::now()->startOfMonth())
-                    -> where('end', '<=', Carbon::now()->endOfMonth())
+                $promos    = Promociones::where('start', '<=' , Carbon::now())
+                    -> where('end', '>=', Carbon::now())
                     -> orderBy('id', 'DESC')
                     -> first();
                 $promosID   = isset($promos -> id) ? $promos -> id : 0;

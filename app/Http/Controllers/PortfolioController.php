@@ -125,7 +125,8 @@ class PortfolioController extends BaseDashboard
                 -> with([
                         'meta'      => $meta
                     ,   'banners'   => 0
-                    ,   'entries'  => $entries
+                    ,   'entries'   => $entries
+                    ,   'promos'	=> parent::viewPromos()
                     ,   'menu_cat'  => $this -> viewProducCategories()
                 ]);
     }

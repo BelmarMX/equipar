@@ -72,6 +72,7 @@ class IndexController extends Base
 					->with([
 							'meta'      => $meta
 						,   'banners'   => 0
+                        ,   'promos'	=> $promos
                         ,   'menu_cat'  => $this -> viewProducCategories()
 					]);
 
@@ -83,6 +84,7 @@ class IndexController extends Base
 					->with([
 							'meta'      => $meta
 						,   'banners'   => 0
+                        ,   'promos'	=> $promos
                         ,   'menu_cat'  => $this -> viewProducCategories()
 					]);
 
@@ -94,6 +96,7 @@ class IndexController extends Base
 					->with([
 							'meta'      => $meta
 						,   'banners'   => 0
+                        ,   'promos'	=> $promos
                         ,   'menu_cat'  => $this -> viewProducCategories()
 					]);
 
@@ -105,6 +108,7 @@ class IndexController extends Base
                     ->with([
                             'meta'      => $meta
                         ,   'banners'   => 0
+                        ,   'promos'	=> $promos
                         ,   'menu_cat'  => $this -> viewProducCategories()
                     ]);
 
@@ -116,6 +120,7 @@ class IndexController extends Base
                     -> with([
                             'meta'      => $meta
                         ,   'banners'   => 0
+                        ,   'promos'	=> $promos
                         ,   'menu_cat'  => $this -> viewProducCategories()
                     ]);
 
@@ -127,6 +132,7 @@ class IndexController extends Base
                     -> with([
                             'meta'      => $meta
                         ,   'banners'   => 0
+                        ,   'promos'	=> $promos
                         ,   'menu_cat'  => $this -> viewProducCategories()
                     ]);
 		}

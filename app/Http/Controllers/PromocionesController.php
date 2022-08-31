@@ -354,17 +354,19 @@ class PromocionesController extends BaseDashboard
 	{
 		if (Gate::allows('users.index')) {
 			
-			$brandlist  = Product::select('marca') -> groupBy('marca') -> get();
+			$brandlist  = Product::select('marca') -> groupBy('marca') -> orderBy('marca') -> get();
 
 			$promocion  = Promociones::find( $id );
 			$productos_ids  = array();
 			$final_prices   = array();
-			foreach($promocion -> productsInPromos AS $s => $t)
+
+            foreach($promocion -> productsInPromos AS $s => $t)
 			{
 				$productos_ids[] = $t -> producto_id;
 				$final_prices[$t -> producto_id] = $t -> final_price;
 			}
-			$entries    = Product::join(
+
+            $entries    = Product::join(
 							'products_categories'
 						,   'products_categories.id', '=', 'products.category_id'
 					)
@@ -380,6 +382,7 @@ class PromocionesController extends BaseDashboard
 					,   'products_categories.title      AS titleC'
 					,   'products_subcategories.title   AS titleS'
 				)
+                -> whereNull('products.deleted_at')
 				-> where(function($query){
 					if( isset($_GET['marca']) && $_GET['marca'] != '*ALL*' )
 					{
@@ -387,6 +390,7 @@ class PromocionesController extends BaseDashboard
 					}
 				})
 				-> orderBy('idP', 'DESC')
+                -> distinct()
 				-> get();
 
 			return  view('02_system.07_promociones.add')

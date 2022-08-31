@@ -37,6 +37,7 @@
                             ,   'model'     => $product -> modelo
                             ,   'brand'     => $product -> marca
                             ,   'price'     => $product -> precio
+                            ,   'promo'     => $product -> final_price
                             ,   'tag'       => $product -> titleS
                             ,   'tag_link'  => route('productos-category', [$product -> slugC, $product -> slugS])
                             ,   'route'     => route('productos-open', [$product -> slugC, $product -> slugS, $product -> slugP])

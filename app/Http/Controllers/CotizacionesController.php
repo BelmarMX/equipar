@@ -89,8 +89,8 @@ class CotizacionesController extends BaseDashboard
                 ]);
             }
             $cliente['comments'] = $request -> comments;
-            $promocion = Promociones::where('start', '>=' , Carbon::now()->startOfMonth())
-                -> where('end', '<=', Carbon::now()->endOfMonth())
+            $promocion = Promociones::where('start', '<=' , Carbon::now())
+                -> where('end', '>=', Carbon::now())
                 -> orderBy('id', 'DESC')
                 -> first();
 
@@ -104,6 +104,16 @@ class CotizacionesController extends BaseDashboard
                             'products_subcategories'
                         ,   'products_subcategories.id','=','products.subcategory_id'
                     )
+                    -> leftjoin('promociones_productos', function($join)
+                    {
+                        $promos    = Promociones::where('start', '<=' , Carbon::now())
+                            -> where('end', '>=', Carbon::now())
+                            -> orderBy('id', 'DESC')
+                            -> first();
+                        $promosID   = $promos -> id ?? 0;
+                        $join -> on('producto_id', '=', 'products.id')
+                            -> where('promocion_id', '=', $promosID);
+                    })
                     -> select(
                             'products.title AS titleP'
                         ,   'products.slug AS slugP'
@@ -115,9 +125,14 @@ class CotizacionesController extends BaseDashboard
                         ,   'products_categories.slug AS slugC'
                         ,   'products_subcategories.title AS titleS'
                         ,   'products_subcategories.slug AS slugS'
+                        ,   'promociones_productos.*'
                     )
                     -> where('products.id', '=', $quote_id)
                     -> first();
+                $precio     = $producto -> final_price ?? $producto -> precio;
+                $discount   = $producto -> final_price
+                    ? percent($producto -> precio, $producto -> final_price)
+                    : 0;
                 $productos[] = array(
                         'title'             => $producto -> titleP
                     ,   'imagen'            => $producto -> foto
@@ -128,8 +143,9 @@ class CotizacionesController extends BaseDashboard
                     ,   'uri'               => 'https://equi-par.com/productos/'.$producto -> slugC .'/'.$producto -> slugS .'/'. $producto ->slugP
                     ,   'unitario'          => $producto -> precio
                     ,   'cantidad'          => $request -> qty[$quote_id][0]
-                    ,   'unitario_promo'    => $producto -> precio
-                    ,   'total'             => ($request -> qty[$quote_id][0] * $producto -> precio)
+                    ,   'unitario_promo'    => $producto -> final_price ?? 0
+                    ,   'total'             => ($request -> qty[$quote_id][0] * $precio)
+                    ,   'descuento'         => $discount
                 );
             }
             Mail::to($request -> email, $request -> nombre)

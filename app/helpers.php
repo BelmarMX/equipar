@@ -19,6 +19,11 @@ function fDate( $date )
 
 function percent( $normal, $final )
 {
+    if ($normal == $final)
+    {
+        return 0;
+    }
+
 	$normal		= $normal > 0 ? $normal : $final;
 	$percent	= (100 * $final) / $normal - 100;
 	return number_format( $percent, 2);

@@ -70,6 +70,7 @@ class BlogArticlesController extends BaseDashboard
                     ,   'banners'       => 0
                     ,   'categories'    => $categories
                     ,   'articles'      => $articles
+                    ,   'promos'        => parent::viewPromos()
                     ,   'menu_cat'      => $this -> viewProducCategories()
                 ]);
     }
@@ -107,6 +108,7 @@ class BlogArticlesController extends BaseDashboard
                     ,   'banners'       => 0
                     ,   'categories'    => $categories
                     ,   'articles'      => $articles
+                    ,   'promos'        => parent::viewPromos()
                     ,   'menu_cat'      => $this -> viewProducCategories()
                 ]);
     }
@@ -165,6 +167,7 @@ class BlogArticlesController extends BaseDashboard
                     ,   'categories'    => $categories
                     ,   'article'       => $article
                     ,   'latest'        => $latest
+                    ,   'promos'        => parent::viewPromos()
                     ,   'menu_cat'      => $this -> viewProducCategories()
                 ]);
     }

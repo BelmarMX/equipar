@@ -26,7 +26,17 @@
                          src="{{ $image }}"
                          alt="{{ $title }}"
                     >
-                    <span class="product__card__front--price">${{ number_format($price, 2) }} <small>MXN</small></span>
+                    @isset($promo)
+                        <span class="product__card__front--price">
+                            <span class="discount">
+                                <small class="old_price">${{ number_format($price, 2) }}</small>
+                                <small class="percent">{{ percent( $price, $promo ) }}%</small>
+                            </span>
+                            ${{ number_format($promo, 2) }} <small>MXN</small>
+                        </span>
+                    @else
+                        <span class="product__card__front--price">${{ number_format($price, 2) }} <small>MXN</small></span>
+                    @endif
                     <span class="product__card__front--model">
                         <strong>Mod:</strong> {{ $model }}
                         @isset($brand)
