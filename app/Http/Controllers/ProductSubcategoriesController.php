@@ -101,7 +101,8 @@ class ProductSubcategoriesController extends BaseDashboard
     public function index()
     {
         if (Gate::allows('users.index')) {
-            $categories = ProductCategories::orderBy('id', 'ASC')
+            $categories = ProductCategories::withTrashed()
+                ->orderBy('id', 'ASC')
                 ->get();
             $entries    = ProductSubcategories::withTrashed()
                 ->orderBy('id', 'DESC')
