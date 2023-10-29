@@ -2,10 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\ProductCategories;
-use Carbon\Carbon
-,   Illuminate\Support\Facades\Route
-;
-
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Route;
 use App\BlogArticles;
 use App\Product;
 use App\ProductosDestacados;
@@ -140,6 +138,15 @@ class IndexController extends Base
 
     public function unox()
     {
+        $productos  = Product::select('category_id')
+            -> where('marca', 'LIKE', '%unox%')
+            -> groupBy('category_id')
+        -> get()
+        -> toArray();
+        $categories_id = array_column($productos, 'category_id');
+        $featured   = ProductCategories::whereIn('id', $categories_id)
+            -> get();
+
         return view('frontend_v2.unox')
             -> with([
                     'meta' => [
@@ -150,6 +157,7 @@ class IndexController extends Base
                 ,   'banners'   => 0
                 ,   'promos'	=> $this -> viewPromos(FALSE)
                 ,   'menu_cat'  => $this -> viewProducCategories()
+                ,   'featured'  => $featured
             ]);
     }
 }

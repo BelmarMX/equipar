@@ -8,6 +8,10 @@
     <style>
         .bg-black{
             background: #000;
+            color: #FFF;
+        }
+        .bg-black-50{
+            background: rgba(0,0,0,.5);
         }
         .bg-slate{
             background: rgba(30, 41, 59, 0.1);
@@ -89,6 +93,13 @@
             font-weight: 600;
             font-size: 1.45rem;
             color: #334155;
+        }
+        .before-buy p{
+            font-size: 1.3rem;
+        }
+        .before-buy p strong.blue{
+            font-size: 1.3rem;
+            color: #0dcaf0;
         }
     </style>
 @endpush
@@ -217,13 +228,46 @@
             </section>
 
             {{-- BENEFICIOS UNOX --}}
-            <section class="container-fluid bg-black py-5 mb-5">
-                <h2>Antes de comprar UNOX&reg; ¡Pruébalo!</h2>
-                <p>
-                    Para que estés 100% seguro de tu compra: nuestros expertos te guiarán paso a paso para que pruebes tu próximo Horno Unox en tu cocina sin costo alguno.
-                </p>
-                1 Iremos a verte
-                2 Tú elijes el menú
+            <section class="container-fluid bg-black py-5 mb-5 before-buy">
+                <div class="px-5">
+                    <h2>Antes de comprar UNOX&reg; ¡Pruébalo!</h2>
+                    <p class="mb-5">
+                        Para que estés 100% seguro de tu compra: nuestros expertos te guiarán paso a paso para que pruebes tu próximo Horno Unox en tu cocina <strong class="blue">sin costo alguno.</strong>
+                    </p>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3 class="hiper-strong">
+                                <span>Iremos</span> a verte
+                            </h3>
+                            <p>
+                                Tú eliges el día y la hora de tu Individual Cooking Experience, los ingredientes y los libros de recetas...
+
+                                ¡nosotros hacemos el resto! Nuestro AMC llevará el horno a tu local y cocinará contigo. ¡Ponnos a prueba!
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="hiper-strong">
+                                Tú <span>eliges</span> el menú
+                            </h3>
+                            <p>
+                                ¡Cocina como lo haces cada día! Te guiaremos mientras pruebas nuestra tecnología y te ayudaremos a conseguir el resultado de cocción perfecto.
+
+                                Decide qué recetas y métodos de cocción quieres probar en función de tus necesidades.
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="hiper-strong">
+                                Prueba <span>Gratis</span> el Horno
+                            </h3>
+                            <p>
+                                Ponte en contacto con un asesor Equipar para mas información:
+                                <a>WHATS</a>
+                                <a>Email</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="container-fluid bg-slate py-5 mb-5">
@@ -303,7 +347,7 @@
                 </div>
             </section>
 
-            <section class="container">
+            <section class="container mb-5">
                 <h3>UNOX Te ofrece mucho mas que un horno profesional</h3>
                 <div class="row">
                     <div class="col-md-4 mb-2">
@@ -369,9 +413,19 @@
             </section>
 
             <section>
-                Equipar Siempre tiene algo mas para ti <br>
-
-                Lista de otros productos UNOX por categorías:
+                <h4>Equipar Siempre tiene algo más para ti</h4>
+                <div class="row justify-content-center">
+                    @foreach($featured AS $category)
+                        <div class="col-md-3 d-flex justify-content-center mb-4">
+                            @include('frontend_v2.partials.product-category-view', [
+                                    'position'  => str_pad($loop -> index + 1, 2, '0', STR_PAD_LEFT)
+                                ,   'title'     => $category -> title
+                                ,   'route'     => route('brands-categories', ['unox', $category -> slug])
+                                ,   'image'     => url("storage/productos-categorias/{$category -> image_rx}")
+                            ])
+                        </div>
+                    @endforeach
+                </div>
             </section>
         </main>
     </div>
