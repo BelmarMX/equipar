@@ -137,4 +137,19 @@ class IndexController extends Base
                     ]);
 		}
 	}
+
+    public function unox()
+    {
+        return view('frontend_v2.unox')
+            -> with([
+                    'meta' => [
+                            'titulo'        => 'Unox: Hornos Profesionales'
+                        ,   'descripcion'   => 'Elija entre la mejor selección de productos y accesorios para crear la solución de cocina perfecta.'
+                        ,   'imagen'        => asset('images/template/bn-acerca-de.jpg')
+                    ]
+                ,   'banners'   => 0
+                ,   'promos'	=> $this -> viewPromos(FALSE)
+                ,   'menu_cat'  => $this -> viewProducCategories()
+            ]);
+    }
 }

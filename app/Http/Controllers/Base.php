@@ -16,7 +16,11 @@ class Base extends Controller
         return $banners;
     }
 
-    public function viewPromos(){
+    public function viewPromos($display = TRUE)
+    {
+        if( !$display )
+        { return FALSE; }
+
         $promos    = Promociones::where('start', '<=' , Carbon::now())
             -> where('end', '>=', Carbon::now())
             -> orderBy('id', 'DESC')

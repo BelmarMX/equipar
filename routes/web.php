@@ -14,6 +14,8 @@ Route::get('servicios', 'IndexController@view')
 	->name('servicios');
 Route::get('fabricacion-muebles-acero-inoxidable', 'IndexController@view')
     ->name('diseno-acero');
+Route::get('unox', 'IndexController@unox')
+    ->name('unox');
 Route::get('galeria', 'GaleriaController@view')
 	-> name('galeria');
 
@@ -29,6 +31,10 @@ Route::group(['prefix' => 'productos'], function () {
 });
 Route::get('marcas/{brand}', 'ProductController@brands')
     -> name('brands');
+Route::get('marcas/{brand}/{slug_category}', 'ProductController@brandsCategories')
+    -> name('brands-categories');
+Route::get('marcas/{brand}/{slug_category}/{slug_subcategory}', 'ProductController@brandsSubcategories')
+    -> name('brands-subcategories');
 Route::post('autocomplete', 'ProductController@autocomplete')
     -> name('autocomplete');
 Route::post('search', 'ProductController@search')

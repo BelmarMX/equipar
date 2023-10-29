@@ -22,159 +22,211 @@ use Shuchkin\SimpleXLSXGen;
 
 class ProductController extends BaseDashboard
 {
-	private $send;
-	private $folder;
-	private $width;
-	private $height;
-	private $width_rx;
-	private $height_rx;
-	private $max_size;
+    private $send;
+    private $folder;
+    private $width;
+    private $height;
+    private $width_rx;
+    private $height_rx;
+    private $max_size;
 
-	public function __construct()
-	{
-		parent::__construct();
-		$this -> send       = array();
-		$this -> folder     = env('PRODUCT_FOLDER');
-		$this -> width      = env('PRODUCT_WIDTH');
-		$this -> height     = env('PRODUCT_HEIGHT');
-		$this -> width_rx   = env('PRODUCT_RX_WIDTH');
-		$this -> height_rx  = env('PRODUCT_RX_HEIGHT');
-		$this -> max_size   = env('FILE_MAX_SIZE');
-	}
+    public function __construct()
+    {
+        parent::__construct();
+        $this->send = array();
+        $this->folder = env('PRODUCT_FOLDER');
+        $this->width = env('PRODUCT_WIDTH');
+        $this->height = env('PRODUCT_HEIGHT');
+        $this->width_rx = env('PRODUCT_RX_WIDTH');
+        $this->height_rx = env('PRODUCT_RX_HEIGHT');
+        $this->max_size = env('FILE_MAX_SIZE');
+    }
 
-	/* --- --- --- --- --- --- --- --- --- ---
-	| View
-	--- --- --- --- --- --- --- --- --- --- */
-	public function view(Route $route, $slugC, $slugS, $slugP)
-	{
-		$banners    = $this->viewBanners();
-		$promos     = $this -> viewPromos();
-		$entry      = Product::select(
-				'*'
-			,   'products.id                    AS idP'
-			,   'products.title                 AS titleP'
-			,   'products.slug                  AS slugP'
-			,   'products.image                 AS imageP'
-			,   'products.image_rx              AS image_rxP'
-			,   'products_categories.id         AS idC'
-			,   'products_categories.title      AS titleC'
-			,   'products_categories.slug       AS slugC'
-			,   'products_subcategories.id      AS idS'
-			,   'products_subcategories.title   AS titleS'
-			,   'products_subcategories.slug    AS slugS'
-		)
-			-> join(
-					'products_categories'
-				,   'products.category_id', '=', 'products_categories.id'
-			)
-			-> join(
-					'products_subcategories'
-				,   'products.subcategory_id', '=', 'products_subcategories.id'
-			)
-			-> leftjoin('promociones_productos', function($join)
-			{
-				$promos     = Promociones::where('start', '<=' , Carbon::now())
-                    -> where('end', '>=', Carbon::now())
-					-> orderBy('id', 'DESC')
-					-> first();
-				$promosID   = isset($promos -> id) ? $promos -> id : 0;
-				$join -> on('producto_id', '=', 'products.id')
-					-> where('promocion_id', '=', $promosID);
-			})
-			-> orderBy('idP', 'DESC')
-			-> where('products.slug', '=', $slugP)
-			-> first();
+    /* --- --- --- --- --- --- --- --- --- ---
+    | View
+    --- --- --- --- --- --- --- --- --- --- */
+    public function view(Route $route, $slugC, $slugS, $slugP)
+    {
+        $banners = $this->viewBanners();
+        $promos = $this->viewPromos();
+        $entry = Product::select(
+            '*'
+            , 'products.id                    AS idP'
+            , 'products.title                 AS titleP'
+            , 'products.slug                  AS slugP'
+            , 'products.image                 AS imageP'
+            , 'products.image_rx              AS image_rxP'
+            , 'products_categories.id         AS idC'
+            , 'products_categories.title      AS titleC'
+            , 'products_categories.slug       AS slugC'
+            , 'products_subcategories.id      AS idS'
+            , 'products_subcategories.title   AS titleS'
+            , 'products_subcategories.slug    AS slugS'
+        )
+            ->join(
+                'products_categories'
+                , 'products.category_id', '=', 'products_categories.id'
+            )
+            ->join(
+                'products_subcategories'
+                , 'products.subcategory_id', '=', 'products_subcategories.id'
+            )
+            ->leftjoin('promociones_productos', function ($join) {
+                $promos = Promociones::where('start', '<=', Carbon::now())
+                    ->where('end', '>=', Carbon::now())
+                    ->orderBy('id', 'DESC')
+                    ->first();
+                $promosID = isset($promos->id) ? $promos->id : 0;
+                $join->on('producto_id', '=', 'products.id')
+                    ->where('promocion_id', '=', $promosID);
+            })
+            ->orderBy('idP', 'DESC')
+            ->where('products.slug', '=', $slugP)
+            ->first();
 
-		$gallery = ProductImages::where('producto_id', $entry -> idP) -> get();
+        $gallery = ProductImages::where('producto_id', $entry->idP)->get();
 
-        $category       = ProductCategories::where('slug', $slugC) -> first();
-        $subcategory    = ProductSubcategories::where('slug', $slugS) -> first();
-        $subcategories  = ProductSubcategories::where('category_id', $category -> id) -> orderBy('title', 'ASC')-> get();
+        $category = ProductCategories::where('slug', $slugC)->first();
+        $subcategory = ProductSubcategories::where('slug', $slugS)->first();
+        $subcategories = ProductSubcategories::where('category_id', $category->id)->orderBy('title', 'ASC')->get();
 
-		$related      = Product::select(
-				'*'
-			,   'products.id                    AS idP'
-			,   'products.title                 AS titleP'
-			,   'products.slug                  AS slugP'
-			,   'products.image                 AS imageP'
-			,   'products.image_rx              AS image_rxP'
-			,   'products_categories.id         AS idC'
-			,   'products_categories.title      AS titleC'
-			,   'products_categories.slug       AS slugC'
-			,   'products_subcategories.id      AS idS'
-			,   'products_subcategories.title   AS titleS'
-			,   'products_subcategories.slug    AS slugS'
-		)
-			-> join(
-					'products_categories'
-				,   'products.category_id', '=', 'products_categories.id'
-			)
-			-> join(
-					'products_subcategories'
-				,   'products.subcategory_id', '=', 'products_subcategories.id'
-			)
-			-> leftjoin('promociones_productos', function($join)
-			{
-				$promos    = Promociones::where('start', '<=' , Carbon::now())
-                    -> where('end', '>=', Carbon::now())
-					-> orderBy('id', 'DESC')
-					-> first();
-				$promosID   = $promos -> id ?? 0;
-				$join -> on('producto_id', '=', 'products.id')
-					-> where('promocion_id', '=', $promosID);
-			})
-            -> where('products_categories.id', $category -> id)
-            -> orWhere('products_subcategories.id', $subcategory -> id)
-			-> inRandomOrder()
-			-> limit(4)
-			-> get();
-		/* SIDEBAR */
-		$CC = ProductCategories::orderBy('title', 'ASC')
-			-> get();
-		$SS = ProductSubcategories::orderBy('category_id', 'ASC')
-			-> orderBy('title', 'ASC')
-			-> get();
+        $related = Product::select(
+            '*'
+            , 'products.id                    AS idP'
+            , 'products.title                 AS titleP'
+            , 'products.slug                  AS slugP'
+            , 'products.image                 AS imageP'
+            , 'products.image_rx              AS image_rxP'
+            , 'products_categories.id         AS idC'
+            , 'products_categories.title      AS titleC'
+            , 'products_categories.slug       AS slugC'
+            , 'products_subcategories.id      AS idS'
+            , 'products_subcategories.title   AS titleS'
+            , 'products_subcategories.slug    AS slugS'
+        )
+            ->join(
+                'products_categories'
+                , 'products.category_id', '=', 'products_categories.id'
+            )
+            ->join(
+                'products_subcategories'
+                , 'products.subcategory_id', '=', 'products_subcategories.id'
+            )
+            ->leftjoin('promociones_productos', function ($join) {
+                $promos = Promociones::where('start', '<=', Carbon::now())
+                    ->where('end', '>=', Carbon::now())
+                    ->orderBy('id', 'DESC')
+                    ->first();
+                $promosID = $promos->id ?? 0;
+                $join->on('producto_id', '=', 'products.id')
+                    ->where('promocion_id', '=', $promosID);
+            })
+            ->where('products_categories.id', $category->id)
+            ->orWhere('products_subcategories.id', $subcategory->id)
+            ->inRandomOrder()
+            ->limit(4)
+            ->get();
+        /* SIDEBAR */
+        $CC = ProductCategories::orderBy('title', 'ASC')
+            ->get();
+        $SS = ProductSubcategories::orderBy('category_id', 'ASC')
+            ->orderBy('title', 'ASC')
+            ->get();
 
-		/* SIDEBAR */
+        /* SIDEBAR */
 
-		$meta['titulo']         = $entry -> titleP . " | Modelo " . $entry -> modelo;
-		$meta['descripcion']    = $entry -> resumen;
-		$meta['imagen']         = url('storage/' . $this -> folder . $entry -> imageP);
+        $meta['titulo'] = $entry->titleP . " | Modelo " . $entry->modelo;
+        $meta['descripcion'] = $entry->resumen;
+        $meta['imagen'] = url('storage/' . $this->folder . $entry->imageP);
 
-		return  view('frontend_v2.productos-open')
-			->with([
-					'meta'          => $meta
-				,   'banners'       => 0
-				,   'promos'        => $promos
-				,	'gallery'       => $gallery
-				,   'entry'         => $entry
-				,   'CC'            => $CC
-				,   'SS'            => $SS
-                ,   'category'      => $category
-                ,   'subcategory'   => $subcategory
-				,   'subcategories' => $subcategories
-				,   'related'       => $related
-                ,   'menu_cat'      => $this -> viewProducCategories()
-			]);
-	}
+        return view('frontend_v2.productos-open')
+            ->with([
+                'meta' => $meta
+                , 'banners' => 0
+                , 'promos' => $promos
+                , 'gallery' => $gallery
+                , 'entry' => $entry
+                , 'CC' => $CC
+                , 'SS' => $SS
+                , 'category' => $category
+                , 'subcategory' => $subcategory
+                , 'subcategories' => $subcategories
+                , 'related' => $related
+                , 'menu_cat' => $this->viewProducCategories()
+            ]);
+    }
 
     public function brands($brand)
     {
-        $brand          = urldecode($brand);
-        $promos         = $this -> viewPromos();
-        $entry          = Product::select(
+        $brand = urldecode($brand);
+        $promos = $this->viewPromos();
+        $entry = Product::select(
             '*'
-            ,   'products.id                    AS idP'
-            ,   'products.title                 AS titleP'
-            ,   'products.slug                  AS slugP'
-            ,   'products.image                 AS imageP'
-            ,   'products.image_rx              AS image_rxP'
-            ,   'products_categories.id         AS idC'
-            ,   'products_categories.title      AS titleC'
-            ,   'products_categories.slug       AS slugC'
-            ,   'products_subcategories.id      AS idS'
-            ,   'products_subcategories.title   AS titleS'
-            ,   'products_subcategories.slug    AS slugS'
+            , 'products.id                    AS idP'
+            , 'products.title                 AS titleP'
+            , 'products.slug                  AS slugP'
+            , 'products.image                 AS imageP'
+            , 'products.image_rx              AS image_rxP'
+            , 'products_categories.id         AS idC'
+            , 'products_categories.title      AS titleC'
+            , 'products_categories.slug       AS slugC'
+            , 'products_subcategories.id      AS idS'
+            , 'products_subcategories.title   AS titleS'
+            , 'products_subcategories.slug    AS slugS'
+        )
+            ->join(
+                'products_categories'
+                , 'products.category_id', '=', 'products_categories.id'
+            )
+            ->join(
+                'products_subcategories'
+                , 'products.subcategory_id', '=', 'products_subcategories.id'
+            )
+            ->leftjoin('promociones_productos', function ($join) {
+                $promos = Promociones::where('start', '>=', Carbon::now()->startOfMonth())
+                    ->where('end', '<=', Carbon::now()->endOfMonth())
+                    ->orderBy('id', 'DESC')
+                    ->first();
+                $promosID = isset($promos->id) ? $promos->id : 0;
+                $join->on('producto_id', '=', 'products.id')
+                    ->where('promocion_id', '=', $promosID);
+            })
+            ->orderBy('idP', 'DESC')
+            ->where('products.marca', 'LIKE', "%$brand%")
+            ->paginate(12);
+
+
+        $meta['titulo'] = "Productos de la marca " . ucfirst($brand);
+        $meta['descripcion'] = "Listado de productos de la marca $brand";
+        $meta['imagen'] = asset('v2/images/samples/banner.jpg');
+        return view('frontend_v2.productos-marcas')
+            ->with([
+                'meta' => $meta
+                , 'banners' => 0
+                , 'promos' => $promos
+                , 'brand' => ucfirst($brand)
+                , 'entries' => $entry
+                , 'menu_cat' => $this->viewProducCategories()
+            ]);
+    }
+
+    public function brandsCategories($brand, $slug_category)
+    {
+        $brand  = urldecode($brand);
+        $promos = $this -> viewPromos();
+        $entry  = Product::select(
+            '*'
+            , 'products.id                    AS idP'
+            , 'products.title                 AS titleP'
+            , 'products.slug                  AS slugP'
+            , 'products.image                 AS imageP'
+            , 'products.image_rx              AS image_rxP'
+            , 'products_categories.id         AS idC'
+            , 'products_categories.title      AS titleC'
+            , 'products_categories.slug       AS slugC'
+            , 'products_subcategories.id      AS idS'
+            , 'products_subcategories.title   AS titleS'
+            , 'products_subcategories.slug    AS slugS'
         )
             -> join(
                     'products_categories'
@@ -184,32 +236,145 @@ class ProductController extends BaseDashboard
                     'products_subcategories'
                 ,   'products.subcategory_id', '=', 'products_subcategories.id'
             )
-            -> leftjoin('promociones_productos', function($join)
-            {
-                $promos    = Promociones::where('start', '>=' , Carbon::now()->startOfMonth())
-                    -> where('end', '<=', Carbon::now()->endOfMonth())
-                    -> orderBy('id', 'DESC')
-                    -> first();
-                $promosID   = isset($promos -> id) ? $promos -> id : 0;
-                $join -> on('producto_id', '=', 'products.id')
-                    -> where('promocion_id', '=', $promosID);
+            -> leftjoin('promociones_productos', function ($join) {
+                $promos = Promociones::where('start', '>=', Carbon::now()->startOfMonth())
+                    ->where('end', '<=', Carbon::now()->endOfMonth())
+                    ->orderBy('id', 'DESC')
+                    ->first();
+                $promosID = isset($promos->id) ? $promos->id : 0;
+                $join->on('producto_id', '=', 'products.id')
+                    ->where('promocion_id', '=', $promosID);
             })
             -> orderBy('idP', 'DESC')
             -> where('products.marca', 'LIKE', "%$brand%")
+            -> where('products_categories.slug', $slug_category)
             -> paginate(12);
 
 
-        $meta['titulo']         = "Productos de la marca ".ucfirst($brand);
-        $meta['descripcion']    = "Listado de productos de la marca $brand";
-        $meta['imagen']         = asset('v2/images/samples/banner.jpg');
+        $meta['titulo'] = "Productos de la marca " . ucfirst($brand);
+        $meta['descripcion'] = "Listado de productos de la marca $brand";
+        $meta['imagen'] = asset('v2/images/samples/banner.jpg');
         return view('frontend_v2.productos-marcas')
-            ->with([
-                    'meta'          => $meta
-                ,   'banners'       => 0
-                ,   'promos'        => $promos
-                ,   'brand'         => ucfirst($brand)
-                ,   'entries'       => $entry
-                ,   'menu_cat'      => $this -> viewProducCategories()
+            -> with([
+                    'meta'      => $meta
+                ,   'banners'   => 0
+                ,   'promos'    => $promos
+                ,   'brand'     => ucfirst($brand)
+                ,   'entries'   => $entry
+                ,   'menu_cat'  => $this -> viewProducCategories()
+            ]);
+    }
+
+    public function brandsSubcategories($brand, $slug_category, $slug_subcategory)
+    {
+        $brand  = urldecode($brand);
+        $promos = $this -> viewPromos();
+        $entry  = Product::select(
+            '*'
+            , 'products.id                    AS idP'
+            , 'products.title                 AS titleP'
+            , 'products.slug                  AS slugP'
+            , 'products.image                 AS imageP'
+            , 'products.image_rx              AS image_rxP'
+            , 'products_categories.id         AS idC'
+            , 'products_categories.title      AS titleC'
+            , 'products_categories.slug       AS slugC'
+            , 'products_subcategories.id      AS idS'
+            , 'products_subcategories.title   AS titleS'
+            , 'products_subcategories.slug    AS slugS'
+        )
+            -> join(
+                    'products_categories'
+                ,   'products.category_id', '=', 'products_categories.id'
+            )
+            -> join(
+                    'products_subcategories'
+                ,   'products.subcategory_id', '=', 'products_subcategories.id'
+            )
+            -> leftjoin('promociones_productos', function ($join) {
+                $promos = Promociones::where('start', '>=', Carbon::now()->startOfMonth())
+                    ->where('end', '<=', Carbon::now()->endOfMonth())
+                    ->orderBy('id', 'DESC')
+                    ->first();
+                $promosID = isset($promos->id) ? $promos->id : 0;
+                $join->on('producto_id', '=', 'products.id')
+                    ->where('promocion_id', '=', $promosID);
+            })
+            -> orderBy('idP', 'DESC')
+            -> where('products.marca', 'LIKE', "%$brand%")
+            -> where('products_categories.slug', $slug_category)
+            -> where('products_subcategories.slug', $slug_subcategory)
+            -> paginate(12);
+
+
+        $meta['titulo'] = "Productos de la marca " . ucfirst($brand);
+        $meta['descripcion'] = "Listado de productos de la marca $brand";
+        $meta['imagen'] = asset('v2/images/samples/banner.jpg');
+        return view('frontend_v2.productos-marcas')
+            -> with([
+                    'meta'      => $meta
+                ,   'banners'   => 0
+                ,   'promos'    => $promos
+                ,   'brand'     => ucfirst($brand)
+                ,   'entries'   => $entry
+                ,   'menu_cat'  => $this -> viewProducCategories()
+            ]);
+    }
+
+    public function brandsModelo($brand, $slug_category, $slug_subcategory, $slug_model)
+    {
+        $brand  = urldecode($brand);
+        $promos = $this -> viewPromos();
+        $entry  = Product::select(
+            '*'
+            , 'products.id                    AS idP'
+            , 'products.title                 AS titleP'
+            , 'products.slug                  AS slugP'
+            , 'products.image                 AS imageP'
+            , 'products.image_rx              AS image_rxP'
+            , 'products_categories.id         AS idC'
+            , 'products_categories.title      AS titleC'
+            , 'products_categories.slug       AS slugC'
+            , 'products_subcategories.id      AS idS'
+            , 'products_subcategories.title   AS titleS'
+            , 'products_subcategories.slug    AS slugS'
+        )
+            -> join(
+                    'products_categories'
+                ,   'products.category_id', '=', 'products_categories.id'
+            )
+            -> join(
+                    'products_subcategories'
+                ,   'products.subcategory_id', '=', 'products_subcategories.id'
+            )
+            -> leftjoin('promociones_productos', function ($join) {
+                $promos = Promociones::where('start', '>=', Carbon::now()->startOfMonth())
+                    ->where('end', '<=', Carbon::now()->endOfMonth())
+                    ->orderBy('id', 'DESC')
+                    ->first();
+                $promosID = isset($promos->id) ? $promos->id : 0;
+                $join->on('producto_id', '=', 'products.id')
+                    ->where('promocion_id', '=', $promosID);
+            })
+            -> orderBy('idP', 'DESC')
+            -> where('products.marca', 'LIKE', "%$brand%")
+            -> where('products_categories.slug', $slug_category)
+            -> where('products_subcategories.slug', $slug_subcategory)
+            -> where('slug', $slug_model)
+            -> paginate(12);
+
+
+        $meta['titulo'] = "Productos de la marca " . ucfirst($brand);
+        $meta['descripcion'] = "Listado de productos de la marca $brand";
+        $meta['imagen'] = asset('v2/images/samples/banner.jpg');
+        return view('frontend_v2.productos-marcas')
+            -> with([
+                    'meta'      => $meta
+                ,   'banners'   => 0
+                ,   'promos'    => $promos
+                ,   'brand'     => ucfirst($brand)
+                ,   'entries'   => $entry
+                ,   'menu_cat'  => $this -> viewProducCategories()
             ]);
     }
 	/* --- --- --- --- --- --- --- --- --- ---
