@@ -94,11 +94,21 @@
             font-size: 1.45rem;
             color: #334155;
         }
-        .before-buy p{
+        .before-buy p,
+        .before-buy span,
+        .before-buy strong{
             font-size: 1.3rem;
         }
-        .before-buy p strong.blue{
-            font-size: 1.3rem;
+        .before-buy strong.blue{
+            color: #0dcaf0;
+        }
+        .hiper-strong
+        {
+            font-size: 2.35rem;
+        }
+        .hiper-strong span
+        {
+            font-size: 2.5rem;
             color: #0dcaf0;
         }
     </style>
@@ -232,7 +242,7 @@
                 <div class="px-5">
                     <h2>Antes de comprar UNOX&reg; ¡Pruébalo!</h2>
                     <p class="mb-5">
-                        Para que estés 100% seguro de tu compra: nuestros expertos te guiarán paso a paso para que pruebes tu próximo Horno Unox en tu cocina <strong class="blue">sin costo alguno.</strong>
+                        Para que estés 100% seguro de tu compra: nuestros agentes <strong class="text-danger">expertos de Equipar</strong> te guiarán paso a paso para que pruebes tu próximo Horno Unox en tu cocina <strong class="blue">sin costo alguno.</strong>
                     </p>
 
                     <div class="row">
@@ -241,10 +251,18 @@
                                 <span>Iremos</span> a verte
                             </h3>
                             <p>
-                                Tú eliges el día y la hora de tu Individual Cooking Experience, los ingredientes y los libros de recetas...
-
-                                ¡nosotros hacemos el resto! Nuestro AMC llevará el horno a tu local y cocinará contigo. ¡Ponnos a prueba!
+                                Tú eliges el día y la hora de tu <span class="text-primary">Individual Cooking Experience</span>, los ingredientes y los libros de recetas...
                             </p>
+                            <p>
+                                ¡Nosotros hacemos el resto! Nuestro AMC llevará el horno a tu local y cocinará contigo. ¡Ponnos a prueba!
+                            </p>
+                            <img src="" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6"></div>
+                            </div>
                         </div>
                         <div class="col-md-4">
                             <h3 class="hiper-strong">
@@ -252,7 +270,8 @@
                             </h3>
                             <p>
                                 ¡Cocina como lo haces cada día! Te guiaremos mientras pruebas nuestra tecnología y te ayudaremos a conseguir el resultado de cocción perfecto.
-
+                            </p>
+                            <p>
                                 Decide qué recetas y métodos de cocción quieres probar en función de tus necesidades.
                             </p>
                         </div>
@@ -279,7 +298,7 @@
                                 <i class="bi bi-plug-fill" data-bs-toggle="tooltip" title="Eléctrico"></i>
                             </div>
                             <img width="175" height="211" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/horno-electrico-profesional.webp') }}" alt="Horno eléctrico profesional">
-                            <h3 class="mb-3">Hornos eléctrico profesional</h3>
+                            <h3 class="mb-3">Hornos eléctricos profesionales</h3>
                             <a class="btn btn-primary mb-3" href="{{ route('brands-subcategories', ['unox', 'coccion', 'hornos']) }}">Ver productos</a>
                         </div>
                     </div>
@@ -289,7 +308,7 @@
                                 <i class="bi bi-fire" data-bs-toggle="tooltip" title="Gas"></i>
                             </div>
                             <img width="175" height="211" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/horno-profesional-de-gas.webp') }}" alt="Hornos profesional de gas">
-                            <h3 class="mb-3">Hornos profesional de gas</h3>
+                            <h3 class="mb-3">Hornos profesionales de gas</h3>
                             <a class="btn btn-primary mb-3" href="{{ route('brands-subcategories', ['unox', 'coccion', 'hornos']) }}">Ver productos</a>
                         </div>
                     </div>
@@ -300,7 +319,7 @@
                                 <i class="bi bi-fire" data-bs-toggle="tooltip" title="Gas"></i>
                             </div>
                             <img width="175" height="211" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/horno-mixto-profesional.webp') }}" alt="Hornos mixto profesional">
-                            <h3 class="mb-3">Hornos mixto profesional</h3>
+                            <h3 class="mb-3">Hornos mixtos profesionales</h3>
                             <a class="btn btn-primary mb-3" href="{{ route('brands-subcategories', ['unox', 'coccion', 'hornos']) }}">Ver productos</a>
                         </div>
                     </div>
@@ -310,7 +329,7 @@
                                 <i class="bi bi-plug-fill" data-bs-toggle="tooltip" title="Eléctrico"></i>
                             </div>
                             <img width="175" height="211" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/horno-rapido-profesional.webp') }}" alt="Hornos rápido profesional">
-                            <h3 class="mb-3">Hornos rápido profesional</h3>
+                            <h3 class="mb-3">Hornos rápidos profesionales</h3>
                             <a class="btn btn-primary mb-3" href="{{ route('brands-subcategories', ['unox', 'coccion', 'hornos']) }}">Ver productos</a>
                         </div>
                     </div>
@@ -348,7 +367,7 @@
             </section>
 
             <section class="container mb-5">
-                <h3>UNOX Te ofrece mucho mas que un horno profesional</h3>
+                <h3>UNOX&reg; Te ofrece mucho más que un horno profesional</h3>
                 <div class="row">
                     <div class="col-md-4 mb-2">
                         <div class="wrap-card dark">
@@ -412,8 +431,10 @@
                 </div>
             </section>
 
-            <section>
-                <h4>Equipar Siempre tiene algo más para ti</h4>
+            <section class="container">
+                <h4 class="mb-2">Equipar Siempre tiene algo más para ti</h4>
+                <p class="text-center mb-4">Encuentra más productos UNOX&reg; en las siguientes categorías</p>
+
                 <div class="row justify-content-center">
                     @foreach($featured AS $category)
                         <div class="col-md-3 d-flex justify-content-center mb-4">
