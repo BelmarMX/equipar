@@ -14,8 +14,24 @@ Route::get('servicios', 'IndexController@view')
 	->name('servicios');
 Route::get('fabricacion-muebles-acero-inoxidable', 'IndexController@view')
     ->name('diseno-acero');
+
 Route::get('unox', 'IndexController@unox')
     ->name('unox');
+Route::get('unox/bakertop', 'IndexController@unoxBakertop')
+    ->name('unoxBakertop');
+Route::get('unox/cheftop', 'IndexController@unoxCheftop')
+    ->name('unoxCheftop');
+Route::get('unox/bakerlux', 'IndexController@unoxBakerlux')
+    ->name('unoxBakerlux');
+Route::get('unox/bakerlux-shop', 'IndexController@unoxBakerluxShop')
+    ->name('unoxBakerluxShop');
+Route::get('unox/bakerlux-speed-pro', 'IndexController@unoxBakerluxSpeedPro')
+    ->name('unoxBakerluxSpeedPro');
+Route::get('unox/evereo', 'IndexController@unoxEvereo')
+    ->name('unoxEvereo');
+Route::get('unox/speed-x', 'IndexController@unoxSpeedX')
+    ->name('unoxSpeedX');
+
 Route::get('galeria', 'GaleriaController@view')
 	-> name('galeria');
 

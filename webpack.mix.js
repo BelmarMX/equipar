@@ -14,4 +14,5 @@ mix.webpackConfig({
     .js('resources/assets/v2/js/unox-swiper.js','public/v2/js')
     .sass('resources/assets/sass/00_dashboard.scss', 'public/css')
     .sass('resources/assets/v2/sass/app.scss', 'public/v2/css')
+    .sass('resources/assets/v2/sass/unox.scss', 'public/v2/css')
     .sass('resources/assets/v2/sass/swal2.scss', 'public/v2/css')

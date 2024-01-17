@@ -160,4 +160,111 @@ class IndexController extends Base
                 ,   'featured'  => $featured
             ]);
     }
+
+    public function unoxBakertop()
+    {
+        route('results', ['termino' => 'Bakertop+Mind.Maps', 'filter' => 'y', 'brand' => 'UNOX']);
+
+        $productos  = Product::select('category_id')
+            -> where('marca', 'LIKE', '%unox%')
+            -> groupBy('category_id')
+            -> get()
+            -> toArray();
+        $categories_id = array_column($productos, 'category_id');
+        $featured   = ProductCategories::whereIn('id', $categories_id)
+            -> get();
+
+        return view('frontend_v2.unox-bakertop')
+            -> with([
+                'meta' => [
+                        'titulo'        => 'Bakertop MIND.Maps™ Plus | Unox'
+                    ,   'descripcion'   => 'Hornos combinados inteligentes.'
+                    ,   'imagen'        => asset('images/template/bn-acerca-de.jpg')
+                ]
+            ,   'banners'   => 0
+            ,   'promos'	=> $this -> viewPromos(FALSE)
+            ,   'menu_cat'  => $this -> viewProducCategories()
+            ,   'featured'  => $featured
+        ]);
+    }
+
+    public function unoxCheftop()
+    {
+        return view('frontend_v2.unox-cheftop')
+            -> with([
+                'meta' => [
+                        'titulo'        => 'Cheftop MIND.Maps™ Plus | Unox'
+                    ,   'descripcion'   => 'Hornos mixtos profesionales.'
+                    ,   'imagen'        => asset('images/template/bn-acerca-de.jpg')
+                ]
+            ,   'banners'   => 0
+            ,   'promos'	=> $this -> viewPromos(FALSE)
+            ,   'menu_cat'  => $this -> viewProducCategories()
+            ,   'featured'  => $featured ?? []
+        ]);
+    }
+
+    public function unoxBakerlux()
+    {
+        return view('frontend_v2.unox-bakerlux')
+            -> with([
+                'meta' => [
+                        'titulo'        => 'Bakerlux™ | Unox'
+                    ,   'descripcion'   => 'Hornos analógos de convección con humedad compacta.'
+                    ,   'imagen'        => asset('images/template/bn-acerca-de.jpg')
+                ]
+            ,   'banners'   => 0
+            ,   'promos'	=> $this -> viewPromos(FALSE)
+            ,   'menu_cat'  => $this -> viewProducCategories()
+            ,   'featured'  => $featured ?? []
+        ]);
+    }
+
+    public function unoxBakerluxShop()
+    {
+        return view('frontend_v2.unox')
+            -> with([
+                'meta' => [
+                        'titulo'        => 'Bakerlux SHOP.Pro™ | Unox'
+                    ,   'descripcion'   => 'Elija entre la mejor selección de productos y accesorios para crear la solución de cocina perfecta.'
+                    ,   'imagen'        => asset('images/template/bn-acerca-de.jpg')
+                ]
+            ,   'banners'   => 0
+            ,   'promos'	=> $this -> viewPromos(FALSE)
+            ,   'menu_cat'  => $this -> viewProducCategories()
+            ,   'featured'  => $featured ?? []
+        ]);
+    }
+
+    public function unoxBakerluxSpeedPro()
+    {
+        return view('frontend_v2.unox')
+            -> with([
+                'meta' => [
+                        'titulo'        => 'Bakerlux SPEED.Pro™ | Unox'
+                    ,   'descripcion'   => 'Elija entre la mejor selección de productos y accesorios para crear la solución de cocina perfecta.'
+                    ,   'imagen'        => asset('images/template/bn-acerca-de.jpg')
+                ]
+            ,   'banners'   => 0
+            ,   'promos'	=> $this -> viewPromos(FALSE)
+            ,   'menu_cat'  => $this -> viewProducCategories()
+            ,   'featured'  => $featured ?? []
+        ]);
+    }
+
+    public function unoxEvereo()
+    {
+        return view('frontend_v2.unox-evereo')
+            -> with([
+                'meta' => [
+                        'titulo'        => 'Evereo™ | Unox'
+                    ,   'descripcion'   => 'Elija entre la mejor selección de productos y accesorios para crear la solución de cocina perfecta.'
+                    ,   'imagen'        => asset('images/template/bn-acerca-de.jpg')
+                ]
+            ,   'banners'   => 0
+            ,   'promos'	=> $this -> viewPromos(FALSE)
+            ,   'menu_cat'  => $this -> viewProducCategories()
+            ,   'featured'  => $featured ?? []
+        ]);
+    }
 }

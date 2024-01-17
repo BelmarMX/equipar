@@ -5,7 +5,113 @@
 
 @push('customCss')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{{ asset('v2/css/unox.css') }}">
+    <style>
+        .bg-black{
+            background: #000;
+            color: #FFF;
+        }
+        .bg-black-50{
+            background: rgba(0,0,0,.5);
+        }
+        .bg-slate{
+            background: rgba(30, 41, 59, 0.1);
+        }
+        .banner__single
+        .banner__single__summary{
+            max-width: 472px;
+            background: rgba(30, 41, 59, 0.5);
+            height: 75%;
+        }
+        .eh2{
+            font-size: 1.3rem;
+        }
+        .fsize-2{
+            font-size: 2.5rem;
+        }
+        .lh-150{
+            line-height: 150%;
+        }
+        .swiper-categories{
+            width: 100%;
+            max-width: calc(100vw - 30px);
+            height: 360px;
+            overflow: hidden;
+        }
+        .swiper-slide {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .wrap-card{
+            background: #fff;
+            padding: .25rem;
+            border-radius: 10px;
+            box-shadow: 11px 11px 12px 1px rgba(30,41,59,0.075);
+            -webkit-box-shadow: 11px 11px 12px 1px rgba(30,41,59,0.075);
+            -moz-box-shadow: 11px 11px 12px 1px rgba(30,41,59,0.075);
+        }
+        .wrap-card.dark{
+            background: #000;
+            color: #FFF;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .wrap-card.dark > .text
+        {
+            position: absolute;
+            bottom: 0;
+            display: block;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            width: calc(100% - 30px);
+            left: 15px;
+            padding: 24px 15px;
+            background: rgb(0,0,0);
+            background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        }
+        .iconera{
+            text-align: end;
+        }
+        .iconera > i{
+            font-size: 36px;
+            font-size: 34px;
+            margin-left: 7px;
+        }
+        .iconera > i:last-child{
+            margin-right: 7px;
+        }
+        .iconera > i.bi-plug-fill:hover{
+            color: #60a5fa;
+        }
+        .iconera > i.bi-fire:hover{
+            color: #F00;
+        }
+        .featured-link{
+            font-weight: 600;
+            font-size: 1.45rem;
+            color: #334155;
+        }
+        .before-buy p,
+        .before-buy span,
+        .before-buy strong{
+            font-size: 1.3rem;
+        }
+        .before-buy strong.blue{
+            color: #0dcaf0;
+        }
+        .hiper-strong
+        {
+            font-size: 2.35rem;
+        }
+        .hiper-strong span
+        {
+            font-size: 2.5rem;
+            color: #0dcaf0;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -96,7 +202,51 @@
             </section>
 
             <section class="container py-5 mb-5">
-                @include('frontend_v2.partials.unox-catalogos')
+                <span class="h2 d-block text-center">Productos UNOX&reg; Catálogos</span>
+                <div class="row justify-content-center">
+                    <div class="col-md-4 text-center mb-3">
+                        <a class="featured-link" href="{{ route('results', ['termino' => 'Bakertop+Mind.Maps', 'filter' => 'y', 'brand' => 'UNOX']) }}">
+                            <img width="225" height="271" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/bakertop-mind-maps.webp') }}" alt="Bakertop Mind.Maps&trade; Hornos mixtos profesionales"><br>
+                            Bakertop MIND.Maps&trade;<br>Hornos combinados inteligentes
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <a class="featured-link" href="{{ route('results', ['termino' => 'Cheftop+Mind.Maps', 'filter' => 'y', 'brand' => 'UNOX']) }}">
+                            <img width="225" height="271" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/cheftop-mind-maps.webp') }}" alt="Cheftop Mind.Maps&trade; Hornos mixtos profesionales"><br>
+                            Cheftop MIND.Maps&trade;<br>Hornos mixtos profesionales
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <a class="featured-link" href="{{ route('results', ['termino' => 'Cheftop+Mind.Maps', 'filter' => 'y', 'brand' => 'UNOX']) }}">
+                            <img width="225" height="271" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/cheftop-mind-maps.webp') }}" alt="Cheftop Mind.Maps&trade; Hornos mixtos profesionales"><br>
+                            Bakerlux&trade;<br>Hornos analógos de convección
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <a class="featured-link" href="{{ route('results', ['termino' => 'Cheftop+Mind.Maps', 'filter' => 'y', 'brand' => 'UNOX']) }}">
+                            <img width="225" height="271" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/cheftop-mind-maps.webp') }}" alt="Cheftop Mind.Maps&trade; Hornos mixtos profesionales"><br>
+                            Bakerlux SHOP.Pro&trade;<br>Hornos analógos de convección
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <a class="featured-link" href="{{ route('results', ['termino' => 'Speed.Pro', 'filter' => 'y', 'brand' => 'UNOX']) }}">
+                            <img width="225" height="271" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/speed-pro.webp') }}" alt="Speed.Pro&trade; Hornos rápidos profesional"><br>
+                            Bakerlux SPEED.Pro&trade;<br>Hornos rápidos profesionales
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <a class="featured-link" href="{{ route('results', ['termino' => 'Evereo', 'filter' => 'y', 'brand' => 'UNOX']) }}">
+                            <img width="225" height="271" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/evereo.webp') }}" alt="Evereo&reg; Métodos de conservación por calor"><br>
+                            Evereo&reg;<br>Métodos de conservación por calor
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <a class="featured-link" href="{{ route('results', ['termino' => 'Speed-x', 'filter' => 'y', 'brand' => 'UNOX']) }}">
+                            <img width="225" height="271" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/speed-x.webp') }}" alt="Speed-x&trade; Digital.ID&trade;Hornos rápidos profesional"><br>
+                            Speed-x&trade; Digital.ID&trade;<br>Hornos rápidos profesionales
+                        </a>
+                    </div>
+                </div>
             </section>
 
             {{-- BENEFICIOS UNOX --}}
@@ -137,23 +287,8 @@
                             </h3>
                             <p>
                                 Ponte en contacto con un asesor Equipar para mas información:
-                                <br>
-                                <a href="https://api.whatsapp.com/send?phone={{ env('TEL_WHATS_DIAL') }}&text=Para%20brindarte%20un%20mejor%20servicio%20por%20favor%20deja%20tus%20datos%20(Nombre,%20Correo%20electr%C3%B3nico,%20%20y%20asunto)"
-                                   class="whatsapp"
-                                   data-bs-toggle="tooltip"
-                                   title="Escríbenos un Whats"
-                                   target="_blank"
-                                >
-                                    <i class="bi bi-whatsapp"></i> {{ env('TEL_WHATS_SHOW') }}
-                                </a>
-                                <br>
-                                <a href="mailto:{{ env('CONTACT_EMAIL') }}"
-                                   data-bs-toggle="tooltip"
-                                   title="Envíanos un correo electrónico"
-                                   target="_blank"
-                                >
-                                    <i class="bi bi-envelope"></i> {{ env('CONTACT_EMAIL') }}
-                                </a>
+                                <a>WHATS</a>
+                                <a>Email</a>
                             </p>
                         </div>
                     </div>
