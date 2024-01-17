@@ -183,7 +183,7 @@
                             Col. Nuevo Vallarta<br>
                             Riviera Nayarit, Nayarit. México.<br>
                             <a href="tel:+5213321128039" target="-_blank">
-                                +52 1 332 112 8039
+                                +52 1 329 111 6725
                             </a>
                         </p>
                     </div>
