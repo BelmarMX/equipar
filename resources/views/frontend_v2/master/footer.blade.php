@@ -62,11 +62,15 @@
             </p>
         </div>
         <div class="col-md-3 location">
-            <i class="bi bi-geo-alt-fill"></i> <span>Sucursal</span>
+            <i class="bi bi-geo-alt-fill"></i> <span>Guadalajara</span>
             <p class="pt-2">
                 Av. 16 de septiembre núm. 665<br>
                 Col. Mexicaltzingo<br>
-                Guadalajara, Jalisco. México.
+            </p>
+            <hr class="my-1">
+            <p class="pt-2">
+                Av. Plan de San Luis núm. 1850<br>
+                Col. Lomas del Country<br>
             </p>
         </div>
         <div class="col-md-3 location">
