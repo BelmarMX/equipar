@@ -11,7 +11,7 @@
 			}
 		</style>
 		</body>
-		<img width="232" height="88" alt="Logo Equipar" src="{{ asset('/images/template/equipar-id--red.png') }}">
+		<img width="232" height="61" alt="Logo Equipar" src="{{ asset('/images/template/equipar-id--red.png') }}">
 		@if( !empty($promocion) )
 		<div id="promomes" style="text-align:center">
 			<a href="{{ route('promociones', $promocion -> slug)}}">

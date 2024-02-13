@@ -5,7 +5,7 @@
 		<title>Formulario de contacto</title>
 	</head>
 	<body>
-		<img width="232" height="88" alt="Logo Equipar" src="{{ asset('/images/template/equipar-id--red.png') }}">
+		<img width="232" height="61" alt="Logo Equipar" src="{{ asset('/images/template/equipar-id--red.png') }}">
 		<br>
 		<b>Nombre:</b> <span>{!! $nombre !!}</span><br>
 		<b>Correo electrónico:</b> <span>{!! $correo !!}</span><br>
