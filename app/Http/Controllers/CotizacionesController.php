@@ -74,11 +74,9 @@ class CotizacionesController extends BaseDashboard
         $captcha_success    = json_decode($re_verify);
         if( $captcha_success -> success )
         {
-            if($request -> exists > 0)
+            $cliente = Clientes::where('email', $request -> email) -> first();
+            if( !$cliente )
             {
-                $cliente = Clientes::find($request -> exists);
-            }
-            else {
                 $cliente = Clientes::create([
                         'nombre'    => $request -> nombre
                     ,   'email'     => $request -> email
