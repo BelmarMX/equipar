@@ -15,6 +15,7 @@
                       method="post"
                       action="{{ route('mail.store') }}"
                       style="max-width: 630px"
+                      id="contactForm"
                 >
                     {!! csrf_field() !!}
                     @include('frontend_v2.master.alerts')
@@ -230,7 +231,7 @@
 @push('customJs')
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
-        document.querySelector('form').addEventListener('submit', () => {
+        document.getElementById('contactForm').addEventListener('submit', () => {
             document.getElementById('load8').removeAttribute('hidden')
         })
     </script>

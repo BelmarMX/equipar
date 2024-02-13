@@ -100,6 +100,8 @@ Route::get('contacto', 'IndexController@view')
 	-> name('contacto');
 Route::get('aviso-de-privacidad', 'IndexController@view')
 	-> name('aviso-privacidad');
+Route::get('gracias', 'IndexController@view')
+	-> name('gracias');
 
 Route::post('coincidencias', 'ProductController@coincidencias')
 	-> name('coincidencias');

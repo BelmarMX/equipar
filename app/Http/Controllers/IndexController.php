@@ -133,6 +133,18 @@ class IndexController extends Base
                         ,   'promos'	=> $promos
                         ,   'menu_cat'  => $this -> viewProducCategories()
                     ]);
+
+            case 'gracias':
+                $meta['titulo']         = '¡Gracias por contactarnos!';
+                $meta['descripcion']    = 'Hemos recibido con éxito tu información, en breve un miembro de nuestro equipo se pondrá en contacto contigo.';
+                $meta['imagen']         = asset('images/template/bn-aviso-privacidad.jpg');
+                return  view('frontend_v2.gracias')
+                    -> with([
+                            'meta'      => $meta
+                        ,   'banners'   => 0
+                        ,   'promos'	=> $promos
+                        ,   'menu_cat'  => $this -> viewProducCategories()
+                    ]);
 		}
 	}
 

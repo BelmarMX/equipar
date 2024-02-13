@@ -56,8 +56,7 @@ class MailController extends Controller
                 $message -> to( $this -> recipent );
             });
 
-            $this -> send['type']       = 'success';
-            $this -> send['message']    = 'Formulario de contacto enviado con éxito, pronto nos comunicaremos con usted.';
+            return redirect() -> route('gracias', ['referer' => 'contacto']);
         } else {
             $this -> send['type']       = 'danger';
             $this -> send['message']    = 'Todo indica que eres un robot';

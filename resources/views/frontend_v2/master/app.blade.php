@@ -14,8 +14,8 @@
         <meta property="type" content="website">
         <meta property="og:site_name" content="Equi-par">
         <meta property="og:title" content="@yield('title')">
-        <meta property="og:description" content="@yield('descripcion')">
-        <meta property="og:image" content="@yield('imagen')">
+        <meta property="og:description" content="@yield('description')">
+        <meta property="og:image" content="@yield('image')">
         {{-- Favicons  --}}
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('images/ico/apple-touch-icon-144-precomposed.png') }}">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('images/ico/apple-touch-icon-114-precomposed.png') }}">

@@ -153,9 +153,10 @@ class CotizacionesController extends BaseDashboard
                 -> send( new SendQuotations($cliente, $promocion, $productos) );
             
             Session::forget('cotizacion');
-            $this -> send['type']       = 'success';
-            $this -> send['message']    = 'Tu cotización se ha enviado con éxito, no olvides revisar tu bandeja de "Spam".';
-        } else {
+            return redirect() -> route('gracias', ['referer' => 'contacto']);
+        }
+        else
+        {
             $this -> send['type']       = 'danger';
             $this -> send['message']    = 'Todo indica que eres un robot';
         }
