@@ -175,17 +175,6 @@ class IndexController extends Base
 
     public function unoxBakertop()
     {
-        route('results', ['termino' => 'Bakertop+Mind.Maps', 'filter' => 'y', 'brand' => 'UNOX']);
-
-        $productos  = Product::select('category_id')
-            -> where('marca', 'LIKE', '%unox%')
-            -> groupBy('category_id')
-            -> get()
-            -> toArray();
-        $categories_id = array_column($productos, 'category_id');
-        $featured   = ProductCategories::whereIn('id', $categories_id)
-            -> get();
-
         return view('frontend_v2.unox-bakertop')
             -> with([
                 'meta' => [
@@ -196,7 +185,7 @@ class IndexController extends Base
             ,   'banners'   => 0
             ,   'promos'	=> $this -> viewPromos(FALSE)
             ,   'menu_cat'  => $this -> viewProducCategories()
-            ,   'featured'  => $featured
+            ,   'featured'  => Product::search('Bakertop', 'UNOX')
         ]);
     }
 
@@ -212,7 +201,7 @@ class IndexController extends Base
             ,   'banners'   => 0
             ,   'promos'	=> $this -> viewPromos(FALSE)
             ,   'menu_cat'  => $this -> viewProducCategories()
-            ,   'featured'  => $featured ?? []
+            ,   'featured'  => Product::search('Cheftop', 'UNOX')
         ]);
     }
 
@@ -228,39 +217,39 @@ class IndexController extends Base
             ,   'banners'   => 0
             ,   'promos'	=> $this -> viewPromos(FALSE)
             ,   'menu_cat'  => $this -> viewProducCategories()
-            ,   'featured'  => $featured ?? []
+            ,   'featured'  => Product::search('Bakerlux', 'UNOX')
         ]);
     }
 
     public function unoxBakerluxShop()
     {
-        return view('frontend_v2.unox')
+        return view('frontend_v2.unox-bakerlux-shop')
             -> with([
                 'meta' => [
                         'titulo'        => 'Bakerlux SHOP.Pro™ | Unox'
-                    ,   'descripcion'   => 'Elija entre la mejor selección de productos y accesorios para crear la solución de cocina perfecta.'
+                    ,   'descripcion'   => 'Perfección inteligente que cuece.'
                     ,   'imagen'        => asset('images/template/bn-acerca-de.jpg')
                 ]
             ,   'banners'   => 0
             ,   'promos'	=> $this -> viewPromos(FALSE)
             ,   'menu_cat'  => $this -> viewProducCategories()
-            ,   'featured'  => $featured ?? []
+            ,   'featured'  => Product::search('bakerlux%shop', 'UNOX')
         ]);
     }
 
     public function unoxBakerluxSpeedPro()
     {
-        return view('frontend_v2.unox')
+        return view('frontend_v2.unox-bakerlux-speed-pro')
             -> with([
                 'meta' => [
                         'titulo'        => 'Bakerlux SPEED.Pro™ | Unox'
-                    ,   'descripcion'   => 'Elija entre la mejor selección de productos y accesorios para crear la solución de cocina perfecta.'
+                    ,   'descripcion'   => 'SPEED.Pro™ es el primer baking speed oven: horno de convección y horno de cocción acelerada juntos en un único equipo.'
                     ,   'imagen'        => asset('images/template/bn-acerca-de.jpg')
                 ]
             ,   'banners'   => 0
             ,   'promos'	=> $this -> viewPromos(FALSE)
             ,   'menu_cat'  => $this -> viewProducCategories()
-            ,   'featured'  => $featured ?? []
+            ,   'featured'  => Product::search('bakerlux%speed', 'UNOX')
         ]);
     }
 
@@ -276,7 +265,7 @@ class IndexController extends Base
             ,   'banners'   => 0
             ,   'promos'	=> $this -> viewPromos(FALSE)
             ,   'menu_cat'  => $this -> viewProducCategories()
-            ,   'featured'  => $featured ?? []
+            ,   'featured'  => Product::search('evereo', 'UNOX')
         ]);
     }
 }

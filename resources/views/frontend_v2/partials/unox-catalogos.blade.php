@@ -16,15 +16,15 @@
     </div>
     <div class="col-md-4 text-center mb-3">
         <a class="featured-link" href="{{ route('unoxBakerlux') }}">
-            <img width="225" height="271" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/cheftop-mind-maps.webp') }}" alt="Cheftop Mind.Maps&trade; Hornos mixtos profesionales"><br>
+            <img width="225" height="271" class="img-fluid mb-3" style="margin-top: 56px" src="{{ asset('v2/images/unox/featured/bakerlux.webp') }}" alt="Bakerlux&trade; Hornos analógos de convección"><br>
             Bakerlux&trade;<br>Hornos analógos de convección
             <span>Ver Catálogo</span>
         </a>
     </div>
     <div class="col-md-4 text-center mb-3">
         <a class="featured-link" href="{{ route('unoxBakerluxShop') }}">
-            <img width="225" height="271" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/cheftop-mind-maps.webp') }}" alt="Cheftop Mind.Maps&trade; Hornos mixtos profesionales"><br>
-            Bakerlux SHOP.Pro&trade;<br>Hornos analógos de convección
+            <img width="225" height="271" class="img-fluid mb-3" style="margin-top: 131px" src="{{ asset('v2/images/unox/featured/bakerlux-shop.webp') }}" alt="Bakerlux SHOP.Pro&trade; Hornos analógos de convección"><br>
+            Bakerlux SHOP.Pro&trade;<br>Perfección inteligente que cuece
             <span>Ver Catálogo</span>
         </a>
     </div>

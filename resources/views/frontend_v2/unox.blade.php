@@ -1,6 +1,6 @@
-@section('title', $meta['titulo'])
+@section('title',       $meta['titulo'])
 @section('description', $meta['descripcion'])
-@section('image', $meta['imagen'])
+@section('image',       $meta['imagen'])
 @extends('frontend_v2.master.app')
 
 @push('customCss')
@@ -12,7 +12,7 @@
     <div class="bg-unox">
         <div class="container-fluid mb-5">
             @include('frontend_v2.partials.banner-landing', [
-                    'slide'         => asset('v2/images/unox/banner/1620038336.webp')
+                    'slide'         => asset('v2/images/unox/banner/cheftop-chef.webp')
                 ,   'slide_alt'     => $meta['titulo']
                 ,   'summary'       => TRUE
                 ,   'logo_image'    => asset('v2/images/unox/unox.svg')

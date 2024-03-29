@@ -109,6 +109,9 @@
                         </ul>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link @if( Request::is('unox') ) active @endif" href="{{ route('unox') }}">Unox&reg;</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link @if( Request::is('servicios') ) active @endif" href="{{ route('servicios') }}">Servicios</a>
                     </li>
                     <li class="nav-item">

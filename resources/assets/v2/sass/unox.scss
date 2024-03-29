@@ -8,6 +8,9 @@
 .bg-slate{
 	background: rgba(30, 41, 59, 0.1);
 }
+.bg-soft-gray{
+	background: #f3f4f6;
+}
 .banner__single .banner__single__summary{
 	max-width: 472px;
 	background: rgba(30, 41, 59, 0.5);
@@ -127,4 +130,63 @@ a.featured-link > span{
 a.featured-link:hover > span{
 	display: block;
 	animation: fadeIn 1s;
+}
+
+.btn-success{
+	color: #FFF;
+}
+
+.big,
+.big > * {
+	font-size: 3rem;
+	font-weight: 600;
+}
+.medium,
+.medium > * {
+	font-size: 2rem;
+	font-weight: 600;
+}
+.normal,
+.normal > * {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+.feature{
+	color: #0ea5e9;
+}
+
+.bloquecito{
+	margin-bottom: 1rem;
+	font-size: 1.3rem;
+	font-weight: 600;
+	color: #a3a3a3;
+	.text-black{
+		font-size: 1.3rem;
+		font-weight: 600;
+		color: #18181b;
+		display: block;
+	}
+}
+
+.feature-title{
+	font-size: .9rem;
+	color: #d97706;
+	text-transform: uppercase;
+}
+
+h3.speedpro,
+h3.speedpro > * {
+	font-size: 3rem;
+	.bake{
+		color: rgb(252, 191, 28);
+	}
+	.speed{
+		color: #00cc00;
+	}
+}
+.yellow-bake{
+	color: rgb(252, 191, 28);
+}
+.green-speed{
+	color: #00cc00;
 }

@@ -11,6 +11,12 @@ class Product extends Model
 {
 	use SoftDeletes, Searchable;
 
+    const OB_ASC                = 'ASC';
+    const OB_DESC               = 'DESC';
+    const OB_DEFAULT            = 'idP';
+    const OB_TITLE              = 'products.title';
+    const OB_PRICE              = 'products.precio';
+
 	protected $table    = "products";
 	protected $fillable = [
 		'category_id', 'subcategory_id', 'title', 'slug', 'modelo', 'marca', 'resumen', 'caracteristicas', 'tecnica', 'precio', 'image', 'image_rx', 'ficha'
@@ -40,6 +46,71 @@ class Product extends Model
 	{
 		return $this -> hasMany('App\ProductImages', 'producto_id');
 	}
+
+    public static function search($search, $brand = NULL, $category = NULL, $promos = FALSE, $order_by = self::OB_DEFAULT, $dir = self::OB_DESC)
+    {
+        return Product::select(
+                '*'
+            ,   'products.id                    AS idP'
+            ,   'products.title                 AS titleP'
+            ,   'products.slug                  AS slugP'
+            ,   'products.image                 AS imageP'
+            ,   'products.image_rx              AS image_rxP'
+            ,   'products_categories.id         AS idC'
+            ,   'products_categories.title      AS titleC'
+            ,   'products_categories.slug       AS slugC'
+            ,   'products_subcategories.id      AS idS'
+            ,   'products_subcategories.title   AS titleS'
+            ,   'products_subcategories.slug    AS slugS'
+        )
+        -> join(
+                'products_categories'
+            ,   'products.category_id', '=', 'products_categories.id'
+        )
+        -> join(
+                'products_subcategories'
+            ,   'products.subcategory_id', '=', 'products_subcategories.id'
+        )
+        -> leftjoin('promociones_productos', function($join)
+        {
+            $promos    = Promociones::where('start', '<=' , Carbon::now())
+                -> where('end', '>=', Carbon::now())
+                -> orderBy('id', 'DESC')
+                -> first();
+            $promosID   = $promos -> id ?? 0
+            ;
+            $join -> on('producto_id', '=', 'products.id')
+                -> where('promocion_id', '=', $promosID);
+        })
+        -> whereRaw("(
+		    products.title LIKE '%$search%' OR
+		    products.slug LIKE '%$search%' OR
+		    products.modelo LIKE '%$search%' OR
+		    products.marca LIKE '%$search%' OR
+		    products_categories.title LIKE '%$search%' OR
+		    products_subcategories.title LIKE '%$search%'
+		)")
+        -> where(function($where) use ($brand, $category, $promos){
+            if( !is_null($brand) )
+            {
+                $where -> where('products.marca', $brand);
+            }
+            if( !is_null($category) )
+            {
+                $where -> where('products_categories.slug', $category);
+            }
+            if( $promos )
+            {
+                $where -> where('promociones_productos.final_price', '>', 0);
+            }
+            else
+            {
+                $where -> where('promociones_productos.final_price', NULL);
+            }
+        })
+        -> orderBy($order_by, $dir)
+        -> get();
+    }
 
     /* --
 	| Algolia Search
