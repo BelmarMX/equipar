@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 use Laravel\Scout\Searchable;
 
 class Product extends Model
@@ -13,7 +14,7 @@ class Product extends Model
 
     const OB_ASC                = 'ASC';
     const OB_DESC               = 'DESC';
-    const OB_DEFAULT            = 'idP';
+    const OB_DEFAULT            = 'products.id';
     const OB_TITLE              = 'products.title';
     const OB_PRICE              = 'products.precio';
 
@@ -49,6 +50,8 @@ class Product extends Model
 
     public static function search($search, $brand = NULL, $category = NULL, $promos = FALSE, $order_by = self::OB_DEFAULT, $dir = self::OB_DESC)
     {
+        //DB::enableQueryLog();
+        DB::statement("SET sql_mode = '';");
         return Product::select(
                 '*'
             ,   'products.id                    AS idP'
@@ -108,8 +111,13 @@ class Product extends Model
                 $where -> where('promociones_productos.final_price', NULL);
             }
         })
+        -> groupBy(self::OB_DEFAULT)
         -> orderBy($order_by, $dir)
         -> get();
+
+        /*echo '<small>';
+		print_r(DB::getQueryLog());
+		echo '</small>';*/
     }
 
     /* --

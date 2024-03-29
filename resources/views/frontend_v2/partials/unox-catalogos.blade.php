@@ -42,6 +42,7 @@
             <span>Ver Catálogo</span>
         </a>
     </div>
+    {{--
     <div class="col-md-4 text-center mb-3">
         <a class="featured-link" href="{{ route('unoxSpeedX') }}">
             <img width="225" height="271" class="img-fluid mb-3" src="{{ asset('v2/images/unox/featured/speed-x.webp') }}" alt="Speed-x&trade; Digital.ID&trade;Hornos rápidos profesional"><br>
@@ -49,4 +50,5 @@
             <span>Ver Catálogo</span>
         </a>
     </div>
+    --}}
 </div>
