@@ -17,6 +17,17 @@
 
     <main class="container">
         <section>
+            @include('frontend_v2.partials.scroll-categories', [
+                    'tag_title'     => "Más categorías {$brand}"
+                ,   'todas_link'    => route('brands', strtolower($brand))
+                ,   'categories'    => array_map(function($category) use($brand, $related_categories) {
+                    return [
+                            $category['title']
+                        ,   route('brands-categories', [strtolower($brand), $category['slug']])
+                    ];
+                }, $related_categories -> toArray() )
+            ])
+
             <div class="row justify-content-center">
                 @forelse($entries AS $product)
                     <div class="col-md-3 d-flex justify-content-center mb-4">

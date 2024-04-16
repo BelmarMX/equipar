@@ -20,6 +20,7 @@
                 ,   'logo_height'   => '100%'
                 ,   'title'         => "<strong>{$meta['titulo']}</strong>"
                 ,   'h1'            => TRUE
+                ,   'cta'           => route('results', ['termino' => 'evereo', 'filter' => 'y', 'brand' => 'UNOX'])
             ])
         </div>
 

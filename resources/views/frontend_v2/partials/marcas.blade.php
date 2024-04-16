@@ -54,6 +54,17 @@
              alt="Galaxy"
         >
     </a>
+    <a href="{{ route('brands', 'hobart') }}"
+       class="col"
+       data-bs-toggle="tooltip"
+       title="Hobart"
+    >
+        <img width="100"
+             height="25"
+             src="{{ asset('images/template/brands/hobart.png') }}"
+             alt="Hobart"
+        >
+    </a>
     <a href="{{ route('brands', 'unox') }}"
        class="col"
        data-bs-toggle="tooltip"
@@ -120,7 +131,7 @@
              alt="Coriat"
         >
     </a>
-    <a href="{{ route('brands', 'International') }}"
+    <a href="{{ route('brands', 'international') }}"
        class="col"
        data-bs-toggle="tooltip"
        title="International"
@@ -173,17 +184,6 @@
              height="25"
              src="{{ asset('images/template/brands/rational.png') }}"
              alt="Rational"
-        >
-    </a>
-    <a href="{{ route('brands', 'hobart') }}"
-       class="col"
-       data-bs-toggle="tooltip"
-       title="Hobart"
-    >
-        <img width="100"
-             height="25"
-             src="{{ asset('images/template/brands/hobart.png') }}"
-             alt="Hobart"
         >
     </a>
     <a href="{{ route('brands', 'ecomax') }}"

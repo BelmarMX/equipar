@@ -2,21 +2,20 @@
 namespace App\Http\Controllers;
 
 use App\ProductImages;
-use Gate
-,   Image
-,   Batch
-,   DB
-,   App\Product
-,   Carbon\Carbon
-,   App\ProductCategories
-,   App\Promociones
-,   Illuminate\Http\Request
-,   App\ProductSubcategories
-,   Illuminate\Routing\Route
-,   Illuminate\Support\Facades\File
-,   Illuminate\Support\Facades\Input
-,   Illuminate\Support\Facades\Storage;
-use Illuminate\Database\Eloquent\Model;
+use Gate;
+use Image;
+use Batch;
+use App\Product;
+use Carbon\Carbon;
+use App\ProductCategories;
+use App\Promociones;
+use Illuminate\Http\Request;
+use App\ProductSubcategories;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;;
+use Illuminate\Support\Facades\DB;
 use Shuchkin\SimpleXLSX;
 use Shuchkin\SimpleXLSXGen;
 
@@ -47,21 +46,21 @@ class ProductController extends BaseDashboard
     --- --- --- --- --- --- --- --- --- --- */
     public function view(Route $route, $slugC, $slugS, $slugP)
     {
-        $banners = $this->viewBanners();
-        $promos = $this->viewPromos();
-        $entry = Product::select(
-            '*'
-            , 'products.id                    AS idP'
-            , 'products.title                 AS titleP'
-            , 'products.slug                  AS slugP'
-            , 'products.image                 AS imageP'
-            , 'products.image_rx              AS image_rxP'
-            , 'products_categories.id         AS idC'
-            , 'products_categories.title      AS titleC'
-            , 'products_categories.slug       AS slugC'
-            , 'products_subcategories.id      AS idS'
-            , 'products_subcategories.title   AS titleS'
-            , 'products_subcategories.slug    AS slugS'
+        $banners            = $this->viewBanners();
+        $promos             = $this->viewPromos();
+        $entry              = Product::select(
+                '*'
+            ,   'products.id                    AS idP'
+            ,   'products.title                 AS titleP'
+            ,   'products.slug                  AS slugP'
+            ,   'products.image                 AS imageP'
+            ,   'products.image_rx              AS image_rxP'
+            ,   'products_categories.id         AS idC'
+            ,   'products_categories.title      AS titleC'
+            ,   'products_categories.slug       AS slugC'
+            ,   'products_subcategories.id      AS idS'
+            ,   'products_subcategories.title   AS titleS'
+            ,   'products_subcategories.slug    AS slugS'
         )
             ->join(
                 'products_categories'
@@ -84,35 +83,35 @@ class ProductController extends BaseDashboard
             ->where('products.slug', '=', $slugP)
             ->first();
 
-        $gallery = ProductImages::where('producto_id', $entry->idP)->get();
+        $gallery            = ProductImages::where('producto_id', $entry->idP)->get();
 
-        $category = ProductCategories::where('slug', $slugC)->first();
-        $subcategory = ProductSubcategories::where('slug', $slugS)->first();
-        $subcategories = ProductSubcategories::where('category_id', $category->id)->orderBy('title', 'ASC')->get();
+        $category           = ProductCategories::where('slug', $slugC)->first();
+        $subcategory        = ProductSubcategories::where('slug', $slugS)->first();
+        $subcategories      = ProductSubcategories::where('category_id', $category->id)->orderBy('title', 'ASC')->get();
 
-        $related = Product::select(
-            '*'
-            , 'products.id                    AS idP'
-            , 'products.title                 AS titleP'
-            , 'products.slug                  AS slugP'
-            , 'products.image                 AS imageP'
-            , 'products.image_rx              AS image_rxP'
-            , 'products_categories.id         AS idC'
-            , 'products_categories.title      AS titleC'
-            , 'products_categories.slug       AS slugC'
-            , 'products_subcategories.id      AS idS'
-            , 'products_subcategories.title   AS titleS'
-            , 'products_subcategories.slug    AS slugS'
+        $related            = Product::select(
+                '*'
+            ,   'products.id                    AS idP'
+            ,   'products.title                 AS titleP'
+            ,   'products.slug                  AS slugP'
+            ,   'products.image                 AS imageP'
+            ,   'products.image_rx              AS image_rxP'
+            ,   'products_categories.id         AS idC'
+            ,   'products_categories.title      AS titleC'
+            ,   'products_categories.slug       AS slugC'
+            ,   'products_subcategories.id      AS idS'
+            ,   'products_subcategories.title   AS titleS'
+            ,   'products_subcategories.slug    AS slugS'
         )
-            ->join(
+            -> join(
                 'products_categories'
                 , 'products.category_id', '=', 'products_categories.id'
             )
-            ->join(
+            -> join(
                 'products_subcategories'
                 , 'products.subcategory_id', '=', 'products_subcategories.id'
             )
-            ->leftjoin('promociones_productos', function ($join) {
+            -> leftjoin('promociones_productos', function ($join) {
                 $promos = Promociones::where('start', '<=', Carbon::now())
                     ->where('end', '>=', Carbon::now())
                     ->orderBy('id', 'DESC')
@@ -121,11 +120,11 @@ class ProductController extends BaseDashboard
                 $join->on('producto_id', '=', 'products.id')
                     ->where('promocion_id', '=', $promosID);
             })
-            ->where('products_categories.id', $category->id)
-            ->orWhere('products_subcategories.id', $subcategory->id)
-            ->inRandomOrder()
-            ->limit(4)
-            ->get();
+            -> where('products_subcategories.id', $subcategory -> id)
+            -> orWhere('products.title', 'LIKE', "%{$entry -> titleP}%")
+            -> inRandomOrder()
+            -> limit(4)
+            -> get();
         /* SIDEBAR */
         $CC = ProductCategories::orderBy('title', 'ASC')
             ->get();
@@ -135,32 +134,32 @@ class ProductController extends BaseDashboard
 
         /* SIDEBAR */
 
-        $meta['titulo'] = $entry->titleP . " | Modelo " . $entry->modelo;
-        $meta['descripcion'] = $entry->resumen;
-        $meta['imagen'] = url('storage/' . $this->folder . $entry->imageP);
+        $meta['titulo']         = $entry->titleP . " | Modelo " . $entry->modelo;
+        $meta['descripcion']    = $entry->resumen;
+        $meta['imagen']         = url('storage/' . $this->folder . $entry->imageP);
 
         return view('frontend_v2.productos-open')
             ->with([
-                'meta' => $meta
-                , 'banners' => 0
-                , 'promos' => $promos
-                , 'gallery' => $gallery
-                , 'entry' => $entry
-                , 'CC' => $CC
-                , 'SS' => $SS
-                , 'category' => $category
-                , 'subcategory' => $subcategory
-                , 'subcategories' => $subcategories
-                , 'related' => $related
-                , 'menu_cat' => $this->viewProducCategories()
+                    'meta'          => $meta
+                ,   'banners'       => 0
+                ,   'promos'        => $promos
+                ,   'gallery'       => $gallery
+                ,   'entry'         => $entry
+                ,   'CC'            => $CC
+                ,   'SS'            => $SS
+                ,   'category'      => $category
+                ,   'subcategory'   => $subcategory
+                ,   'subcategories' => $subcategories
+                ,   'related'       => $related
+                ,   'menu_cat'      => $this->viewProducCategories()
             ]);
     }
 
     public function brands($brand)
     {
-        $brand = urldecode($brand);
-        $promos = $this->viewPromos();
-        $entry = Product::select(
+        $brand      = urldecode($brand);
+        $promos     = $this->viewPromos();
+        $entries    = Product::select(
             '*'
             , 'products.id                    AS idP'
             , 'products.title                 AS titleP'
@@ -195,18 +194,19 @@ class ProductController extends BaseDashboard
             ->where('products.marca', 'LIKE', "%$brand%")
             ->paginate(12);
 
-
-        $meta['titulo'] = "Productos de la marca " . ucfirst($brand);
-        $meta['descripcion'] = "Listado de productos de la marca $brand";
-        $meta['imagen'] = asset('v2/images/samples/banner.jpg');
+        $meta['titulo']         = "Productos de la marca " . ucfirst($brand);
+        $meta['descripcion']    = "Listado de productos de la marca $brand";
+        $meta['imagen']         = asset('v2/images/samples/banner.jpg');
         return view('frontend_v2.productos-marcas')
             ->with([
-                'meta' => $meta
-                , 'banners' => 0
-                , 'promos' => $promos
-                , 'brand' => ucfirst($brand)
-                , 'entries' => $entry
-                , 'menu_cat' => $this->viewProducCategories()
+                    'meta'                      => $meta
+                ,   'banners'                   => 0
+                ,   'promos'                    => $promos
+                ,   'brand'                     => ucfirst($brand)
+                ,   'entries'                   => $entries
+                ,   'menu_cat'                  => $this->viewProducCategories()
+                ,   'related_categories'        => self::categoriesByBrand($brand)
+                ,   'related_subcategories'     => []
             ]);
     }
 
@@ -262,6 +262,8 @@ class ProductController extends BaseDashboard
                 ,   'brand'     => ucfirst($brand)
                 ,   'entries'   => $entry
                 ,   'menu_cat'  => $this -> viewProducCategories()
+                ,   'related_categories'        => self::categoriesByBrand($brand)
+                ,   'related_subcategories'     => []
             ]);
     }
 
@@ -312,12 +314,14 @@ class ProductController extends BaseDashboard
         $meta['imagen'] = asset('v2/images/samples/banner.jpg');
         return view('frontend_v2.productos-marcas')
             -> with([
-                    'meta'      => $meta
-                ,   'banners'   => 0
-                ,   'promos'    => $promos
-                ,   'brand'     => ucfirst($brand)
-                ,   'entries'   => $entry
-                ,   'menu_cat'  => $this -> viewProducCategories()
+                    'meta'                      => $meta
+                ,   'banners'                   => 0
+                ,   'promos'                    => $promos
+                ,   'brand'                     => ucfirst($brand)
+                ,   'entries'                   => $entry
+                ,   'menu_cat'                  => $this -> viewProducCategories()
+                ,   'related_categories'        => self::categoriesByBrand($brand)
+                ,   'related_subcategories'     => []
             ]);
     }
 
@@ -369,13 +373,27 @@ class ProductController extends BaseDashboard
         $meta['imagen'] = asset('v2/images/samples/banner.jpg');
         return view('frontend_v2.productos-marcas')
             -> with([
-                    'meta'      => $meta
-                ,   'banners'   => 0
-                ,   'promos'    => $promos
-                ,   'brand'     => ucfirst($brand)
-                ,   'entries'   => $entry
-                ,   'menu_cat'  => $this -> viewProducCategories()
+                    'meta'                      => $meta
+                ,   'banners'                   => 0
+                ,   'promos'                    => $promos
+                ,   'brand'                     => ucfirst($brand)
+                ,   'entries'                   => $entry
+                ,   'menu_cat'                  => $this -> viewProducCategories()
+                ,   'related_categories'        => self::categoriesByBrand($brand)
+                ,   'related_subcategories'     => []
             ]);
+    }
+
+    public static function categoriesByBrand($brand)
+    {
+        return ProductCategories::select('title', 'slug')
+            -> whereIn('id', function($query) use ($brand){
+                $query -> select('category_id')
+                    -> from('products')
+                    -> where(DB::raw("TRIM(LOWER(marca))"), $brand)
+                    -> distinct();
+            })
+            -> get();
     }
 	/* --- --- --- --- --- --- --- --- --- ---
 	| Search

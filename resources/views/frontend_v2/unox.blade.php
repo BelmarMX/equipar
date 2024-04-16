@@ -25,7 +25,7 @@
 
         <main class="mt-5 mb-5">
             {{-- HORNOS POR INDUSTRIA  --}}
-            <section id="unox__hornos-profesionales" class="container mb-5">
+            <section id="unox__hornos-profesionales" class="container mb-3">
                 <div class="text-center mb-2">
                     <img width="170" height="98" src="{{ asset('v2/images/unox/reddot-winner-2022-best-of-best.jpeg') }}" alt="RedDot Winner 2022 Best of Best">
                 </div>
@@ -95,7 +95,7 @@
                 </div>
             </section>
 
-            <section class="container py-5 mb-5">
+            <section class="container py-4 mb-5">
                 @include('frontend_v2.partials.unox-catalogos')
             </section>
 

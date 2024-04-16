@@ -175,7 +175,9 @@ a.featured-link:hover > span{
 }
 
 h3.speedpro,
-h3.speedpro > * {
+h3.speedpro > *,
+h3.speedx,
+h3.speedx > *{
 	font-size: 3rem;
 	.bake{
 		color: rgb(252, 191, 28);
@@ -183,10 +185,22 @@ h3.speedpro > * {
 	.speed{
 		color: #00cc00;
 	}
+	.combi{
+		color: rgb(0, 153, 255);
+	}
 }
 .yellow-bake{
 	color: rgb(252, 191, 28);
 }
 .green-speed{
 	color: #00cc00;
+}
+.blue-combi{
+	color: rgb(0, 153, 255);
+}
+
+ul.properties{
+	list-style: none;
+	max-width: 460px;
+	text-align: justify;
 }
