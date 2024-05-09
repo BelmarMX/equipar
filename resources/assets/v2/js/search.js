@@ -45,8 +45,11 @@ $(function() {
         },
         renderer: function(data){
             console.log(data)
-            let discount = data.discount != 0
+            let discount    = data.discount != 0
                 ? `<small class="bg-danger text-white p-1 ms-1">${data.discount}%</small>`
+                : ''
+            let con_flete   = data.con_flete
+                ? `<span class="badge bg-danger text-white">¡Flete incluido!</span>`
                 : ''
             return `
                 <div class="autocomplete-box">
@@ -56,6 +59,7 @@ $(function() {
                     <div class="autocomplete-info">
                         <span class="autocomplete-title">${data.title}</span>
                         <span class="autocomplete-cats">${data.category} / ${data.subcategory}</span>
+                        ${con_flete}
                         <div class="autocomplete-additional">
                             <span class="autocomplete-brand">${data.brand}</span>
                             <span class="autocomplete-price">$ ${data.price}${discount}</span>

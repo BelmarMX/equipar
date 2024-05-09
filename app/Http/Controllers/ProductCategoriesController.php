@@ -125,7 +125,7 @@ class ProductCategoriesController extends BaseDashboard
             })
             -> where('products_categories.slug', '=', $slug)
             -> orderByRaw($order_by_raw)
-            -> paginate(18);
+            -> paginate(28);
 
         $meta['titulo']         = $category -> title;
         $meta['descripcion']    = 'Listado de productos perteneciente a la categoría: ' . $category -> title;

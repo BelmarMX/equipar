@@ -38,6 +38,7 @@
 				<th>Subcategoría</th>
 				<th>Marca</th>
 				<th>Precio</th>
+				<th>Flete</th>
 				<th>Creado</th>
 				<th>Actualizado</th>
 				<th>Eliminado</th>
@@ -61,6 +62,7 @@
 				<td>{{ $subcategory[$entry -> subcategory_id] }}</td>
 				<td>{{ $entry -> marca }}</td>
 				<td>${{ number_format($entry -> precio, 2) }}</td>
+				<td>{{ $entry -> con_flete ? 'SÍ' : 'NO' }}</td>
 				<td data-search="{{ fsDate( $entry -> created_at ) }}" data-order="{{ $entry -> created_at }}">{{ fDate( $entry -> created_at ) }}</td>
 				<td data-search="{{ fsDate( $entry -> updated_at ) }}" data-order="{{ $entry -> updated_at }}">{{ fDate( $entry -> updated_at ) }}</td>
 				<td data-search="{{ fsDate( $entry -> deleted_at ) }}" data-order="{{ $entry -> deleted_at }}">{{ fDate( $entry -> deleted_at ) }}</td>

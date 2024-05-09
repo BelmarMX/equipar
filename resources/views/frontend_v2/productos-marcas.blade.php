@@ -38,6 +38,7 @@
                             ,   'brand'     => $product -> brand
                             ,   'price'     => $product -> precio
                             ,   'promo'     => $product -> final_price
+                            ,   'con_flete' => $product -> con_flete
                             ,   'tag'       => $product -> titleS
                             ,   'tag_link'  => route('productos-category', [$product -> slugC, $product -> slugS])
                             ,   'route'     => route('productos-open', [$product -> slugC, $product -> slugS, $product -> slugP])

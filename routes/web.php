@@ -237,6 +237,14 @@ Route::group(['prefix' => 'dashboard'], function(){
 				'uses'  => 'ProductController@pricechangeUpdate'
 			,   'as'    => 'product.pricechangeUpdate'
 		]);
+        Route::get('product-fletes', [
+                'uses'  => 'ProductController@fletechange'
+            ,   'as'    => 'product.fletechange'
+        ]);
+        Route::post('product-fletes/update',[
+                'uses'  => 'ProductController@fletechangeUpdate'
+            ,   'as'    => 'product.fletechangeUpdate'
+        ]);
 		Route::get('productos-descarga-csv', [
 				'uses'	=> 'ProductController@downloadCsv'
 			,	'as'	=> 'product.downloadcsv'

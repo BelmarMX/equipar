@@ -87,6 +87,21 @@
 					height: 100%;
 					align-items: center;
 					justify-content: center;
+					.product__card__front--flete{
+						position: absolute;
+						top: 30px;
+						right: -10px;
+						z-index: 1;
+						background: red;
+						border-radius: 18px 0;
+						color: #fff;
+						display: inline-block;
+						font-size: .95rem;
+						font-weight: 400;
+						letter-spacing: .015rem;
+						max-width: 294px;
+						padding: 1px 10px;
+					}
 					.product__card__front--price{
 						position: absolute;
 						display: block;
@@ -282,6 +297,17 @@
 		.productos__main_product__price--currency{
 			font-size: .9rem;
 			letter-spacing: 0;
+		}
+		.productos__main_product__price--flete{
+			border-radius: 50%;
+			background: $primary;
+			padding: 5px;
+			margin-left: 5px;
+			i{
+				color: $white;
+				font-size: 20px;
+				margin-left: 1px;
+			}
 		}
 	}
 }

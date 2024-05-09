@@ -437,6 +437,7 @@ class ProductController extends BaseDashboard
                 ,   'brand'         => $producto -> marca
                 ,   'price'         => $producto -> precio
                 ,   'final_price'   => $producto -> final_price
+                ,   'con_flete'     => $producto -> con_flete
                 ,   'discount'      => percent($producto -> precio, $producto -> final_price ?? $producto -> precio)
                 ,   'image'         => url('storage/productos/'.$producto -> image_rx)
             ];
@@ -455,7 +456,7 @@ class ProductController extends BaseDashboard
 		$promos     = $this -> viewPromos();
 		$search     = urldecode($search);
 
-		DB::enableQueryLog();
+		//DB::enableQueryLog();
 		$entries = (new Product) -> newQuery();
 		$entries -> select(
 				'*'
@@ -781,6 +782,7 @@ class ProductController extends BaseDashboard
 				,   'tecnica'           => 'nullable'
 				,   'ficha'             => 'nullable|file|mimes:pdf|max:4096'
 				,   'precio'            => 'nullable'
+				,   'con_flete'         => 'nullable|boolean'
 			]);
 
 			$time       = time();
@@ -813,6 +815,7 @@ class ProductController extends BaseDashboard
 				,   'tecnica'           => $request -> tecnica
 				,   'ficha'             => $F_file_name
 				,   'precio'            => $request -> precio
+				,   'con_flete'         => $request -> con_flete ?? FALSE
 			])) {
 				$file   = Image::make($request->file('image'));
 				Storage::put('public/' . $this -> folder . $file_name, $file->stream());
@@ -882,6 +885,7 @@ class ProductController extends BaseDashboard
 				,   'tecnica'           => 'nullable'
 				,   'ficha'             => 'nullable|file|mimes:pdf|max:4096'
 				,   'precio'            => 'nullable'
+				,   'con_flete'         => 'nullable|boolean'
 			]);
 
 			// Update
@@ -910,6 +914,7 @@ class ProductController extends BaseDashboard
 				$entry -> ficha         = $request -> slug . '-' . time() . '.' . $F_ext;
 			}
 			$entry->precio              = $request->precio;
+			$entry->con_flete           = $request->con_flete ?? FALSE;
 
 			if ($entry->save()) {
 				$this->send['type']       = 'alert-success';
@@ -1107,7 +1112,7 @@ class ProductController extends BaseDashboard
 	{
 		if (Gate::allows('users.index')) {
 			
-			$brandlist  = Product::select('marca') -> groupBy('marca') -> get();
+			$brandlist  = Product::select('marca') -> groupBy('marca') -> orderBy('marca') -> get();
 			$entries = array();
 
 			if( isset($_GET['marca']) && $_GET['marca'] != '*ALL*' )
@@ -1172,6 +1177,35 @@ class ProductController extends BaseDashboard
         return  back()
             ->with('alert', $this->send);
 	}
+
+    public function fletechange()
+    {
+        if (Gate::allows('users.index'))
+        {
+            return  view('02_system.05_product.fletes')
+                ->with([
+                        'brands'    => Product::select('marca') -> groupBy('marca') -> orderBy('marca') -> get()
+                    ,   'entries'   => []
+                ]);
+        }
+    }
+
+    public function fletechangeUpdate(Request $request)
+    {
+        if( Product::where('marca', 'LIKE', '%'.$request -> marca.'%') -> update(['con_flete' => $request -> con_flete]) )
+        {
+            $this->send['type']       = 'alert-success';
+            $this->send['message']    = 'Precios actualizados con éxito.';
+        }
+        else
+        {
+            $this->send['type']       = 'alert-danger';
+            $this->send['message']    = 'Algunos precios no se pudieron actualizar.';
+
+        }
+        return  back()
+            ->with('alert', $this->send);
+    }
 
 	public function downloadCsv()
 	{

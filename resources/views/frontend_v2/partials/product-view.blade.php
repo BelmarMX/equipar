@@ -22,6 +22,9 @@
                     <i class="bi bi-bag-plus-fill"></i>
                 </button>
                 <a href="{{ $route }}">
+                    @if( isset($con_flete) && $con_flete)
+                        <span class="product__card__front--flete">¡Flete incluido!</span>
+                    @endif
                     <img class="product__card__front--image img-fluid"
                          src="{{ $image }}"
                          alt="{{ $title }}"

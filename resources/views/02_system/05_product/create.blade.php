@@ -124,6 +124,21 @@
 				<input class="uk-input decimal" type="text" name="precio" value="{{ old('precio') }}" placeholder="9,999,999.99">
 			</div>
 		</div>
+		<div class="uk-margin">
+			<label class="uk-form-label" for="form-horizontal-text">¿Incluye flete?</label>
+			<div class="uk-form-controls">
+				<div uk-form-custom="target: > * > span:first-child" class="width-100">
+					<select id="con_flete" name="con_flete" required>
+						<option value="0" selected>No</option>
+						<option value="1">Sí</option>
+					</select>
+					<button class="selectbtn uk-button uk-button-default width-100" type="button" tabindex="-1">
+						<span></span>
+						<span uk-icon="icon: chevron-down"></span>
+					</button>
+				</div>
+			</div>
+		</div>
 
 		<div class="uk-text-center">
 			<div class="FormSending mb-3" style="display:none">

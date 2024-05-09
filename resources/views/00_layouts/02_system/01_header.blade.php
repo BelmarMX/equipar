@@ -89,6 +89,7 @@
 								@endcan
 								@can('users.edit')
 								<a href="{{ route('product.pricechange') }}"><span class="uk-margin-small-right" uk-icon="icon: list"></span> Cambio masivo de precios</a>
+								<a href="{{ route('product.fletechange') }}"><span class="uk-margin-small-right" uk-icon="icon: list"></span> Cambio masivo de fletes</a>
 								<a href="{{ route('product.pricechangeCsv') }}"><span class="uk-margin-small-right" uk-icon="icon: list"></span> Cambio masivo de precios CSV</a>
 								<a href="{{ route('product.downloadcsv') }}"><span class="uk-margin-small-right" uk-icon="icon: list"></span> Descargar CSV</a>
 								<a href="{{ route('product.allChangeXlsx') }}"><span class="uk-margin-small-right" uk-icon="icon: list"></span> Actualización masiva XLSX</a>

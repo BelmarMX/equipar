@@ -65,7 +65,7 @@ class ProductSubcategoriesController extends BaseDashboard
             })
             -> orderBy('idP', 'DESC')
             -> where('products_subcategories.slug', '=', $slugS)
-            -> paginate(12);
+            -> paginate(28);
 
             /* SIDEBAR */
             $CC = ProductCategories::orderBy('id', 'ASC')

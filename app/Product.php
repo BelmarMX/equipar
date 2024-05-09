@@ -20,7 +20,7 @@ class Product extends Model
 
 	protected $table    = "products";
 	protected $fillable = [
-		'category_id', 'subcategory_id', 'title', 'slug', 'modelo', 'marca', 'resumen', 'caracteristicas', 'tecnica', 'precio', 'image', 'image_rx', 'ficha'
+		'category_id', 'subcategory_id', 'title', 'slug', 'modelo', 'marca', 'resumen', 'caracteristicas', 'tecnica', 'precio', 'image', 'image_rx', 'ficha', 'con_flete'
 	];
 
 	protected $dates = ['deleted_at'];
