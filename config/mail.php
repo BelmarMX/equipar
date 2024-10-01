@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'a2plcpnl0669.prod.iad2.secureserver.net'),
+    'host' => env('MAIL_HOST', 'p3plzcpnl507588.prod.phx3.secureserver.net'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'noreply@dispersion.com.mx'),
-        'name' => env('MAIL_FROM_NAME', 'Sinergia Alimenta'),
+        'name' => env('MAIL_FROM_NAME', 'Equipar: Atención a Clientes')
     ],
 
     /*

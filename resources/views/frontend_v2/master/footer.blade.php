@@ -93,7 +93,7 @@
     </div>
     <div class="row bg-black text-white mt-3">
         <div class="col-md-12 text-center p-1">
-            <small>&copy;{{ date('Y') }} Equi-par.com | Made with <span data-bs-toggle="tooltip" title="www.dispersion.mx">♥️</span></small>
+            <small>&copy;{{ date('Y') }} Equi-par.com | Made with <span data-bs-toggle="tooltip" title="DSP MX">♥️</span></small>
         </div>
     </div>
 </footer>
