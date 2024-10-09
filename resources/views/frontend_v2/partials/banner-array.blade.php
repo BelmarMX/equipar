@@ -21,7 +21,7 @@
             </div>
             --}}
             @foreach($banners AS $banner)
-                <div class="carousel-item">
+                <div class="carousel-item @if($loop -> first) active @endif">
                     @include('frontend_v2.partials.banner-single', [
                             'slide'         => url('storage/banners/'.$banner -> image)
                         ,   'slide_mobile'  => url('storage/banners/'.$banner -> image_mv)
