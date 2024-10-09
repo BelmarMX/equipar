@@ -6,6 +6,7 @@
          data-bs-interval="5500"
     >
         <div class="carousel-inner">
+            {{--
             <div class="carousel-item active">
                 @include('frontend_v2.partials.banner-single', [
                         'slide'         => asset('v2/images/samples/banner.jpg')
@@ -18,6 +19,7 @@
                     ,   'cta_href'      => route('proyectos')
                 ])
             </div>
+            --}}
             @foreach($banners AS $banner)
                 <div class="carousel-item">
                     @include('frontend_v2.partials.banner-single', [

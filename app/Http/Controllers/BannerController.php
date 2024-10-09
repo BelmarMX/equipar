@@ -97,7 +97,7 @@ class BannerController extends BaseDashboard
             {
                 $file       = Image::make( $request -> file('image') );
                 $thumb      = Image::make( $request -> file('image') ) -> fit(80);
-                $fmobile    = Image::make( $request -> file('image') );
+                $fmobile    = Image::make( $request -> file('image_mv') );
 
                 Storage::put( 'public/' . $this -> folder . $file_name, $file -> stream() );
                 Storage::put( 'public/' . $this -> folder . $thumb_name, $thumb -> stream() );
