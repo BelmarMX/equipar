@@ -10,7 +10,7 @@
                     <img width="{{ env('PORTFOLIO_WIDTH') }}"
                          height="{{ env('PORTFOLIO_HEIGHT') }}"
                          src="{{ url("storage/portafolio/{$entry -> image}") }}"
-                         class="d-block w-100"
+                         class="d-block w-100 img-fluid"
                          alt="{{ $entry -> title }}"
                     >
                     <div class="row mx-0 w-100 p-3">
@@ -28,7 +28,7 @@
                         <img width="{{ env('PORTFOLIO_IMG_WIDTH') }}"
                              height="{{ env('PORTFOLIO_IMG_HEIGHT') }}"
                              src="{{ url("storage/portafolio-images/{$item -> image}") }}"
-                             class="d-block w-100"
+                             class="d-block w-100 img-fluid"
                              alt="{{ $item -> title }}"
                         >
                         <div class="row mx-0 w-100 p-3">
