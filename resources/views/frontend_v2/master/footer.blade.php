@@ -56,7 +56,7 @@
     <div class="row px-4">
         <!-- Sucursales -->
         <div class="col-sm-12 col-md location">
-            <a href="https://maps.app.goo.gl/SkDp2znznD5FjBPv6" target="_blank"><i class="bi bi-geo-alt-fill"></i> <span>Guadalajara Matriz</span></a>
+            <a href="https://maps.app.goo.gl/SkDp2znznD5FjBPv6" target="_blank"><i class="bi bi-geo-alt-fill"></i> <span>Gdl Matriz</span></a>
             <p class="pt-2">
                 Av. Cvln. Jorge Álvarez del Castillo<br>
                 Núm. 1442<br>
@@ -65,11 +65,12 @@
             </p>
         </div>
         <div class="col-sm-12 col-md location">
-            <a href="https://maps.app.goo.gl/Wm8peAwcUb3paqtz9" target="_blank"><i class="bi bi-geo-alt-fill"></i> <span>Guadalajara</span></a>
+            <a href="https://maps.app.goo.gl/Wm8peAwcUb3paqtz9" target="_blank"><i class="bi bi-geo-alt-fill"></i> <span>Gdl Showroom</span></a>
             <p class="pt-2">
                 Av. 16 de septiembre<br>
                 Núm. 665<br>
                 Col. Mexicaltzingo<br>
+                Guadalajara, Jalisco. México.
             </p>
         </div>
         <div class="col-sm-12 col-md location">
@@ -78,6 +79,7 @@
                 Av. Plan de San Luis<br>
                 Núm. 1850<br>
                 Col. Lomas del Country<br>
+                Guadalajara, Jalisco. México.
             </p>
         </div>
         <div class="col-sm-12 col-md location">
